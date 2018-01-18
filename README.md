@@ -6,18 +6,21 @@
 Create a donation app and website to manage donations for Interfaith Sanctuary.
 
 ## Team Members:
+
 Last Name       | First Name      | GitHub User Name     | Scrum Role
 --------------- | --------------- | -------------------- | ---------------
-Argyle          | Justin          | ravensolace          | Developer
-Arnett          | Megan           | meganarnett          | Developer
-Brodt           | Tanner          | tannerbrodt          | Developer
-Chapman         | Patrick         | patrickchapman       | Developer
-Gruenberg       | Wesley          | wesleygruenberg      | Product Owner
-Hutchins        | Alex            | gakio12              | Scrum Master
-Kirchoff        | Kevin           | KevinKirchhoff       | Developer
-Priest          | Zachary         | zakaray24            | Developer
-Rausch          | Jordin          | youngdrake           | Developer
-Scott           | Mary-Catherine  | maryscott            | Developer
+Adhikari        | Chandra         | adhikarichandra      | Product Owner
+Betikoetxea     | Francis         | francisbetikoetxea   | Developer
+Bosse           | Luke            | lbosse               | Developer
+Brasier         | Gregory         | gbrasier             | Developer
+Carns           | Jake            | Rainandwind0         | Scrum Master
+Feiling         | Amy             | amyfeiling           | Developer
+Gilman          | Ian             | IronGrillman         | Developer
+Nicholls        | Tyler           | TylerNicholls        | Developer
+Spagnolo        | Michael         | michaelspagnoloBSU   | Developer
+Tierney         | Brendan         | Tiernebre            | Developer
+Wilson          | Tim             | timwilson139         | Developer
+Wiseman         | Terrence        | TerrenceWiseman      | Developer
 
 ## Team Velocity:
 
