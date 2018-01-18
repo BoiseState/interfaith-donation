@@ -7,20 +7,20 @@ Create a donation app and website to manage donations for Interfaith Sanctuary.
 
 ## Team Members:
 
-Last Name       | First Name      | GitHub User Name     | Scrum Role
---------------- | --------------- | -------------------- | ---------------
-Adhikari        | Chandra         | adhikarichandra      | Product Owner
-Betikoetxea     | Francis         | francisbetikoetxea   | Developer
-Bosse           | Luke            | lbosse               | Developer
-Brasier         | Gregory         | gbrasier             | Developer
-Carns           | Jake            | Rainandwind0         | Scrum Master
-Feiling         | Amy             | amyfeiling           | Developer
-Gilman          | Ian             | IronGrillman         | Developer
-Nicholls        | Tyler           | TylerNicholls        | Developer
-Spagnolo        | Michael         | michaelspagnoloBSU   | Developer
-Tierney         | Brendan         | Tiernebre            | Developer
-Wilson          | Tim             | timwilson139         | Developer
-Wiseman         | Terrence        | TerrenceWiseman      | Developer
+Last Name       | First Name      | GitHub User Name     | Scrum Role     | Team
+--------------- | --------------- | -------------------- | ---------------|--------------------
+Adhikari        | Chandra         | adhikarichandra      | Product Owner  | Spring
+Betikoetxea     | Francis         | francisbetikoetxea   | Developer      | Spring
+Bosse           | Luke            | lbosse               | Developer      | Spring (?)
+Brasier         | Gregory         | gbrasier             | Developer      | Ionic
+Carns           | Jake            | Rainandwind0         | Scrum Master   | Ionic (Liaison)
+Feiling         | Amy             | amyfeiling           | Developer      | Spring
+Gilman          | Ian             | IronGrillman         | Developer      | Ionic
+Nicholls        | Tyler           | TylerNicholls        | Developer      | Vue.js
+Spagnolo        | Michael         | michaelspagnoloBSU   | Developer      | Vue.js
+Tierney         | Brendan         | Tiernebre            | Developer      | Vue.js (Liaison)
+Wilson          | Tim             | timwilson139         | Developer      | Vue.js
+Wiseman         | Terrence        | TerrenceWiseman      | Developer      | Vue.js
 
 ## Team Velocity:
 
