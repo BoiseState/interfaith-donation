@@ -26,7 +26,7 @@ Wiseman         | Terrence        | TerrenceWiseman      | Developer      | Vue.
 
 Sprint | Estimated Velocity | Actual Velocity
 ------ | ------------------ | ---------------
-   1   | TBD                | TBD
+   1   | 55                 | TBD
    2   | TBD                | TBD
    3   | TBD                | TBD
    4   | TBD                | TBD
