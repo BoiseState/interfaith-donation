@@ -34,3 +34,7 @@ Sprint | Estimated Velocity | Actual Velocity
    6   | TBD                | TBD
 
 ***
+
+## Documentation:
+
+Documentation can be found at this [GitHub repository's wiki page](https://github.com/BoiseState/interfaith-donation/wiki).
