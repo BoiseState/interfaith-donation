@@ -1,6 +1,6 @@
 # front-end-admin
 
-> The front-end app for the Interfaith Sanctuary donation application administration tools. Allows employees of Interfaith to easily see information related to donations.
+> The front-end app for the Interfaith Sanctuary donation application administration tools. Allows emplooyees of Interfaith Sanctuary to easily see information related to donations.
 
 ## Build Setup
 
@@ -19,6 +19,9 @@ npm run build --report
 
 # run unit tests
 npm run unit
+
+# run e2e tests
+npm run e2e
 
 # run all tests
 npm test
