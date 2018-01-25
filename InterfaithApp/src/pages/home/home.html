@@ -1,0 +1,66 @@
+<!--/**Copyright (C) 1989, 1991 Free Software Foundation, Inc.
+*51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
+*
+*Everyone is permitted to copy and distribute verbatim copies
+*of this license document, but changing it is not allowed.
+*
+*Charity Needs Organizer webservice and application for keeping track of
+*donation needs for a charitable organization.
+*
+*Copyright (C) 2017 Interfaith Sanctuary authored by Alex Hutchins, Wes Gruenberg, Zachary Priest,
+*Kevin Kirchoff , Tanner Brodt, Mary-Catherine Scott, Jordin Rausch,
+*Megan Arnett, Patrick Chapman, Justin Argyle
+*
+*This file is part of Charity Needs Organizer
+*
+*This program is free software; you can redistribute it and/or
+*modify it under the terms of the GNU General Public License
+*as published by the Free Software Foundation; either version 2
+*of the License, or (at your option) any later version.
+*
+*This program is distributed in the hope that it will be useful,
+*but WITHOUT ANY WARRANTY; without even the implied warranty of
+*MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+*GNU General Public License for more details.
+*
+*You should have received a copy of the GNU General Public License
+*along with this program; if not, write to the Free Software
+*Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+*/-->
+
+<ion-header>
+  <ion-navbar id="navbar" color="dark">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Interfaith Sanctuary!</ion-title>
+    <ion-buttons end>
+      <button ion-button (click)="logout()">
+        <ion-icon name="log-out"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content id="background" class="no-scroll" padding>
+  <div id="info" style="text-align:center">
+    <div *ngIf="isLoggedIn(); else elseBlock">
+      <h2>Welcome, {{username}}!</h2>
+    </div>
+    <ng-template #elseBlock>
+      <h2>Welcome, Guest!</h2>
+    </ng-template>
+    <!--<h3>Welcome to the home page of our Donation app!</h3>-->
+
+    <!--<p style="text-align:center">-->
+      <!--To get started donating either Register/Login or start right away by looking at our Callouts page! Thanks!! 😁🙏👍-->
+    <!--</p>-->
+
+  </div>
+  <div id= "buttonsContainer" class="col text-center">
+    <button id="registerButton" ion-button block color="dark" class="button" (click)="openPageRegisterSignIn()">Register/Login</button>
+    <button id="needsButton" ion-button block color="dark" class="button" (click)="openPageCallouts()">Callouts!</button>
+
+  </div>
+</ion-content>
+
