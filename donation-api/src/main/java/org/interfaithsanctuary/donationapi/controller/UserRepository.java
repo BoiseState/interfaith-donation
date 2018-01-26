@@ -1,4 +1,4 @@
-package org.interfaithsanctuary.donationapi;
+package org.interfaithsanctuary.donationapi.controller;
 
 import org.interfaithsanctuary.donationapi.model.Users;
 import org.springframework.data.repository.CrudRepository;
