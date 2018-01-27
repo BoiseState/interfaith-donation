@@ -1,6 +1,7 @@
 package org.interfaithsanctuary.donationapi.controller;
 
 import org.interfaithsanctuary.donationapi.model.Users;
+import org.interfaithsanctuary.donationapi.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

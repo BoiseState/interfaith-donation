@@ -8,7 +8,7 @@ import java.util.Date;
 public class Donor {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int donorId;
+    private long donorId;
 
     @Column(name = "user_id")
     private int userId;
@@ -37,7 +37,7 @@ public class Donor {
     @Column(name = "donor_join_date")
     private Date joinDate;
 
-    public int getDonorId() {
+    public long getDonorId() {
         return donorId;
     }
 
