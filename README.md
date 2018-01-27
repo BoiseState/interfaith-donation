@@ -11,7 +11,7 @@ Last Name       | First Name      | GitHub User Name     | Scrum Role     | Team
 --------------- | --------------- | -------------------- | ---------------|--------------------
 Adhikari        | Chandra         | adhikarichandra      | Product Owner  | Spring
 Betikoetxea     | Francis         | francisbetikoetxea   | Developer      | Spring
-Bosse           | Luke            | lbosse               | Developer      | Spring (?)
+Bosse           | Luke            | lbosse               | Developer      | Spring
 Brasier         | Gregory         | gbrasier             | Developer      | Ionic
 Carns           | Jake            | Rainandwind0         | Scrum Master   | Ionic (Liaison)
 Feiling         | Amy             | amyfeiling           | Developer      | Spring
