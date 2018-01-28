@@ -29,9 +29,13 @@
 </template>
 
 <script>
-  export default {
-    name: "donor-list"
-  }
+import {getAllDonors} from '../../services/donors-service';
+
+getAllDonors();
+
+export default {
+  name: 'donor-list'
+};
 </script>
 
 <style scoped>
