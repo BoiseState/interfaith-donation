@@ -11,13 +11,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("/donors")
+@RequestMapping("/api/donors")
 public class DonorController {
 
     @Autowired
     DonorRepository donorRepository;
 
-    @RequestMapping("/test")
+    @RequestMapping("/all")
     @ResponseBody
     public List<Donor> testDonorController() {
         List<Donor> donors = new ArrayList<>();
