@@ -9,4 +9,5 @@ public class DonationApiApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(DonationApiApplication.class, args);
 	}
+
 }
