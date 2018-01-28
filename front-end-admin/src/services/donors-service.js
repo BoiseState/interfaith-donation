@@ -1,8 +1,15 @@
-const URL = 'http://localhost:8080/donors';
+import {getJSON} from './helpers';
 
-export const getAllDonors = () => {
-  let configuration = {method: 'GET'};
-  fetch(URL, configuration).then(res => res.json()).then(res => {
-    console.log(res);
+const BASE_API_ROUTE = '/donors';
+
+export const getAllDonors = async () => {
+  getJSON(BASE_API_ROUTE).then(donors => {
+    console.log(donors);
+  });
+};
+
+export const getDonorById = async id => {
+  getJSON(`${BASE_API_ROUTE}/${id}`).then(donor => {
+    console.log(donor);
   });
 };
