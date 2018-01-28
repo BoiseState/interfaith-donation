@@ -7,48 +7,48 @@ import javax.persistence.criteria.CriteriaBuilder;
 public class Users {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
-    private Integer user_id;
+    private Long userId;
 
     @Column(name = "user_name")
-    private String user_name;
+    private String userName;
 
     @Column(name = "user_password")
-    private String user_password;
+    private String userPassword;
 
     @Column(name = "user_email")
-    private String user_email;
+    private String userEmail;
 
     @Column(name ="permissions")
     private PermissionLevel permissions;
 
-    public Integer getId() {
-        return user_id;
+    public Long getId() {
+        return userId;
     }
 
-    public void setId(Integer id) {
-        this.user_id = id;
+    public void setId(Long id) {
+        this.userId = id;
     }
 
     public String getUserName() {
-        return user_name;
+        return userName;
     }
 
     public void setUserName(String name) {
-        this.user_name = name;
+        this.userName = name;
     }
 
     public String getEmail() {
-        return user_email;
+        return userEmail;
     }
 
     public void setEmail(String email) {
-        this.user_email = email;
+        this.userEmail = email;
     }
 
-    public String getPassword() { return user_password; }
+    public String getPassword() { return userPassword; }
 
     public void setPassword(String password) {
-        this.user_password = password;
+        this.userPassword = password;
 
         //BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         //this.user_password = passwordEncoder.encode(password);
