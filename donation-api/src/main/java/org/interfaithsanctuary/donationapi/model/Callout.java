@@ -8,7 +8,7 @@ import java.util.Date;
 public class Callout {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int callout_id;
+    private Long callout_id;
 
     @Column(name = "callout_title")
     private String title;
@@ -31,11 +31,11 @@ public class Callout {
     @Column()
     private Boolean pinned;
 
-    public int getCallout_id() {
+    public Long getCallout_id() {
         return callout_id;
     }
 
-    public void setCallout_id(int callout_id) {
+    public void setCallout_id(Long callout_id) {
         this.callout_id = callout_id;
     }
 

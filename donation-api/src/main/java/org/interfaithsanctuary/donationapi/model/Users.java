@@ -7,7 +7,7 @@ import javax.persistence.criteria.CriteriaBuilder;
 public class Users {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
-    private Long userId;
+    private Long user_id;
 
     @Column(name = "user_name")
     private String userName;
@@ -22,11 +22,11 @@ public class Users {
     private PermissionLevel permissions;
 
     public Long getId() {
-        return userId;
+        return user_id;
     }
 
     public void setId(Long id) {
-        this.userId = id;
+        this.user_id = id;
     }
 
     public String getUserName() {
