@@ -19,7 +19,7 @@ public class DonorController {
 
     @RequestMapping("/all")
     @ResponseBody
-    public List<Donor> testDonorController() {
+    public List<Donor> getAllDonors() {
         List<Donor> donors = new ArrayList<>();
         for (Donor donor : donorRepository.findAll()) {
             donors.add(donor);
