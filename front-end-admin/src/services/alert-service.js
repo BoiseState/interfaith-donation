@@ -2,7 +2,7 @@ import {getJSON} from './helpers';
 
 const BASE_API_ROUTE = '/alerts';
 
-export const getAllDonors = () => {
+export const getAllAlerts = () => {
   getJSON(BASE_API_ROUTE).then(alerts => {
     return alerts;
   });
