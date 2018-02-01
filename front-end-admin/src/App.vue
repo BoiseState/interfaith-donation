@@ -1,10 +1,24 @@
 <template>
-  <router-view/>
+  <div>
+    <navigation>
+      <login />
+    </navigation>
+    <router-view/>
+  </div>
 </template>
 
 <script>
+import Navigation from '@/components/layout/Navigation'
+import Login from '@/components/user/Login'
+import Logout from '@/components/user/Logout'
+
 export default {
-  name: 'App'
+  name: 'App',
+  components: {
+    Navigation,
+    Login,
+    Logout
+  }
 }
 </script>
 
