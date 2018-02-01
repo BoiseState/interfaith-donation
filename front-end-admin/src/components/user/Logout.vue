@@ -17,7 +17,7 @@
         <div id="navbar" class="navbar-collapse collapse">
           <form action="ws/auth/logout" method="GET" class="navbar-form navbar-right">
                 <span style="color:gray;vertical-align: middle;margin: 0;">Logged in as: <span
-                  style="margin: 0;color:green; vertical-align: middle"><% out.print(((User)session.getAttribute("user")).getUsername()); %></span>
+                  style="margin: 0;color:green; vertical-align: middle">User Name Goes Here!</span>
                     <button type="link" class="btn btn-link">Logout</button>
                 </span>
           </form>
