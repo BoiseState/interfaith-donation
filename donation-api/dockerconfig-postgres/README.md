@@ -28,6 +28,7 @@
 	-> $ \dt *.*
 13. NOTE: setupRemoteConnection.sh will be executed and it modifies 'pg_hba.conf' located in 
 	  this path '/var/lib/postgresql/data/' to allow connections from other container.
+14. NOTE: The current version of postgres is 10.1
 
 ## **Resources:**
 +https://docs.docker.com/samples/library/postgres/#start-a-postgres-instance

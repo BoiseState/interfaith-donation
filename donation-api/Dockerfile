@@ -17,6 +17,10 @@ RUN chmod 755 $CATALINA_HOME/bin/run.sh
 # To install vim when needed, by default there is no vim
 RUN apt -y update && apt -y install vim
 
+# May need when connecting PSQL and tomcat
+#RUN apt-get install -y postgresql postgresql-contrib
+#RUN service postgresql start
+
 # Adding tomcat JPDA remote debugging env variables
 ENV JPDA_ADDRESS="8000"
 ENV JPDA_TRANSPORT="dt_socket"
