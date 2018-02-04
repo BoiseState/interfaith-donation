@@ -66,18 +66,22 @@
 </template>
 
 <script>
-import Login from '@/components/user/Login'
+import Login from '@/components/user/Login';
+import {getAllDonors} from '../../services/donors-service';
+
+getAllDonors();
+
 export default {
   name: 'home',
   data: () => {
     return {
       loggedIn: false
-    }
+    };
   },
   components: {
     'login': Login
   }
-}
+};
 </script>
 
 <style scoped>

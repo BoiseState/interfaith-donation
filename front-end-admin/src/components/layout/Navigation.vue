@@ -1,29 +1,27 @@
 <template>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-4">
-        <h2>Needs</h2>
-        <p><a class="btn btn-primary" href="${pageContext.request.contextPath}/needslist.jsp" role="button">View Needs &raquo;</a>
-          <a class="btn btn-primary" href="${pageContext.request.contextPath}/registerneed.jsp" role="button">Add Need &raquo;</a></p>
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <router-link class="navbar-brand" to="/">Interfaith Sanctuary Administrator Tool</router-link>
       </div>
-      <div class="col-md-4">
-        <h2>Donations</h2>
-        <p><a class="btn btn-primary" href="${pageContext.request.contextPath}/giftslist.jsp" role="button">View Gifts &raquo;</a>
-          <a class="btn btn-primary" href="${pageContext.request.contextPath}/registerdonation.jsp" role="button">Add Donation &raquo;</a></p>
-      </div>
-      <div class="col-md-4">
-        <h2>Callouts</h2>
-        <p><a class="btn btn-primary" href="${pageContext.request.contextPath}/calloutlist.jsp" role="button">View Callouts &raquo;</a>
-          <a class="btn btn-primary" href="${pageContext.request.contextPath}/registercallout.jsp" role="button">Add Callout &raquo;</a></p>
+      <div id="navbar" class="navbar-collapse collapse">
+        <slot />
       </div>
     </div>
-  </div> <!-- /container -->
+  </nav>
 </template>
 
 <script>
-  export default {
-    name: "navigation"
-  }
+export default {
+  name: 'navigation'
+}
 </script>
 
 <style scoped>

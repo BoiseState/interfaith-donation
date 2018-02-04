@@ -1,5 +1,6 @@
 package org.interfaithsanctuary.donationapi.controller;
 
+import org.interfaithsanctuary.donationapi.model.Alert;
 import org.interfaithsanctuary.donationapi.repository.AlertRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
