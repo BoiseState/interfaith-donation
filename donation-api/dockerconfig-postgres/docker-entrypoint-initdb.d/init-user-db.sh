@@ -1,7 +1,5 @@
 #!/bin/bash
 
-# Adopted from https://hub.docker.com/_/postgres/
-
 set -e
 
 psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" <<-EOSQL
