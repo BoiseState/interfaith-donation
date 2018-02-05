@@ -16,12 +16,14 @@ public class Alert {
     @Column(name = "alert_body")
     private String body;
 
-    @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+//    @Id
+//    @GeneratedValue(strategy=GenerationType.AUTO)
+    @Column(name = "callout_id")
     private int callout_id;
 
-    @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+//    @Id
+//    @GeneratedValue(strategy=GenerationType.AUTO)
+    @Column(name = "need_id")
     private int need_id;
 
     @Column(name = "create_date")
@@ -39,19 +41,19 @@ public class Alert {
     }
 
     public String getAlert_title() {
-        return alert_title;
+        return title;
     }
 
     public void setAlert_title(String alert_title) {
-        this.alert_title = alert_title;
+        this.title = alert_title;
     }
 
     public String getAlert_body() {
-        return alert_body;
+        return body;
     }
 
     public void setAlert_body(String alert_body) {
-        this.alert_body = alert_body;
+        this.body = alert_body;
     }
 
     public int getCallout_id() {
@@ -66,23 +68,21 @@ public class Alert {
         return need_id;
     }
 
-    public void setNeed_id(int need_id) {
-        this.need_id = need_id;
-    }
+    public void setNeed_id(int need_id) { this.need_id = need_id; }
 
     public Date getCreate_date() {
-        return create_date;
+        return createDate;
     }
 
     public void setCreate_date(Date create_date) {
-        this.create_date = create_date;
+        this.createDate = create_date;
     }
 
     public Date getLast_pushed_date() {
-        return last_pushed_date;
+        return lastPushedDate;
     }
 
     public void setLast_pushed_date(Date last_pushed_date) {
-        this.last_pushed_date = last_pushed_date;
+        this.lastPushedDate = last_pushed_date;
     }
 }

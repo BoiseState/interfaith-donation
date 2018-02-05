@@ -13,9 +13,9 @@
 </template>
 
 <script>
-import Navigation from '@/components/layout/Navigation'
-import Login from '@/components/user/Login'
-import Logout from '@/components/user/Logout'
+import Navigation from '@/components/layout/Navigation';
+import Login from '@/components/user/Login';
+import Logout from '@/components/user/Logout';
 
 export default {
   name: 'App',
@@ -29,7 +29,7 @@ export default {
       loggedIn: false
     };
   }
-}
+};
 </script>
 
 <style>

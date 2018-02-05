@@ -10,4 +10,13 @@ export const postJSON = (apiRoute, data) => fetch(`${URL}/${apiRoute}`, {
   mode: 'cors',
   cache: 'default'
 }).then(res => res.json());
+export const patchJSON = (apiRoute, data) => fetch(`${URL}/${apiRoute}`, {
+  method: 'PATCH',
+  body: JSON.stringify(data),
+  headers: new Headers({
+    'Content-Type': 'application/json'
+  }),
+  mode: 'cors',
+  cache: 'default'
+}).then(res => res.json());
 export const deleteJSON = apiRoute => fetch(`${URL}/${apiRoute}`, {method: 'DELETE'});
