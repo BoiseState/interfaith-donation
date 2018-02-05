@@ -67,7 +67,7 @@
 
 <script>
 import Login from '@/components/user/Login';
-import {getAllDonors} from '../../services/donors-service';
+import {getAllDonors} from '../../services/donor-service';
 
 getAllDonors();
 

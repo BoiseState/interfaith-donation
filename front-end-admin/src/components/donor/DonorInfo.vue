@@ -38,7 +38,7 @@
 </template>
 
 <script>
-import {getDonorById, createDonor} from '../../services/donors-service';
+import {getDonorById, createDonor} from '../../services/donor-service';
 
 export default {
   name: 'donor-info',
