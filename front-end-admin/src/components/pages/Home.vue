@@ -1,11 +1,5 @@
 <template>
   <div>
-    <div v-if="!loggedIn">
-      <login />
-    </div>
-    <div v-else>
-      <logout />
-    </div>
     <div class="home">
       <!-- Main jumbotron for a primary marketing message or call to action -->
       <div v-if="loggedIn" class="jumbotron">
@@ -71,21 +65,15 @@
 </template>
 
 <script>
-import Login from '@/components/user/Login'
-import Logout from '@/components/user/Logout'
 
 export default {
   name: 'home',
   data: () => {
     return {
-      loggedIn: true
-    }
-  },
-  components: {
-    'login': Login,
-    'logout': Logout
+      loggedIn: false
+    };
   }
-}
+};
 </script>
 
 <style scoped>
