@@ -7,10 +7,13 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 
+import { CalloutComponent } from '../components/callout/callout';
+
 @NgModule({
   declarations: [
     MyApp,
-    HomePage
+    HomePage,
+    CalloutComponent
   ],
   imports: [
     BrowserModule,
