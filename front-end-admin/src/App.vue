@@ -1,7 +1,12 @@
 <template>
   <div>
     <navigation>
-      <login />
+      <div v-if="!loggedIn">
+        <login />
+      </div>
+      <div v-else>
+        <logout />
+      </div>
     </navigation>
     <router-view/>
   </div>
@@ -18,6 +23,11 @@ export default {
     Navigation,
     Login,
     Logout
+  },
+  data: () => {
+    return {
+      loggedIn: false
+    };
   }
 };
 </script>

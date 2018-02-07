@@ -7,8 +7,8 @@
 
 <script>
 export default {
-  name: 'logout.vue'
-};
+  name: 'logout'
+}
 </script>
 
 <style scoped>
