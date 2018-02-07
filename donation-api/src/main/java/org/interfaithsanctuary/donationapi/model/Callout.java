@@ -7,8 +7,9 @@ import java.util.Date;
 @Table(name = "callouts")
 public class Callout {
     @Id
+    @Column(name = "callout_id")
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long callout_id;
+    private Long calloutId;
 
     @Column(name = "callout_title")
     private String title;
@@ -31,12 +32,12 @@ public class Callout {
     @Column()
     private Boolean pinned;
 
-    public Long getCallout_id() {
-        return callout_id;
+    public Long getCalloutId() {
+        return calloutId;
     }
 
-    public void setCallout_id(Long callout_id) {
-        this.callout_id = callout_id;
+    public void setCalloutId(Long calloutId) {
+        this.calloutId = calloutId;
     }
 
     public String getTitle() {
