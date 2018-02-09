@@ -18,14 +18,14 @@
   7. You should be inside the container!
 
 ## Connecting & Running PSQL
-  11. Once you are in the container, you may connect to psql by running
+  8. Once you are in the container, you may connect to psql by running
         * $ `psql -U postgres`
-  12. Now, run the following commands for confirmation
+  9. Now, run the following commands for confirmation
         * $ `\c <database-name>`
         * $ `\list`
         * $ `\dt *.*`
-  13. **NOTE:** `setupRemoteConnection.sh` will be executed and it modifies `pg_hba.conf` located in this path `/var/lib/postgresql/data/` to allow connections from other container.
-  14. **NOTE:** The current version of postgres is 10.1 (Latest version).
+  10. **NOTE:** `setupRemoteConnection.sh` will be executed and it modifies `pg_hba.conf` located in this path `/var/lib/postgresql/data/` to allow connections from other container.
+  11. **NOTE:** The current version of postgres is 10.1 (Latest version).
 
 ## **Resources:**
     - https://docs.docker.com/samples/library/postgres/#start-a-postgres-instance
