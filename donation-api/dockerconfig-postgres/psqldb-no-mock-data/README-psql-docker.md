@@ -1,6 +1,6 @@
 ## Building & Running PSQL Image Using Dockerfile**
 ***
-  1. Clone & cd into `dockerconfig-postgres`
+  1. Clone & cd into `dockerconfig-postgres/psqldb-no-mock-data`
   2. Build the image by running the following command:
         * $ `docker build -t <image-name> <path>`
 	     * The `<image-name>` can be anything you want
@@ -8,10 +8,10 @@
   3. Run the created image:
         * $ `docker run -d <image-name>`
              * TAG: `-d` will detach & output the container ID that you may need
-  4. **NOTE:** The scripts inside the entrypoint will run & the output will show the operation done on the database for testing.
+  4. **NOTE:** The scripts inside the entrypoint will run & the output will show the operations done on the database for testing.
 
 ## Accessing the Docker Container  
-  5. Make sure that the docker container running. Follow step 3 to run if needed 
+  5. Make sure that the docker container is running. Follow step 3 to run if needed 
   6. To open the bash of the target container run:
         * $ `docker exec -it <target-container-ID> bash`
              * The `<target-container-ID>` is the output from step 3
