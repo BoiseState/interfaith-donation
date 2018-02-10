@@ -1,5 +1,6 @@
 package org.interfaithsanctuary.donationapi.controller;
 
+import org.interfaithsanctuary.donationapi.model.Gift;
 import org.interfaithsanctuary.donationapi.repository.GiftRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller    // This means that this class is a Controller
-@RequestMapping(path="/api/alert/") // This means URL's start with /demo (after Application path)
+@RequestMapping(path="/api/gift/") // This means URL's start with /api (after Application path)
 public class GiftController {
 
     @Autowired // This means to get the bean called giftRepository
@@ -23,7 +24,7 @@ public class GiftController {
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public @ResponseBody Gift getAlertById(@PathVariable("id") long id)  {
+    public @ResponseBody Gift getGiftById(@PathVariable("id") long id)  {
 
         return giftRepository.findOne(id);
     }
