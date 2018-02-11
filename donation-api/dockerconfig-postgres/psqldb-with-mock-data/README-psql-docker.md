@@ -1,5 +1,4 @@
-## Part1: Building & Running PSQL Image Using Dockerfile**
-***
+## Part1: Building & Running PSQL Image Using Dockerfile
   1. Clone & cd into `dockerconfig-postgres/psqldb-with-mock-data`
   2. Build the image by running the following command:
         * $ `docker build -t <image-name> <path>`
@@ -20,7 +19,7 @@
              * The `<target-container-ID>` is the output from step 3
   6. You should be inside the container! use `exit` to exit out from the container bash.
 
-## Part 3: Connecting PSQL DB in intelliJ with Docker container**
+## Part 3: Connecting PSQL DB in intelliJ with Docker container
   7. Make sure that you have the container ID from step 3.
   8. Run `docker inspect <container-ID>` to get the IP address of your the docker container. Make sure to **save it**.
         * NOTE: if you need container ID you can run `docker ps` and copy the alphanumeric text
@@ -60,8 +59,8 @@
   20. **NOTE:** The current version of postgres is 10.1 (Latest version).
 
 ## Part 5: **Resources:**
-    - https://docs.docker.com/samples/library/postgres/#start-a-postgres-instance
-    - https://github.com/sameersbn/docker-postgresql
-    - https://osxdominion.wordpress.com/2015/01/25/customizing-postgres-in-docker/
-    - https://github.com/macadmins/postgres
- 
+    - [Github Ex. 1 PSQL with Docker](https://github.com/sameersbn/docker-postgresql)
+    - [Github Ex. 2 PSQL with Docker](https://github.com/macadmins/postgres)
+    - [Customizing PSQL in Docker](https://osxdominion.wordpress.com/2015/01/25/customizing-postgres-in-docker/)
+    - [Official PostgreSQL Image by Docker](https://docs.docker.com/samples/library/postgres/#start-a-postgres-instance)
+    - [IntelliJ Configuration with PSQL](https://www.jetbrains.com/help/idea/running-a-dbms-image-and-connecting-to-the-database.html#connect_to_db)
