@@ -43,7 +43,7 @@
 
 ## Part 4: Connecting & Running PSQL
   17. Once you are in the container, you may connect to psql by running
-        * $ `psql -U postgres`
+        * $ `psql -U postgres` OR $ `psql -d charity -U docker`
   18. Now, run the following commands for confirmation
         * $ `\du` - list of users
         * $ `CREATE DATABASE <DB-name>` - creating a test DB for confirmation
