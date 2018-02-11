@@ -59,8 +59,8 @@
   20. **NOTE:** The current version of postgres is 10.1 (Latest version).
 
 ## Part 5: **Resources:**
-    - [Github Ex. 1 PSQL with Docker](https://github.com/sameersbn/docker-postgresql)
-    - [Github Ex. 2 PSQL with Docker](https://github.com/macadmins/postgres)
-    - [Customizing PSQL in Docker](https://osxdominion.wordpress.com/2015/01/25/customizing-postgres-in-docker/)
-    - [Official PostgreSQL Image by Docker](https://docs.docker.com/samples/library/postgres/#start-a-postgres-instance)
-    - [IntelliJ Configuration with PSQL](https://www.jetbrains.com/help/idea/running-a-dbms-image-and-connecting-to-the-database.html#connect_to_db)
+    - https://github.com/sameersbn/docker-postgresql
+    - https://github.com/macadmins/postgres
+    - https://osxdominion.wordpress.com/2015/01/25/customizing-postgres-in-docker/
+    - https://docs.docker.com/samples/library/postgres/#start-a-postgres-instance
+    - https://www.jetbrains.com/help/idea/running-a-dbms-image-and-connecting-to-the-database.html#connect_to_db
