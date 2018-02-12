@@ -19,7 +19,7 @@ public class GiftController {
 
     @RequestMapping(value = "/all", method = RequestMethod.GET)
     public @ResponseBody Iterable<Gift> getAllGifts() {
-        // This returns a JSON or XML with the callouts
+        // This returns a JSON or XML with the gifts
         return giftRepository.findAll();
     }
 
