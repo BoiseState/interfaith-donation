@@ -13,7 +13,12 @@ import { Component, Input } from '@angular/core';
 export class CalloutComponent {
   
   @Input("title") title: string;
+  @Input("src") src: string;
+  @Input("leftLink") leftLink: string;
+  @Input("rightLink") rightLink: string;
   @Input("text") text: string;
+  @Input("count") count: number;
+  @Input("outOf") outOf: number;
 
   constructor() {}
 
