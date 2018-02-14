@@ -20,7 +20,7 @@
   6. You should be inside the container! use `exit` to exit out from the container bash.
 
 ## Part 3: Configuring PostgreSQL & IntelliJ
-     *  **SECTION 1:** Connecting PSQL DB (Running in Docker) with IntelliJ
+###SECTION 1: Connecting PSQL DB (Running in Docker) with IntelliJ
   7. Make sure that `localhost:5452` is not being taken by other program like `pgAdmin`
   8. Follow the path specified below in the IntelliJ and open the file `application.properties`
         * PATH: `interfaith-donation/donation-api/src/main/resources/`
@@ -30,7 +30,7 @@
         * 2. `spring.datasource.username=docker`
         * 3. `spring.datasource.password=password`
   10. Backend should be running at localhost:8080. Try accessing `callouts` or `donors` for confirmation
-     *  **SECTION 2:** Configuring PSQL DB console/IDE in IntelliJ
+###SECTION 2: Configuring PSQL DB console/IDE in IntelliJ
   11. Make sure that you have the container ID from step 3.
   12. Run `docker inspect <container-ID>` to get the IP address of your the docker container. Make sure to **save it**.
         * NOTE: if you need container ID you can run `docker ps` and copy the alphanumeric text
@@ -45,7 +45,7 @@
         * Port: 5432 (Should be filled already)
         * Database: charity
         * User: docker
-        * Password: (empty)
+        * Password: password {if this doesn't work then use nothing (empty) as password }
   17. Once you click on `Test Connection` you will see a green text saying `Successful`
   18. Click `apply` and then `ok`
   19. You should see the `charity@containerIP` on the `Database` window which you can expand to see the content of the `charity` database.
