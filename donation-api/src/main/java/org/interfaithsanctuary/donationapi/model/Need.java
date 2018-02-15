@@ -8,8 +8,9 @@ import java.util.Date;
 public class Need {
 
     @Id
+    @Column(name = "need_id")
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int need_id;
+    private int needId;
 
     @Column(name = "need_name")
     private String name;
@@ -39,12 +40,12 @@ public class Need {
     @Column
     private boolean active;
 
-    public int getNeed_id() {
-        return need_id;
+    public int getNeedId() {
+        return needId;
     }
 
-    public void setNeed_id(int need_id) {
-        this.need_id = need_id;
+    public void setNeedId(int needId) {
+        this.needId = needId;
     }
 
     public String getName() {

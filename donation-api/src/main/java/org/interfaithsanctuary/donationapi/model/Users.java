@@ -6,8 +6,9 @@ import javax.persistence.criteria.CriteriaBuilder;
 @Entity // This tells Hibernate to make a table out of this class
 public class Users {
     @Id
+    @Column(name = "user_id")
     @GeneratedValue(strategy=GenerationType.AUTO)
-    private Long user_id;
+    private Long userId;
 
     @Column(name = "user_name")
     private String userName;
@@ -22,11 +23,11 @@ public class Users {
     private PermissionLevel permissions;
 
     public Long getId() {
-        return user_id;
+        return userId;
     }
 
     public void setId(Long id) {
-        this.user_id = id;
+        this.userId = id;
     }
 
     public String getUserName() {

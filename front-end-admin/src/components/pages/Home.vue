@@ -1,6 +1,5 @@
 <template>
   <div>
-    <login />
     <div class="home">
       <!-- Main jumbotron for a primary marketing message or call to action -->
       <div v-if="loggedIn" class="jumbotron">
@@ -66,18 +65,15 @@
 </template>
 
 <script>
-import Login from '@/components/user/Login'
+
 export default {
   name: 'home',
   data: () => {
     return {
       loggedIn: false
-    }
-  },
-  components: {
-    'login': Login
+    };
   }
-}
+};
 </script>
 
 <style scoped>
