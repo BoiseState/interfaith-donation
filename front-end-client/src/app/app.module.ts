@@ -6,6 +6,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
+import { AccountPage } from '../pages/account/account';
 
 import { CalloutComponent } from '../components/callout/callout';
 
@@ -13,6 +14,7 @@ import { CalloutComponent } from '../components/callout/callout';
   declarations: [
     MyApp,
     HomePage,
+    AccountPage,
     CalloutComponent
   ],
   imports: [
@@ -22,7 +24,8 @@ import { CalloutComponent } from '../components/callout/callout';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
+    HomePage,
+    AccountPage
   ],
   providers: [
     StatusBar,
