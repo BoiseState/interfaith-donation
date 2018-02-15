@@ -50,7 +50,7 @@ export default new Router({
     },
     {
       path: '/register-user',
-      name: 'Register New Administrator',
+      name: 'RegisterUser',
       component: RegisterUser
     }
   ]
