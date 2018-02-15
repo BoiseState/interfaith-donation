@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import {getuserById, createuser} from '../../services/user-service';
+import {getUserById, createUser} from '../../services/user-service';
 
 export default {
   name: 'user-info',
