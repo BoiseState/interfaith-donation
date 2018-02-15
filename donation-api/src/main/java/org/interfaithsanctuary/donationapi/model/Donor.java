@@ -7,6 +7,7 @@ import java.util.Date;
 @Table(name = "donors")
 public class Donor {
     @Id
+    @Column(name = "donor_id")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long donorId;
 

@@ -1,11 +1,35 @@
 <template>
-  <router-view/>
+  <div>
+    <navigation>
+      <div v-if="!loggedIn">
+        <login />
+      </div>
+      <div v-else>
+        <logout />
+      </div>
+    </navigation>
+    <router-view/>
+  </div>
 </template>
 
 <script>
+import Navigation from '@/components/layout/Navigation';
+import Login from '@/components/user/Login';
+import Logout from '@/components/user/Logout';
+
 export default {
-  name: 'App'
-}
+  name: 'App',
+  components: {
+    Navigation,
+    Login,
+    Logout
+  },
+  data: () => {
+    return {
+      loggedIn: false
+    };
+  }
+};
 </script>
 
 <style>

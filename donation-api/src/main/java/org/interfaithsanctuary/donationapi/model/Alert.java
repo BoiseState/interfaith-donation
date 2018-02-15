@@ -7,8 +7,9 @@ import java.util.Date;
 @Table(name = "alerts")
 public class Alert {
     @Id
+    @Column(name = "alert_id")
     @GeneratedValue(strategy=GenerationType.AUTO)
-    private int alert_id;
+    private int alertId;
 
     @Column(name = "alert_title")
     private String title;
@@ -16,13 +17,15 @@ public class Alert {
     @Column(name = "alert_body")
     private String body;
 
-    @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
-    private int callout_id;
+//    @Id
+//    @GeneratedValue(strategy=GenerationType.AUTO)
+    @Column(name = "callout_id")
+    private int calloutId;
 
-    @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
-    private int need_id;
+//    @Id
+//    @GeneratedValue(strategy=GenerationType.AUTO)
+    @Column(name = "need_id")
+    private int needId;
 
     @Column(name = "create_date")
     private Date createDate;
@@ -30,59 +33,59 @@ public class Alert {
     @Column(name = "last_pushed_date")
     private Date lastPushedDate;
 
-    public int getAlert_id() {
-        return alert_id;
+    public int getAlertId() {
+        return alertId;
     }
 
-    public void setAlert_id(int alert_id) {
-        this.alert_id = alert_id;
+    public void setAlertId(int alertId) {
+        this.alertId = alertId;
     }
 
     public String getAlert_title() {
-        return alert_title;
+        return title;
     }
 
-    public void setAlert_title(String alert_title) {
-        this.alert_title = alert_title;
+    public void setAlertTitle(String alertTitle) {
+        this.title = alertTitle;
     }
 
-    public String getAlert_body() {
-        return alert_body;
+    public String getAlertBody() {
+        return body;
     }
 
-    public void setAlert_body(String alert_body) {
-        this.alert_body = alert_body;
+    public void setAlertBody(String alert_body) {
+        this.body = alert_body;
     }
 
-    public int getCallout_id() {
-        return callout_id;
+    public int getCalloutId() {
+        return calloutId;
     }
 
-    public void setCallout_id(int callout_id) {
-        this.callout_id = callout_id;
+    public void setCalloutId(int calloutId) {
+        this.calloutId = calloutId;
     }
 
-    public int getNeed_id() {
-        return need_id;
+    public int getNeedId() {
+        return needId;
     }
 
-    public void setNeed_id(int need_id) {
-        this.need_id = need_id;
+    public void setNeed_id(int needId) { 
+    		this.needId = needId; 
+    	}
+
+    public Date getCreateDate() {
+        return createDate;
     }
 
-    public Date getCreate_date() {
-        return create_date;
+    public void setCreateDate(Date createDate) {
+        this.createDate = createDate;
     }
 
-    public void setCreate_date(Date create_date) {
-        this.create_date = create_date;
+    public Date getLastPushedDate() {
+        return lastPushedDate;
     }
 
-    public Date getLast_pushed_date() {
-        return last_pushed_date;
-    }
-
-    public void setLast_pushed_date(Date last_pushed_date) {
-        this.last_pushed_date = last_pushed_date;
+    public void setLastPushedDate(Date lastPushedDate) {
+        this.lastPushedDate = lastPushedDate;
     }
 }
