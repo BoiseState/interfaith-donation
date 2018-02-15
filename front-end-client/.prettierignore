@@ -1,0 +1,9 @@
+/node_modules
+package*.*
+tsconfig.json
+tslint.json
+ionic.config.json
+yarn.lock
+config.xml
+.editorconfig
+.gitignore
