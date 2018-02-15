@@ -6,6 +6,8 @@ import DonorList from '@/components/donor/DonorList';
 import CalloutInfo from '@/components/callout/CalloutInfo';
 import CalloutList from '@/components/callout/CalloutList';
 import RegisterCallout from '@/components/callout/RegisterCallout';
+import About from '@/components/pages/About';
+import RegisterUser from '@/components/user/RegisterUser';
 
 Vue.use(Router);
 
@@ -40,6 +42,16 @@ export default new Router({
       path: '/callouts',
       name: 'list of callouts',
       component: CalloutList
+    },
+    {
+      path: '/about',
+      name: 'About this Application',
+      component: About
+    },
+    {
+      path: '/register-user',
+      name: 'RegisterUser',
+      component: RegisterUser
     }
   ]
 });

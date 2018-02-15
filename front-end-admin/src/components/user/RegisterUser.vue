@@ -3,7 +3,8 @@
     <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron">
       <div class="container"><!--action="ws/user/createAdmin" method="POST" goes in form class -->
-        <form class="form-horizontal" id ="createAdminForm">
+      <h2>Register as a New Administrator</h2>
+        <form class="form-horizontal" id ="createAdminForm" >
           <div class="form-group">
             <label class="control-label col-sm-2">Username:</label>
             <input id = "user-name-label" name="userName" type="text" width="50" required></div>
@@ -24,9 +25,9 @@
 </template>
 
 <script>
-  export default {
-    name: "register-user"
-  }
+export default {
+  name: 'register-user'
+};
 </script>
 
 <style scoped>
