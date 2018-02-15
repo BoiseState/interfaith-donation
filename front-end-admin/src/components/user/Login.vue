@@ -7,7 +7,8 @@
       <input name="password" type="password" placeholder="Password" class="form-control">
     </div>
     <button type="submit" class="btn btn-success">Sign in</button>
-    <a class="btn btn-link" href="${pageContext.request.contextPath}/registeradmin.jsp" role="button">Register</a>
+    <!-- <a class="btn btn-link" href="${pageContext.request.contextPath}/registeradmin.jsp" role="button">Register</a> -->
+    <router-link class="btn btn-link" to="RegisterUser" role="button">Register</router-link>
   </form>
 </template>
 

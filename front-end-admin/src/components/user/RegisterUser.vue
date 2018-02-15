@@ -24,9 +24,9 @@
 </template>
 
 <script>
-  export default {
-    name: "register-user"
-  }
+export default {
+  name: 'register-user'
+};
 </script>
 
 <style scoped>
