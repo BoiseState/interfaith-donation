@@ -53,9 +53,9 @@
 </template>
 
 <script>
-  export default {
-    name: "register-donor"
-  }
+export default {
+  name: 'register-donor'
+};
 </script>
 
 <style scoped>

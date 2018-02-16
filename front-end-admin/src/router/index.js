@@ -3,6 +3,7 @@ import Router from 'vue-router';
 import Home from '@/components/pages/Home';
 import DonorInfo from '@/components/donor/DonorInfo';
 import DonorList from '@/components/donor/DonorList';
+import RegisterDonor from '@/components/donor/RegisterDonor';
 import CalloutInfo from '@/components/callout/CalloutInfo';
 import CalloutList from '@/components/callout/CalloutList';
 import RegisterCallout from '@/components/callout/RegisterCallout';
@@ -27,6 +28,11 @@ export default new Router({
       path: '/donors',
       name: 'list of donors',
       component: DonorList
+    },
+    {
+      path: '/register-donor',
+      name: 'register donor',
+      component: RegisterDonor
     },
     {
       path: '/callout/register',
