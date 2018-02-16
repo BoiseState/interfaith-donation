@@ -38,7 +38,8 @@
                 <button type="submit">Search</button>
               </div>
             </form>
-            <p><a href="${pageContext.request.contextPath}/needslist.jsp">Click here for full need list</a></p>
+            <!-- <p><a href="${pageContext.request.contextPath}/needslist.jsp">Click here for full need list</a></p> -->
+            <p><router-link to="needs" >Click here for full need list</router-link></p>
             <h3>Recent Needs</h3>
             <table class="table">
               <thead>
@@ -73,7 +74,7 @@ export default {
   name: 'home',
   data: () => {
     return {
-      loggedIn: true
+      loggedIn: false
     };
   }
 };
