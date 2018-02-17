@@ -1,14 +1,20 @@
-import {getJSON} from './helpers';
+import {getJSON, postJSON, patchJSON} from './helpers';
 
-const BASE_API_ROUTE = '/needs';
+const BASE_API_ROUTE = 'needs';
 
-export const getAllNeeds = () => {
-  getJSON(BASE_API_ROUTE).then(needs => {
-    return needs;
-  });
+export const createNeeds = async needs => {
+  return postJSON(BASE_API_ROUTE, needs);
+};
+
+export const getAllNeeds = async () => {
+  let needs = await getJSON(BASE_API_ROUTE);
+  return needs._embedded.needs;
 };
 
 export const getNeedById = async id => {
-  let need = await getJSON(`${BASE_API_ROUTE}/${id}`);
-  return need;
+  return getJSON(`${BASE_API_ROUTE}/${id}`);
+};
+
+export const updateNeed = async need => {
+  return patchJSON(`${BASE_API_ROUTE}/${need.id}`, need);
 };
