@@ -2,9 +2,8 @@
   <div class="jumbotron">
     <div class="container">
       <router-link class="btn btn-default" to="/callout/register">Add Callout&raquo;</router-link>
-      <div class="search-wrapper">
+      <div class="form-group">
         <input type="text" v-model="search" placeholder="Search title.."/>
-        <label>Search title:</label>
         <h3>Callouts</h3>
       </div>
       <table class="table">
