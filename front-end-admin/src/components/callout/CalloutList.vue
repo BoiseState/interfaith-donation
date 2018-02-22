@@ -4,8 +4,8 @@
       <router-link class="btn btn-default" to="/callout/register">Add Callout&raquo;</router-link>
       <div class="form-group">
         <input type="text" v-model="search" placeholder="Search title.."/>
-        <h3>Callouts</h3>
       </div>
+      <h3>Callouts</h3>
       <table class="table">
         <thead>
         <tr>
