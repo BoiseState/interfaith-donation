@@ -19,7 +19,7 @@ services:
       context: ./docker/tomcat
     # mount point for application in tomcat
     volumes:
-      - ./donation-api/target/donation-api:/usr/local/tomcat/webapps/donation-api
+      - ./donation-api/target/donation-api.war:/usr/local/tomcat/webapps/donation-api.war
     # open ports for tomcat and remote debugging
     ports:
       - "8080:8080" 

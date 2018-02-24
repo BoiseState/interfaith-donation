@@ -2,6 +2,11 @@
 
 FROM tomcat:7-jre8
 
+# Environment variables for Docker specific configuration
+
+ENV spring.profiles.active=docker
+ENV CATALINA_OPTS="-Dspring.profile.actives=docker"
+
 # tomcat-users.xml sets up user accounts for the Tomcat manager GUI
 ADD tomcat/tomcat-users.xml $CATALINA_HOME/conf/
 
