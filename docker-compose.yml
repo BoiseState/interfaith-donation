@@ -17,6 +17,8 @@ services:
   webserver:
     build: 
       context: ./docker/tomcat
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
     # mount point for application in tomcat
     volumes:
       - ./donation-api/target/donation-api.war:/usr/local/tomcat/webapps/donation-api.war

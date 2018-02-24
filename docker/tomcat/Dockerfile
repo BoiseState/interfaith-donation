@@ -12,7 +12,6 @@ WORKDIR /usr/local/tomcat
 RUN wget https://jdbc.postgresql.org/download/postgresql-42.2.1.jar -P $CATALINA_HOME/lib/
 
 # scripts for setting up and running the tomcat server
-ADD tomcat/setenv.sh $CATALINA_HOME/bin/setenv.sh
 ADD tomcat/run.sh $CATALINA_HOME/bin/run.sh
 RUN chmod 755 $CATALINA_HOME/bin/run.sh
 
