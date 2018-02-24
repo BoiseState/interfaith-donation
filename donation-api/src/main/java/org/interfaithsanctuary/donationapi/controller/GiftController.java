@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller    // This means that this class is a Controller
-@RequestMapping(path="/api/gift/") // This means URL's start with /api (after Application path)
+@RequestMapping(path="/api/gifts") // This means URL's start with /api (after Application path)
 public class GiftController {
 
     @Autowired // This means to get the bean called giftRepository
