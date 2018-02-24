@@ -42,7 +42,6 @@ export default {
   },
   created () {
     getAllCallouts().then(callouts => {
-      console.log(callouts);
       this.callouts = callouts;
     });
   },
