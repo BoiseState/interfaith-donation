@@ -12,6 +12,7 @@
           <th>Last Updated</th>
           <th>Active Status</th>
           <th>Pinned Status</th>
+          <th></th>
         </tr>
         </thead>
         <tbody id="calloutTBody">
@@ -21,6 +22,7 @@
           <td>{{formatDate(callout.updateDate)}}</td>
           <td>{{callout.active}}</td>
           <td>{{callout.pinned}}</td>
+          <td><router-link :to="{ name: 'callout', params: { id: callout.calloutId }}" class="btn btn-primary" role="button">Edit</router-link></td>
         </tr>
         </tbody>
       </table>
@@ -40,6 +42,7 @@ export default {
   },
   created () {
     getAllCallouts().then(callouts => {
+      console.log(callouts);
       this.callouts = callouts;
     });
   },

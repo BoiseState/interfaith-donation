@@ -60,7 +60,7 @@
           <h1>ISH Services Inc.</h1>
           <p>Database and web framework for posting and tracking donations and donors</p>
           <!-- <p><a class="btn btn-primary btn-lg" href="${pageContext.request.contextPath}/registerdonation.jsp" role="button">Learn more &raquo;</a></p> -->
-          <p><router-link class="btn btn-primary btn-lg" to="About" role="button">Learn More &raquo;</router-link></p>
+          <p><router-link class="btn btn-primary btn-lg" to="/about" role="button">Learn More &raquo;</router-link></p>
         </div>
       </div>
     </div>
