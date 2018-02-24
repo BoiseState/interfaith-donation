@@ -9,7 +9,7 @@ WORKDIR /usr/local/tomcat
 
 # add PSQL JDBC driver jar. It allows other Java programs to
 # connect to a PSQL DB using standard, DB independent Java code.
-RUN wget https://jdbc.postgresql.org/download/postgresql-42.2.1.jar -P $CATALINA_HOME/lib/
+# RUN wget https://jdbc.postgresql.org/download/postgresql-42.2.1.jar -P $CATALINA_HOME/lib/
 
 # scripts for setting up and running the tomcat server
 ADD tomcat/run.sh $CATALINA_HOME/bin/run.sh

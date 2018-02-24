@@ -28,4 +28,15 @@ services:
       - "8000:8000"
     restart: always
 
- 
+  client-app:
+    build:
+      #TBD
+      ./docker/ionic
+    volumes:
+      #source code
+      
+    ports:
+      #valid tcp ports
+      - "8080:"
+
+  admin-app:
