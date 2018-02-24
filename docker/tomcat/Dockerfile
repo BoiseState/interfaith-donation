@@ -2,11 +2,6 @@
 
 FROM tomcat:7-jre8
 
-# Environment variables for Docker specific configuration
-
-ENV spring.profiles.active=docker
-ENV CATALINA_OPTS="-Dspring.profile.actives=docker"
-
 # tomcat-users.xml sets up user accounts for the Tomcat manager GUI
 ADD tomcat/tomcat-users.xml $CATALINA_HOME/conf/
 
@@ -16,6 +11,8 @@ WORKDIR /usr/local/tomcat
 # connect to a PSQL DB using standard, DB independent Java code.
 RUN wget https://jdbc.postgresql.org/download/postgresql-42.2.1.jar -P $CATALINA_HOME/lib/
 
+# scripts for setting up and running the tomcat server
+ADD tomcat/setenv.sh $CATALINA_HOME/bin/setenv.sh
 ADD tomcat/run.sh $CATALINA_HOME/bin/run.sh
 RUN chmod 755 $CATALINA_HOME/bin/run.sh
 
