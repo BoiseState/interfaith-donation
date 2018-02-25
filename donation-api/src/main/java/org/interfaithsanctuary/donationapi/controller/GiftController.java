@@ -11,11 +11,11 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import java.net.URI;
 import java.util.Optional;
 
-@Controller    // This means that this class is a Controller
-@RequestMapping(path="/api/gifts") // This means URL's start with /api (after Application path)
+@RestController
+@RequestMapping(path="/gifts")
 public class GiftController {
 
-    @Autowired // This means to get the bean called giftRepository
+    @Autowired
     private GiftRepository giftRepository;
 
     @GetMapping("/all")
@@ -25,7 +25,6 @@ public class GiftController {
 
     @GetMapping("/{id}")
     public @ResponseBody Gift getGiftById(@PathVariable("id") long id)  {
-
         return giftRepository.findOne(id);
     }
 
@@ -38,7 +37,6 @@ public class GiftController {
                 .buildAndExpand(savedGift.getGiftId()).toUri();
 
         return ResponseEntity.created(location).body(savedGift);
-
     }
 
     @DeleteMapping("/{id}")
@@ -60,7 +58,6 @@ public class GiftController {
         giftRepository.save(gift);
 
         return ResponseEntity.noContent().build();
-
     }
 
 }
