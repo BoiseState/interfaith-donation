@@ -1,2 +1,2 @@
-FROM nginx
-COPY /www /usr/share/nginx/html
+FROM node:8.9.4
+COPY /www /app/client
