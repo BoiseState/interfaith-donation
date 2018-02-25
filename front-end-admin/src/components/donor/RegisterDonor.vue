@@ -57,7 +57,7 @@ export default {
         zip: '',
         phone: '',
         joinDate: '2000-10-10'
-        //password: ''
+        // password: ''
       },
       errors: []
     };
