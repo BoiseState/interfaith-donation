@@ -1,2 +1,12 @@
-FROM nginx
-COPY /www /usr/share/nginx/html
+FROM node:8.9.4
+WORKDIR /usr/src/app
+
+RUN npm install -g nodemon@1.11.0
+
+COPY package*.json ./
+
+RUN npm install
+
+COPY . .
+
+CMD ["npm", "run", "ionic:serve"]
