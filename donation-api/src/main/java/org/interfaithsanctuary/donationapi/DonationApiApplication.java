@@ -18,13 +18,14 @@ import static springfox.documentation.builders.PathSelectors.regex;
 @EnableSwagger2
 public class DonationApiApplication extends SpringBootServletInitializer {
 
-    @Override
-    protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-        return application.sources(DonationApiApplication.class);
-    }
+	@Override
+	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+		return application.sources(DonationApiApplication.class);
+	}
 
 	@Bean
 	public HomeController homeController() { return new HomeController(); }
+
 	public static void main(String[] args) {
 		SpringApplication.run(DonationApiApplication.class, args);
 	}
@@ -34,7 +35,7 @@ public class DonationApiApplication extends SpringBootServletInitializer {
 		return new Docket(DocumentationType.SWAGGER_2)
 				.apiInfo(ApiHelper.ApiInfo())
 				.select()
-				.paths(regex("/api.*"))
+				.paths(regex("/.*"))
 				.build();
 	}
 }
