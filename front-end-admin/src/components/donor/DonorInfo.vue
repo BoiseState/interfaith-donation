@@ -38,7 +38,7 @@
 </template>
 
 <script>
-import {getDonorById, createDonor} from '../../services/donor-service';
+import {getDonorById, updateDonor} from '../../services/donor-service';
 
 export default {
   name: 'donor-info',
@@ -50,7 +50,8 @@ export default {
         email: '',
         phone: '',
         state: '',
-        zip: ''
+        zip: '',
+        join_date: '2000-1-1'
       }
     };
   },
@@ -61,7 +62,7 @@ export default {
   },
   methods: {
     onFormSubmit () {
-      createDonor(this.donor);
+      updateDonor(this.donor);
     }
   }
 };

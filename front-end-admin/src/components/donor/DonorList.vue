@@ -9,14 +9,15 @@
         <tr>
           <th>Donor Name</th>
           <th>Email</th>
-          <th>Display Name</th>
           <th>Joined On</th>
         </tr>
         </thead>
         <tbody id="fullDonorTBody">
-        <tr v-for="donor in donors" :key="donor.id">
+        <tr v-for="donor in donors" :key="donor.donorId">
           <td>{{donor.name}}</td>
           <td>{{donor.email}}</td>
+          <td>{{donor.joinDate}}</td>
+          <td><router-link class="btn btn-default" :to="{ path: '/donor/id:', params: { id: donor.donorId } }">Edit Donor</router-link></td>
         </tr>
         </tbody>
       </table>
