@@ -1,7 +1,7 @@
 <template>
   <div class="jumbotron">
     <div class="container">
-      <router-link class="btn btn-default" to="/donor/register">Add Donor&raquo;</router-link>
+      <router-link class="btn btn-default" to="/register-donor">Add Donor&raquo;</router-link>
       <!-- TODO: Add form for searching through donors -->
       <h3>Donors</h3>
       <table class="table">
