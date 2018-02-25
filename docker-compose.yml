@@ -30,7 +30,7 @@ services:
 
   client-app:
     build:
-      context: ./docker/client
+      context: ./front-end-client
     volumes:
       #source code
       - ./front-end-client:/usr/app/client     
@@ -40,7 +40,7 @@ services:
 
   admin-app:
     build:
-      context: ./docker/admin
+      context: ./front-end-admin
     volumes:
       - ./front-end-admin:/usr/app/admin
     ports: 
