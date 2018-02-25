@@ -4,7 +4,6 @@ import org.interfaithsanctuary.donationapi.model.Gift;
 import org.interfaithsanctuary.donationapi.repository.GiftRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
@@ -19,12 +18,14 @@ public class GiftController {
     private GiftRepository giftRepository;
 
     @GetMapping("/all")
-    public @ResponseBody Iterable<Gift> getAllGifts() {
+    public @ResponseBody
+    Iterable<Gift> getAllGifts() {
         return giftRepository.findAll();
     }
 
     @GetMapping("/{id}")
-    public @ResponseBody Gift getGiftById(@PathVariable("id") long id)  {
+    public @ResponseBody
+    Gift getGiftById(@PathVariable("id") long id) {
         return giftRepository.findOne(id);
     }
 
@@ -59,5 +60,4 @@ public class GiftController {
 
         return ResponseEntity.noContent().build();
     }
-
 }

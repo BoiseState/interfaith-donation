@@ -16,6 +16,9 @@ public class Donor {
 
     @Column(name = "donor_name")
     private String name;
+    
+    @Column(name = "donor_diplayName")
+    private String displayName;
 
     @Column(name = "donor_email")
     private String email;
@@ -60,6 +63,14 @@ public class Donor {
 
     public void setName(String name) {
         this.name = name;
+    }
+    
+    public String getDisplayName() {
+        return displayName;
+    }
+
+    public void setDisplayName(String displayName) {
+        this.displayName = displayName;
     }
 
     public String getEmail() {

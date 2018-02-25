@@ -9,7 +9,8 @@
     "build": "ionic-app-scripts build",
     "lint": "ionic-app-scripts lint",
     "ionic:build": "ionic-app-scripts build",
-    "ionic:serve": "ionic-app-scripts serve"
+    "ionic:serve": "ionic-app-scripts serve",
+    "precommit": "pretty-quick --staged"
   },
   "dependencies": {
     "@angular/common": "5.0.3",
@@ -32,6 +33,9 @@
   },
   "devDependencies": {
     "@ionic/app-scripts": "3.1.8",
+    "husky": "^0.14.3",
+    "prettier": "1.10.2",
+    "pretty-quick": "^1.4.1",
     "typescript": "2.4.2"
   },
   "description": "An Ionic project"

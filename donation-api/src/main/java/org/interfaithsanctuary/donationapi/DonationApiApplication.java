@@ -15,24 +15,19 @@ import static springfox.documentation.builders.PathSelectors.regex;
 @Configuration
 @EnableSwagger2
 public class DonationApiApplication {
-
-
 	@Bean
 	public HomeController homeController() { return new HomeController(); }
-
-	public static void main(String[] args) {
-
-		SpringApplication.run(DonationApiApplication.class, args);
-	}
-
 
 	@Bean
 	public Docket documentApi() {
 		return new Docket(DocumentationType.SWAGGER_2)
 				.apiInfo(ApiHelper.ApiInfo())
 				.select()
-				.paths(regex("/api.*"))
+				.paths(regex("/.*"))
 				.build();
 	}
 
+	public static void main(String[] args) {
+		SpringApplication.run(DonationApiApplication.class, args);
+	}
 }
