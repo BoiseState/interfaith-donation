@@ -31,6 +31,7 @@ public class GiftController {
 
     @PostMapping("/")
     public ResponseEntity<Gift> createGift(@RequestBody Gift gift) {
+
         Gift savedGift = giftRepository.save(gift);
 
         URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
@@ -41,9 +42,8 @@ public class GiftController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> deleteGiftById(@PathVariable("id") long id) {
+    public void deleteGiftById(@PathVariable("id") long id) {
         giftRepository.delete(id);
-        return ResponseEntity.accepted().body("Gift id was deleted");
     }
 
     @PutMapping("/{id}")
@@ -59,7 +59,7 @@ public class GiftController {
 
         giftRepository.save(gift);
 
-        return ResponseEntity.ok(gift);
+        return ResponseEntity.noContent().build();
 
     }
 
