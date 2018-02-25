@@ -5,12 +5,14 @@ import org.interfaithsanctuary.donationapi.repository.CalloutRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+@CrossOrigin
 @RestController
 @RequestMapping(path="/callouts")
 public class CalloutController {
     @Autowired
     private CalloutRepository calloutRepository;
 
+    @CrossOrigin
     @RequestMapping(method = RequestMethod.GET)
     public Iterable<Callout> getAllCallouts() {
         return calloutRepository.findAll();

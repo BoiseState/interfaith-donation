@@ -7,7 +7,7 @@ export const createCallout = async callout => {
 };
 
 export const getAllCallouts = async () => {
-  let callouts = await getJSON(`/api/${BASE_API_ROUTE}/all`);
+  let callouts = await getJSON(BASE_API_ROUTE);
   return callouts;
 };
 

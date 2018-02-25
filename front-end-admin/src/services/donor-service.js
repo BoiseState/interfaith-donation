@@ -1,6 +1,6 @@
 import {getJSON, postJSON, patchJSON} from './helpers';
 
-const BASE_API_ROUTE = '/donors';
+const BASE_API_ROUTE = 'donors';
 
 export const createDonor = donor => {
   postJSON(BASE_API_ROUTE, donor).catch(error => console.error('Error:', error)).then(response => console.log('Success:', response));
@@ -8,7 +8,7 @@ export const createDonor = donor => {
 
 export const getAllDonors = async () => {
   let donors = await getJSON(BASE_API_ROUTE);
-  return donors._embedded.donors;
+  return donors;
 };
 
 export const getDonorById = async id => {
