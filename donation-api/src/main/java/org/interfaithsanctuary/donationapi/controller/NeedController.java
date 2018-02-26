@@ -3,6 +3,8 @@ package org.interfaithsanctuary.donationapi.controller;
 import org.interfaithsanctuary.donationapi.model.Need;
 import org.interfaithsanctuary.donationapi.repository.NeedRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -14,21 +16,10 @@ public class NeedController {
 
     @Autowired
     NeedRepository needRepository;
-
-//    @RequestMapping("/all")
-//    @ResponseBody
-//    public List<Need> getAllNeeds() {
-//        List<Need> needs = new ArrayList<>();
-//        for (Need need : needRepository.findAll()) {
-//            needs.add(need);
-//        }
-//        return needs;
-//    }
-
+    
     @RequestMapping(value = "/all", method = RequestMethod.GET)
-    public @ResponseBody Iterable<Need> getAllNeeds() {
-        // This returns a JSON or XML with the callouts
-        return needRepository.findAll();
+    public @ResponseBody Page<Need> getAllNeeds(Pageable pageable) {
+        return needRepository.findAll(pageable);
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
