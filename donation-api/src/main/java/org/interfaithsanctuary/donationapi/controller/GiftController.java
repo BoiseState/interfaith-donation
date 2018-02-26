@@ -18,14 +18,12 @@ public class GiftController {
     private GiftRepository giftRepository;
 
     @GetMapping("/all")
-    public @ResponseBody
-    Iterable<Gift> getAllGifts() {
+    public Iterable<Gift> getAllGifts() {
         return giftRepository.findAll();
     }
 
     @GetMapping("/{id}")
-    public @ResponseBody
-    Gift getGiftById(@PathVariable("id") long id) {
+    public Gift getGiftById(@PathVariable("id") long id) {
         return giftRepository.findOne(id);
     }
 
@@ -58,6 +56,6 @@ public class GiftController {
 
         giftRepository.save(gift);
 
-        return ResponseEntity.noContent().build();
+        return ResponseEntity.ok().build();
     }
 }
