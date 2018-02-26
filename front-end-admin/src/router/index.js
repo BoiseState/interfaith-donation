@@ -24,6 +24,7 @@ export default new Router({
     },
     {
       path: '/donor/:id',
+      name: 'donorInfo',
       component: DonorInfo
     },
     {

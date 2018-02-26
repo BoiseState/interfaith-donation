@@ -51,7 +51,7 @@ export default {
         phone: '',
         state: '',
         zip: '',
-        join_date: '2000-1-1'
+        join_date: '2000-10-10'
       }
     };
   },
