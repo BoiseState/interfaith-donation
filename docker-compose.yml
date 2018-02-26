@@ -1,0 +1,29 @@
+version: "3"
+
+services:
+
+  database:
+    build:
+      context: ./docker/postgres
+    # set default mysql root password, change as needed
+    environment:
+      POSTGRES_PASSWORD: password
+    # Expose port 5432 to host. Not for the application but
+    # handy to inspect the database from the host machine.
+    ports:
+      - "5050:5432" 
+    restart: always
+
+  webserver:
+    build: 
+      context: ./docker/tomcat
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+    # mount point for application in tomcat
+    volumes:
+      - ./donation-api/target/donation-api.war:/usr/local/tomcat/webapps/donation-api.war
+    # open ports for tomcat and remote debugging
+    ports:
+      - "8800:8080" 
+      - "8000:8000"
+    restart: always
