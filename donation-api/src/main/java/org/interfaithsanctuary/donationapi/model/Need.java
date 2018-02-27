@@ -10,7 +10,7 @@ public class Need {
     @Id
     @Column(name = "need_id")
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int needId;
+    private Long needId;
 
     @Column(name = "need_name")
     private String name;
@@ -25,26 +25,26 @@ public class Need {
     private Date date;
 
     @Column(name = "need_quantity")
-    private int quantity;
+    private Integer quantity;
 
     @Transient
     //@Column(name = "need_num_gifts")
-    private int numGifts;
+    private Integer numGifts;
 
     @Column(name = "need_unit")
     private String unit;
 
     @Column(name = "callout_id")
-    private int calloutId;
+    private Long calloutId;
 
     @Column
     private boolean active;
 
-    public int getNeedId() {
+    public Long getNeedId() {
         return needId;
     }
 
-    public void setNeedId(int needId) {
+    public void setNeedId(Long needId) {
         this.needId = needId;
     }
 
@@ -80,19 +80,19 @@ public class Need {
         this.date = date;
     }
 
-    public int getQuantity() {
+    public Integer getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(int quantity) {
+    public void setQuantity(Integer quantity) {
         this.quantity = quantity;
     }
 
-    public int getNumGifts() {
+    public Integer getNumGifts() {
         return numGifts;
     }
 
-    public void setNumGifts(int numGifts) {
+    public void setNumGifts(Integer numGifts) {
         this.numGifts = numGifts;
     }
 
@@ -104,11 +104,11 @@ public class Need {
         this.unit = unit;
     }
 
-    public int getCalloutId() {
+    public Long getCalloutId() {
         return calloutId;
     }
 
-    public void setCalloutId(int calloutId) {
+    public void setCalloutId(Long calloutId) {
         this.calloutId = calloutId;
     }
 

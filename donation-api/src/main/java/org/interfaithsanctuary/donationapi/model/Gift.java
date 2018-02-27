@@ -11,7 +11,7 @@ public class Gift {
     //@GeneratedValue(strategy = GenerationType.IDENTITY)
     @SequenceGenerator(name="gift_id", sequenceName="gift_id")
     @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="gift_id")
-    private long giftId;
+    private Long giftId;
 
     @Column(name = "gift_quantity")
     private int quantity;
@@ -20,16 +20,16 @@ public class Gift {
     private Date giftDate;
 
     @Column(name = "donor_id")
-    private int donorId;
+    private Long donorId;
 
     @Column(name = "need_id")
-    private int needId;
+    private Long needId;
 
     public Gift() {
         super();
     }
 
-    public Gift(int giftId, int quantity, Date giftDate, int donorId, int needId) {
+    public Gift(Long giftId, int quantity, Date giftDate, Long donorId, Long needId) {
         super();
         this.giftId = giftId;
         this.quantity = quantity;
@@ -38,11 +38,11 @@ public class Gift {
         this.needId = needId;
     }
 
-    public long getGiftId() {
+    public Long getGiftId() {
         return giftId;
     }
 
-    public void setGiftId(long giftId) {
+    public void setGiftId(Long giftId) {
         this.giftId = giftId;
     }
 
@@ -62,19 +62,19 @@ public class Gift {
         this.giftDate = giftDate;
     }
 
-    public int getDonorId() {
+    public Long getDonorId() {
         return donorId;
     }
 
-    public void setDonorId(int donorId) {
+    public void setDonorId(Long donorId) {
         this.donorId = donorId;
     }
 
-    public int getNeedId() {
+    public Long getNeedId() {
         return needId;
     }
 
-    public void setNeedId(int needId) {
+    public void setNeedId(Long needId) {
         this.needId = needId;
     }
 
