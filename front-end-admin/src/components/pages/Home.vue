@@ -14,7 +14,8 @@
                 <button type="submit">Search</button>
               </div>
             </form>
-            <p><a href="${pageContext.request.contextPath}/donorlist.jsp">Click here for full donor list</a></p>
+            <!-- <p><a href="${pageContext.request.contextPath}/donorlist.jsp">Click here for full donor list</a></p> -->
+            <p><router-link to="donors" >Click here for full donor list</router-link></p>
             <h3>Recent Donors</h3>
             <table class="table">
               <thead>
@@ -37,7 +38,8 @@
                 <button type="submit">Search</button>
               </div>
             </form>
-            <p><a href="${pageContext.request.contextPath}/needslist.jsp">Click here for full need list</a></p>
+            <!-- <p><a href="${pageContext.request.contextPath}/needslist.jsp">Click here for full need list</a></p> -->
+            <p><router-link to="needs" >Click here for full need list</router-link></p>
             <h3>Recent Needs</h3>
             <table class="table">
               <thead>
@@ -57,7 +59,8 @@
         <div class="container">
           <h1>ISH Services Inc.</h1>
           <p>Database and web framework for posting and tracking donations and donors</p>
-          <p><a class="btn btn-primary btn-lg" href="${pageContext.request.contextPath}/registerdonation.jsp" role="button">Learn more &raquo;</a></p>
+          <!-- <p><a class="btn btn-primary btn-lg" href="${pageContext.request.contextPath}/registerdonation.jsp" role="button">Learn more &raquo;</a></p> -->
+          <p><router-link class="btn btn-primary btn-lg" to="/about" role="button">Learn More &raquo;</router-link></p>
         </div>
       </div>
     </div>
