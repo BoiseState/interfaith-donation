@@ -12,6 +12,10 @@ import About from '@/components/pages/About';
 import RegisterUser from '@/components/user/RegisterUser';
 // import NeedInfo from '@/components/need/NeedInfo';
 // import NeedList from '@/components/need/NeedList';
+import AlertList from '@/components/alert/AlertList';
+import AlertInfo from '@/components/alert/AlertInfo';
+import RegisterAlert from '@/components/alert/RegisterAlert';
+
 
 Vue.use(Router);
 
@@ -66,7 +70,7 @@ export default new Router({
       path: '/register-user',
       name: 'RegisterUser',
       component: RegisterUser
-    }// ,
+    } ,
     // {
     //   path: '/need/:id',
     //   name: 'need information',
@@ -76,7 +80,21 @@ export default new Router({
     //   path: '/needs',
     //   name: 'list of needs',
     //   component: NeedList
-    // }
-
+    // },
+    {
+      path: '/alerts',
+      name: 'list of alerts',
+      component: AlertList
+    },
+    {
+      path: '/alert/:id',
+      name: 'alert information',
+      component: AlertInfo
+    },
+    {
+      path: '/register-alert',
+      name: 'RegisterAlert',
+      component: RegisterAlert
+    }
   ]
 });

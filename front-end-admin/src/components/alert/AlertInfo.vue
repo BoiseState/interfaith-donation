@@ -1,40 +1,64 @@
 <template>
-  <div class="alertInfoPage">
-    <!-- Main jumbotron for a primary marketing message or call to action -->
-    <div class="jumbotron">
-      <div class="container">
-        <h5>Alert Info Page for Alert {{ alert_id }}</h5>
-        <p>Date created: {{ create_date }}<br>
-          Date last pushed: {{last_pushed_date}}</p>
-        <form class="form-horizontal" action="/updatealert" method="POST" id="alertform">
-          <button type="submit">Update Alert</button>
-          <input type="hidden" name="alert_id" value="alert_id">
-          <div class="form-group">
-            <label class="control-label col-sm-2">Alert Title:</label>
-            <input name="alert_title" type="text" width="50" value="alert_title">
-          </div>
-          <div class="form-group">
-            <label class="control-label col-sm-2">Alert Body:</label>
-            <textarea rows="4" cols="50" name="alert_body" form="alertform">alert_body</textarea>
-          </div>
-          <div class="form-group">
-            <label class="control-label col-sm-4>">Associated Callout: </label>
-            <a href="callouts/callout_id">link</a>
-          </div>
-          <div class="form-group">
-            <input type="hidden" value="{{alert_id}}" name="alertid" id="alertid" />
-          </div>
-          <button type="submit">Update Need</button>
-        </form>
-      </div>
+  <div class="jumbotron">
+    <div class="container">
+      <h2>{{alert.title}}</h2>
+      <h3>Add Need</h3>
+      <!-- TODO: Add a register callout form for a specific alert -->
+      <!-- TODO: List out associated needs with a specific callout -->
+      <h2>Update Alert Information</h2>
+      <form v-on:submit.prevent="onFormSubmit">
+        <div class="form-group">
+          <label class="control-label col-sm-2">Title:</label>
+          <input v-model="alert.title" type="text" width="50" required>
+        </div>
+        <div class="form-group">
+          <label class="control-label col-sm-2">Body:</label>
+          <textarea v-model="alert.body"></textarea>
+        </div>
+        <div class="form-group">
+          <label class="control-label col-sm-4>">Push Date: </label>
+          <input type="date" v-model="alert.pushDate">Active?<br>
+        </div>
+        <div class="form-group">
+          <label class="control-label col-sm-4>">Created Date: </label>
+          <input type="date" v-model="alert.createDate">Pinned?<br>
+        </div>
+        <br>
+        <button type="submit">Update Alert</button>
+      </form>
     </div>
   </div>
 </template>
 
 <script>
-  export default {
-    name: 'alert-info'
+import {getAlertById, updateAlert} from '../../services/alert-service';
+
+export default {
+  name: 'alert-info',
+  data () {
+    return {
+      alert: {
+        title: 'Loading...',
+        body: '',
+        createDate: '',
+        lastPushed: ''
+        // calloutId: '',
+        // needId: ''
+      }
+    };
+  },
+  created () {
+    getAlertById(this.$route.params.id).then(alert => {
+      alert.id = this.$route.params.id;
+      this.alert = alert;
+    });
+  },
+  methods: {
+    onFormSubmit () {
+      updateAlert(this.alert);
+    }
   }
+};
 </script>
 
 <style scoped>
