@@ -1,2 +1,2 @@
 # .prettierrc
-quotes: single-quote
+singleQuote: true
