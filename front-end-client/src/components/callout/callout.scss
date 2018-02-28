@@ -1,0 +1,14 @@
+callout {
+  .counter {
+    text-align: center;
+    font-size: 1.6rem;
+    font-weight: 500;
+  }
+
+  @media only screen and (max-width: 640px) and (orientation: portrait) {
+    .button {
+      width: 100%;
+      box-sizing: border-box;
+    }
+  }
+}
