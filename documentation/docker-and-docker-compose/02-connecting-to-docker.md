@@ -15,8 +15,7 @@ the following ports on the localhost of the computer being run:
 
 ## Connecting to Docker Database via JetBrains
 
-For connecting to a database, refer to (the JetBrains documentation)
-[https://www.jetbrains.com/help/datagrip/connecting-to-a-database.html]. The
+For connecting to a database, refer to [the JetBrains documentation](https://www.jetbrains.com/help/datagrip/connecting-to-a-database.html). The
 only difference to be aware of is that **instead of using port 5432, you will
 want to use port 5050** as this is the default port the Docker database runs
 on when using Docker Compose. You will also want to make sure you connect to
