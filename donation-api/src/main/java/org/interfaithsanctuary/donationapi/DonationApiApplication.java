@@ -18,11 +18,6 @@ import static springfox.documentation.builders.PathSelectors.regex;
 @EnableSwagger2
 public class DonationApiApplication extends SpringBootServletInitializer {
 
-	@Override
-	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-		return application.sources(DonationApiApplication.class);
-	}
-
 	@Bean
 	public HomeController homeController() { return new HomeController(); }
 
