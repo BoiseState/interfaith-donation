@@ -24,17 +24,12 @@ services:
   client-app:
     build:
       context: ./front-end-client
-    volumes:
-      #source code
       - ./front-end-client:/usr/app/client     
     ports:
-      #valid tcp ports
       - "8081:8100"
 
   admin-app:
     build:
       context: ./front-end-admin
-    volumes:
-      - ./front-end-admin:/usr/app/admin
     ports: 
      - "8082:8080"
