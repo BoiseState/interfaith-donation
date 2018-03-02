@@ -1,4 +1,4 @@
-package org.interfaithsanctuary.donationapi;
+package org.interfaithsanctuary.donationapi.config.swagger;
 
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.service.ApiInfo;
