@@ -1,17 +1,20 @@
-DROP TABLE IF EXISTS users cascade;
-CREATE TABLE users
+DROP DATABASE IF EXISTS charity;
+CREATE DATABASE charity;
+
+-- need, callout, user
+DROP TABLE IF EXISTS user cascade;
+CREATE TABLE user
 (
-    user_id SERIAL PRIMARY KEY NOT NULL,
+    user_id BIGINT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     user_name  VARCHAR(100) NOT NULL UNIQUE,
     user_email VARCHAR(100) NOT NULL,
     user_password VARCHAR(100) NOT NULL,
-	  permissions INTEGER NOT NULL
-
+    user_permissions BOOLEAN NOT NULL
 );
 
-DROP TABLE IF EXISTS donors cascade;
-CREATE TABLE donors (
-  donor_id SERIAL PRIMARY KEY,
+DROP TABLE IF EXISTS donor cascade;
+CREATE TABLE donor (
+  donor_id BIGINT PRIMARY KEY NOT NULL AUTO_INCREMENT,
   user_id INTEGER REFERENCES users NOT NULL,
   donor_name VARCHAR(100) NOT NULL,
   donor_email VARCHAR(100) NOT NULL,
@@ -22,6 +25,9 @@ CREATE TABLE donors (
   donor_phone VARCHAR(15) NOT NULL,
   donor_join_date DATE NOT NULL
 );
+
+-- changed to here 3/6/18
+
 DROP TABLE IF EXISTS callouts cascade;
 CREATE TABLE callouts (
   callout_id SERIAL PRIMARY KEY,
