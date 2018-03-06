@@ -10,11 +10,6 @@ psql $POSTGRES_DB $POSTGRES_USER <<-EOSQL
     GRANT ALL PRIVILEGES ON DATABASE "$POSTGRES_DB" TO "$POSTGRES_USER";
     \connect charity
     \include /docker-entrypoint-initdb.d/mock-data/interfaith_DDL.sql
-    \include /docker-entrypoint-initdb.d/mock-data/insert-data-sql/Users.sql
-    \include /docker-entrypoint-initdb.d/mock-data/insert-data-sql/Callouts.sql
-    \include /docker-entrypoint-initdb.d/mock-data/insert-data-sql/Donors.sql
-    \include /docker-entrypoint-initdb.d/mock-data/insert-data-sql/Needs.sql
-    \include /docker-entrypoint-initdb.d/mock-data/insert-data-sql/Alerts.sql
-    \include /docker-entrypoint-initdb.d/mock-data/insert-data-sql/Gifts.sql
+    \include /docker-entrypoint-initdb.d/mock-data/need.sql
     \dt
 EOSQL
