@@ -15,7 +15,7 @@ CREATE TABLE user
 DROP TABLE IF EXISTS donor cascade;
 CREATE TABLE donor (
   donor_id BIGINT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-  user_id INTEGER REFERENCES users NOT NULL,
+  user_id BIGINT REFERENCES user NOT NULL,
   donor_name VARCHAR(100) NOT NULL,
   donor_email VARCHAR(100) NOT NULL,
   donor_address VARCHAR(100) NOT NULL,
@@ -28,52 +28,32 @@ CREATE TABLE donor (
 
 -- changed to here 3/6/18
 
-DROP TABLE IF EXISTS callouts cascade;
-CREATE TABLE callouts (
-  callout_id SERIAL PRIMARY KEY,
-  callout_title VARCHAR(100) NOT NULL,
-  callout_body VARCHAR(8000) NULL,
-  callout_url VARCHAR(8000) NULL,
+DROP TABLE IF EXISTS callout cascade;
+CREATE TABLE callout (
+  callout_id BIGINT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  callout_message VARCHAR(500) NOT NULL,
   create_date DATE NOT NULL,
-  update_date DATE NOT NULL,
-  active BOOLEAN NULL,
-  pinned BOOLEAN NULL
+  active BOOLEAN NOT NULL,
+  pinned BOOLEAN NOT NULL
 );
 
-DROP TABLE IF EXISTS needs cascade;
-CREATE TABLE needs (
-  need_id SERIAL PRIMARY KEY,
+DROP TABLE IF EXISTS need cascade;
+CREATE TABLE need (
+  need_id BIGINT PRIMARY KEY NOT NULL AUTO_INCREMENT,
   need_name VARCHAR(100) NOT NULL,
-  need_url VARCHAR(8000) NULL,
-	need_description VARCHAR(1000) NULL,
-	need_quantity INTEGER NULL,
-	need_unit VARCHAR (50) NULL,
-	callout_id INTEGER REFERENCES callouts NULL,
-	create_date DATE NOT NULL,
-	active BOOLEAN NULL
+  need_amazonurl VARCHAR(8000) NOT NULL,
+  need_description VARCHAR(1000) NOT NULL,
+  need_unit VARCHAR (50) NOT NULL,
+  create_date DATE NOT NULL,
+  active BOOLEAN NOT NULL
 	
 );
 
-DROP TABLE IF EXISTS gifts cascade;
-CREATE TABLE gifts (
-	gift_id SERIAL PRIMARY KEY,
-	gift_quantity INTEGER NOT NULL,
-	gift_date DATE NOT NULL,
-	donor_id INTEGER REFERENCES donors,
-	need_id INTEGER REFERENCES needs
+DROP TABLE IF EXISTS needcallout cascade;
+CREATE TABLE needcallout (
+  needcallout_id BIGINT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  needcallout_quantity INT NOT NULL,
+  user_id BIGINT REFERENCES user,
+  callout_id BIGINT REFERENCES callout,
+  active BOOLEAN NOT NULL	
 );
-
-DROP TABLE IF EXISTS alerts cascade;
-CREATE TABLE alerts (
-  alert_id SERIAL PRIMARY KEY,
-  alert_title VARCHAR(100) NOT NULL,
-  alert_body VARCHAR(8000) NULL,
-  callout_id INT NULL REFERENCES callouts,
-  need_id INT NULL REFERENCES needs,
-  create_date DATE NOT NULL,
-  last_pushed_date DATE NULL
-);
-
-CREATE UNIQUE INDEX u_ix_donorname ON donors (donor_name);
-
-
