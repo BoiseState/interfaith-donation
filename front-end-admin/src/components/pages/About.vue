@@ -20,7 +20,7 @@
         <h3>Spring 2018</h3>
         <p>Chandra Adhikari, Francis Betikoetxea, Luke Bosse, Gregory Brasier, Jake Carns
         <p>Amy Feiling, Ian Gilman, Tyler Nicholls, Michael Spagnolo, Brendan Tierney
-        <p>Tim Wilson Terrence Wiseman
+        <p>Tim Wilson, Terrence Wiseman
         </p>
       </div>
     </div>

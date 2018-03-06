@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input } from "@angular/core";
 
 /**
  * Generated class for the CalloutComponent component.
@@ -7,11 +7,10 @@ import { Component, Input } from '@angular/core';
  * Components.
  */
 @Component({
-  selector: 'callout',
-  templateUrl: 'callout.html'
+  selector: "callout",
+  templateUrl: "callout.html"
 })
 export class CalloutComponent {
-  
   @Input("title") title: string;
   @Input("src") src: string;
   @Input("leftLink") leftLink: string;
@@ -21,5 +20,4 @@ export class CalloutComponent {
   @Input("outOf") outOf: number;
 
   constructor() {}
-
 }
