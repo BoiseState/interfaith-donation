@@ -26,8 +26,6 @@ CREATE TABLE donor (
   donor_join_date DATE NOT NULL
 );
 
--- changed to here 3/6/18
-
 DROP TABLE IF EXISTS callout cascade;
 CREATE TABLE callout (
   callout_id BIGINT PRIMARY KEY NOT NULL AUTO_INCREMENT,
@@ -57,3 +55,5 @@ CREATE TABLE needcallout (
   callout_id BIGINT REFERENCES callout,
   active BOOLEAN NOT NULL	
 );
+
+-- transaction stuff, activations, 
