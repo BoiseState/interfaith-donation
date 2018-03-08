@@ -37,7 +37,7 @@ CREATE DATABASE charity;
 
 DROP TABLE IF EXISTS need cascade;
 CREATE TABLE need (
-  need_id SERIAL PRIMARY KEY,
+  need_id BIGSERIAL PRIMARY KEY,
   need_name VARCHAR(100) NOT NULL,
   need_amazonurl VARCHAR(300) NULL,
   need_description VARCHAR(300) NULL,
