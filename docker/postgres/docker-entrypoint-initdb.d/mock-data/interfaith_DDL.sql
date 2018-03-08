@@ -26,13 +26,13 @@ CREATE DATABASE charity;
 --   donor_join_date DATE NOT NULL
 -- );
 
-DROP TABLE IF EXISTS callout cascade;
-CREATE TABLE callout (
+DROP TABLE IF EXISTS callouts cascade;
+CREATE TABLE callouts (
   callout_id BIGSERIAL PRIMARY KEY,
   callout_name VARCHAR(100) NOT NULL,
   callout_description_message VARCHAR(500) NULL,
   callout_created_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  callout_effective_date TIMESTAMP NULL,
+  callout_end_date TIMESTAMP NULL,
   callout_active BOOLEAN NOT NULL
 );
 
