@@ -11,5 +11,6 @@ psql $POSTGRES_DB $POSTGRES_USER <<-EOSQL
     \connect charity
     \include /docker-entrypoint-initdb.d/mock-data/interfaith_DDL.sql
     \include /docker-entrypoint-initdb.d/mock-data/need.sql
+    \include /docker-entrypoint-initdb.d/mock-data/donor.sql
     \dt
 EOSQL

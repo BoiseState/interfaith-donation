@@ -1,7 +1,6 @@
 package org.interfaithsanctuary.donationapi.model;
 
 import javax.persistence.*;
-import java.util.Date;
 
 @Entity
 @Table(name = "needs")
@@ -12,33 +11,17 @@ public class Need {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int needId;
 
-    @Column(name = "need_name")
+    @Column(name = "name")
     private String name;
 
-    @Column(name = "need_url")
+    @Column(name = "url")
     private String url;
 
-    @Column(name = "need_description")
+    @Column(name = "description")
     private String description;
 
-    @Column(name = "create_date")
-    private Date date;
-
-    @Column(name = "need_quantity")
-    private int quantity;
-
-    @Transient
-    //@Column(name = "need_num_gifts")
-    private int numGifts;
-
-    @Column(name = "need_unit")
+    @Column(name = "unit_of_measurement")
     private String unit;
-
-    @Column(name = "callout_id")
-    private int calloutId;
-
-    @Column
-    private boolean active;
 
     public int getNeedId() {
         return needId;
@@ -72,51 +55,11 @@ public class Need {
         this.description = description;
     }
 
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
-    }
-
-    public int getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
-
-    public int getNumGifts() {
-        return numGifts;
-    }
-
-    public void setNumGifts(int numGifts) {
-        this.numGifts = numGifts;
-    }
-
     public String getUnit() {
         return unit;
     }
 
     public void setUnit(String unit) {
         this.unit = unit;
-    }
-
-    public int getCalloutId() {
-        return calloutId;
-    }
-
-    public void setCalloutId(int calloutId) {
-        this.calloutId = calloutId;
-    }
-
-    public boolean isActive() {
-        return active;
-    }
-
-    public void setActive(boolean active) {
-        this.active = active;
     }
 }
