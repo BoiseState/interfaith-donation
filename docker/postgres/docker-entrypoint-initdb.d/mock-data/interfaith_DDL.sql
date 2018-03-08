@@ -53,7 +53,7 @@ CREATE TABLE needcallouts (
   needcallout_quantity INT NOT NULL,
   need_id BIGINT REFERENCES needs,
   callout_id BIGINT REFERENCES callouts,
-  active BOOLEAN NOT NULL
+  needcallout_active BOOLEAN NOT NULL
 );
 
 -- transaction stuff, activations, 
