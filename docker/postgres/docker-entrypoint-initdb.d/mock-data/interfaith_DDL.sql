@@ -31,8 +31,8 @@ CREATE TABLE callout (
   callout_id BIGSERIAL PRIMARY KEY,
   callout_name VARCHAR(100) NOT NULL,
   callout_description_message VARCHAR(500) NULL,
-  callout_effective_date TIMESTAMP NULL,
   callout_created_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  callout_effective_date TIMESTAMP NULL,
   callout_active BOOLEAN NOT NULL
 );
 
@@ -43,7 +43,7 @@ CREATE TABLE need (
   need_amazonurl VARCHAR(3000) NULL,
   need_description VARCHAR(500) NULL,
   need_units VARCHAR (50) NULL,
-  need_create_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  need_created_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   need_active BOOLEAN NOT NULL
 );
 
