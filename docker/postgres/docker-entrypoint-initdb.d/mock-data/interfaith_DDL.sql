@@ -1,16 +1,15 @@
 -- DROP DATABASE IF EXISTS charity;
-CREATE DATABASE charity;
+-- CREATE DATABASE charity;
 --
--- -- need, callout, user
--- DROP TABLE IF EXISTS user cascade;
--- CREATE TABLE user
--- (
---     user_id BIGINT PRIMARY KEY NOT NULL AUTO_INCREMENT,
---     user_name  VARCHAR(100) NOT NULL UNIQUE,
---     user_email VARCHAR(100) NOT NULL,
---     user_password VARCHAR(100) NOT NULL,
---     user_permissions BOOLEAN NOT NULL
--- );
+-- -- need, callout, users
+DROP TABLE IF EXISTS "users" cascade;
+CREATE TABLE users(
+  user_id BIGSERIAL PRIMARY KEY NOT NULL,
+  user_email VARCHAR(100) NOT NULL UNIQUE,
+  user_password VARCHAR(100) NOT NULL,
+  user_permission BOOLEAN NOT NULL,
+  user_active BOOLEAN NOT NULL
+);
 
 -- DROP TABLE IF EXISTS donor cascade;
 -- CREATE TABLE donor (
