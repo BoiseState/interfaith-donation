@@ -36,8 +36,8 @@ CREATE TABLE callouts (
   callout_active BOOLEAN NOT NULL
 );
 
-DROP TABLE IF EXISTS need cascade;
-CREATE TABLE need (
+DROP TABLE IF EXISTS needs cascade;
+CREATE TABLE needs (
   need_id BIGSERIAL PRIMARY KEY,
   need_name VARCHAR(100) NOT NULL,
   need_amazonurl VARCHAR(3000) NULL,
@@ -47,13 +47,13 @@ CREATE TABLE need (
   need_active BOOLEAN NOT NULL
 );
 
--- DROP TABLE IF EXISTS needcallout cascade;
--- CREATE TABLE needcallout (
---   needcallout_id BIGINT PRIMARY KEY NOT NULL AUTO_INCREMENT,
---   needcallout_quantity INT NOT NULL,
---   user_id BIGINT REFERENCES user,
---   callout_id BIGINT REFERENCES callout,
---   active BOOLEAN NOT NULL
--- );
+DROP TABLE IF EXISTS needcallouts cascade;
+CREATE TABLE needcallouts (
+  needcallout_id BIGSERIAL PRIMARY KEY,
+  needcallout_quantity INT NOT NULL,
+  need_id BIGINT REFERENCES needs,
+  callout_id BIGINT REFERENCES callouts,
+  active BOOLEAN NOT NULL
+);
 
 -- transaction stuff, activations, 
