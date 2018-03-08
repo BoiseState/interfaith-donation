@@ -12,5 +12,6 @@ psql $POSTGRES_DB $POSTGRES_USER <<-EOSQL
     \include /docker-entrypoint-initdb.d/mock-data/interfaith_DDL.sql
     \include /docker-entrypoint-initdb.d/mock-data/need.sql
     \include /docker-entrypoint-initdb.d/mock-data/callout.sql
+    \include /docker-entrypoint-initdb.d/mock-data/needcallout.sql
     \dt
 EOSQL
