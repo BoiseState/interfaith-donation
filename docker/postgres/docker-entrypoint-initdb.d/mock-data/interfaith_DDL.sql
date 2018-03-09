@@ -1,6 +1,14 @@
 -- DROP DATABASE IF EXISTS charity;
 -- CREATE DATABASE charity;
+
 --
+
+DROP TABLE IF EXISTS "users" 
+DROP TABLE IF EXISTS "donors" 
+DROP TABLE IF EXISTS "alerts" 
+DROP TABLE IF EXISTS "needs" 
+DROP TABLE IF EXISTS "callouts"
+DROP TABLE IF EXISTS "gifts" 
 -- -- need, callout, users
 DROP TABLE IF EXISTS "users" cascade;
 CREATE TABLE users(
@@ -61,7 +69,7 @@ CREATE TABLE donations (
   donation_quantity INT NOT NULL,
   donation_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   needcallout_id BIGINT REFERENCES users NOT NULL,
-  donor_id BIGINT REFERENCES donors NOT NULL
+  -- donor_id BIGINT REFERENCES donors NOT NULL
 );
 
 -- transaction stuff, activations, 
