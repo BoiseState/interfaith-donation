@@ -55,4 +55,13 @@ CREATE TABLE needcallouts (
   needcallout_active BOOLEAN NOT NULL
 );
 
+DROP TABLE IF EXISTS donations cascade;
+CREATE TABLE donations (
+  donation_id BIGSERIAL PRIMARY KEY,
+  donation_quantity INT NOT NULL,
+  donation_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  needcallout_id BIGINT REFERENCES users NOT NULL,
+  donor_id BIGINT REFERENCES donors NOT NULL
+);
+
 -- transaction stuff, activations, 
