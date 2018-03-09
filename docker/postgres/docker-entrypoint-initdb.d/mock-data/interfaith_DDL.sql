@@ -1,16 +1,15 @@
 -- DROP DATABASE IF EXISTS charity;
-CREATE DATABASE charity;
+-- CREATE DATABASE charity;
 --
--- -- need, callout, user
--- DROP TABLE IF EXISTS user cascade;
--- CREATE TABLE user
--- (
---     user_id BIGINT PRIMARY KEY NOT NULL AUTO_INCREMENT,
---     user_name  VARCHAR(100) NOT NULL UNIQUE,
---     user_email VARCHAR(100) NOT NULL,
---     user_password VARCHAR(100) NOT NULL,
---     user_permissions BOOLEAN NOT NULL
--- );
+-- -- need, callout, users
+DROP TABLE IF EXISTS "users" cascade;
+CREATE TABLE users(
+  user_id BIGSERIAL PRIMARY KEY NOT NULL,
+  user_email VARCHAR(100) NOT NULL UNIQUE,
+  user_password VARCHAR(100) NOT NULL,
+  user_permission BOOLEAN NOT NULL,
+  user_active BOOLEAN NOT NULL
+);
 
 -- DROP TABLE IF EXISTS donor cascade;
 -- CREATE TABLE donor (
@@ -26,23 +25,24 @@ CREATE DATABASE charity;
 --   donor_join_date DATE NOT NULL
 -- );
 
--- DROP TABLE IF EXISTS callout cascade;
--- CREATE TABLE callout (
---   callout_id BIGINT PRIMARY KEY NOT NULL AUTO_INCREMENT,
---   callout_message VARCHAR(500) NOT NULL,
---   create_date DATE NOT NULL,
---   active BOOLEAN NOT NULL,
---   pinned BOOLEAN NOT NULL
--- );
+DROP TABLE IF EXISTS callouts cascade;
+CREATE TABLE callouts (
+  callout_id BIGSERIAL PRIMARY KEY,
+  callout_name VARCHAR(100) NOT NULL,
+  callout_description_message VARCHAR(500) NULL,
+  callout_created_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  callout_end_date TIMESTAMP NULL,
+  callout_active BOOLEAN NOT NULL
+);
 
 DROP TABLE IF EXISTS need cascade;
 CREATE TABLE need (
-  need_id SERIAL PRIMARY KEY,
+  need_id BIGSERIAL PRIMARY KEY,
   need_name VARCHAR(100) NOT NULL,
-  need_amazonurl VARCHAR(300) NULL,
-  need_description VARCHAR(300) NULL,
+  need_amazonurl VARCHAR(3000) NULL,
+  need_description VARCHAR(500) NULL,
   need_units VARCHAR (50) NULL,
-  need_create_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  need_created_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   need_active BOOLEAN NOT NULL
 );
 

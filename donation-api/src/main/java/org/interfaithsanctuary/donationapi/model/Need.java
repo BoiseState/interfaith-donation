@@ -7,7 +7,7 @@ import javax.persistence.*;
 public class Need {
 
     @Id
-    @Column(name = "need_id")
+    @Column(name = "needId")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int needId;
 
@@ -20,7 +20,7 @@ public class Need {
     @Column(name = "description")
     private String description;
 
-    @Column(name = "unit_of_measurement")
+    @Column(name = "unitOfMeasurement")
     private String unit;
 
     public int getNeedId() {
