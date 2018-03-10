@@ -7,21 +7,21 @@ import javax.persistence.*;
 public class Need {
 
     @Id
-    @Column(name = "needId")
+    @Column(name = "need_id")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int needId;
 
-    @Column(name = "name")
+    @Column(name = "need_name")
     private String name;
 
-    @Column(name = "url")
+    @Column(name = "need_url")
     private String url;
 
-    @Column(name = "description")
+    @Column(name = "need_description")
     private String description;
 
-    @Column(name = "unitOfMeasurement")
-    private String unit;
+    @Column(name = "need_unit_of_measurement")
+    private String unitOfMeasurement;
 
     public int getNeedId() {
         return needId;
@@ -56,10 +56,10 @@ public class Need {
     }
 
     public String getUnit() {
-        return unit;
+        return unitOfMeasurement;
     }
 
-    public void setUnit(String unit) {
-        this.unit = unit;
+    public void setUnit(String unitOfMeasurement) {
+        this.unitOfMeasurement = unitOfMeasurement;
     }
 }
