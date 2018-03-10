@@ -1,6 +1,14 @@
 -- DROP DATABASE IF EXISTS charity;
 -- CREATE DATABASE charity;
+
 --
+
+DROP TABLE IF EXISTS "users" 
+DROP TABLE IF EXISTS "donors" 
+DROP TABLE IF EXISTS "alerts" 
+DROP TABLE IF EXISTS "needs" 
+DROP TABLE IF EXISTS "callouts"
+DROP TABLE IF EXISTS "gifts" 
 -- -- need, callout, users
 DROP TABLE IF EXISTS "users" cascade;
 CREATE TABLE users(
@@ -35,8 +43,8 @@ CREATE TABLE callouts (
   callout_active BOOLEAN NOT NULL
 );
 
-DROP TABLE IF EXISTS need cascade;
-CREATE TABLE need (
+DROP TABLE IF EXISTS needs cascade;
+CREATE TABLE needs (
   need_id BIGSERIAL PRIMARY KEY,
   need_name VARCHAR(100) NOT NULL,
   need_amazonurl VARCHAR(3000) NULL,
@@ -46,13 +54,22 @@ CREATE TABLE need (
   need_active BOOLEAN NOT NULL
 );
 
--- DROP TABLE IF EXISTS needcallout cascade;
--- CREATE TABLE needcallout (
---   needcallout_id BIGINT PRIMARY KEY NOT NULL AUTO_INCREMENT,
---   needcallout_quantity INT NOT NULL,
---   user_id BIGINT REFERENCES user,
---   callout_id BIGINT REFERENCES callout,
---   active BOOLEAN NOT NULL
--- );
+DROP TABLE IF EXISTS needcallouts cascade;
+CREATE TABLE needcallouts (
+  needcallout_id BIGSERIAL PRIMARY KEY,
+  needcallout_quantity INT NOT NULL,
+  need_id BIGINT REFERENCES needs,
+  callout_id BIGINT REFERENCES callouts,
+  needcallout_active BOOLEAN NOT NULL
+);
+
+DROP TABLE IF EXISTS donations cascade;
+CREATE TABLE donations (
+  donation_id BIGSERIAL PRIMARY KEY,
+  donation_quantity INT NOT NULL,
+  donation_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  needcallout_id BIGINT REFERENCES users NOT NULL,
+  -- donor_id BIGINT REFERENCES donors NOT NULL
+);
 
 -- transaction stuff, activations, 
