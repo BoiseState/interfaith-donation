@@ -22,4 +22,5 @@
 hs_err_pid*
 
 # IDE Configurations #
+.metadata/
 .idea/
