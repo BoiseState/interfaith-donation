@@ -1,16 +1,14 @@
--- DROP DATABASE IF EXISTS charity;
--- CREATE DATABASE charity;
+DROP DATABASE IF EXISTS charity;
+CREATE DATABASE charity;
 
---
-
-DROP TABLE IF EXISTS "users" 
-DROP TABLE IF EXISTS "donors" 
-DROP TABLE IF EXISTS "alerts" 
-DROP TABLE IF EXISTS "needs" 
-DROP TABLE IF EXISTS "callouts"
-DROP TABLE IF EXISTS "gifts" 
--- -- need, callout, users
 DROP TABLE IF EXISTS "users" cascade;
+DROP TABLE IF EXISTS "donors" cascade;
+DROP TABLE IF EXISTS "alerts" cascade;
+DROP TABLE IF EXISTS "needs" cascade;
+DROP TABLE IF EXISTS "callouts" cascade;
+DROP TABLE IF EXISTS "gifts" cascade;
+DROP TABLE IF EXISTS "users" cascade;
+
 CREATE TABLE users(
   user_id BIGSERIAL PRIMARY KEY NOT NULL,
   user_email VARCHAR(100) NOT NULL UNIQUE,
@@ -33,7 +31,6 @@ CREATE TABLE users(
 --   donor_join_date DATE NOT NULL
 -- );
 
-DROP TABLE IF EXISTS callouts cascade;
 CREATE TABLE callouts (
   callout_id BIGSERIAL PRIMARY KEY,
   callout_name VARCHAR(100) NOT NULL,
@@ -43,7 +40,6 @@ CREATE TABLE callouts (
   callout_active BOOLEAN NOT NULL
 );
 
-DROP TABLE IF EXISTS needs cascade;
 CREATE TABLE needs (
   need_id BIGSERIAL PRIMARY KEY,
   need_name VARCHAR(100) NOT NULL,
@@ -54,7 +50,6 @@ CREATE TABLE needs (
   need_active BOOLEAN NOT NULL
 );
 
-DROP TABLE IF EXISTS calloutneeds cascade;
 CREATE TABLE calloutneeds (
   calloutneed_id BIGSERIAL PRIMARY KEY,
   calloutneed_quantity INT NOT NULL,
@@ -63,7 +58,6 @@ CREATE TABLE calloutneeds (
   calloutneed_active BOOLEAN NOT NULL
 );
 
-DROP TABLE IF EXISTS donations cascade;
 CREATE TABLE donations (
   donation_id BIGSERIAL PRIMARY KEY,
   donation_quantity INT NOT NULL,
@@ -72,4 +66,9 @@ CREATE TABLE donations (
   -- donor_id BIGINT REFERENCES donors NOT NULL
 );
 
--- transaction stuff, activations, 
+CREATE TABLE alerts (
+  alert_id BIGSERIAL PRIMARY KEY,
+  alert_sent_date TIMESTAMP NULL,
+  alert_created_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
