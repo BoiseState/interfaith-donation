@@ -54,13 +54,13 @@ CREATE TABLE needs (
   need_active BOOLEAN NOT NULL
 );
 
-DROP TABLE IF EXISTS needcallouts cascade;
-CREATE TABLE needcallouts (
-  needcallout_id BIGSERIAL PRIMARY KEY,
-  needcallout_quantity INT NOT NULL,
+DROP TABLE IF EXISTS calloutneeds cascade;
+CREATE TABLE calloutneeds (
+  calloutneed_id BIGSERIAL PRIMARY KEY,
+  calloutneed_quantity INT NOT NULL,
   need_id BIGINT REFERENCES needs,
   callout_id BIGINT REFERENCES callouts,
-  needcallout_active BOOLEAN NOT NULL
+  calloutneed_active BOOLEAN NOT NULL
 );
 
 DROP TABLE IF EXISTS donations cascade;
@@ -68,7 +68,7 @@ CREATE TABLE donations (
   donation_id BIGSERIAL PRIMARY KEY,
   donation_quantity INT NOT NULL,
   donation_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  needcallout_id BIGINT REFERENCES users NOT NULL,
+  calloutneed_id BIGINT REFERENCES users NOT NULL,
   -- donor_id BIGINT REFERENCES donors NOT NULL
 );
 
