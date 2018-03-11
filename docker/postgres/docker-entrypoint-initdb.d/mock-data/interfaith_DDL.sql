@@ -1,73 +1,75 @@
-DROP TABLE IF EXISTS users cascade;
-CREATE TABLE users
-(
-    user_id SERIAL PRIMARY KEY NOT NULL,
-    user_name  VARCHAR(100) NOT NULL UNIQUE,
-    user_email VARCHAR(100) NOT NULL,
-    user_password VARCHAR(100) NOT NULL,
-	  permissions INTEGER NOT NULL
+-- DROP DATABASE IF EXISTS charity;
+-- CREATE DATABASE charity;
 
+--
+
+DROP TABLE IF EXISTS "users" 
+DROP TABLE IF EXISTS "donors" 
+DROP TABLE IF EXISTS "alerts" 
+DROP TABLE IF EXISTS "needs" 
+DROP TABLE IF EXISTS "callouts"
+DROP TABLE IF EXISTS "gifts" 
+-- -- need, callout, users
+DROP TABLE IF EXISTS "users" cascade;
+CREATE TABLE users(
+  user_id BIGSERIAL PRIMARY KEY NOT NULL,
+  user_email VARCHAR(100) NOT NULL UNIQUE,
+  user_password VARCHAR(100) NOT NULL,
+  user_permission BOOLEAN NOT NULL,
+  user_active BOOLEAN NOT NULL
 );
 
-DROP TABLE IF EXISTS donors cascade;
-CREATE TABLE donors (
-  donor_id SERIAL PRIMARY KEY,
-  user_id INTEGER REFERENCES users NOT NULL,
-  donor_name VARCHAR(100) NOT NULL,
-  donor_email VARCHAR(100) NOT NULL,
-  donor_address VARCHAR(100) NOT NULL,
-  donor_city VARCHAR(50) NOT NULL,
-  donor_state VARCHAR(25) NOT NULL,
-  donor_zip VARCHAR(10) NOT NULL,
-  donor_phone VARCHAR(15) NOT NULL,
-  donor_join_date DATE NOT NULL
-);
+-- DROP TABLE IF EXISTS donor cascade;
+-- CREATE TABLE donor (
+--   donor_id BIGINT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+--   user_id BIGINT REFERENCES user NOT NULL,
+--   donor_name VARCHAR(100) NOT NULL,
+--   donor_email VARCHAR(100) NOT NULL,
+--   donor_address VARCHAR(100) NOT NULL,
+--   donor_city VARCHAR(50) NOT NULL,
+--   donor_state VARCHAR(25) NOT NULL,
+--   donor_zip VARCHAR(10) NOT NULL,
+--   donor_phone VARCHAR(15) NOT NULL,
+--   donor_join_date DATE NOT NULL
+-- );
+
 DROP TABLE IF EXISTS callouts cascade;
 CREATE TABLE callouts (
-  callout_id SERIAL PRIMARY KEY,
-  callout_title VARCHAR(100) NOT NULL,
-  callout_body VARCHAR(8000) NULL,
-  callout_url VARCHAR(8000) NULL,
-  create_date DATE NOT NULL,
-  update_date DATE NOT NULL,
-  active BOOLEAN NULL,
-  pinned BOOLEAN NULL
+  callout_id BIGSERIAL PRIMARY KEY,
+  callout_name VARCHAR(100) NOT NULL,
+  callout_description_message VARCHAR(500) NULL,
+  callout_created_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  callout_end_date TIMESTAMP NULL,
+  callout_active BOOLEAN NOT NULL
 );
 
 DROP TABLE IF EXISTS needs cascade;
 CREATE TABLE needs (
-  need_id SERIAL PRIMARY KEY,
+  need_id BIGSERIAL PRIMARY KEY,
   need_name VARCHAR(100) NOT NULL,
-  need_url VARCHAR(8000) NULL,
-	need_description VARCHAR(1000) NULL,
-	need_quantity INTEGER NULL,
-	need_unit VARCHAR (50) NULL,
-	callout_id INTEGER REFERENCES callouts NULL,
-	create_date DATE NOT NULL,
-	active BOOLEAN NULL
-	
+  need_amazonurl VARCHAR(3000) NULL,
+  need_description VARCHAR(500) NULL,
+  need_units VARCHAR (50) NULL,
+  need_created_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  need_active BOOLEAN NOT NULL
 );
 
-DROP TABLE IF EXISTS gifts cascade;
-CREATE TABLE gifts (
-	gift_id SERIAL PRIMARY KEY,
-	gift_quantity INTEGER NOT NULL,
-	gift_date DATE NOT NULL,
-	donor_id INTEGER REFERENCES donors,
-	need_id INTEGER REFERENCES needs
+DROP TABLE IF EXISTS calloutneeds cascade;
+CREATE TABLE calloutneeds (
+  calloutneed_id BIGSERIAL PRIMARY KEY,
+  calloutneed_quantity INT NOT NULL,
+  need_id BIGINT REFERENCES needs,
+  callout_id BIGINT REFERENCES callouts,
+  calloutneed_active BOOLEAN NOT NULL
 );
 
-DROP TABLE IF EXISTS alerts cascade;
-CREATE TABLE alerts (
-  alert_id SERIAL PRIMARY KEY,
-  alert_title VARCHAR(100) NOT NULL,
-  alert_body VARCHAR(8000) NULL,
-  callout_id INT NULL REFERENCES callouts,
-  need_id INT NULL REFERENCES needs,
-  create_date DATE NOT NULL,
-  last_pushed_date DATE NULL
+DROP TABLE IF EXISTS donations cascade;
+CREATE TABLE donations (
+  donation_id BIGSERIAL PRIMARY KEY,
+  donation_quantity INT NOT NULL,
+  donation_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  calloutneed_id BIGINT REFERENCES users NOT NULL,
+  -- donor_id BIGINT REFERENCES donors NOT NULL
 );
 
-CREATE UNIQUE INDEX u_ix_donorname ON donors (donor_name);
-
-
+-- transaction stuff, activations, 

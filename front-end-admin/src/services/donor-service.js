@@ -1,9 +1,11 @@
-import {getJSON, postJSON, patchJSON} from './helpers';
+import { getJSON, postJSON, patchJSON } from './helpers';
 
-const BASE_API_ROUTE = '/donors';
+const BASE_API_ROUTE = 'donors';
 
 export const createDonor = donor => {
-  postJSON(BASE_API_ROUTE, donor).catch(error => console.error('Error:', error)).then(response => console.log('Success:', response));
+  postJSON(BASE_API_ROUTE, donor)
+    .catch(error => console.error('Error:', error))
+    .then(response => console.log('Success:', response));
 };
 
 export const getAllDonors = async () => {

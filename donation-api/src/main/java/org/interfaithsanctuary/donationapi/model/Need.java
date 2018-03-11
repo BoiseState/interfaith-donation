@@ -1,7 +1,6 @@
 package org.interfaithsanctuary.donationapi.model;
 
 import javax.persistence.*;
-import java.util.Date;
 
 @Entity
 @Table(name = "needs")
@@ -21,24 +20,8 @@ public class Need {
     @Column(name = "need_description")
     private String description;
 
-    @Column(name = "create_date")
-    private Date date;
-
-    @Column(name = "need_quantity")
-    private Integer quantity;
-
-    @Transient
-    //@Column(name = "need_num_gifts")
-    private Integer numGifts;
-
-    @Column(name = "need_unit")
-    private String unit;
-
-    @Column(name = "callout_id")
-    private Long calloutId;
-
-    @Column
-    private boolean active;
+    @Column(name = "need_unit_of_measurement")
+    private String unitOfMeasurement;
 
     public Long getNeedId() {
         return needId;
@@ -72,51 +55,11 @@ public class Need {
         this.description = description;
     }
 
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
-    }
-
-    public Integer getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(Integer quantity) {
-        this.quantity = quantity;
-    }
-
-    public Integer getNumGifts() {
-        return numGifts;
-    }
-
-    public void setNumGifts(Integer numGifts) {
-        this.numGifts = numGifts;
-    }
-
     public String getUnit() {
-        return unit;
+        return unitOfMeasurement;
     }
 
-    public void setUnit(String unit) {
-        this.unit = unit;
-    }
-
-    public Long getCalloutId() {
-        return calloutId;
-    }
-
-    public void setCalloutId(Long calloutId) {
-        this.calloutId = calloutId;
-    }
-
-    public boolean isActive() {
-        return active;
-    }
-
-    public void setActive(boolean active) {
-        this.active = active;
+    public void setUnit(String unitOfMeasurement) {
+        this.unitOfMeasurement = unitOfMeasurement;
     }
 }
