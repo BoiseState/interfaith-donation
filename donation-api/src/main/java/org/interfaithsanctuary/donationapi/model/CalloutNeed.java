@@ -12,7 +12,7 @@ public class CalloutNeed {
     @Id
     @Column(name = "calloutneed_id")
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private Long id;
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="need_id")
@@ -32,7 +32,7 @@ public class CalloutNeed {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

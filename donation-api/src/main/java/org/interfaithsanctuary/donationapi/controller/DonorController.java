@@ -3,6 +3,8 @@ package org.interfaithsanctuary.donationapi.controller;
 import org.interfaithsanctuary.donationapi.model.Donor;
 import org.interfaithsanctuary.donationapi.repository.DonorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -10,10 +12,10 @@ import org.springframework.web.bind.annotation.*;
 public class DonorController {
     @Autowired
     DonorRepository donorRepository;
-
+    
     @RequestMapping(method = RequestMethod.GET)
-    public Iterable<Donor> getAllDonors() {
-        return donorRepository.findAll();
+    public @ResponseBody Page<Donor> getAllDonors(Pageable pageable) {
+        return donorRepository.findAll(pageable);
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)

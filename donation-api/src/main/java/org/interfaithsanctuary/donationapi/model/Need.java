@@ -9,7 +9,7 @@ public class Need {
     @Id
     @Column(name = "need_id")
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int needId;
+    private Long needId;
 
     @Column(name = "need_name")
     private String name;
@@ -23,11 +23,11 @@ public class Need {
     @Column(name = "need_unit_of_measurement")
     private String unitOfMeasurement;
 
-    public int getNeedId() {
+    public Long getNeedId() {
         return needId;
     }
 
-    public void setNeedId(int needId) {
+    public void setNeedId(Long needId) {
         this.needId = needId;
     }
 
