@@ -12,7 +12,7 @@ public class Callout {
     private Long id;
 
     @Column(name = "callout_name")
-    private String title;
+    private String name;
 
     @Column(name = "callout_effective_date")
     private Date effectiveDate;
@@ -34,12 +34,12 @@ public class Callout {
         this.id = id;
     }
 
-    public String getTitle() {
-        return title;
+    public String getName() {
+        return name;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public Date getEffectiveDate() {
