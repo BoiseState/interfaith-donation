@@ -9,90 +9,68 @@ public class Callout {
     @Id
     @Column(name = "callout_id")
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long calloutId;
+    private Long id;
 
-    @Column(name = "callout_title")
-    private String title;
+    @Column(name = "callout_name")
+    private String name;
 
-    @Column(name = "callout_body")
-    private String body;
+    @Column(name = "callout_effective_date")
+    private Date effectiveDate;
 
-    @Column(name = "callout_url")
-    private String url;
+    @Column(name = "callout_active")
+    private boolean active;
 
-    @Column(name = "create_date")
-    private Date createDate;
+    @Column(name = "callout_date_created")
+    private Date createdDate;
 
-    @Column(name = "update_date")
-    private Date updateDate;
+    @Column(name = "callout_description_message")
+    private String descriptionMessage;
 
-    @Column()
-    private Boolean active;
-
-    @Column()
-    private Boolean pinned;
-
-    public Long getCalloutId() {
-        return calloutId;
+    public Long getId() {
+        return id;
     }
 
-    public void setCalloutId(Long calloutId) {
-        this.calloutId = calloutId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public String getTitle() {
-        return title;
+    public String getName() {
+        return name;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getBody() {
-        return body;
+    public Date getEffectiveDate() {
+        return effectiveDate;
     }
 
-    public void setBody(String body) {
-        this.body = body;
+    public void setEffectiveDate(Date effectiveDate) {
+        this.effectiveDate = effectiveDate;
     }
 
-    public String getUrl() {
-        return url;
-    }
-
-    public void setUrl(String url) {
-        this.url = url;
-    }
-
-    public Date getCreateDate() {
-        return createDate;
-    }
-
-    public void setCreateDate(Date createDate) {
-        this.createDate = createDate;
-    }
-
-    public Date getUpdateDate() {
-        return updateDate;
-    }
-
-    public void setUpdateDate(Date updateDate) {
-        this.updateDate = updateDate;
-    }
-
-    public Boolean getActive() {
+    public boolean isActive() {
         return active;
     }
 
-    public void setActive(Boolean active) {
+    public void setActive(boolean active) {
         this.active = active;
     }
 
-    public Boolean getPinned() {
-        return pinned;
+    public Date getCreatedDate() {
+        return createdDate;
     }
 
-    public void setPinned(Boolean pinned) {
-        this.pinned = pinned;
+    public void setCreatedDate(Date createdDate) {
+        this.createdDate = createdDate;
+    }
+
+    public String getDescriptionMessage() {
+        return descriptionMessage;
+    }
+
+    public void setDescriptionMessage(String descriptionMessage) {
+        this.descriptionMessage = descriptionMessage;
     }
 }

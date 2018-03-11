@@ -6,7 +6,8 @@
         <div class="container">
           <!--<p>Welcome back, <% out.print(user.getUsername()); %>! </p>-->
           <div class="col-md-6">
-            <p><a class="btn btn-default" href="${pageContext.request.contextPath}/registerdonor.jsp" role="button">Add Donor&raquo;</a></p>
+            <!-- <p><a class="btn btn-default" href="${pageContext.request.contextPath}/registerdonor.jsp" role="button">Add Donor&raquo;</a></p> -->
+            <p><router-link to="register-donor" class="btn btn-default" role="button">Add Donor&raquo;</router-link>
             <form class="form-horizontal" action="/searchdonor" method="GET">
               <div class="form-group">
                 <label class="control-label col-sm-2">Search:</label>
@@ -60,7 +61,7 @@
           <h1>ISH Services Inc.</h1>
           <p>Database and web framework for posting and tracking donations and donors</p>
           <!-- <p><a class="btn btn-primary btn-lg" href="${pageContext.request.contextPath}/registerdonation.jsp" role="button">Learn more &raquo;</a></p> -->
-          <p><router-link class="btn btn-primary btn-lg" to="About" role="button">Learn More &raquo;</router-link></p>
+          <p><router-link class="btn btn-primary btn-lg" to="/about" role="button">Learn More &raquo;</router-link></p>
         </div>
       </div>
     </div>
@@ -68,13 +69,11 @@
 </template>
 
 <script>
-
 export default {
-
   name: 'home',
   data: () => {
     return {
-      loggedIn: false
+      loggedIn: true
     };
   }
 };

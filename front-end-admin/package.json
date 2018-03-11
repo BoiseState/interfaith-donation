@@ -1,19 +1,23 @@
 {
   "name": "front-end-admin",
   "version": "1.0.0",
-  "description": "The front-end app for the Interfaith Sanctuary donation application administration tools. Allows emplooyees of Interfaith Sanctuary to easily see information related to donations.",
+  "description":
+    "The front-end app for the Interfaith Sanctuary donation application administration tools. Allows emplooyees of Interfaith Sanctuary to easily see information related to donations.",
   "author": "Diffused-Code",
   "private": true,
   "scripts": {
-    "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
+    "dev":
+      "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
     "start": "npm run dev",
     "unit": "jest --config test/unit/jest.conf.js --coverage",
     "e2e": "node test/e2e/runner.js",
     "test": "npm run unit && npm run e2e",
     "lint": "eslint --ext .js,.vue src test/unit test/e2e/specs",
-    "build": "node build/build.js"
+    "build": "node build/build.js",
+    "precommit": "pretty-quick --staged"
   },
   "dependencies": {
+    "run": "^1.4.0",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1"
   },
@@ -50,6 +54,7 @@
     "file-loader": "^1.1.4",
     "friendly-errors-webpack-plugin": "^1.6.1",
     "html-webpack-plugin": "^2.30.1",
+    "husky": "^0.14.3",
     "jest": "^22.0.4",
     "jest-serializer-vue": "^0.3.0",
     "nightwatch": "^0.9.12",
@@ -60,6 +65,8 @@
     "postcss-import": "^11.0.0",
     "postcss-loader": "^2.0.8",
     "postcss-url": "^7.2.1",
+    "prettier": "1.10.2",
+    "pretty-quick": "^1.4.1",
     "rimraf": "^2.6.0",
     "selenium-server": "^3.0.1",
     "semver": "^5.3.0",
@@ -79,9 +86,5 @@
     "node": ">= 6.0.0",
     "npm": ">= 3.0.0"
   },
-  "browserslist": [
-    "> 1%",
-    "last 2 versions",
-    "not ie <= 8"
-  ]
+  "browserslist": ["> 1%", "last 2 versions", "not ie <= 8"]
 }

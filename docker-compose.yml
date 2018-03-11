@@ -1,0 +1,22 @@
+version: "3"
+
+services:
+  database:
+    build:
+      context: ./docker/postgres
+    ports:
+      - "5050:5432" 
+    restart: always
+
+  webserver:
+    build: 
+      context: ./docker/tomcat
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+    volumes:
+      - ./donation-api/target/donation-api.war:/usr/local/tomcat/webapps/donation-api.war
+    # open ports for tomcat and remote debugging
+    ports:
+      - "8800:8080" 
+      - "8000:8000"
+    restart: always

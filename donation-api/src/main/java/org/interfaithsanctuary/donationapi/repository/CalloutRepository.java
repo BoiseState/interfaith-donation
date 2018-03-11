@@ -8,5 +8,4 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 @CrossOrigin
 @RepositoryRestResource(collectionResourceRel = "callouts", path = "callouts")
 public interface CalloutRepository extends PagingAndSortingRepository<Callout, Long> {
-
 }
