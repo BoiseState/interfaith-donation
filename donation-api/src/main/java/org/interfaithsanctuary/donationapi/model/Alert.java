@@ -9,7 +9,7 @@ public class Alert {
     @Id
     @Column(name = "alert_id")
     @GeneratedValue(strategy=GenerationType.AUTO)
-    private int alertId;
+    private Long alertId;
 
     @Column(name = "alert_title")
     private String title;
@@ -20,12 +20,12 @@ public class Alert {
 //    @Id
 //    @GeneratedValue(strategy=GenerationType.AUTO)
     @Column(name = "callout_id")
-    private int calloutId;
+    private Integer calloutId;
 
 //    @Id
 //    @GeneratedValue(strategy=GenerationType.AUTO)
     @Column(name = "need_id")
-    private int needId;
+    private Integer needId;
 
     @Column(name = "create_date")
     private Date createDate;
@@ -33,11 +33,11 @@ public class Alert {
     @Column(name = "last_pushed_date")
     private Date lastPushedDate;
 
-    public int getAlertId() {
+    public Long getAlertId() {
         return alertId;
     }
 
-    public void setAlertId(int alertId) {
+    public void setAlertId(Long alertId) {
         this.alertId = alertId;
     }
 
@@ -57,19 +57,19 @@ public class Alert {
         this.body = alert_body;
     }
 
-    public int getCalloutId() {
+    public Integer getCalloutId() {
         return calloutId;
     }
 
-    public void setCalloutId(int calloutId) {
+    public void setCalloutId(Integer calloutId) {
         this.calloutId = calloutId;
     }
 
-    public int getNeedId() {
+    public Integer getNeedId() {
         return needId;
     }
 
-    public void setNeed_id(int needId) { 
+    public void setNeed_id(Integer needId) { 
     		this.needId = needId; 
     	}
 

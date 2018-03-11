@@ -9,10 +9,10 @@ public class Donor {
     @Id
     @Column(name = "donor_id")
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long donorId;
+    private Long donorId;
 
     @Column(name = "user_id")
-    private int userId;
+    private Long userId;
 
     @Column(name = "donor_name")
     private String name;
@@ -41,19 +41,19 @@ public class Donor {
     @Column(name = "donor_join_date")
     private Date joinDate;
 
-    public long getDonorId() {
+    public Long getDonorId() {
         return donorId;
     }
 
-    public void setDonorId(int donorId) {
+    public void setDonorId(Long donorId) {
         this.donorId = donorId;
     }
 
-    public int getUserId() {
+    public Long getUserId() {
         return userId;
     }
 
-    public void setUserId(int userId) {
+    public void setUserId(Long userId) {
         this.userId = userId;
     }
 
