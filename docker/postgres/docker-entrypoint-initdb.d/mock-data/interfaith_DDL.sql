@@ -1,16 +1,6 @@
--- DROP DATABASE IF EXISTS charity;
--- CREATE DATABASE charity;
 
---
 
-DROP TABLE IF EXISTS "users" 
-DROP TABLE IF EXISTS "donors" 
-DROP TABLE IF EXISTS "alerts" 
-DROP TABLE IF EXISTS "needs" 
-DROP TABLE IF EXISTS "callouts"
-DROP TABLE IF EXISTS "gifts" 
--- -- need, callout, users
-DROP TABLE IF EXISTS "users" cascade;
+DROP TABLE IF EXISTS users cascade;
 CREATE TABLE users(
   user_id BIGSERIAL PRIMARY KEY NOT NULL,
   user_email VARCHAR(100) NOT NULL UNIQUE,
@@ -19,19 +9,19 @@ CREATE TABLE users(
   user_active BOOLEAN NOT NULL
 );
 
--- DROP TABLE IF EXISTS donor cascade;
--- CREATE TABLE donor (
---   donor_id BIGINT PRIMARY KEY NOT NULL AUTO_INCREMENT,
---   user_id BIGINT REFERENCES user NOT NULL,
---   donor_name VARCHAR(100) NOT NULL,
---   donor_email VARCHAR(100) NOT NULL,
---   donor_address VARCHAR(100) NOT NULL,
---   donor_city VARCHAR(50) NOT NULL,
---   donor_state VARCHAR(25) NOT NULL,
---   donor_zip VARCHAR(10) NOT NULL,
---   donor_phone VARCHAR(15) NOT NULL,
---   donor_join_date DATE NOT NULL
--- );
+DROP TABLE IF EXISTS donors cascade;
+CREATE TABLE donors (
+  donor_id BIGSERIAL PRIMARY KEY,
+  --user_id BIGINT REFERENCES users NOT NULL,
+  donor_name VARCHAR(100) NOT NULL,
+  donor_email VARCHAR(100) NOT NULL,
+  donor_address VARCHAR(100) NOT NULL,
+  donor_city VARCHAR(50) NOT NULL,
+  donor_state VARCHAR(25) NOT NULL,
+  donor_zip VARCHAR(10) NOT NULL,
+  donor_phone VARCHAR(15) NOT NULL,
+  donor_join_date DATE NOT NULL
+);
 
 DROP TABLE IF EXISTS callouts cascade;
 CREATE TABLE callouts (
@@ -68,8 +58,8 @@ CREATE TABLE donations (
   donation_id BIGSERIAL PRIMARY KEY,
   donation_quantity INT NOT NULL,
   donation_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  calloutneed_id BIGINT REFERENCES users NOT NULL,
-  -- donor_id BIGINT REFERENCES donors NOT NULL
+  calloutneed_id BIGINT REFERENCES calloutneeds NOT NULL,
+  donor_id BIGINT REFERENCES donors NOT NULL
 );
 
 -- transaction stuff, activations, 
