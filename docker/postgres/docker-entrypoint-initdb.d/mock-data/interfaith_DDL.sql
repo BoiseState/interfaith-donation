@@ -12,7 +12,7 @@ CREATE TABLE users(
 DROP TABLE IF EXISTS donors cascade;
 CREATE TABLE donors (
   donor_id BIGSERIAL PRIMARY KEY,
-  --user_id BIGINT REFERENCES users NOT NULL,
+  user_id BIGINT REFERENCES users,
   donor_name VARCHAR(100) NOT NULL,
   donor_email VARCHAR(100) NOT NULL,
   donor_address VARCHAR(100) NOT NULL,
