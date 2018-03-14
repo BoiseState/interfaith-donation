@@ -15,6 +15,7 @@ CREATE TABLE donors (
    user_id BIGINT REFERENCES users,
    donor_name VARCHAR(100) NOT NULL,
    donor_email VARCHAR(100) NOT NULL,
+   donor_address VARCHAR(100) NOT NULL,
    donor_city VARCHAR(50) NOT NULL,
    donor_state VARCHAR(25) NOT NULL,
    donor_zip VARCHAR(10) NOT NULL,
