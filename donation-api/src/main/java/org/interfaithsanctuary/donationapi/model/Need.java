@@ -1,5 +1,7 @@
 package org.interfaithsanctuary.donationapi.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -25,6 +27,7 @@ public class Need {
     private String unitOfMeasurement;
 
     @OneToMany (mappedBy = "need", cascade = CascadeType.ALL)
+    @JsonIgnore
     private Set<CalloutNeed> calloutNeeds;
 
     public Long getId() {
