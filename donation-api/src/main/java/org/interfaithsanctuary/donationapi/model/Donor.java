@@ -9,7 +9,7 @@ public class Donor {
     @Id
     @Column(name = "donor_id")
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long donorId;
+    private Long id;
 
     @Column(name = "user_id")
     private Long userId;
@@ -41,12 +41,12 @@ public class Donor {
     @Column(name = "donor_join_date")
     private Date joinDate;
 
-    public Long getDonorId() {
-        return donorId;
+    public Long getId() {
+        return id;
     }
 
-    public void setDonorId(Long donorId) {
-        this.donorId = donorId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public Long getUserId() {
