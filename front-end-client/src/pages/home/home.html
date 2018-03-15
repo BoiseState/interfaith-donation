@@ -10,8 +10,25 @@
 </ion-header>
 
 
-
 <ion-content padding>
+  <ion-item>
+    <ion-label>Callout</ion-label>
+    <ion-select [(ngModel)]="Callout">
+      <ion-option value="Temp1">Temp1</ion-option>
+      <ion-option value="Temp2">Temp2</ion-option>
+      <ion-option value="Temp3">Temp3</ion-option>
+    </ion-select>
+  </ion-item>
+  
+  <ion-item>
+    <ion-label>Sort By</ion-label>
+    <ion-select [(ngModel)]="sortBy">
+      <ion-option value="priority">Priority</ion-option>
+      <ion-option value="chronological">Chronological</ion-option>
+      <ion-option value="fulfillment">Fulfillment</ion-option>
+    </ion-select>
+  </ion-item>
+
   <callout 
     title="Callout Title" 
     text="This is sample callout text, a short description of the callout will go here!"
