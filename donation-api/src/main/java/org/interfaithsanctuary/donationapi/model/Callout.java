@@ -2,6 +2,7 @@ package org.interfaithsanctuary.donationapi.model;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.Set;
 
 @Entity
 @Table(name = "callouts")
@@ -25,6 +26,10 @@ public class Callout {
 
     @Column(name = "callout_description_message")
     private String descriptionMessage;
+
+    @OneToMany(mappedBy = "callout", cascade = CascadeType.ALL)
+    private Set<CalloutNeed> calloutNeeds;
+
 
     public Long getId() {
         return id;
@@ -72,5 +77,13 @@ public class Callout {
 
     public void setDescriptionMessage(String descriptionMessage) {
         this.descriptionMessage = descriptionMessage;
+    }
+
+    public Set<CalloutNeed> getCalloutNeeds() {
+        return calloutNeeds;
+    }
+
+    public void setCalloutNeeds(Set<CalloutNeed> calloutNeeds) {
+        this.calloutNeeds = calloutNeeds;
     }
 }
