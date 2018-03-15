@@ -9,18 +9,18 @@ import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin
 @RestController
-@RequestMapping(path="/needcallouts")
+@RequestMapping(path="/calloutneeds")
 public class CalloutNeedController {
     @Autowired
     private CalloutNeedRepository calloutNeedRepository;
 
     @RequestMapping(method = RequestMethod.GET)
-    public Page<CalloutNeed> getAllNeedCallouts(Pageable pageable) {
+    public Page<CalloutNeed> getAllCalloutNeeds(Pageable pageable) {
         return calloutNeedRepository.findAll(pageable);
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public CalloutNeed getNeedCalloutById(@PathVariable("id") long id) {
+    public CalloutNeed getCalloutNeedById(@PathVariable("id") long id) {
         return calloutNeedRepository.findOne(id);
     }
 }

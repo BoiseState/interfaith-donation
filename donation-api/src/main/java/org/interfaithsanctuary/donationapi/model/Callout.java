@@ -1,5 +1,7 @@
 package org.interfaithsanctuary.donationapi.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.Set;
@@ -28,6 +30,7 @@ public class Callout {
     private String descriptionMessage;
 
     @OneToMany(mappedBy = "callout", cascade = CascadeType.ALL)
+    @JsonIgnore
     private Set<CalloutNeed> calloutNeeds;
 
 
