@@ -1,14 +1,13 @@
 package org.interfaithsanctuary.donationapi.model;
 
 import javax.persistence.*;
-import javax.persistence.criteria.CriteriaBuilder;
 
 @Entity // This tells Hibernate to make a table out of this class
 public class Users {
     @Id
     @Column(name = "user_id")
     @GeneratedValue(strategy=GenerationType.AUTO)
-    private Long userId;
+    private Long id;
 
     @Column(name = "user_name")
     private String userName;
@@ -23,11 +22,11 @@ public class Users {
     private PermissionLevel permissions;
 
     public Long getId() {
-        return userId;
+        return id;
     }
 
     public void setId(Long id) {
-        this.userId = id;
+        this.id = id;
     }
 
     public String getUserName() {

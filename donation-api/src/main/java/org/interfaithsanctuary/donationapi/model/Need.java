@@ -1,6 +1,9 @@
 package org.interfaithsanctuary.donationapi.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "needs")
@@ -9,7 +12,7 @@ public class Need {
     @Id
     @Column(name = "need_id")
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long needId;
+    private Long id;
 
     @Column(name = "need_name")
     private String name;
@@ -23,12 +26,16 @@ public class Need {
     @Column(name = "need_unit_of_measurement")
     private String unitOfMeasurement;
 
-    public Long getNeedId() {
-        return needId;
+    @OneToMany (mappedBy = "need", cascade = CascadeType.ALL)
+    @JsonIgnore
+    private Set<CalloutNeed> calloutNeeds;
+
+    public Long getId() {
+        return id;
     }
 
-    public void setNeedId(Long needId) {
-        this.needId = needId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -55,11 +62,19 @@ public class Need {
         this.description = description;
     }
 
-    public String getUnit() {
+    public String getUnitOfMeasurement() {
         return unitOfMeasurement;
     }
 
-    public void setUnit(String unitOfMeasurement) {
+    public void setUnitOfMeasurement(String unitOfMeasurement) {
         this.unitOfMeasurement = unitOfMeasurement;
+    }
+
+    public Set<CalloutNeed> getCalloutNeeds() {
+        return calloutNeeds;
+    }
+
+    public void setCalloutNeeds(Set<CalloutNeed> calloutNeeds) {
+        this.calloutNeeds = calloutNeeds;
     }
 }

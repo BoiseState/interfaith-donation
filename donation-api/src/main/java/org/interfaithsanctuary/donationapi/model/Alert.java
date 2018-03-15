@@ -11,7 +11,7 @@ public class Alert {
     @Id
     @Column(name = "alert_id")
     @GeneratedValue(strategy=GenerationType.AUTO)
-    private Long alertId;
+    private Long id;
 
     @Column(name = "alert_title")
     private String title;
@@ -35,12 +35,12 @@ public class Alert {
     @Column(name = "last_pushed_date")
     private Date lastPushedDate;
 
-    public Long getAlertId() {
-        return alertId;
+    public Long getId() {
+        return id;
     }
 
-    public void setAlertId(Long alertId) {
-        this.alertId = alertId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getAlert_title() {

@@ -6,22 +6,18 @@
   "helpUrl": "https://dev.eclipse.org/recommenders/community/aeri/v2/help/",
   "feedbackUrl": "https://www.codetrails.com/error-analytics/",
   "aboutUrl": "https://wiki.eclipse.org/EPP/Logging",
-  "submitUrl": "https://dev.eclipse.org/recommenders/community/confess/0.6/reports/",
+  "submitUrl":
+    "https://dev.eclipse.org/recommenders/community/confess/0.6/reports/",
   "maxReportSize": 262144,
-  "problemsUrl": "https://www.eclipse.org/downloads/download.php?r\u003d1\u0026file\u003d/technology/epp/logging/problems.zip",
+  "problemsUrl":
+    "https://www.eclipse.org/downloads/download.php?r\u003d1\u0026file\u003d/technology/epp/logging/problems.zip",
   "problemsTtl": 20160,
-  "interestUrl": "https://dev.eclipse.org/recommenders/community/confess/v2/interest",
+  "interestUrl":
+    "https://dev.eclipse.org/recommenders/community/confess/v2/interest",
   "connectTimeout": 10,
   "socketTimeout": 10,
-  "acceptedProducts": [
-    "org.eclipse.*",
-    "org.fordiac.*"
-  ],
-  "acceptedPlugins": [
-    "org.apache.log4j.*",
-    "org.eclipse.*",
-    "org.fordiac.*"
-  ],
+  "acceptedProducts": ["org.eclipse.*", "org.fordiac.*"],
+  "acceptedPlugins": ["org.apache.log4j.*", "org.eclipse.*", "org.fordiac.*"],
   "acceptedPackages": [
     "ch.qos.*",
     "com.cforcoding.*",
