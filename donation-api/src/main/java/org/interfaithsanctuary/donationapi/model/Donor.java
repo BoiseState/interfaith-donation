@@ -9,16 +9,16 @@ public class Donor {
     @Id
     @Column(name = "donor_id")
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long donorId;
+    private Long donorId;
 
     @Column(name = "user_id")
-    private int userId;
+    private Long userId;
 
     @Column(name = "donor_name")
     private String name;
     
-    @Column(name = "donor_diplayName")
-    private String displayName;
+//    @Column(name = "donor_diplayName")
+//    private String displayName;
 
     @Column(name = "donor_email")
     private String email;
@@ -41,19 +41,19 @@ public class Donor {
     @Column(name = "donor_join_date")
     private Date joinDate;
 
-    public long getDonorId() {
+    public Long getDonorId() {
         return donorId;
     }
 
-    public void setDonorId(int donorId) {
+    public void setDonorId(Long donorId) {
         this.donorId = donorId;
     }
 
-    public int getUserId() {
+    public Long getUserId() {
         return userId;
     }
 
-    public void setUserId(int userId) {
+    public void setUserId(Long userId) {
         this.userId = userId;
     }
 
@@ -65,13 +65,13 @@ public class Donor {
         this.name = name;
     }
     
-    public String getDisplayName() {
-        return displayName;
-    }
+//    public String getDisplayName() {
+//        return displayName;
+//    }
 
-    public void setDisplayName(String displayName) {
-        this.displayName = displayName;
-    }
+//    public void setDisplayName(String displayName) {
+//        this.displayName = displayName;
+//    }
 
     public String getEmail() {
         return email;

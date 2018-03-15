@@ -1,7 +1,6 @@
 package org.interfaithsanctuary.donationapi.model;
 
 import javax.persistence.*;
-import java.util.Date;
 
 @Entity
 @Table(name = "needs")
@@ -10,7 +9,7 @@ public class Need {
     @Id
     @Column(name = "need_id")
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int needId;
+    private Long needId;
 
     @Column(name = "need_name")
     private String name;
@@ -21,30 +20,14 @@ public class Need {
     @Column(name = "need_description")
     private String description;
 
-    @Column(name = "create_date")
-    private Date date;
+    @Column(name = "need_unit_of_measurement")
+    private String unitOfMeasurement;
 
-    @Column(name = "need_quantity")
-    private int quantity;
-
-    @Transient
-    //@Column(name = "need_num_gifts")
-    private int numGifts;
-
-    @Column(name = "need_unit")
-    private String unit;
-
-    @Column(name = "callout_id")
-    private int calloutId;
-
-    @Column
-    private boolean active;
-
-    public int getNeedId() {
+    public Long getNeedId() {
         return needId;
     }
 
-    public void setNeedId(int needId) {
+    public void setNeedId(Long needId) {
         this.needId = needId;
     }
 
@@ -72,51 +55,11 @@ public class Need {
         this.description = description;
     }
 
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
-    }
-
-    public int getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
-
-    public int getNumGifts() {
-        return numGifts;
-    }
-
-    public void setNumGifts(int numGifts) {
-        this.numGifts = numGifts;
-    }
-
     public String getUnit() {
-        return unit;
+        return unitOfMeasurement;
     }
 
-    public void setUnit(String unit) {
-        this.unit = unit;
-    }
-
-    public int getCalloutId() {
-        return calloutId;
-    }
-
-    public void setCalloutId(int calloutId) {
-        this.calloutId = calloutId;
-    }
-
-    public boolean isActive() {
-        return active;
-    }
-
-    public void setActive(boolean active) {
-        this.active = active;
+    public void setUnit(String unitOfMeasurement) {
+        this.unitOfMeasurement = unitOfMeasurement;
     }
 }
