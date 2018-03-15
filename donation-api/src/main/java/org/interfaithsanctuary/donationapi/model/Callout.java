@@ -6,6 +6,7 @@ import java.util.Date;
 @Entity
 @Table(name = "callouts")
 public class Callout {
+
     @Id
     @Column(name = "callout_id")
     @GeneratedValue(strategy = GenerationType.AUTO)

@@ -1,11 +1,13 @@
 package org.interfaithsanctuary.donationapi.model;
 
+
 import javax.persistence.*;
 import java.util.Date;
 
 @Entity
 @Table(name = "alerts")
 public class Alert {
+
     @Id
     @Column(name = "alert_id")
     @GeneratedValue(strategy=GenerationType.AUTO)

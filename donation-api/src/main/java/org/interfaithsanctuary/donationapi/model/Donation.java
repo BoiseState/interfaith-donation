@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.Date;
 
 /**
- * This object describes the many-many relationship that a Need can have with a Callout.
+ * This object describes the many-many relationship that a Donation can have with a Callout.
  */
 @Entity
 @Table(name = "donations")
