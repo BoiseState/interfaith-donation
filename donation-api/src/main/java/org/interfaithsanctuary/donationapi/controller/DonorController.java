@@ -7,15 +7,18 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
-@CrossOrigin(origins = "http://localhost:8080", maxAge = 3600)
+@CrossOrigin // (origins = "http://localhost:8080/*")
 @RestController
 @RequestMapping("/donors")
 public class DonorController {
     @Autowired
     DonorRepository donorRepository;
 
+
+    // @GetMapping("/donors")
     @RequestMapping(method = RequestMethod.GET)
     public @ResponseBody Page<Donor> getAllDonors(Pageable pageable) {
+        System.out.println("in DonorController.getAllDonors()");
         return donorRepository.findAll(pageable);
     }
 

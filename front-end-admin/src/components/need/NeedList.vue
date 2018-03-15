@@ -25,6 +25,13 @@
           </tr>
           </thead>
           <tbody id ="fullNeedTBody">
+             <tr v-for="need in needs" :key="need.NeedId">
+          <td>{{need.name}}</td>
+          <td>{{need}}</td>
+          <!-- <td><router-link class="btn btn-default" :to="{ path: '/donor/:id', params: { id: donor.donorId } }">Edit Donor</router-link></td> -->
+          <td><router-link :to="{ name: 'needInfo', params: { id: need.NeedId }}">edit</router-link></td>
+          <!-- <td><button v-on:click="editDonor(donor.donorId)">test</button></td> -->
+        </tr>
           </tbody>
         </table>
       </div>
@@ -33,9 +40,31 @@
 </template>
 
 <script>
-  export default {
-    name: "need-list"
+import { getAllNeeds } from '../../services/need-service';
+
+import router from '../../router/index';
+
+export default {
+  name: 'need-list',
+  data() {
+    return {
+      needs: []
+    };
+  },
+  created() {
+    getAllNeeds().then(needs => {
+      this.needs = needs;
+    });
+  },
+  methods: {
+    editNeed(NeedId) {
+      router.push({
+        name: 'NeedInfo',
+        params: { id: Number.parseInt(NeedId) }
+      });
+    }
   }
+};
 </script>
 
 <style scoped>
