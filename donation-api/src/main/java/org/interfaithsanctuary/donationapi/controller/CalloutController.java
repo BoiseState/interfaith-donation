@@ -14,7 +14,7 @@ import javax.xml.ws.Response;
 import java.net.URI;
 import java.util.Optional;
 
-
+@CrossOrigin(origins = "http://localhost:8081", maxAge = 3600)
 @RestController
 @RequestMapping(path="/callouts")
 public class CalloutController {

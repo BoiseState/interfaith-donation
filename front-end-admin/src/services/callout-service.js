@@ -9,8 +9,8 @@ export const createCallout = callout => {
 };
 
 export const getAllCallouts = async () => {
-  let callouts = await getJSON(BASE_API_ROUTE);
-  return callouts._embedded.callouts;
+  let callouts = await getJSON(BASE_API_ROUTE + '/all');
+  return callouts.content;
 };
 
 export const getCalloutById = async id => {
