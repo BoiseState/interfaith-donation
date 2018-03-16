@@ -15,8 +15,8 @@ public class DonorController {
     DonorRepository donorRepository;
 
 
-    // @GetMapping("/donors")
-    @RequestMapping(method = RequestMethod.GET)
+     @GetMapping("/all")
+    //@RequestMapping(method = RequestMethod.GET)
     public @ResponseBody Page<Donor> getAllDonors(Pageable pageable) {
         System.out.println("in DonorController.getAllDonors()");
         return donorRepository.findAll(pageable);

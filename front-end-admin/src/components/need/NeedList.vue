@@ -16,19 +16,22 @@
           <thead>
           <tr>
             <th>Need</th>
-            <th>Callout</th>
-            <th>Quantity Needed</th>
-            <th>Quantity Given</th>
-            <th>Link</th>
-            <th>Date Created</th>
-            <th>Status</th>
+            <th>Description</th>
+            <th>Unit of Measure</th>
+            <th>Id</th>
+            <th>JSON</th>
+
           </tr>
           </thead>
           <tbody id ="fullNeedTBody">
              <tr v-for="need in needs" :key="need.id">
           <td>{{need.name}}</td>
+          <td>{{need.description}}</td>
+          <td>{{need.unitOfMeasurement}}</td>
+          <td>{{ getId(need._links.self.href) }}</td>
           <td>{{need}}</td>
-          <td><router-link :to="{ name: 'needInfo', params: { id: need.id }}">edit</router-link></td>
+          <!-- <td><router-link :to="{ name: 'need information', params: { id: need.id }}">edit</router-link></td> -->
+          <td><router-link :to="{ name: 'need information', params: { id: getId(need._links.self.href) }}">edit</router-link></td>
         </tr>
           </tbody>
         </table>
@@ -60,6 +63,12 @@ export default {
         name: 'NeedInfo',
         params: { id: Number.parseInt(NeedId) }
       });
+    },
+    getId(link) {
+      if (typeof link === 'string') {
+        return parseInt(link.slice(-1));
+        // return link.slice(-1);
+      }
     }
   }
 };
