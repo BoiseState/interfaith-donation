@@ -9,8 +9,8 @@ export const createDonor = donor => {
 };
 
 export const getAllDonors = async () => {
-  let donors = await getJSON(BASE_API_ROUTE);
-  return donors._embedded.donors;
+  let donors = await getJSON(BASE_API_ROUTE + '/all');
+  return donors.content;
 };
 
 export const getDonorById = async id => {
