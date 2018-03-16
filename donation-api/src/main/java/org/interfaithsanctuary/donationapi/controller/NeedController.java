@@ -55,7 +55,6 @@ public class NeedController {
             return ResponseEntity.notFound().build();
         }
 
-//        need.setNeedId(id);
         need.setId(id);
 
         needRepository.save(need);

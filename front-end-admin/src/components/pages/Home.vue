@@ -69,12 +69,43 @@
 </template>
 
 <script>
+import { getCalloutById } from '../../services/callout-service';
+import { getDonationById } from '../../services/donation-service';
+import { getCalloutNeedById } from '../../services/calloutneed-service';
+import { getDonorById } from '../../services/donor-service';
+import { getUserById } from '../../services/user-service';
+import { getAlertById } from '../../services/alert-service';
+import { getAllNeeds } from '../../services/need-service';
+
 export default {
   name: 'home',
-  data: () => {
+  data() {
     return {
       loggedIn: true
     };
+  },
+  created() {
+    getCalloutById(2).then(callouts => {
+      console.log(callouts);
+    });
+    getDonationById(2).then(donations => {
+      console.log(donations);
+    });
+    getCalloutNeedById(2).then(calloutneeds => {
+      console.log(calloutneeds);
+    });
+    getDonorById(2).then(donors => {
+      console.log(donors);
+    });
+    getAllNeeds().then(needs => {
+      console.log(needs);
+    });
+    getAlertById(2).then(alerts => {
+      console.log(alerts);
+    });
+    getUserById(2).then(users => {
+      console.log(users);
+    });
   }
 };
 </script>
