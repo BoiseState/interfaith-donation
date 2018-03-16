@@ -1,4 +1,4 @@
-import {getJSON, postJSON, patchJSON} from './helpers';
+import { getJSON, postJSON, patchJSON } from './helpers';
 
 const BASE_API_ROUTE = 'alerts';
 
@@ -20,4 +20,3 @@ export const getAlertById = async id => {
 export const updateAlert = async alert => {
   return patchJSON(`${BASE_API_ROUTE}/${alert.id}`, alert);
 };
-

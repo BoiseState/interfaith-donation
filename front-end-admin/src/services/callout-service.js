@@ -15,7 +15,7 @@ export const getAllCallouts = async () => {
 
 export const getCalloutById = async id => {
   let callout = await getJSON(`${BASE_API_ROUTE}/${id}`);
-  npjnpmreturn callout;
+  return callout;
 };
 
 export const updateCallout = async callout => {

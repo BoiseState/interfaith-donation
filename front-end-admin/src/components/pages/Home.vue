@@ -72,9 +72,13 @@
 import { getAllCallouts } from '../../services/callout-service';
 import { getAllDonations } from '../../services/donation-service';
 import { getAllCalloutNeeds } from '../../services/calloutneed-service';
+import { getAllDonors } from '../../services/donor-service';
+import { getAllUsers } from '../../services/user-service';
+import { getAllAlerts } from '../../services/alert-service';
+import { getAllNeeds } from '../../services/need-service';
 
 export default {
-  name: 'callout-info',
+  name: 'home',
   data() {
     return {
       loggedIn: true
@@ -89,6 +93,18 @@ export default {
     });
     getAllCalloutNeeds().then(calloutneeds => {
       console.log(calloutneeds);
+    });
+    getAllDonors().then(donors => {
+      console.log(donors);
+    });
+    getAllNeeds().then(needs => {
+      console.log(needs);
+    });
+    getAllAlerts().then(alerts => {
+      console.log(alerts);
+    });
+    getAllUsers().then(users => {
+      console.log(users);
     });
   }
 };
