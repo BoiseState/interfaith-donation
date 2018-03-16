@@ -1,7 +1,10 @@
 package org.interfaithsanctuary.donationapi.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Date;
+import java.util.Set;
 
 @Entity
 @Table(name = "donors")
@@ -16,9 +19,6 @@ public class Donor {
 
     @Column(name = "donor_name")
     private String name;
-    
-//    @Column(name = "donor_diplayName")
-//    private String displayName;
 
     @Column(name = "donor_email")
     private String email;
@@ -40,6 +40,10 @@ public class Donor {
 
     @Column(name = "donor_join_date")
     private Date joinDate;
+
+    @OneToMany(mappedBy = "donor", cascade = CascadeType.ALL)
+    @JsonIgnore
+    private Set<Donation> donations;
 
     public Long getId() {
         return id;
@@ -64,14 +68,6 @@ public class Donor {
     public void setName(String name) {
         this.name = name;
     }
-    
-//    public String getDisplayName() {
-//        return displayName;
-//    }
-
-//    public void setDisplayName(String displayName) {
-//        this.displayName = displayName;
-//    }
 
     public String getEmail() {
         return email;
@@ -127,6 +123,14 @@ public class Donor {
 
     public void setJoinDate(Date joinDate) {
         this.joinDate = joinDate;
+    }
+
+    public Set<Donation> getDonations() {
+        return donations;
+    }
+
+    public void setDonations(Set<Donation> donations) {
+        this.donations = donations;
     }
 }
 

@@ -9,6 +9,7 @@ import java.util.Set;
 @Entity
 @Table(name = "callouts")
 public class Callout {
+
     @Id
     @Column(name = "callout_id")
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -89,4 +90,5 @@ public class Callout {
     public void setCalloutNeeds(Set<CalloutNeed> calloutNeeds) {
         this.calloutNeeds = calloutNeeds;
     }
+
 }

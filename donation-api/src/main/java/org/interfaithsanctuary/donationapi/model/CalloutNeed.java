@@ -1,6 +1,9 @@
 package org.interfaithsanctuary.donationapi.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
+import java.util.Set;
 
 /**
  * This object describes the many-many relationship that a Need can have with a Callout.
@@ -27,6 +30,10 @@ public class CalloutNeed {
 
     @Column(name = "calloutneed_quantity")
     private int quantity;
+
+    @OneToMany(mappedBy = "calloutNeed", cascade = CascadeType.ALL)
+    @JsonIgnore
+    private Set<Donation> donations;
 
     public long getId() {
         return id;
@@ -66,5 +73,13 @@ public class CalloutNeed {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+    }
+
+    public Set<Donation> getDonations() {
+        return donations;
+    }
+
+    public void setDonations(Set<Donation> donations) {
+        this.donations = donations;
     }
 }
