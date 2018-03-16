@@ -33,7 +33,7 @@ public class NeedController {
         Need savedNeed = needRepository.save(need);
 
         URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/id").
-                buildAndExpand(savedNeed.getNeedId()).toUri();
+                buildAndExpand(savedNeed.getId()).toUri();
 
         return ResponseEntity.created(location).body(savedNeed);
     }
@@ -51,7 +51,7 @@ public class NeedController {
             return ResponseEntity.notFound().build();
         }
 
-        need.setNeedId(id);
+        need.setId(id);
 
         needRepository.save(need);
 
