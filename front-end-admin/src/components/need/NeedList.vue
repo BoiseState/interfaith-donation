@@ -25,12 +25,10 @@
           </tr>
           </thead>
           <tbody id ="fullNeedTBody">
-             <tr v-for="need in needs" :key="need.NeedId">
+             <tr v-for="need in needs" :key="need.id">
           <td>{{need.name}}</td>
           <td>{{need}}</td>
-          <!-- <td><router-link class="btn btn-default" :to="{ path: '/donor/:id', params: { id: donor.donorId } }">Edit Donor</router-link></td> -->
-          <td><router-link :to="{ name: 'needInfo', params: { id: need.NeedId }}">edit</router-link></td>
-          <!-- <td><button v-on:click="editDonor(donor.donorId)">test</button></td> -->
+          <td><router-link :to="{ name: 'needInfo', params: { id: need.id }}">edit</router-link></td>
         </tr>
           </tbody>
         </table>
