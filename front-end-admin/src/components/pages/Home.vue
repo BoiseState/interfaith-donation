@@ -86,13 +86,13 @@ export default {
   },
   created() {
     getCalloutById(2).then(callouts => {
-      console.log(callouts);
+      console.log('callouts', callouts);
     });
     getAllDonations().then(donations => {
-      console.log(donations);
+      console.log('donations', donations);
     });
     getAllCalloutNeeds().then(calloutneeds => {
-      console.log(calloutneeds);
+      console.log('calloutneeds', calloutneeds);
     });
     getAllDonors().then(donors => {
       console.log(donors);
