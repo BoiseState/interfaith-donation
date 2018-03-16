@@ -7,14 +7,14 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
-@CrossOrigin
+@CrossOrigin(origins = "http://localhost:8081", maxAge = 3600)
 @RestController
 @RequestMapping(path="/calloutneeds")
 public class CalloutNeedController {
     @Autowired
     private CalloutNeedRepository calloutNeedRepository;
 
-    @RequestMapping(method = RequestMethod.GET)
+    @GetMapping("/all")
     public Page<CalloutNeed> getAllCalloutNeeds(Pageable pageable) {
         return calloutNeedRepository.findAll(pageable);
     }

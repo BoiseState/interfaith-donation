@@ -7,8 +7,8 @@ export const createAlert = async alert => {
 };
 
 export const getAllAlerts = () => {
-  getJSON(BASE_API_ROUTE).then(alerts => {
-    return alerts;
+  getJSON(BASE_API_ROUTE + '/all').then(alerts => {
+    return alerts.content;
   });
 };
 

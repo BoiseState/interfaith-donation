@@ -9,7 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.*;
 
-@CrossOrigin
+@CrossOrigin(origins = "http://localhost:8081", maxAge = 3600)
 @RestController
 @RequestMapping(path="/users")
 public class UserController {
@@ -31,8 +31,7 @@ public class UserController {
 //        userRepository.save(n);
 //        return "Saved";
 //    }
-    
-    @RequestMapping(method = RequestMethod.GET)
+    @GetMapping("/all")
     public @ResponseBody Page<Users> getAllUsers(Pageable pageable) {
         return userRepository.findAll(pageable);
     }
