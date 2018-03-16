@@ -104,7 +104,7 @@ export default {
       console.log('alerts', alerts);
     });
     getAllUsers().then(users => {
-      console.log(users);
+      console.log('users', users);
     });
   }
 };

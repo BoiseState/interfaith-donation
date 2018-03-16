@@ -10,20 +10,20 @@
         <thead>
         <tr>
           <th>Title</th>
-          <th>URL</th>
-          <th>Last Updated</th>
-          <th>Active Status</th>
-          <th>Pinned Status</th>
+          <!--<th>URL</th>-->
+          <th>Created Date</th>
+          <th>Valid Until</th>
+          <th>Active</th>
           <th></th>
         </tr>
         </thead>
         <tbody id="calloutTBody">
         <tr v-for="callout in callouts" :key="callout.id">
-          <td>{{callout.title}}</td>
-          <td><a v-bind:href="callout.url">{{callout.url}}</a></td>
-          <td>{{formatDate(callout.updateDate)}}</td>
+          <td>{{callout.name}}</td>
+          <!--<td><a v-bind:href="callout.url">{{callout.url}}</a></td>-->
+          <td>{{formatDate(callout.createdDate)}}</td>
+          <td>{{formatDate(callout.effectiveDate)}}</td>
           <td>{{callout.active}}</td>
-          <td>{{callout.pinned}}</td>
           <td><router-link :to="{ name: 'callout', params: { id: callout.calloutId }}" class="btn btn-primary" role="button">Edit</router-link></td>
         </tr>
         </tbody>
@@ -33,16 +33,16 @@
 </template>
 
 <script>
-import {getAllCallouts} from '../../services/callout-service';
+import { getAllCallouts } from '../../services/callout-service';
 
 export default {
   name: 'callout-info',
-  data () {
+  data() {
     return {
       callouts: []
     };
   },
-  created () {
+  created() {
     getAllCallouts().then(callouts => {
       this.callouts = callouts;
     });
