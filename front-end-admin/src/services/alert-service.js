@@ -2,14 +2,15 @@ import { getJSON, postJSON, patchJSON } from './helpers';
 
 const BASE_API_ROUTE = 'alerts';
 
-export const createAlert = async alert => {
-  return postJSON(BASE_API_ROUTE, alert);
+export const createCallout = alert => {
+  postJSON(BASE_API_ROUTE, alert)
+    .catch(error => console.error('Error:', error))
+    .then(response => console.log('Success:', response));
 };
 
-export const getAllAlerts = () => {
-  getJSON(BASE_API_ROUTE + '/all').then(alerts => {
-    return alerts.content;
-  });
+export const getAllAlerts = async () => {
+  let alerts = await getJSON(BASE_API_ROUTE + '/all');
+  return alerts.content;
 };
 
 export const getAlertById = async id => {
