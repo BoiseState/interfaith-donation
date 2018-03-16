@@ -1,6 +1,7 @@
 package org.interfaithsanctuary.donationapi.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -31,7 +32,7 @@ public class Callout {
     private String descriptionMessage;
 
     @OneToMany(mappedBy = "callout", cascade = CascadeType.ALL)
-    @JsonIgnore
+    @JsonManagedReference
     private Set<CalloutNeed> calloutNeeds;
 
 

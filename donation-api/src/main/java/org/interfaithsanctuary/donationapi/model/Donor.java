@@ -1,6 +1,7 @@
 package org.interfaithsanctuary.donationapi.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -42,7 +43,7 @@ public class Donor {
     private Date joinDate;
 
     @OneToMany(mappedBy = "donor", cascade = CascadeType.ALL)
-    @JsonIgnore
+    @JsonManagedReference
     private Set<Donation> donations;
 
     public Long getId() {

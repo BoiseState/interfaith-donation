@@ -69,12 +69,12 @@
 </template>
 
 <script>
-import { getAllCallouts } from '../../services/callout-service';
-import { getAllDonations } from '../../services/donation-service';
-import { getAllCalloutNeeds } from '../../services/calloutneed-service';
-import { getAllDonors } from '../../services/donor-service';
-import { getAllUsers } from '../../services/user-service';
-import { getAllAlerts } from '../../services/alert-service';
+import { getCalloutById } from '../../services/callout-service';
+import { getDonationById } from '../../services/donation-service';
+import { getCalloutNeedById } from '../../services/calloutneed-service';
+import { getDonorById } from '../../services/donor-service';
+import { getUserById } from '../../services/user-service';
+import { getAlertById } from '../../services/alert-service';
 import { getAllNeeds } from '../../services/need-service';
 
 export default {
@@ -85,25 +85,25 @@ export default {
     };
   },
   created() {
-    getAllCallouts().then(callouts => {
+    getCalloutById(2).then(callouts => {
       console.log(callouts);
     });
-    getAllDonations().then(donations => {
+    getDonationById(2).then(donations => {
       console.log(donations);
     });
-    getAllCalloutNeeds().then(calloutneeds => {
+    getCalloutNeedById(2).then(calloutneeds => {
       console.log(calloutneeds);
     });
-    getAllDonors().then(donors => {
+    getDonorById(2).then(donors => {
       console.log(donors);
     });
     getAllNeeds().then(needs => {
       console.log(needs);
     });
-    getAllAlerts().then(alerts => {
+    getAlertById(2).then(alerts => {
       console.log(alerts);
     });
-    getAllUsers().then(users => {
+    getUserById(2).then(users => {
       console.log(users);
     });
   }
