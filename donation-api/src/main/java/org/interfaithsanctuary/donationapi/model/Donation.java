@@ -7,7 +7,7 @@ import java.util.Date;
  * This object describes the many-many relationship that a Donation can have with a Callout.
  */
 @Entity
-@Table(name = "donations")  
+@Table(name = "donations")
 public class Donation {
 
     @Id
@@ -27,7 +27,7 @@ public class Donation {
     private Date date;
 
     @Column(name = "donation_quantity")
-    private int quantity;
+    private Integer quantity;
 
     public Long getId() {
         return id;
@@ -61,11 +61,11 @@ public class Donation {
         this.date = date;
     }
 
-    public int getQuantity() {
+    public Integer getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(int quantity) {
+    public void setQuantity(Integer quantity) {
         this.quantity = quantity;
     }
 }
