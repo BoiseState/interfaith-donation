@@ -69,12 +69,27 @@
 </template>
 
 <script>
+import { getAllCallouts } from '../../services/callout-service';
+import { getAllDonations } from '../../services/donation-service';
+import { getAllCalloutNeeds } from '../../services/calloutneed-service';
+
 export default {
-  name: 'home',
-  data: () => {
+  name: 'callout-info',
+  data() {
     return {
       loggedIn: true
     };
+  },
+  created() {
+    getAllCallouts().then(callouts => {
+      console.log(callouts);
+    });
+    getAllDonations().then(donations => {
+      console.log(donations);
+    });
+    getAllCalloutNeeds().then(calloutneeds => {
+      console.log(calloutneeds);
+    });
   }
 };
 </script>
