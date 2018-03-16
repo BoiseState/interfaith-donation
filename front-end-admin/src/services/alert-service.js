@@ -6,10 +6,12 @@ export const createAlert = async alert => {
   return postJSON(BASE_API_ROUTE, alert);
 };
 
-export const getAllAlerts = () => {
-  getJSON(BASE_API_ROUTE + '/all').then(alerts => {
-    return alerts.content;
-  });
+export const getAllAlerts = async () => {
+  // getJSON(BASE_API_ROUTE + '/all').then(alerts => {
+  //   return alerts.content;
+  // });
+  let alerts = await getJSON(BASE_API_ROUTE + '/all');
+  return alerts.content;
 };
 
 export const getAlertById = async id => {
