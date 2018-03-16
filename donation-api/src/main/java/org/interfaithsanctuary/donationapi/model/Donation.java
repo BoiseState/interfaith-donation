@@ -1,5 +1,7 @@
 package org.interfaithsanctuary.donationapi.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -17,10 +19,12 @@ public class Donation {
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="calloutneed_id")
+    @JsonBackReference
     private CalloutNeed calloutNeed;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="donor_id")
+    @JsonBackReference
     private Donor donor;
 
     @Column(name = "donation_date")

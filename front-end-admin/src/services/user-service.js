@@ -1,14 +1,16 @@
-import {getJSON, postJSON, patchJSON} from './helpers';
+import { getJSON, postJSON, patchJSON } from './helpers';
 
 const BASE_API_ROUTE = '/users';
 
 export const createUser = user => {
-  postJSON(BASE_API_ROUTE, user).catch(error => console.error('Error:', error)).then(response => console.log('Success:', response));
+  postJSON(BASE_API_ROUTE, user)
+    .catch(error => console.error('Error:', error))
+    .then(response => console.log('Success:', response));
 };
 
 export const getAllUsers = async () => {
-  let users = await getJSON(BASE_API_ROUTE);
-  return users._embedded.users;
+  let users = await getJSON(BASE_API_ROUTE + '/all');
+  return users.content;
 };
 
 export const getUserById = async id => {
