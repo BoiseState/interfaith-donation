@@ -32,9 +32,6 @@ public class NeedController {
     public ResponseEntity<Need> createNeed(@RequestBody Need need) {
         Need savedNeed = needRepository.save(need);
 
-//        URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/id").
-//                buildAndExpand(savedNeed.getNeedId()).toUri();
-
         URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/id").
                 buildAndExpand(savedNeed.getId()).toUri();
 

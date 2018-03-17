@@ -20,7 +20,6 @@
             <th>Unit of Measure</th>
             <th>Id</th>
             <th>JSON</th>
-
           </tr>
           </thead>
           <tbody id ="fullNeedTBody">
@@ -30,7 +29,6 @@
           <td>{{need.unitOfMeasurement}}</td>
           <td>{{need.id}}</td>
           <td>{{need}}</td>
-          <!-- <td><router-link :to="{ name: 'need information', params: { id: need.id }}">edit</router-link></td> -->
           <td><router-link :to="{ name: 'need information', params: { id: need.id }}">edit</router-link></td>
         </tr>
           </tbody>
@@ -63,13 +61,7 @@ export default {
         name: 'NeedInfo',
         params: { id: Number.parseInt(NeedId) }
       });
-    } // ,
-    // getId(link) {
-    //   if (typeof link === 'string') {
-    //     return parseInt(link.slice(-1));
-    //     // return link.slice(-1);
-    //   }
-    // }
+    }
   }
 };
 </script>

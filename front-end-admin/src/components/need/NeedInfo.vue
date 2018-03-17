@@ -27,10 +27,6 @@
             <label class="control-label col-sm-2">Units:</label>
             <input name="need_unit" type="text" width="50" v-model="need.unit">
           </div>
-          <div class="form-group">
-            <label class="control-label col-sm-4>">Associated Callout: </label>
-            <!-- <a href="callouts/{{callout_id}}">link</a> -->
-          </div>
             <div class="form-group">
               <label class="control-label col-sm-4>">Status: </label>
               <!-- <input type="checkbox" name="active" checked="{{active}}">Active? -->
