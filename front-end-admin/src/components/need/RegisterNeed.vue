@@ -2,7 +2,7 @@
   <div class="addneed">
     <div class="jumbotron">
       <div class="container">
-        <h2>Register Needs</h2>
+        <h2>Register Need</h2>
         <form class="form-horizontal" action="/createneed" method="POST">
           <div class="form-group">
             <label class="control-label col-sm-2">Need Name:</label>
@@ -24,11 +24,12 @@
             <label class="control-label col-sm-2">Need Description: <i>(optional)</i></label>
             <input name="need_description" type="text" width="50">
           </div>
-          <div class="form-group">
+          <!-- <div class="form-group">
             <label class="control-label col-sm-2>">Associated Callout (optional)</label>
             <select name="callout_id">
               <option value="{{callout.callout_id}}">{{ callout.callout_title }} - {{callout.update_date}}</option>
-            </select> </div>
+            </select>
+            </div> -->
           <div class="form-group">
             <label class="control-label col-sm-2>">Status: </label>
             <input type="checkbox" name="active" value="active">Active?<br></div>
@@ -42,9 +43,9 @@
 </template>
 
 <script>
-  export default {
-    name: "register-need"
-  }
+export default {
+  name: 'register-need'
+};
 </script>
 
 <style scoped>

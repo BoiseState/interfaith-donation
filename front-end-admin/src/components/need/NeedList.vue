@@ -2,7 +2,8 @@
   <div class="needs">
     <div class="jumbotron">
       <div class="container">
-        <p><a class="btn btn-default" href="${pageContext.request.contextPath}/registerneed.jsp" role="button">Add Need&raquo;</a></p>
+        <!-- <p><a class="btn btn-default" href="${pageContext.request.contextPath}/registerneed.jsp" role="button">Add Need&raquo;</a></p> -->
+        <router-link class="btn btn-default" to="/register-donor">Add Donor&raquo;</router-link>
         <form class="form-horizontal" action="/searchneed" method="GET">
           <div class="form-group">
             <label class="control-label col-sm-2">Search:</label>

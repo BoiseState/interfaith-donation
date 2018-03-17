@@ -13,6 +13,7 @@ import About from '@/components/pages/About';
 import RegisterUser from '@/components/user/RegisterUser';
 import NeedInfo from '@/components/need/NeedInfo';
 import NeedList from '@/components/need/NeedList';
+import RegisterNeed from '@/components/need/RegisterNeed';
 
 Vue.use(Router);
 
@@ -74,6 +75,11 @@ export default new Router({
       path: '/needs',
       name: 'list of needs',
       component: NeedList
+    },
+    {
+      path: '/register-need',
+      name: 'register need',
+      component: RegisterNeed
     }
   ]
 });
