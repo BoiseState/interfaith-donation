@@ -9,10 +9,6 @@
           <label class="control-label col-sm-2">Title:</label>
           <input v-model="callout.name" type="text" width="50" required>
         </div>
-        <!--<div class="form-group">-->
-          <!--<label class="control-label col-sm-2">URL: <i>(optional)</i></label>-->
-          <!--<input v-model="callout.url" type="text" width="50">-->
-        <!--</div>-->
         <div class="form-group">
           <label class="control-label col-sm-2">Description:</label>
           <textarea rows="4" cols="50" v-model="callout.descriptionMessage"></textarea>
@@ -33,18 +29,14 @@
           <tbody id="calloutNeedTBody">
           <tr v-for="calloutNeed in calloutNeeds" :key="calloutNeed.id">
             <td>{{calloutNeed.need.name}}</td>
-            <!--<td><a v-bind:href="callout.url">{{callout.url}}</a></td>-->
-            <td>{{calloutNeed.quantity}}</td>
-            <!--<td>{{formatDate(callout.effectiveDate)}}</td>-->
-            <td><input type="checkbox" v-model="callout.active"><br></td>
-            <!--<td><router-link :to="{ name: 'callout', params: { id: callout.calloutId }}" class="btn btn-primary" role="button">Edit</router-link></td>-->
+            <td><input type="text" v-model="calloutNeed.quantity"></td>
+            <td><input type="checkbox" v-model="calloutNeed.active"><br></td>
           </tr>
           </tbody>
         </table>
-        <!--<div class="form-group">-->
-          <!--<label class="control-label col-sm-4>">Status: </label>-->
-          <!--<input type="checkbox" v-model="callout.pinned">Pinned?<br>-->
-        <!--</div>-->
+        <button v-on:click="addNeed()" type="button">Add New Need</button>
+        <br>
+        <br>
         <br>
         <button type="submit">Update Callout</button>
       </form>
@@ -81,11 +73,19 @@ export default {
   methods: {
     onFormSubmit() {
       updateCallout(this.callout);
+    },
+    addNeed() {
+      window.open('https://www.w3schools.com');
     }
   }
 };
 </script>
 
 <style scoped>
-
+table td {
+  padding: 0px 10px 0px 10px; /* top right bottom left */
+}
+table th {
+  padding: 0px 10px 0px 10px; /* top right bottom left */
+}
 </style>
