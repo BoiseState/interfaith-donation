@@ -25,6 +25,7 @@ module.exports = {
     // allow debugger during development
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
     // allow semi-colons
-    semi: [2, 'always']
+    semi: [2, 'always'],
+    'space-before-function-paren': 0
   }
 };

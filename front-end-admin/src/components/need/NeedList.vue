@@ -1,30 +1,39 @@
 <template>
-  <div class="jumbotron">
-    <div class="container">
-      <router-link class="btn btn-default" to="/register-need">Add Needs&raquo;</router-link>
-      <!-- TODO: Add form for searching through needs -->
-      <h3>Needs</h3>
-      <table class="table">
-        <thead>
-        <tr>
-          <th>Need Name</th>
-          <th>Amazon Link</th>
-          <th>Description</th>
-          <th>Units</th>
-        </tr>
-        </thead>
-        <tbody id="fullNeedTBody">
-        <tr v-for="need in needs" :key="need.id">
+  <div class="needs">
+    <div class="jumbotron">
+      <div class="container">
+        <p><a class="btn btn-default" href="${pageContext.request.contextPath}/registerneed.jsp" role="button">Add Need&raquo;</a></p>
+        <form class="form-horizontal" action="/searchneed" method="GET">
+          <div class="form-group">
+            <label class="control-label col-sm-2">Search:</label>
+            <input name="searchterm" type="text" width="50">
+            <button type="submit">Search</button>
+          </div>
+        </form>
+        <br>
+        <h3>Needs</h3>
+        <table class="table">
+          <thead>
+          <tr>
+            <th>Need</th>
+            <th>Description</th>
+            <th>Unit of Measure</th>
+            <th>Id</th>
+            <th>JSON</th>
+          </tr>
+          </thead>
+          <tbody id ="fullNeedTBody">
+             <tr v-for="need in needs" :key="need.id">
           <td>{{need.name}}</td>
-          <td>{{need.url}}</td>
           <td>{{need.description}}</td>
           <td>{{need.unitOfMeasurement}}</td>
-          <!-- <td><router-link class="btn btn-default" :to="{ path: '/donor/:id', params: { id: donor.donorId } }">Edit Donor</router-link></td> -->
-          <td><router-link :to="{ name: 'needInfo', params: { id: need.id }}">edit</router-link></td>
-          <!-- <td><button v-on:click="editDonor(donor.donorId)">test</button></td> -->
+          <td>{{need.id}}</td>
+          <td>{{need}}</td>
+          <td><router-link :to="{ name: 'need information', params: { id: need.id }}">edit</router-link></td>
         </tr>
-        </tbody>
-      </table>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 </template>
@@ -47,10 +56,17 @@ export default {
     });
   },
   methods: {
+<<<<<<< HEAD
     editNeed(needId) {
       router.push({
         name: 'needInfo',
         params: { id: Number.parseInt(needId) }
+=======
+    editNeed(NeedId) {
+      router.push({
+        name: 'NeedInfo',
+        params: { id: Number.parseInt(NeedId) }
+>>>>>>> develop
       });
     }
   }

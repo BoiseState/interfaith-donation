@@ -11,7 +11,7 @@ import UserInfo from '@/components/user/UserInfo';
 import UserList from '@/components/user/UserList';
 import About from '@/components/pages/About';
 import RegisterUser from '@/components/user/RegisterUser';
-// import NeedInfo from '@/components/need/NeedInfo';
+import NeedInfo from '@/components/need/NeedInfo';
 import NeedList from '@/components/need/NeedList';
 
 Vue.use(Router);
@@ -65,11 +65,11 @@ export default new Router({
       path: '/register-user',
       component: RegisterUser
     },
-    // {
-    //   path: '/need/:id',
-    //   name: 'need information',
-    //   component: NeedInfo
-    // },
+    {
+      path: '/need/:id',
+      name: 'need information',
+      component: NeedInfo
+    },
     {
       path: '/needs',
       name: 'list of needs',
