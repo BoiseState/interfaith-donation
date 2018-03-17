@@ -28,10 +28,10 @@
           <td>{{need.name}}</td>
           <td>{{need.description}}</td>
           <td>{{need.unitOfMeasurement}}</td>
-          <td>{{ getId(need._links.self.href) }}</td>
+          <td>{{need.id}}</td>
           <td>{{need}}</td>
           <!-- <td><router-link :to="{ name: 'need information', params: { id: need.id }}">edit</router-link></td> -->
-          <td><router-link :to="{ name: 'need information', params: { id: getId(need._links.self.href) }}">edit</router-link></td>
+          <td><router-link :to="{ name: 'need information', params: { id: need.id }}">edit</router-link></td>
         </tr>
           </tbody>
         </table>
@@ -63,13 +63,13 @@ export default {
         name: 'NeedInfo',
         params: { id: Number.parseInt(NeedId) }
       });
-    },
-    getId(link) {
-      if (typeof link === 'string') {
-        return parseInt(link.slice(-1));
-        // return link.slice(-1);
-      }
-    }
+    } // ,
+    // getId(link) {
+    //   if (typeof link === 'string') {
+    //     return parseInt(link.slice(-1));
+    //     // return link.slice(-1);
+    //   }
+    // }
   }
 };
 </script>
