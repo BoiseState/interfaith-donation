@@ -9,12 +9,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
-
 import javax.xml.ws.Response;
 import java.net.URI;
 import java.util.Optional;
 
-@CrossOrigin(origins = "http://localhost:8081", maxAge = 3600)
+@CrossOrigin
 @RestController
 @RequestMapping(path="/callouts")
 public class CalloutController {

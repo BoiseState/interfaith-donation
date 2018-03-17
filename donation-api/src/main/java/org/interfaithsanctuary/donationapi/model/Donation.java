@@ -31,9 +31,9 @@ public class Donation {
     private Date date;
 
     @Column(name = "donation_quantity")
-    private int quantity;
+    private Integer quantity;
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
@@ -65,11 +65,11 @@ public class Donation {
         this.date = date;
     }
 
-    public int getQuantity() {
+    public Integer getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(int quantity) {
+    public void setQuantity(Integer quantity) {
         this.quantity = quantity;
     }
 }

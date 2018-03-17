@@ -21,12 +21,11 @@ public class CalloutNeed {
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="need_id")
-    @JsonBackReference
     private Need need;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="callout_id")
-    @JsonBackReference
+    @JsonIgnore
     private Callout callout;
 
     @Column(name = "calloutneed_active")

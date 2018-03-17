@@ -28,7 +28,7 @@ public class Need {
     private String unitOfMeasurement;
 
     @OneToMany (mappedBy = "need", cascade = CascadeType.ALL)
-    @JsonManagedReference
+    @JsonIgnore
     private Set<CalloutNeed> calloutNeeds;
 
     public Long getId() {
