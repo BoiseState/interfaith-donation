@@ -48,6 +48,7 @@ export default new Router({
     },
     {
       path: '/callouts',
+      name: 'callout list',
       component: CalloutList
     },
     {

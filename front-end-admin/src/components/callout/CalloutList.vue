@@ -3,7 +3,8 @@
     <div class="container">
       <router-link class="btn btn-default" to="/callout/register">Add Callout&raquo;</router-link>
       <div class="form-group">
-        <input type="text" v-model="search" placeholder="Search title.."/>
+        <input type="text" v-model="searchTerm" placeholder="Search title.." v-on:keyup.enter="searchTitle"/>
+        <button v-on:click="searchTitle" class="btn btn-primary">Search</button>
       </div>
       <h3>Callouts</h3>
       <table class="table">
@@ -40,7 +41,8 @@ export default {
   name: 'callout-info',
   data() {
     return {
-      callouts: []
+      callouts: [],
+      searchTerm: ''
     };
   },
   created() {
@@ -58,6 +60,16 @@ export default {
         name: 'NeedInfo',
         params: { id: Number.parseInt(NeedId) }
       });
+    },
+    searchTitle() {
+      if (
+        this.searchTerm === 'undefined' ||
+        this.searchTerm.trim().length < 1
+      ) {
+        this.newDependent = '';
+        return;
+      }
+      console.log('search for: ' + this.searchTerm);
     }
   }
 };
