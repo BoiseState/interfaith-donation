@@ -34,11 +34,11 @@
           </tr>
           </tbody>
         </table>
-        <button v-on:click="addNeed()" type="button">Add New Need</button>
+        <button class="btn btn-secondary" v-on:click="openNeeds()" type="button">Add New Need</button>
         <br>
         <br>
         <br>
-        <button type="submit">Update Callout</button>
+        <button class="btn btn-primary" type="submit">Update Callout</button>
       </form>
     </div>
   </div>
@@ -74,8 +74,16 @@ export default {
     onFormSubmit() {
       updateCallout(this.callout);
     },
-    addNeed() {
-      window.open('https://www.w3schools.com');
+    openNeeds() {
+      let newWindow = open(
+        '#/select-need',
+        'select need',
+        'width=400,height=600'
+      );
+      newWindow.focus();
+    },
+    addNeed(need) {
+      alert('result of popup is: ' + need);
     }
   }
 };

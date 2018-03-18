@@ -24,7 +24,7 @@
           <td>{{formatDate(callout.createdDate)}}</td>
           <td>{{formatDate(callout.effectiveDate)}}</td>
           <td>{{callout.active}}</td>
-          <td><router-link :to="{ name: 'callout', params: { id: callout.calloutId }}" class="btn btn-primary" role="button">Edit</router-link></td>
+          <td><router-link :to="{ name: 'callout', params: { id: callout.id }}" class="btn btn-primary" role="button">Edit</router-link></td>
         </tr>
         </tbody>
       </table>
@@ -34,6 +34,7 @@
 
 <script>
 import { getAllCallouts } from '../../services/callout-service';
+import router from '../../router/index';
 
 export default {
   name: 'callout-info',
@@ -51,6 +52,12 @@ export default {
     formatDate: dateString => {
       let date = new Date(dateString);
       return date.toLocaleString();
+    },
+    editNeed(NeedId) {
+      router.push({
+        name: 'NeedInfo',
+        params: { id: Number.parseInt(NeedId) }
+      });
     }
   }
 };
