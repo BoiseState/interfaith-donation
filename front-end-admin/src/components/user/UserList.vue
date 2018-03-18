@@ -7,16 +7,16 @@
       <table class="table">
         <thead>
         <tr>
-          <th>User Name</th>
-          <th>Email</th>
-          <th>Display Name</th>
-          <th>Joined On</th>
+          <th>User Email</th>
+          <th>Is Admin</th>
+          <th>Is Active</th>
         </tr>
         </thead>
         <tbody id="fulluserTBody">
         <tr v-for="user in users" :key="user.id">
-          <td>{{user.userName}}</td>
           <td>{{user.email}}</td>
+          <td>{{user.permissions}}</td>
+          <td>{{user.active}}</td>
         </tr>
         </tbody>
       </table>
@@ -25,16 +25,16 @@
 </template>
 
 <script>
-import {getAllUsers} from '../../services/user-service';
+import { getAllUsers } from '../../services/user-service';
 
 export default {
   name: 'user-list',
-  data () {
+  data() {
     return {
       users: []
     };
   },
-  created () {
+  created() {
     getAllUsers().then(users => {
       this.users = users;
     });

@@ -30,7 +30,7 @@
           <td>{{need.unitOfMeasurement}}</td>
           <td>{{need.id}}</td>
           <td>{{need}}</td>
-          <td><router-link :to="{ name: 'need information', params: { id: need.id }}">edit</router-link></td>
+          <td><router-link :to="{ name: 'need information', params: { id: need.id }}" class="btn btn-primary" role="button">edit</router-link></td>
         </tr>
           </tbody>
         </table>

@@ -58,6 +58,7 @@ export default {
   created() {
     getNeedById(this.$route.params.id).then(need => {
       this.need = need;
+      console.log(need);
     });
   },
   methods: {

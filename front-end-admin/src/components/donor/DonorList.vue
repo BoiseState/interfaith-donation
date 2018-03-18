@@ -19,9 +19,7 @@
           <td>{{donor.email}}</td>
           <td>{{donor.joinDate}}</td>
           <td>{{donor}}</td>
-          <!-- <td><router-link class="btn btn-default" :to="{ path: '/donor/:id', params: { id: donor.donorId } }">Edit Donor</router-link></td> -->
-          <td><router-link :to="{ name: 'donorInfo', params: { id: donor.id }}">edit</router-link></td>
-          <!-- <td><button v-on:click="editDonor(donor.donorId)">test</button></td> -->
+           <td><router-link class="btn btn-default" :to="{ path: '/donor/:id', params: { id: donor.donorId } }">Edit Donor</router-link></td>
         </tr>
         </tbody>
       </table>

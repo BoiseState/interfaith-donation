@@ -7,7 +7,7 @@
           <!--<p>Welcome back, <% out.print(user.getUsername()); %>! </p>-->
           <div class="col-md-6">
             <!-- <p><a class="btn btn-default" href="${pageContext.request.contextPath}/registerdonor.jsp" role="button">Add Donor&raquo;</a></p> -->
-            <p><router-link to="register-donor" class="btn btn-default" role="button">Add Donor&raquo;</router-link>
+            <p><router-link to="register-donor" class="btn btn-default" role="button">Add Donor&raquo;</router-link></p>
             <form class="form-horizontal" action="/searchdonor" method="GET">
               <div class="form-group">
                 <label class="control-label col-sm-2">Search:</label>
@@ -29,6 +29,7 @@
               <tbody id="topDonorTBody">
               </tbody>
             </table>
+            <p><router-link to="callouts" class="btn btn-default" role="button">Callouts</router-link></p>
           </div>
           <div class="col-md-6">
             <p><a class="btn btn-default" href="${pageContext.request.contextPath}/registerneed.jsp" role="button">Add Need&raquo;</a></p>
@@ -104,7 +105,7 @@ export default {
       console.log('alerts', alerts);
     });
     getAllUsers().then(users => {
-      console.log(users);
+      console.log('users', users);
     });
   }
 };

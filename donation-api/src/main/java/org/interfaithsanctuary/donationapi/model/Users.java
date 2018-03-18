@@ -21,6 +21,9 @@ public class Users {
     @Column(name ="permissions")
     private PermissionLevel permissions;
 
+    @Column(name ="user_active")
+    private Boolean active;
+
     public Long getId() {
         return id;
     }
@@ -59,6 +62,13 @@ public class Users {
     public void setPermissions(PermissionLevel permissions) { this.permissions = permissions; }
 
 
+    public Boolean getActive() {
+        return active;
+    }
+
+    public void setActive(Boolean active) {
+        this.active = active;
+    }
 
     /**
      *

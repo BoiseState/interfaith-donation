@@ -14,6 +14,7 @@ import RegisterUser from '@/components/user/RegisterUser';
 import NeedInfo from '@/components/need/NeedInfo';
 import NeedList from '@/components/need/NeedList';
 import RegisterNeed from '@/components/need/RegisterNeed';
+import NeedSelect from '@/components/need/NeedSelect';
 
 Vue.use(Router);
 
@@ -48,6 +49,7 @@ export default new Router({
     },
     {
       path: '/callouts',
+      name: 'callout list',
       component: CalloutList
     },
     {
@@ -75,6 +77,11 @@ export default new Router({
       path: '/needs',
       name: 'list of needs',
       component: NeedList
+    },
+    {
+      path: '/select-need',
+      name: 'list of needs to select from',
+      component: NeedSelect
     },
     {
       path: '/register-need',
