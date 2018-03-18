@@ -31,7 +31,7 @@
               <label class="control-label col-sm-4>">Status: </label>
               <!-- <input type="checkbox" name="active" checked="{{active}}">Active? -->
             </div>
-            <button type="submit">Update Need</button>
+            <!-- <button type="submit">Update Need</button> -->
           <!-- </div> -->
         </form>
       </div>
