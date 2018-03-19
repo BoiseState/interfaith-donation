@@ -14,6 +14,12 @@
       <div id="navbar" class="navbar-collapse collapse">
         <slot />
       </div>
+      <div>
+        <router-link class="navbar-brand" to="/donors">Donors</router-link>
+        <router-link class="navbar-brand" to="/users">Users</router-link>
+        <router-link class="navbar-brand" to="/callouts">Callouts</router-link>
+        <router-link class="navbar-brand" to="/needs">Needs</router-link>
+      </div>
     </div>
   </nav>
 </template>
