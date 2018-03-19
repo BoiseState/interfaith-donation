@@ -86,11 +86,11 @@ public class Need {
         this.calloutNeeds = calloutNeeds;
     }
 
-    public Date getJoinDate() {
+    public Date getCreatedDate() {
         return createdDate;
     }
 
-    public void setJoinDate(Date joinDate) {
+    public void setCreatedDate(Date joinDate) {
         this.createdDate = joinDate;
     }
 }
