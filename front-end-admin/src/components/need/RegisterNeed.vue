@@ -30,10 +30,10 @@
               <option value="{{callout.callout_id}}">{{ callout.callout_title }} - {{callout.update_date}}</option>
             </select>
             </div> -->
-          <div class="form-group">
+          <!-- <div class="form-group">
             <label class="control-label col-sm-2>">Status: </label>
             <input type="checkbox" name="active" value="active">Active?<br></div>
-          <br>
+          <br> -->
           <button type="submit">Create Need</button>
         </form>
         <br>

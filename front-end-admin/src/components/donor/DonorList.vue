@@ -1,6 +1,7 @@
 <template>
   <div class="jumbotron">
     <div class="container">
+      <div>&nbsp;</div>
       <router-link class="btn btn-default" to="/register-donor">Add Donor&raquo;</router-link>
       <!-- TODO: Add form for searching through donors -->
       <h3>Donors</h3>
@@ -17,7 +18,7 @@
         <tr v-for="donor in donors" :key="donor.id">
           <td>{{donor.name}}</td>
           <td>{{donor.email}}</td>
-          <td>{{donor.joinDate}}</td>
+          <td>{{formatDate(donor.joinDate)}}</td>
           <td>{{donor}}</td>
            <td><router-link class="btn btn-default" :to="{ path: '/donor/:id', params: { id: donor.donorId } }">Edit Donor</router-link></td>
         </tr>
@@ -50,6 +51,10 @@ export default {
         name: 'donorInfo',
         params: { id: Number.parseInt(donId) }
       });
+    },
+    formatDate: dateString => {
+      let date = new Date(dateString);
+      return date.toLocaleDateString();
     }
   }
 };

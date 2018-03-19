@@ -4,9 +4,9 @@
       <!-- Main jumbotron for a primary marketing message or call to action -->
       <div v-if="loggedIn" class="jumbotron">
         <div class="container">
+          <div>&nbsp;</div>
           <!--<p>Welcome back, <% out.print(user.getUsername()); %>! </p>-->
           <div class="col-md-6">
-            <!-- <p><a class="btn btn-default" href="${pageContext.request.contextPath}/registerdonor.jsp" role="button">Add Donor&raquo;</a></p> -->
             <p><router-link to="register-donor" class="btn btn-default" role="button">Add Donor&raquo;</router-link></p>
             <form class="form-horizontal" action="/searchdonor" method="GET">
               <div class="form-group">
@@ -15,7 +15,6 @@
                 <button type="submit">Search</button>
               </div>
             </form>
-            <!-- <p><a href="${pageContext.request.contextPath}/donorlist.jsp">Click here for full donor list</a></p> -->
             <p><router-link to="donors" >Click here for full donor list</router-link></p>
             <h3>Recent Donors</h3>
             <table class="table">
@@ -32,7 +31,7 @@
             <p><router-link to="callouts" class="btn btn-default" role="button">Callouts</router-link></p>
           </div>
           <div class="col-md-6">
-            <p><a class="btn btn-default" href="${pageContext.request.contextPath}/registerneed.jsp" role="button">Add Need&raquo;</a></p>
+            <p><router-link to="register-need" class="btn btn-default" role="button">Add Need&raquo;</router-link></p>
             <form class="form-horizontal" action="/searchneeds" method="GET">
               <div class="form-group">
                 <label class="control-label col-sm-2">Search:</label>
@@ -40,7 +39,6 @@
                 <button type="submit">Search</button>
               </div>
             </form>
-            <!-- <p><a href="${pageContext.request.contextPath}/needslist.jsp">Click here for full need list</a></p> -->
             <p><router-link to="needs" >Click here for full need list</router-link></p>
             <h3>Recent Needs</h3>
             <table class="table">
@@ -61,7 +59,6 @@
         <div class="container">
           <h1>ISH Services Inc.</h1>
           <p>Database and web framework for posting and tracking donations and donors</p>
-          <!-- <p><a class="btn btn-primary btn-lg" href="${pageContext.request.contextPath}/registerdonation.jsp" role="button">Learn more &raquo;</a></p> -->
           <p><router-link class="btn btn-primary btn-lg" to="/about" role="button">Learn More &raquo;</router-link></p>
         </div>
       </div>
