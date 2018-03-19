@@ -7,13 +7,15 @@
       <table class="table">
         <thead>
         <tr>
+          <th>Name</th>
           <th>User Email</th>
-          <th>Is Admin</th>
+          <th>Permissions</th>
           <th>Is Active</th>
         </tr>
         </thead>
         <tbody id="fulluserTBody">
         <tr v-for="user in users" :key="user.id">
+          <td>{{user.userName}}</td>
           <td>{{user.email}}</td>
           <td>{{user.permissions}}</td>
           <td>{{user.active}}</td>

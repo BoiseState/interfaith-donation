@@ -28,7 +28,6 @@
               <tbody id="topDonorTBody">
               </tbody>
             </table>
-            <p><router-link to="callouts" class="btn btn-default" role="button">Callouts</router-link></p>
           </div>
           <div class="col-md-6">
             <p><router-link to="register-need" class="btn btn-default" role="button">Add Need&raquo;</router-link></p>
