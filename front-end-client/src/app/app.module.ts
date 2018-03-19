@@ -8,6 +8,8 @@ import { MyApp } from "./app.component";
 import { HomePage } from "../pages/home/home";
 import { AccountPage } from "../pages/account/account";
 
+import { CalloutService } from "../services/calloutService";
+
 import { CalloutComponent } from "../components/callout/callout";
 
 @NgModule({
@@ -18,6 +20,7 @@ import { CalloutComponent } from "../components/callout/callout";
   providers: [
     StatusBar,
     SplashScreen,
+    CalloutService,
     { provide: ErrorHandler, useClass: IonicErrorHandler }
   ]
 })
