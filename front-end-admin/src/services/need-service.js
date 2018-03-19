@@ -1,4 +1,4 @@
-import {getJSON, postJSON, patchJSON} from './helpers';
+import { getJSON, postJSON, patchJSON } from './helpers';
 
 const BASE_API_ROUTE = 'needs';
 
@@ -7,8 +7,8 @@ export const createNeeds = async needs => {
 };
 
 export const getAllNeeds = async () => {
-  let needs = await getJSON(BASE_API_ROUTE);
-  return needs._embedded.needs;
+  let needs = await getJSON(BASE_API_ROUTE + '/all');
+  return needs.content;
 };
 
 export const getNeedById = async id => {

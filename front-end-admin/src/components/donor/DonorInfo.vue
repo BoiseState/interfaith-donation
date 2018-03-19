@@ -38,11 +38,11 @@
 </template>
 
 <script>
-import {getDonorById, updateDonor} from '../../services/donor-service';
+import { getDonorById, updateDonor } from '../../services/donor-service';
 
 export default {
   name: 'donor-info',
-  data () {
+  data() {
     return {
       donor: {
         name: 'Loading...',
@@ -55,13 +55,13 @@ export default {
       }
     };
   },
-  created () {
-    getDonorById(this.$route.params.id).then(donor => {
+  created() {
+    getDonorById(this.$route.params.userid).then(donor => {
       this.donor = donor;
     });
   },
   methods: {
-    onFormSubmit () {
+    onFormSubmit() {
       updateDonor(this.donor);
     }
   }

@@ -16,15 +16,21 @@
           <thead>
           <tr>
             <th>Need</th>
-            <th>Callout</th>
-            <th>Quantity Needed</th>
-            <th>Quantity Given</th>
-            <th>Link</th>
-            <th>Date Created</th>
-            <th>Status</th>
+            <th>Description</th>
+            <th>Unit of Measure</th>
+            <th>Id</th>
+            <th>JSON</th>
           </tr>
           </thead>
           <tbody id ="fullNeedTBody">
+             <tr v-for="need in needs" :key="need.id">
+          <td>{{need.name}}</td>
+          <td>{{need.description}}</td>
+          <td>{{need.unitOfMeasurement}}</td>
+          <td>{{need.id}}</td>
+          <td>{{need}}</td>
+          <td><router-link :to="{ name: 'need information', params: { id: need.id }}">edit</router-link></td>
+        </tr>
           </tbody>
         </table>
       </div>
@@ -33,9 +39,31 @@
 </template>
 
 <script>
-  export default {
-    name: "need-list"
+import { getAllNeeds } from '../../services/need-service';
+
+import router from '../../router/index';
+
+export default {
+  name: 'need-list',
+  data() {
+    return {
+      needs: []
+    };
+  },
+  created() {
+    getAllNeeds().then(needs => {
+      this.needs = needs;
+    });
+  },
+  methods: {
+    editNeed(NeedId) {
+      router.push({
+        name: 'NeedInfo',
+        params: { id: Number.parseInt(NeedId) }
+      });
+    }
   }
+};
 </script>
 
 <style scoped>
