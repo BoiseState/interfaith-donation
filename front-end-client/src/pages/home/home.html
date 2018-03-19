@@ -11,23 +11,38 @@
 
 
 <ion-content padding>
-  <ion-item>
-    <ion-label>Callout</ion-label>
-    <ion-select [(ngModel)]="Callout">
-      <ion-option value="Temp1">Temp1</ion-option>
-      <ion-option value="Temp2">Temp2</ion-option>
-      <ion-option value="Temp3">Temp3</ion-option>
-    </ion-select>
-  </ion-item>
-  
-  <ion-item>
-    <ion-label>Sort By</ion-label>
-    <ion-select [(ngModel)]="sortBy" interface=popover>
-      <ion-option value="priority">Priority</ion-option>
-      <ion-option value="chronological">Chronological</ion-option>
-      <ion-option value="fulfillment">Fulfillment</ion-option>
-    </ion-select>
-  </ion-item>
+  <ion-grid>
+    <ion-row>
+      <ion-item>
+        <ion-label>Callout</ion-label>
+        <ion-select [(ngModel)]="Callout">
+          <ion-option value="Temp1">Temp1</ion-option>
+          <ion-option value="Temp2">Temp2</ion-option>
+          <ion-option value="Temp3">Temp3</ion-option>
+        </ion-select>
+      </ion-item>
+    </ion-row>
+
+    <ion-row>
+      <ion-col col-9>
+        <ion-item>
+          <ion-label>Sort By</ion-label>
+          <ion-select [(ngModel)]="sortBy" interface=popover>
+            <ion-option value="priority">Priority</ion-option>
+            <ion-option value="chronological">Chronological</ion-option>
+            <ion-option value="fulfillment">Fulfillment</ion-option>
+          </ion-select>
+        </ion-item>
+      </ion-col>
+
+      <ion-col>
+        <button ion-button
+          color="bluegray">
+            <ion-icon name="arrow-down"></ion-icon>
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 
   <callout 
     title="Callout Title" 
