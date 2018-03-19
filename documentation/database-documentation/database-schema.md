@@ -1,7 +1,7 @@
-#Interfaith Donation Database Schema
+# Interfaith Donation Database Schema
 
-##Tables
-* *Exammple for clarification will be donations needed for summer*
+## Tables
+* *Example for clarification will be donations needed for summer*
 * **need** - A need represents a particular need or item that Interfaith Sanctuary requires. A need for summer would be sunsreen. Needs are uniquely identified by their ID. A need has a name, description, unit of measurement, a created date, active or inactive (such as winter needs in summer would be inactive), and an Amazon url link for the particular item associated with the need. Units of measurements are represented by strings; such as lbs, oz, number of items, etc...
 * **callout** - A callout is where a need gets represented. In our example our callout would be Summer. A callout is uniquely identified by its ID. A callout has a name, a description message, whether it is active or inactive, a created date and also an end date. An example would be creating a callout for Summer in March or April and having it end in September, while having an attached description message for the callout.
 * **calloutneed** - This table represents the intermediate step for connecting our many-to-many relationship between need and callout. A calloutneed is uniquely identified by its ID. A calloutneed also has a particular need_id and callout_id associated. Calloutneed is the collection of needs for a particular callout. In our example we could have a Summer callout as well as another Summer related callout, where our sunscreen need can be represented in either callout, both, or neither. There is one need to many calloutneeds and one callout for many calloutneeds. This table is a join table between callout and need, because ideally there can be many needs to a callout and vise-versa.
