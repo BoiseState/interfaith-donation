@@ -34,11 +34,12 @@
           </ion-select>
         </ion-item>
       </ion-col>
-
+      
       <ion-col>
         <button ion-button
-          color="bluegray">
-            <ion-icon name="arrow-down"></ion-icon>
+          color="bluegray"
+          (click)=toggleOrdering()>
+            <ion-icon [name]="order ? 'arrow-down' : 'arrow-up'"></ion-icon>
         </button>
       </ion-col>
     </ion-row>
