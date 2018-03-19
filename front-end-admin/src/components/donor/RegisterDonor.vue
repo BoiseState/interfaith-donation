@@ -51,6 +51,7 @@ export default {
   data() {
     return {
       donor: {
+        id: '',
         name: '',
         email: '',
         address: '',
@@ -58,7 +59,7 @@ export default {
         state: '',
         zip: '',
         phone: '',
-        joinDate: '2000-10-10'
+        joinDate: ''
         // password: ''
       },
       errors: []

@@ -1,5 +1,5 @@
 <template>
-  <div class="needs">
+  <!-- <div class="needs"> -->
     <div class="jumbotron">
       <div class="container">
         <div>&nbsp;</div>
@@ -16,28 +16,32 @@
         <h3>Needs</h3>
         <table class="table">
           <thead>
-          <tr>
-            <th>Need</th>
-            <th>Description</th>
-            <th>Unit of Measure</th>
-            <th>Id</th>
-            <th>JSON</th>
-          </tr>
+            <tr>
+              <th>Id</th>
+              <th>Need</th>
+              <th>Description</th>
+              <th>Unit of Measure</th>
+              <!-- <th>URL</th> -->
+              <!-- <th>Created Date</th> -->
+              <th>JSON</th>
+            </tr>
           </thead>
           <tbody id ="fullNeedTBody">
-             <tr v-for="need in needs" :key="need.id">
-          <td>{{need.name}}</td>
-          <td>{{need.description}}</td>
-          <td>{{need.unitOfMeasurement}}</td>
-          <td>{{need.id}}</td>
-          <td>{{need}}</td>
-          <td><router-link :to="{ name: 'need information', params: { id: need.id }}" class="btn btn-primary" role="button">edit</router-link></td>
-        </tr>
+            <tr v-for="need in needs" :key="need.id">
+              <td>{{need.id}}</td>
+              <td>{{need.name}}</td>
+              <td>{{need.description}}</td>
+              <td>{{need.unitOfMeasurement}}</td>
+              <!-- <td>{{need.url}}</td> -->
+              <!-- <td>{{need.createdDate}}</td> -->
+              <td>{{need}}</td>
+              <td><router-link :to="{ name: 'need information', params: { id: need.id }}" class="btn btn-default" role="button">edit</router-link></td>
+            </tr>
           </tbody>
         </table>
       </div>
     </div>
-  </div>
+  <!-- </div> -->
 </template>
 
 <script>

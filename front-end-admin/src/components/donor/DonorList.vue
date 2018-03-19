@@ -4,6 +4,10 @@
       <div>&nbsp;</div>
       <router-link class="btn btn-default" to="/register-donor">Add Donor&raquo;</router-link>
       <!-- TODO: Add form for searching through donors -->
+      <div class="form-group">
+        <input type="text" v-model="searchTerm" placeholder="Search..." v-on:keyup.enter="searchTitle"/>
+        <button v-on:click="searchTitle" class="btn btn-default">Search</button>
+      </div>
       <h3>Donors</h3>
       <table class="table">
         <thead>
@@ -20,7 +24,7 @@
           <td>{{donor.email}}</td>
           <td>{{formatDate(donor.joinDate)}}</td>
           <td>{{donor}}</td>
-           <td><router-link class="btn btn-default" :to="{ path: '/donor/:id', params: { id: donor.donorId } }">Edit Donor</router-link></td>
+          <td><router-link class="btn btn-default" :to="{ path: '/donor/:id', params: { id: donor.donorId } }">Edit Donor</router-link></td>
         </tr>
         </tbody>
       </table>
@@ -55,6 +59,16 @@ export default {
     formatDate: dateString => {
       let date = new Date(dateString);
       return date.toLocaleDateString();
+    },
+    searchTitle() {
+      if (
+        this.searchTerm === 'undefined' ||
+        this.searchTerm.trim().length < 1
+      ) {
+        this.newDependent = '';
+        return;
+      }
+      console.log('search for: ' + this.searchTerm);
     }
   }
 };
