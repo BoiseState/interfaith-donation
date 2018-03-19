@@ -78,7 +78,7 @@ export default {
       let newWindow = open(
         '#/select-need',
         'select need',
-        'width=400,height=600'
+        'width=700,height=600'
       );
       newWindow.focus();
     },

@@ -9,7 +9,7 @@
         <div class="form-group">
           <label class="control-label col-sm-2">Search:</label>
           <input name="searchterm" type="text" width="50">
-          <button type="submit">Search</button>
+          <button class="btn btn-primary" type="submit">Search</button>
         </div>
         <table class="table">
           <thead>
@@ -29,7 +29,7 @@
             <td>{{need.id}}</td>
             <td>{{need}}</td>
             <td>
-            <td><button v-on:click="closeWindow(need)">select</button></td>
+            <td><button class="btn btn-primary" v-on:click="closeWindow(need)">select</button></td>
           </tr>
           </tbody>
         </table>
