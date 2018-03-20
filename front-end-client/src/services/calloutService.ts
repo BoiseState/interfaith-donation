@@ -9,7 +9,10 @@ export class CalloutService {
    * Gets the calloutNeeds JSON from the donation-api endpoint.
    */
   async getCalloutNeedsJSON() {
-    let jsonObj = await this.doRequest("donation-api/calloutneeds");
+    let jsonObj;
+    await this.doRequest("donation-api/calloutneeds").then(
+      data => (jsonObj = data)
+    );
     return jsonObj;
   }
 
@@ -17,7 +20,10 @@ export class CalloutService {
    * Gets the calloutNeeds JSON as local mock data.
    */
   async getCalloutNeedsMockJSON() {
-    let jsonObj = await this.doRequest("assets/mockData/mockCalloutNeeds.json");
+    let jsonObj;
+    await this.doRequest("assets/mockData/mockCalloutNeeds.json").then(
+      data => (jsonObj = data)
+    );
     return jsonObj;
   }
 
