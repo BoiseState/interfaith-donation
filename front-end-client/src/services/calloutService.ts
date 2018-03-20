@@ -4,7 +4,7 @@ import { HttpModule } from "@angular/http";
 
 @Injectable()
 export class CalloutService {
-  constructor(private http: Http, private httpModule: HttpModule) {}
+  constructor(private http: Http) {}
 
   /**
    * Gets the calloutNeeds JSON from the donation-api endpoint.
