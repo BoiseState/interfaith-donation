@@ -1,16 +1,19 @@
 import { Component } from "@angular/core";
 import { NavController } from "ionic-angular";
 import { AccountPage } from "../account/account";
+import { CalloutService } from "../../services/calloutService";
 
 @Component({
   selector: "page-home",
   templateUrl: "home.html"
 })
 export class HomePage {
-
   order: boolean = true;
 
-  constructor(public navCtrl: NavController) {}
+  constructor(
+    public navCtrl: NavController,
+    private calloutService: CalloutService
+  ) {}
 
   pushAccountPage() {
     this.navCtrl.push(AccountPage);
