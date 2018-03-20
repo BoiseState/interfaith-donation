@@ -7,6 +7,7 @@ import { AccountPage } from "../account/account";
   templateUrl: "home.html"
 })
 export class HomePage {
+
   order: boolean = true;
 
   constructor(public navCtrl: NavController) {}

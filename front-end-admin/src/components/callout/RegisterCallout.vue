@@ -16,11 +16,11 @@
           <textarea v-model="callout.body" rows="4" cols="50"></textarea>
         </div>
         <div class="form-group">
-          <label id = "callout-active-label" class="control-label col-sm-4>">Status: </label>
+          <label id = "callout-active-label" class="control-label col-sm-2>">Status: </label>
           <input type="checkbox" v-model="callout.active">Active?<br>
         </div>
         <div class="form-group">
-          <label id = "callout-pinned-label" class="control-label col-sm-4>">Status: </label>
+          <label id = "callout-pinned-label" class="control-label col-sm-2>">Status: </label>
           <input type="checkbox" v-model="callout.pinned">Pinned?<br>
         </div>
         <button type="submit">Create Callout</button>
@@ -30,17 +30,17 @@
 </template>
 
 <script>
-import {createCallout} from '../../services/callout-service';
+import { createCallout } from '../../services/callout-service';
 
 export default {
   name: 'register-callout',
-  data () {
+  data() {
     return {
       callout: {}
     };
   },
   methods: {
-    onFormSubmit () {
+    onFormSubmit() {
       this.callout.createDate = new Date();
       this.callout.updateDate = new Date();
       createCallout(this.callout);

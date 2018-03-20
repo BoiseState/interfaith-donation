@@ -21,6 +21,7 @@ CREATE TABLE donors (
    donor_join_date DATE NOT NULL
 );
 
+DROP TABLE IF EXISTS callouts CASCADE;
 CREATE TABLE callouts (
   callout_id BIGSERIAL PRIMARY KEY,
   callout_name VARCHAR(100) NOT NULL,
@@ -30,6 +31,7 @@ CREATE TABLE callouts (
   callout_active BOOLEAN NOT NULL
 );
 
+DROP TABLE IF EXISTS needs CASCADE;
 CREATE TABLE needs (
   need_id BIGSERIAL PRIMARY KEY,
   need_name VARCHAR(100) NOT NULL,
@@ -40,6 +42,7 @@ CREATE TABLE needs (
   need_active BOOLEAN NOT NULL
 );
 
+DROP TABLE IF EXISTS calloutneeds CASCADE;
 CREATE TABLE calloutneeds (
   calloutneed_id BIGSERIAL PRIMARY KEY,
   calloutneed_quantity INT NOT NULL,
@@ -48,6 +51,7 @@ CREATE TABLE calloutneeds (
   calloutneed_active BOOLEAN NOT NULL
 );
 
+DROP TABLE IF EXISTS donations;
 CREATE TABLE donations (
   donation_id BIGSERIAL PRIMARY KEY,
   donation_quantity INT NOT NULL,
@@ -56,6 +60,7 @@ CREATE TABLE donations (
   donor_id BIGINT REFERENCES donors NOT NULL
 );
 
+DROP TABLE IF EXISTS alerts;
 CREATE TABLE alerts (
   alert_id BIGSERIAL PRIMARY KEY,
   alert_sent_date TIMESTAMP NULL,

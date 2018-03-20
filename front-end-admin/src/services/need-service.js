@@ -2,8 +2,10 @@ import { getJSON, postJSON, patchJSON } from './helpers';
 
 const BASE_API_ROUTE = 'needs';
 
-export const createNeeds = async needs => {
-  return postJSON(BASE_API_ROUTE, needs);
+export const createNeed = async need => {
+  return postJSON(BASE_API_ROUTE, need)
+    .catch(error => console.error('Error:', error))
+    .then(response => console.log('Success:', response));
 };
 
 export const getAllNeeds = async () => {
