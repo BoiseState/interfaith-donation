@@ -47,6 +47,17 @@
     </ion-row>
   </ion-grid>
 
+  <callout *ngFor="let need of needs"
+    [title]="need.title"
+    [text]="need.description"
+    [outOf]="need.quantity"
+    src="https://source.unsplash.com/collection/190727/500x200"
+    leftLink="https://www.amazon.com"
+    rightLink="https://www.amazon.com"
+    count="0"
+    ></callout>
+
+
   <callout 
     title="Callout Title" 
     text="This is sample callout text, a short description of the callout will go here!"
