@@ -1,20 +1,15 @@
 import { Component } from "@angular/core";
 import { NavController } from "ionic-angular";
 import { AccountPage } from "../account/account";
-import { CalloutService } from "../../services/calloutService";
 
 @Component({
   selector: "page-home",
   templateUrl: "home.html"
 })
 export class HomePage {
-  constructor(
-    public navCtrl: NavController,
-    public calloutService: CalloutService
-  ) {}
+  constructor(public navCtrl: NavController) {}
 
   pushAccountPage() {
     this.navCtrl.push(AccountPage);
-    console.log(this.calloutService.getCalloutNeedsMockJSON());
   }
 }
