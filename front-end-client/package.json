@@ -38,10 +38,5 @@
     "pretty-quick": "^1.4.1",
     "typescript": "2.4.2"
   },
-  "description": "An Ionic project",
-  "cordova": {
-    "plugins": {
-      "cordova-plugin-advanced-http": {}
-    }
-  }
+  "description": "An Ionic project"
 }
