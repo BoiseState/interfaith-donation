@@ -40,20 +40,55 @@ export class CalloutService {
     //return jsonObj;
   }
 
-  getCalloutNeedsMockJSONHttp() {
-    console.log("getting callout?");
-    //let jsonObj;
+  async getCalloutNeedsMockJSONHttp() {
+    let jsonObj;
     //this.http.get('assets/mockData/mockCalloutNeeds.json').map(res => res.json()).subscribe(data => { jsonObj = data;});
     //console.log(this.http.get('assets/mockData/mockCalloutNeeds.json'));
 
     //console.log(this.http.get('assets/mockData/mockCalloutNeeds.json').map(data => data.json()));
 
-    console.log("response:");
+    /* // WORKS!!!!
+    let promise = new Promise((resolve, reject) => {
+      let apiURL = 'assets/mockData/mockCalloutNeeds.json';
+      this.http.get(apiURL)
+        .toPromise()
+        .then(
+          res => {
+            //res.json() // Contains the correct json object
+            console.log("json response:");
+            console.log(res.json());
+            //jsonObj = JSON.parse(JSON.stringify(res.json()));
+            resolve();
+          }
+        )
+    });
+*/
 
+    console.log("response:");
+    jsonObj = await this.doRequest();
+
+    /* // works, gets the correct response but has issues with accessing body
     this.http.get("assets/mockData/mockCalloutNeeds.json").subscribe(data => {
       console.log(JSON.stringify(data));
     });
+    */
 
-    //return jsonObj;
+    console.log("jsonObj:");
+    console.log(jsonObj);
+    return jsonObj;
+  }
+
+  private doRequest() {
+    return new Promise((resolve, reject) => {
+      let apiURL = "assets/mockData/mockCalloutNeeds.json";
+      this.http
+        .get(apiURL)
+        .toPromise()
+        .then(res => {
+          res.json(); // Contains the correct json object
+          //jsonObj = JSON.parse(JSON.stringify(res.json()));
+          resolve(res.json());
+        });
+    });
   }
 }

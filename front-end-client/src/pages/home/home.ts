@@ -15,6 +15,6 @@ export class HomePage {
 
   pushAccountPage() {
     this.navCtrl.push(AccountPage);
-    this.calloutService.getCalloutNeedsMockJSONHttp(); // REMOVE THIS!
+    console.log(this.calloutService.getCalloutNeedsMockJSONHttp()); // REMOVE THIS!
   }
 }
