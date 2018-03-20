@@ -1,6 +1,5 @@
 import { Injectable } from "@angular/core";
 import { Http } from "@angular/http";
-import { HttpModule } from "@angular/http";
 
 @Injectable()
 export class CalloutService {
