@@ -1,8 +1,13 @@
 <template>
   <div class="jumbotron">
     <div class="container">
+      <div>&nbsp;</div>
       <router-link class="btn btn-default" to="/register-donor">Add Donor&raquo;</router-link>
       <!-- TODO: Add form for searching through donors -->
+      <div class="form-group">
+        <input type="text" v-model="searchTerm" placeholder="Search..." v-on:keyup.enter="searchTitle"/>
+        <button v-on:click="searchTitle" class="btn btn-default">Search</button>
+      </div>
       <h3>Donors</h3>
       <table class="table">
         <thead>
@@ -17,11 +22,9 @@
         <tr v-for="donor in donors" :key="donor.id">
           <td>{{donor.name}}</td>
           <td>{{donor.email}}</td>
-          <td>{{donor.joinDate}}</td>
+          <td>{{formatDate(donor.joinDate)}}</td>
           <td>{{donor}}</td>
-          <!-- <td><router-link class="btn btn-default" :to="{ path: '/donor/:id', params: { id: donor.donorId } }">Edit Donor</router-link></td> -->
-          <td><router-link :to="{ name: 'donorInfo', params: { id: donor.id }}">edit</router-link></td>
-          <!-- <td><button v-on:click="editDonor(donor.donorId)">test</button></td> -->
+          <td><router-link class="btn btn-default" :to="{ path: '/donor/:id', params: { id: donor.donorId } }">Edit Donor</router-link></td>
         </tr>
         </tbody>
       </table>
@@ -52,6 +55,20 @@ export default {
         name: 'donorInfo',
         params: { id: Number.parseInt(donId) }
       });
+    },
+    formatDate: dateString => {
+      let date = new Date(dateString);
+      return date.toLocaleDateString();
+    },
+    searchTitle() {
+      if (
+        this.searchTerm === 'undefined' ||
+        this.searchTerm.trim().length < 1
+      ) {
+        this.newDependent = '';
+        return;
+      }
+      console.log('search for: ' + this.searchTerm);
     }
   }
 };

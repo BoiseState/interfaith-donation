@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.Set;
 
 @Entity
@@ -18,14 +19,20 @@ public class Need {
     @Column(name = "need_name")
     private String name;
 
-    @Column(name = "need_url")
+    @Column(name = "need_amazonurl")
     private String url;
 
     @Column(name = "need_description")
     private String description;
 
-    @Column(name = "need_unit_of_measurement")
+    @Column(name = "need_units")
     private String unitOfMeasurement;
+
+    @Column(name = "need_created_date")
+    private Date createdDate;
+
+    @Column(name = "need_active")
+    private boolean active;
 
     @OneToMany (mappedBy = "need", cascade = CascadeType.ALL)
     @JsonIgnore
@@ -77,5 +84,13 @@ public class Need {
 
     public void setCalloutNeeds(Set<CalloutNeed> calloutNeeds) {
         this.calloutNeeds = calloutNeeds;
+    }
+
+    public Date getCreatedDate() {
+        return createdDate;
+    }
+
+    public void setCreatedDate(Date joinDate) {
+        this.createdDate = joinDate;
     }
 }
