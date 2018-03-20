@@ -4,7 +4,7 @@
     <div class="jumbotron">
        <div class="container">
         <h2>Need Info Page for {{ need.name }}</h2>
-        <form class="form-horizontal" action="/updateneed" method="POST" id="needform">
+        <form v-on:submit.prevent="onFormSubmit" class="form-horizontal" >
           <button type="submit">Update Need</button>
           <input type="hidden" name="need_id" v-model="need.id">
           <div class="form-group">
@@ -27,11 +27,11 @@
             <label class="control-label col-sm-2">Units:</label>
             <input name="need_unit" type="text" width="50" v-model="need.unit">
           </div>
-            <div class="form-group">
-              <label class="control-label col-sm-4>">Status: </label>
-              <!-- <input type="checkbox" name="active" checked="{{active}}">Active? -->
-            </div>
-            <button type="submit">Update Need</button>
+          <!-- <div class="form-group">
+            <label class="control-label col-sm-4>">Status: </label>
+            <input type="checkbox" name="active" checked="{{active}}">Active?
+          </div> -->
+            <!-- <button type="submit">Update Need</button> -->
           <!-- </div> -->
         </form>
       </div>
@@ -58,6 +58,7 @@ export default {
   created() {
     getNeedById(this.$route.params.id).then(need => {
       this.need = need;
+      console.log(need);
     });
   },
   methods: {
