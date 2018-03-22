@@ -34,21 +34,31 @@
           </tr>
           </tbody>
         </table>
-        <button class="btn btn-secondary" v-on:click="openNeeds()" type="button">Add New Need</button>
-        <br>
-        <br>
+        <div >
+          <b-btn v-b-modal.modal>Add Need</b-btn>
+        </div>
         <br>
         <button class="btn btn-primary" type="submit">Update Callout</button>
       </form>
+    </div>
+    <div>
+      <!-- Modal Component -->
+      <b-modal id="modal" centered title="Bootstrap-Vue">
+        <NeedSelect></NeedSelect>
+      </b-modal>
     </div>
   </div>
 </template>
 
 <script>
 import { getCalloutById, updateCallout } from '../../services/callout-service';
+import NeedSelect from '../need/NeedSelect';
 
 export default {
   name: 'callout-info',
+  components: {
+    NeedSelect
+  },
   data() {
     return {
       callout: {
