@@ -24,7 +24,7 @@
             <a><b-btn class="glyphicon glyphicon-search" style="color: white" v-on:click="openUrl(row.item.url)" ></b-btn></a>
           </template>
           <template slot="edit" slot-scope="row">
-            <router-link :to="{ name: 'user', params: { id: row.item.id }}"  class="glyphicon glyphicon-pencil" style="color: grey; " role="button"></router-link>
+            <router-link :to="{ name: 'need', params: { id: row.item.id }}"  class="glyphicon glyphicon-pencil" style="color: grey; " role="button"></router-link>
           </template>
         </b-table>
       </div>

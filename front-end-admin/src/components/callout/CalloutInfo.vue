@@ -4,7 +4,7 @@
       <h2>{{callout.title}}</h2>
       <!-- TODO: List out associated needs with a specific callout -->
       <h2>Update Callout Information</h2>
-      <form v-on:submit.prevent="onFormSubmit">
+      <b-form v-on:submit.prevent="onFormSubmit">
         <div class="form-group">
           <label class="control-label col-sm-2">Title:</label>
           <input v-model="callout.name" type="text" width="50" required>
@@ -17,29 +17,12 @@
           <label class="control-label col-sm-4>">Status: </label>
           <input type="checkbox" v-model="callout.active">Active?<br>
         </div>
-        <table class="calloutNeedTable">
-          <thead>
-          <tr>
-            <th>Name</th>
-            <th>Quantity</th>
-            <th>Active</th>
-            <th></th>
-          </tr>
-          </thead>
-          <tbody id="calloutNeedTBody">
-          <tr v-for="calloutNeed in calloutNeeds" :key="calloutNeed.id">
-            <td>{{calloutNeed.need.name}}</td>
-            <td><input type="text" v-model="calloutNeed.quantity"></td>
-            <td><input type="checkbox" v-model="calloutNeed.active"><br></td>
-          </tr>
-          </tbody>
-        </table>
         <div>
           <b-btn v-b-modal.modal>Add Need</b-btn>
         </div>
         <br>
         <button class="btn btn-primary" type="submit">Update Callout</button>
-      </form>
+      </b-form>
     </div>
     <div>
       <!-- Modal Component -->

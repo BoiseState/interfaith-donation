@@ -33,7 +33,7 @@
           </b-card>
         </template>
         <template slot="edit" slot-scope="row">
-          <router-link :to="{ name: 'user', params: { id: row.item.id }}"  class="glyphicon glyphicon-pencil" style="color: grey; " role="button"></router-link>
+          <router-link :to="{ name: 'donor', params: { id: row.item.id }}"  class="glyphicon glyphicon-pencil" style="color: grey; " role="button"></router-link>
         </template>
       </b-table>
     </div>
