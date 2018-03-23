@@ -22,9 +22,9 @@
           <b-form-checkbox checked="row.item.active"  unchecked-value="false" v-model="row.item.active"></b-form-checkbox>
         </template>
         <template slot="edit" slot-scope="row">
-          <td><a href="#" class="btn btn-info btn-lg">
+          <a href="#" class="btn btn-info btn-lg">
             <router-link :to="{ name: 'user', params: { id: row.item.id }}" style="color: white" class="glyphicon glyphicon-edit" role="button">Edit</router-link>
-          </a></td>
+          </a>
         </template>
       </b-table>
     </div>

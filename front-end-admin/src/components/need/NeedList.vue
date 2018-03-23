@@ -62,6 +62,10 @@ export default {
         params: { id: Number.parseInt(NeedId) }
       });
     },
+    formatDate(dateString) {
+      let date = new Date(dateString);
+      return date.toLocaleDateString();
+    },
     searchTitle() {
       if (
         this.searchTerm === 'undefined' ||
