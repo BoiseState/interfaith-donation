@@ -41,7 +41,8 @@ export default {
   name: 'donor-list',
   data() {
     return {
-      donors: []
+      donors: [],
+      searchTerm: ''
     };
   },
   created() {
