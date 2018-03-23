@@ -26,14 +26,14 @@
         <template slot="row-details" slot-scope="row">
           <b-card>
             <b-row class="mb-2">
-              <b-col sm="3" class="text-sm-right"><b>Quantity:</b></b-col>
+              <b-col sm="3" class="text-sm-right"><b>Donations:</b></b-col>
               <b-col>{{row.item.donations.length}}</b-col>
             </b-row>
             <b-button size="sm" @click="row.toggleDetails">Hide Details</b-button>
           </b-card>
         </template>
         <template slot="edit" slot-scope="row">
-          <router-link :to="{ name: 'user', params: { id: row.item.id }}"  class="glyphicon glyphicon-edit" style="color: grey; " role="button"></router-link>
+          <router-link :to="{ name: 'user', params: { id: row.item.id }}"  class="glyphicon glyphicon-pencil" style="color: grey; " role="button"></router-link>
         </template>
       </b-table>
     </div>
@@ -70,7 +70,6 @@ export default {
       this.donors.forEach(donor => {
         donor.formattedDate = Helper.methods.formatDate(donor.joinDate);
       });
-      console.log(this.donors);
     });
   },
   methods: {

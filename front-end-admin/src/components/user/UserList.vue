@@ -19,12 +19,12 @@
       <h3>Users</h3>
       <b-table outlined hover :fields="fields" :filter="filter" :items="users">
         <template slot="active" slot-scope="row">
-          <b-form-checkbox checked="row.item.active"  unchecked-value="false" v-model="row.item.active"></b-form-checkbox>
+          <template v-if="row.item.active">
+            <a><b-btn class="glyphicon glyphicon-ok" style="color: white"> </b-btn></a>
+          </template>
         </template>
         <template slot="edit" slot-scope="row">
-          <a href="#" class="btn btn-info btn-lg">
-            <router-link :to="{ name: 'user', params: { id: row.item.id }}" style="color: white" class="glyphicon glyphicon-edit" role="button">Edit</router-link>
-          </a>
+          <router-link :to="{ name: 'user', params: { id: row.item.id }}"  class="glyphicon glyphicon-edit" style="color: grey;" role="button"></router-link>
         </template>
       </b-table>
     </div>

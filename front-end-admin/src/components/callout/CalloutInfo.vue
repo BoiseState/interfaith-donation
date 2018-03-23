@@ -43,7 +43,7 @@
     </div>
     <div>
       <!-- Modal Component -->
-      <b-modal id="modal" @ok="handleOk" centered title="Bootstrap-Vue">
+      <b-modal id="modal" size="lg" @ok="handleOk" centered title="Bootstrap-Vue">
         <NeedSelect></NeedSelect>
       </b-modal>
     </div>
