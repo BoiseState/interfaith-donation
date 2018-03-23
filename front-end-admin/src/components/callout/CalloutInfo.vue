@@ -52,6 +52,8 @@
 
 <script>
 import { getCalloutById, updateCallout } from '../../services/callout-service';
+import { updateCalloutNeed } from '../../services/calloutneed-service';
+
 import NeedSelect from '../need/NeedSelect';
 
 export default {
@@ -83,6 +85,9 @@ export default {
   },
   methods: {
     onFormSubmit() {
+      this.callout.calloutNeeds.forEach(calloutNeed => {
+        updateCalloutNeed(calloutNeed);
+      });
       updateCallout(this.callout);
     },
     handleOk(evt) {

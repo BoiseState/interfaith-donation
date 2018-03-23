@@ -18,17 +18,12 @@
       </b-row>
 
       <h3>Needs</h3>
-      <b-table outlined hover ref="table" id="my-table" :fields="fields" :filter="filter" :items="needs">
+      <b-table outlined hover :fields="fields" :filter="filter" :items="needs">
         <template slot="url" slot-scope="row">
           <a><b-btn class="glyphicon glyphicon-search" style="color: white" v-on:click="openUrl(row.item.url)"></b-btn></a>
         </template>
         <template slot="add" slot-scope="row">
-          <div v-if="row.item.added">
-            <a><b-btn class="glyphicon glyphicon-minus" style="color: red; background-color: white" v-on:click="removeNeed(row.item)"></b-btn></a>
-          </div>
-          <div v-else>
-            <a><b-btn class="glyphicon glyphicon-plus" style="color: green; background-color: white" v-on:click="addNeed(row.item)"></b-btn></a>
-          </div>
+          <b-form-checkbox v-model="row.item.added" @change="updateNeeds(row.item)"></b-form-checkbox>
         </template>
       </b-table>
     </div>
@@ -62,25 +57,18 @@ export default {
       this.needs.splice(10);
       this.needs.forEach(need => {
         need.formattedDate = Helper.methods.formatDate(need.createdDate);
+        need.added = false;
       });
     });
   },
   methods: {
-    addNeed(need) {
-      this.added.push(need);
-      need.added = true;
-      this.$root.$emit('bv::table::refresh', 'my-table');
-      this.$refs.table.refresh();
-      console.log('needs', this.needs);
-      console.log('need', need);
-    },
-    removeNeed(need) {
-      this.added.splice(need);
-      need.added = false;
-      this.$root.$emit('bv::table::refresh', 'my-table');
-      this.$refs.table.refresh();
-      console.log('added', this.added);
-      console.log('need', need);
+    updateNeeds(need) {
+      if (this.added.includes(need)) {
+        this.added.splice(need);
+      } else {
+        this.added.push(need);
+      }
+      console.log(this.added);
     }
   }
 };

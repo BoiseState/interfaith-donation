@@ -1,6 +1,7 @@
 <template>
   <div class="jumbotron">
     <div class="container">
+      <br>
       <router-link class="btn btn-default" to="/callout/register">Add Callout&raquo;</router-link>
       <b-row>
         <b-col md="6" class="my-1">

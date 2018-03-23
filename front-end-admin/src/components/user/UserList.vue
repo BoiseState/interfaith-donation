@@ -1,6 +1,7 @@
 <template>
   <div class="jumbotron">
     <div class="container">
+      <br>
       <router-link class="btn btn-default" to="/user/register">Add User&raquo;</router-link>
       <!-- TODO: Add form for searching through users -->
       <b-row>
