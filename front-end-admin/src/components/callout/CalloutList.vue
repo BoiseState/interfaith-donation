@@ -3,8 +3,8 @@
     <div class="container">
       <router-link class="btn btn-default" to="/callout/register">Add Callout&raquo;</router-link>
       <div class="form-group">
-        <input type="text" v-model="searchTerm" placeholder="Search title.." v-on:keyup.enter="searchTitle"/>
-        <button v-on:click="searchTitle" class="btn btn-primary">Search</button>
+        <input type="text" v-model="searchTerm" placeholder="Search..." v-on:keyup.enter="searchTitle"/>
+        <button v-on:click="searchTitle" class="btn btn-secondary">Search</button>
       </div>
       <h3>Callouts</h3>
       <table class="table">

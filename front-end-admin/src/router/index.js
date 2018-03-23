@@ -54,6 +54,7 @@ export default new Router({
     },
     {
       path: '/user/:id',
+      name: 'user',
       component: UserInfo
     },
     {

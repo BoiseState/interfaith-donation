@@ -3,7 +3,7 @@
     <div class="jumbotron">
       <h2>Donor info page for {{donor.name}}</h2>
       <form v-on:submit.prevent="onFormSubmit" class="form-horizontal">
-        <button type="submit">Update Donor</button>
+        <button class="btn btn-primary" type="submit">Update Donor</button>
         <div class="form-group">
           <label class="control-label col-sm-2">Full Name:</label>
           <input v-model="donor.name" name="name" type="text" width="50" required>
@@ -56,7 +56,7 @@ export default {
     };
   },
   created() {
-    getDonorById(this.$route.params.userid).then(donor => {
+    getDonorById(this.$route.params.id).then(donor => {
       this.donor = donor;
     });
   },

@@ -6,7 +6,7 @@
       <!-- TODO: Add form for searching through donors -->
       <div class="form-group">
         <input type="text" v-model="searchTerm" placeholder="Search..." v-on:keyup.enter="searchTitle"/>
-        <button v-on:click="searchTitle" class="btn btn-default">Search</button>
+        <button v-on:click="searchTitle" class="btn btn-secondary">Search</button>
       </div>
       <h3>Donors</h3>
       <table class="table">
@@ -15,7 +15,6 @@
           <th>Donor Name</th>
           <th>Email</th>
           <th>Joined On</th>
-          <th>JSON</th>
         </tr>
         </thead>
         <tbody id="fullDonorTBody">
@@ -23,8 +22,7 @@
           <td>{{donor.name}}</td>
           <td>{{donor.email}}</td>
           <td>{{formatDate(donor.joinDate)}}</td>
-          <td>{{donor}}</td>
-          <td><router-link class="btn btn-default" :to="{ path: '/donor/:id', params: { id: donor.donorId } }">Edit Donor</router-link></td>
+          <td><router-link :to="{ name: 'donorInfo', params: { id: donor.id }}" class="btn btn-primary" role="button">Edit</router-link></td>
         </tr>
         </tbody>
       </table>
@@ -41,7 +39,8 @@ export default {
   name: 'donor-list',
   data() {
     return {
-      donors: []
+      donors: [],
+      searchTerm: ''
     };
   },
   created() {

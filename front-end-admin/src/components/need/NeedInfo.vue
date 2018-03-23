@@ -4,7 +4,7 @@
     <div class="jumbotron">
        <div class="container">
         <h2>Need Info Page for {{ need.name }}</h2>
-        <form v-on:submit.prevent="onFormSubmit" class="form-horizontal" >
+        <b-form v-on:submit.prevent="onFormSubmit" class="form-horizontal" >
           <button type="submit">Update Need</button>
           <input type="hidden" name="need_id" v-model="need.id">
           <div class="form-group">
@@ -33,7 +33,7 @@
           </div> -->
             <!-- <button type="submit">Update Need</button> -->
           <!-- </div> -->
-        </form>
+        </b-form>
       </div>
     </div>
   </div>

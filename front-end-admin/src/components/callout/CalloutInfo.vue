@@ -34,7 +34,7 @@
           </tr>
           </tbody>
         </table>
-        <div >
+        <div>
           <b-btn v-b-modal.modal>Add Need</b-btn>
         </div>
         <br>
@@ -43,7 +43,7 @@
     </div>
     <div>
       <!-- Modal Component -->
-      <b-modal id="modal" centered title="Bootstrap-Vue">
+      <b-modal id="modal" @ok="handleOk" centered title="Bootstrap-Vue">
         <NeedSelect></NeedSelect>
       </b-modal>
     </div>
@@ -70,7 +70,8 @@ export default {
         active: '',
         pinned: ''
       },
-      calloutNeeds: []
+      calloutNeeds: [],
+      newCalloutNeed: {}
     };
   },
   created() {
@@ -84,16 +85,21 @@ export default {
     onFormSubmit() {
       updateCallout(this.callout);
     },
-    openNeeds() {
-      let newWindow = open(
-        '#/select-need',
-        'select need',
-        'width=400,height=600'
-      );
-      newWindow.focus();
+    handleOk(evt) {
+      // Prevent modal from closing
+      evt.preventDefault();
+      if (!this.name) {
+        alert('Please enter your name');
+      } else {
+        this.handleSubmit();
+      }
     },
-    addNeed(need) {
-      alert('result of popup is: ' + need);
+    handleSubmit() {
+      this.calloutNeeds.push(this.newCalloutNeed);
+      this.clearCalloutNeed();
+    },
+    clearCalloutNeed() {
+      this.newCalloutNeed = {};
     }
   }
 };
