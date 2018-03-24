@@ -23,6 +23,22 @@
                            :max-rows="3">
           </b-form-textarea>
           <h5>Set End Date: </h5>
+            <dropdown>
+              <div class="input-group">
+                <b-form-input v-model="callout.endDate"
+                              placeholder="Enter EndDate.."
+                              name="endDate">
+                </b-form-input>
+                <div class="input-group-btn">
+                  <btn class="dropdown-toggle"><i class="glyphicon glyphicon-calendar"></i></btn>
+                </div>
+              </div>
+              <template slot="dropdown">
+                <li>
+                  <date-picker v-model="callout.endDate"/>
+                </li>
+              </template>
+            </dropdown>
           <br>
       </b-card>
         <b-card>
@@ -73,8 +89,8 @@
 <script>
 import { getCalloutById, updateCallout } from '../../services/callout-service';
 import { updateCalloutNeed } from '../../services/calloutneed-service';
-
 import NeedSelect from '../need/NeedSelect';
+import Moment from 'moment';
 
 export default {
   name: 'callout-info',
@@ -88,7 +104,7 @@ export default {
         body: '',
         url: '',
         createDate: '',
-        updateDate: '',
+        endDate: '',
         active: '',
         pinned: ''
       },
@@ -102,7 +118,9 @@ export default {
         { key: 'progress', sortable: false },
         { key: 'edit', sortable: false }
       ],
-      filter: null
+      filter: null,
+      show: true,
+      date: ''
     };
   },
   created() {
@@ -142,6 +160,9 @@ export default {
     },
     clearCalloutNeed() {
       this.newCalloutNeed = {};
+    },
+    dateToday() {
+      return Moment.moment();
     }
   }
 };
