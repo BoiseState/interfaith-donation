@@ -4,18 +4,16 @@
       <br>
       <br>
       <b-card title="Edit Callout">
-      <b-card :title="callout.name">
         <b-form @submit="onFormSubmit" class="form-horizontal" >
+
+        <b-card :title="callout.name">
           <input type="hidden" name="callout_id" v-model="callout.id">
           <h5>Callout Name: </h5>
-          <b-form-textarea v-model="callout.name"
+          <b-form-input    v-model="callout.name"
                            required
                            placeholder="Enter name.."
-                           :rows="1"
-                           no-resize
-                           name="name"
-                           :max-rows="1">
-          </b-form-textarea>
+                           name="name">
+          </b-form-input>
           <h5>Description: </h5>
           <b-form-textarea v-model="callout.descriptionMessage"
                            required
@@ -26,11 +24,9 @@
           </b-form-textarea>
           <h5>Set End Date: </h5>
           <br>
-          <b-button type="submit" variant="primary">Submit</b-button>
-        </b-form>
       </b-card>
         <b-card>
-      <div v-show="calloutNeeds.length > 0">
+      <div v-if="calloutNeeds.length > 0">
         <h3>Needs</h3>
         <b-table outlined hover :fields="fields" :filter="filter" :items="callout.calloutNeeds">
           <template slot="name" slot-scope="row">
@@ -65,6 +61,10 @@
         </b-modal>
       </div>
         </b-card>
+        <br>
+        <b-button type="submit" variant="success">Submit</b-button>
+        </b-form>
+
       </b-card>
     </div>
   </div>
@@ -120,15 +120,16 @@ export default {
     });
   },
   methods: {
-    onFormSubmit() {
+    onFormSubmit(evt) {
+      evt.preventDefault();
       this.callout.calloutNeeds.forEach(calloutNeed => {
         updateCalloutNeed(calloutNeed);
       });
       updateCallout(this.callout);
     },
-    handleOk(evt) {
+    handleOk(bvEvt) {
       // Prevent modal from closing
-      evt.preventDefault();
+      bvEvt.preventDefault();
       if (!this.name) {
         alert('Please enter your name');
       } else {

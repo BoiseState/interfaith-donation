@@ -24,7 +24,6 @@
         <template slot="calloutNeeds" slot-scope="row">
           <a><b-btn class="glyphicon glyphicon-list-alt" style="color: white" @click.stop="row.toggleDetails"></b-btn></a>
         </template>
-        <!--NEW STUFF-->
         <template slot="row-details" slot-scope="row">
           <b-card v-for="calloutNeed in row.item.calloutNeeds" :key="calloutNeed.id">
             <b-row class="mb-2">
@@ -54,7 +53,7 @@
 <script>
 import { getAllCallouts } from '../../services/callout-service';
 import router from '../../router/index';
-import Helper from '../need/NeedList.vue';
+import Helper from '../helpers/Helper.vue';
 
 export default {
   name: 'callout-info',
@@ -75,7 +74,6 @@ export default {
   },
   created() {
     getAllCallouts().then(callouts => {
-      console.log(callouts);
       this.callouts = callouts;
       this.callouts.forEach(callout => {
         callout.formattedCreatedDate = Helper.methods.formatDate(

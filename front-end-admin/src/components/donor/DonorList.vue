@@ -41,7 +41,7 @@
 
 <script>
 import { getAllDonors } from '../../services/donor-service';
-import Helper from '../need/NeedList.vue';
+import Helper from '../helpers/Helper.vue';
 import router from '../../router/index';
 
 export default {

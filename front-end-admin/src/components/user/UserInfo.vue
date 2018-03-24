@@ -5,22 +5,19 @@
         <b-form @submit="onFormSubmit" class="form-horizontal" >
           <input type="hidden" name="user_id" v-model="user.id">
           <h5>Full Name: </h5>
-          <b-form-textarea v-model="user.name"
+          <b-form-input    v-model="user.name"
                            required
                            placeholder="Enter name.."
-                           :rows="1"
-                           no-resize
-                           name="name"
-                           :max-rows="1">
-          </b-form-textarea>
+                           name="name">
+
+          </b-form-input>
           <h5>Email: </h5>
-          <b-form-textarea v-model="user.email"
+          <b-form-input    v-model="user.email"
+                           required
                            placeholder="Enter email addresss.."
-                           :rows="1"
-                           no-resize
-                           name="email"
-                           :max-rows="1">
-          </b-form-textarea>
+                           name="email">
+
+          </b-form-input>
           <h5>Set Permissions: </h5>
           <b-dropdown id="ddown-divider" v-model="user.permissions" :text="getPermissionText()" class="m-2">
             <b-dropdown-item-button v-on:click="updatePermissions(0)">No Permissions</b-dropdown-item-button>
@@ -30,7 +27,7 @@
           </b-dropdown>
           <br>
           <br>
-          <b-button type="submit" variant="primary">Submit</b-button>
+          <b-button type="submit" variant="success">Submit</b-button>
         </b-form>
       </b-card>
     </div>
@@ -56,15 +53,14 @@ export default {
     });
   },
   methods: {
-    onFormSubmit() {
+    onFormSubmit(evt) {
+      evt.preventDefault();
       createUser(this.user);
     },
     updatePermissions(permissionLevel) {
       this.user.permissions = permissionLevel;
-      console.log(this.user.permissions);
     },
     getPermissionText() {
-      console.log(this.user.permissions);
       if (this.user.permissions === 0) {
         return 'No Permissions';
       } else if (this.user.permissions === 1) {

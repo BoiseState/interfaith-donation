@@ -68,7 +68,6 @@ export default {
       } else {
         this.added.push(need);
       }
-      console.log(this.added);
     }
   }
 };

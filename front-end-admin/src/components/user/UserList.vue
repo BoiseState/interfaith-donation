@@ -64,7 +64,6 @@ export default {
   },
   methods: {
     getPermissions(user) {
-      console.log(user);
       if (user.permissions === null || user.permissions === 0) {
         return 'No Permissions';
       } else if (user.permissions === 1) {

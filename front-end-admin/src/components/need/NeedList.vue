@@ -32,7 +32,7 @@
 
 <script>
 import { getAllNeeds } from '../../services/need-service';
-
+import Helper from '../helpers/Helper.vue';
 import router from '../../router/index';
 
 export default {
@@ -52,11 +52,10 @@ export default {
     };
   },
   created() {
-    let self = this;
     getAllNeeds().then(needs => {
       this.needs = needs;
       this.needs.forEach(need => {
-        need.formattedDate = self.formatDate(need.createdDate);
+        need.formattedDate = Helper.methods.formatDate(need.createdDate);
       });
     });
   },
@@ -66,10 +65,6 @@ export default {
         name: 'NeedInfo',
         params: { id: Number.parseInt(NeedId) }
       });
-    },
-    formatDate(dateString) {
-      let date = new Date(dateString);
-      return date.toLocaleDateString();
     },
     openUrl(url) {
       window.open(url);
