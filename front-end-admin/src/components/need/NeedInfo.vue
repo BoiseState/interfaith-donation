@@ -5,7 +5,6 @@
        <div class="container">
          <br>
          <br>
-
          <b-card :title="need.name">
           <b-form @submit="onFormSubmit" class="form-horizontal" >
             <input type="hidden" name="need_id" v-model="need.id">
@@ -14,7 +13,7 @@
                              required
                              placeholder="Enter name.."
                              :rows="1"
-                             no-resize=true
+                             no-resize
                              name="name"
                              :max-rows="1">
             </b-form-textarea>
@@ -37,7 +36,7 @@
             <b-form-textarea v-model="need.unitOfMeasurement"
                              placeholder="Enter units the product is measured in.."
                              :rows="1"
-                             no-resize=true
+                             no-resize
                              name="units"
                              :max-rows="1">
             </b-form-textarea>

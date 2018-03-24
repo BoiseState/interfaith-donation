@@ -1,22 +1,34 @@
 <template>
   <div class="jumbotron">
     <div class="container">
-      <h2>{{callout.title}}</h2>
-      <!-- TODO: List out associated needs with a specific callout -->
-      <h2>Update Callout Information</h2>
-      <b-form v-on:submit.prevent="onFormSubmit">
-        <div class="form-group">
-          <label class="control-label col-sm-2">Title:</label>
-          <input v-model="callout.name" type="text" width="50" required>
-        </div>
-        <div class="form-group">
-          <label class="control-label col-sm-2">Description:</label>
-          <textarea rows="4" cols="50" v-model="callout.descriptionMessage"></textarea>
-        </div>
-        <div class="form-group">
-          <label class="control-label col-sm-4>">Status: </label>
-          <input type="checkbox" v-model="callout.active">Active?<br>
-        </div>
+      <br>
+      <br>
+      <b-card :title="callout.name">
+        <b-form @submit="onFormSubmit" class="form-horizontal" >
+          <input type="hidden" name="callout_id" v-model="callout.id">
+          <h5>Callout Name: </h5>
+          <b-form-textarea v-model="callout.name"
+                           required
+                           placeholder="Enter name.."
+                           :rows="1"
+                           no-resize
+                           name="name"
+                           :max-rows="1">
+          </b-form-textarea>
+          <h5>Description: </h5>
+          <b-form-textarea v-model="callout.descriptionMessage"
+                           required
+                           placeholder="Enter description.."
+                           :rows="3"
+                           name="Amazon URL"
+                           :max-rows="3">
+          </b-form-textarea>
+          <h5>Set End Date: </h5>
+          <br>
+          <b-button type="submit" variant="primary">Submit</b-button>
+        </b-form>
+      </b-card>
+      <div v-show="callout.calloutNeeds.length > 0">
         <h3>Needs</h3>
         <b-table outlined hover :fields="fields" :filter="filter" :items="callout.calloutNeeds">
           <template slot="name" slot-scope="row">
@@ -40,18 +52,16 @@
             <router-link :to="{ name: 'need', params: { id: row.item.need.id }}"  class="glyphicon glyphicon-pencil" style="color: grey; " role="button"></router-link>
           </template>
         </b-table>
+      </div>
         <div>
           <b-btn v-b-modal.modal>Add Need</b-btn>
         </div>
-        <br>
-        <button class="btn btn-primary" type="submit">Update Callout</button>
-      </b-form>
-    </div>
-    <div>
+      <div>
       <!-- Modal Component -->
-      <b-modal id="modal" size="lg" @ok="handleOk" centered title="Bootstrap-Vue">
-        <NeedSelect></NeedSelect>
-      </b-modal>
+        <b-modal id="modal" size="lg" @ok="handleOk" centered title="Bootstrap-Vue">
+          <NeedSelect></NeedSelect>
+        </b-modal>
+      </div>
     </div>
   </div>
 </template>
