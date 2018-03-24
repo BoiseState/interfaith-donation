@@ -1,6 +1,7 @@
 <template>
   <div class="donorInfoPage">
     <div class="jumbotron">
+      <div class="container">
       <b-card :title="donor.name">
         <b-form @submit="onFormSubmit" class="form-horizontal" >
           <input type="hidden" name="donor_id" v-model="donor.id">
@@ -51,6 +52,7 @@
         </b-form>
       </b-card>
     </div>
+  </div>
   </div>
 </template>
 

@@ -24,7 +24,7 @@
           </b-form-textarea>
           <h5>Set End Date: </h5>
             <dropdown>
-              <div class="input-group">
+              <div style="width: 300px" class="input-group">
                 <b-form-input v-model="callout.endDate"
                               placeholder="Enter EndDate.."
                               name="endDate">
