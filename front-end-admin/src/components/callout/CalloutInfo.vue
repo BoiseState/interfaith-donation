@@ -17,6 +17,29 @@
           <label class="control-label col-sm-4>">Status: </label>
           <input type="checkbox" v-model="callout.active">Active?<br>
         </div>
+        <h3>Needs</h3>
+        <b-table outlined hover :fields="fields" :filter="filter" :items="callout.calloutNeeds">
+          <template slot="name" slot-scope="row">
+            {{row.item.need.name}}
+          </template>
+          <template slot="url" slot-scope="row">
+            <a><b-btn class="glyphicon glyphicon-search" style="color: white" v-on:click="openUrl(row.item.need.url)" ></b-btn></a>
+          </template>
+          <template slot="description" slot-scope="row">
+            {{row.item.need.description}}
+          </template>
+          <template slot="unitOfMeasurement" slot-scope="row">
+            {{row.item.need.unitOfMeasurement}}
+          </template>
+          <template slot="progress" slot-scope="row">
+            <div>
+              <b-progress :value="row.item.donationSum" :max="row.item.quantity" show-value class="mb-3"></b-progress>
+            </div>
+          </template>
+          <template slot="edit" slot-scope="row">
+            <router-link :to="{ name: 'need', params: { id: row.item.need.id }}"  class="glyphicon glyphicon-pencil" style="color: grey; " role="button"></router-link>
+          </template>
+        </b-table>
         <div>
           <b-btn v-b-modal.modal>Add Need</b-btn>
         </div>
@@ -56,7 +79,16 @@ export default {
         pinned: ''
       },
       calloutNeeds: [],
-      newCalloutNeed: {}
+      fields: [
+        { key: 'name', sortable: true },
+        { key: 'url', sortable: false },
+        { key: 'description', sortable: true },
+        { key: 'unitOfMeasurement', sortable: true },
+        { key: 'quantity', sortable: true },
+        { key: 'progress', sortable: false },
+        { key: 'edit', sortable: false }
+      ],
+      filter: null
     };
   },
   created() {
@@ -64,6 +96,13 @@ export default {
       callout.id = this.$route.params.id;
       this.callout = callout;
       this.calloutNeeds = callout.calloutNeeds;
+
+      this.callout.calloutNeeds.forEach(calloutNeed => {
+        calloutNeed.donationSum = 0;
+        calloutNeed.donations.forEach(donation => {
+          calloutNeed.donationSum += donation.quantity;
+        });
+      });
     });
   },
   methods: {

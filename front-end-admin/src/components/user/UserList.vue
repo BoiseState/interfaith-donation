@@ -19,6 +19,9 @@
 
       <h3>Users</h3>
       <b-table outlined hover :fields="fields" :filter="filter" :items="users">
+        <template slot="permissions" slot-scope="row">
+
+        </template>
         <template slot="active" slot-scope="row">
           <template v-if="row.item.active">
             <a><b-btn class="glyphicon glyphicon-ok" style="color: white"> </b-btn></a>
@@ -57,7 +60,8 @@ export default {
       this.users = users;
       console.log(users);
     });
-  }
+  },
+  methods: {}
 };
 </script>
 

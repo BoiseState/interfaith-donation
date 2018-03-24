@@ -14,8 +14,7 @@
                              required
                              placeholder="Enter name.."
                              :rows="1"
-                             no-resize = true
-                             size="lg"
+                             no-resize=true
                              name="name"
                              :max-rows="1">
             </b-form-textarea>
@@ -38,7 +37,7 @@
             <b-form-textarea v-model="need.unitOfMeasurement"
                              placeholder="Enter units the product is measured in.."
                              :rows="1"
-                             no-resize = true
+                             no-resize=true
                              name="units"
                              :max-rows="1">
             </b-form-textarea>
