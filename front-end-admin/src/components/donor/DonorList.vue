@@ -2,7 +2,7 @@
   <div class="jumbotron">
     <div class="container">
       <b-card>
-      <router-link class="btn btn-default" to="/register-donor">Add Donor&raquo;</router-link>
+      <router-link class="btn btn-default" style="background-color: grey; color:white" to="/register-donor">Add Donor&raquo;</router-link>
       <!-- TODO: Add form for searching through donors -->
       <b-row>
         <b-col md="6" class="my-1">
@@ -57,8 +57,8 @@ export default {
         { key: 'state', sortable: true },
         { key: 'zip', sortable: true },
         { key: 'formattedDate', sortable: true, label: 'Join Date' },
-        { key: 'donations', sortable: false },
-        { key: 'edit', sortable: false }
+        { key: 'donations', sortable: false, class: 'text-center' },
+        { key: 'edit', sortable: false, class: 'text-center' }
       ],
       filter: null
     };

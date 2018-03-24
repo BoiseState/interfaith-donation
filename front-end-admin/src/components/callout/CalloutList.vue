@@ -2,7 +2,7 @@
   <div class="jumbotron">
     <div class="container">
       <b-card>
-      <router-link class="btn btn-default" to="/callout/register">Add Callout&raquo;</router-link>
+      <router-link class="btn btn-default" style="background-color: grey; color:white" to="/callout/register">Add Callout&raquo;</router-link>
       <b-row>
         <b-col md="6" class="my-1">
             <b-input-group>
@@ -63,11 +63,16 @@ export default {
       fields: [
         { key: 'name', sortable: true },
         { key: 'descriptionMessage', sortable: true },
-        { key: 'active', sortable: true },
+        { key: 'active', sortable: true, class: 'text-center' },
         { key: 'formattedCreatedDate', sortable: true, label: 'Created' },
         { key: 'formattedEndDate', sortable: true, label: 'Ends' },
-        { key: 'calloutNeeds', sortable: false, label: 'Needs' },
-        { key: 'edit', sortable: false }
+        {
+          key: 'calloutNeeds',
+          sortable: false,
+          label: 'Needs',
+          class: 'text-center'
+        },
+        { key: 'edit', sortable: false, class: 'text-center' }
       ],
       filter: null
     };

@@ -4,7 +4,7 @@
       <div class="container">
         <b-card>
         <!-- <p><a class="btn btn-default" href="${pageContext.request.contextPath}/registerneed.jsp" role="button">Add Need&raquo;</a></p> -->
-        <router-link class="btn btn-default" to="/register-need">Add Need&raquo;</router-link>
+        <router-link class="btn btn-default" style="background-color: grey; color:white" to="/register-need">Add Need&raquo;</router-link>
         <b-row>
           <b-col md="6" class="my-1">
               <b-input-group>
@@ -42,11 +42,11 @@ export default {
       needs: [],
       fields: [
         { key: 'name', sortable: true },
-        { key: 'url', sortable: false },
+        { key: 'url', sortable: false, class: 'text-center' },
         { key: 'description', sortable: true },
         { key: 'unitOfMeasurement', sortable: true },
         { key: 'formattedDate', sortable: true, label: 'Created Date' },
-        { key: 'edit', sortable: false }
+        { key: 'edit', sortable: false, class: 'text-center' }
       ],
       filter: null
     };
