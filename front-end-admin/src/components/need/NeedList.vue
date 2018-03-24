@@ -2,19 +2,17 @@
   <!-- <div class="needs"> -->
     <div class="jumbotron">
       <div class="container">
-        <div>&nbsp;</div>
+        <b-card>
         <!-- <p><a class="btn btn-default" href="${pageContext.request.contextPath}/registerneed.jsp" role="button">Add Need&raquo;</a></p> -->
         <router-link class="btn btn-default" to="/register-need">Add Need&raquo;</router-link>
         <b-row>
           <b-col md="6" class="my-1">
-            <b-form-group horizontal label="Filter" class="mb-0">
               <b-input-group>
                 <b-form-input v-model="filter" placeholder="Type to Search" />
                 <b-input-group-append>
                   <b-btn :disabled="!filter" @click="filter = ''">Clear</b-btn>
                 </b-input-group-append>
               </b-input-group>
-            </b-form-group>
           </b-col>
         </b-row>
 
@@ -27,6 +25,7 @@
             <router-link :to="{ name: 'need', params: { id: row.item.id }}"  class="glyphicon glyphicon-pencil" style="color: grey; " role="button"></router-link>
           </template>
         </b-table>
+        </b-card>
       </div>
     </div>
 </template>

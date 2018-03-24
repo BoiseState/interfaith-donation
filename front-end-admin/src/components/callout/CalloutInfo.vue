@@ -3,6 +3,7 @@
     <div class="container">
       <br>
       <br>
+      <b-card title="Edit Callout">
       <b-card :title="callout.name">
         <b-form @submit="onFormSubmit" class="form-horizontal" >
           <input type="hidden" name="callout_id" v-model="callout.id">
@@ -28,7 +29,8 @@
           <b-button type="submit" variant="primary">Submit</b-button>
         </b-form>
       </b-card>
-      <div v-show="callout.calloutNeeds.length > 0">
+        <b-card>
+      <div v-show="calloutNeeds.length > 0">
         <h3>Needs</h3>
         <b-table outlined hover :fields="fields" :filter="filter" :items="callout.calloutNeeds">
           <template slot="name" slot-scope="row">
@@ -62,6 +64,8 @@
           <NeedSelect></NeedSelect>
         </b-modal>
       </div>
+        </b-card>
+      </b-card>
     </div>
   </div>
 </template>

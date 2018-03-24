@@ -9,7 +9,7 @@
                            required
                            placeholder="Enter name.."
                            :rows="1"
-                           no-resize=true
+                           no-resize
                            name="name"
                            :max-rows="1">
           </b-form-textarea>
@@ -17,17 +17,19 @@
           <b-form-textarea v-model="user.email"
                            placeholder="Enter email addresss.."
                            :rows="1"
-                           no-resize=true
+                           no-resize
                            name="email"
                            :max-rows="1">
           </b-form-textarea>
-          <br>
+          <h5>Set Permissions: </h5>
           <b-dropdown id="ddown-divider" v-model="user.permissions" :text="getPermissionText()" class="m-2">
             <b-dropdown-item-button v-on:click="updatePermissions(0)">No Permissions</b-dropdown-item-button>
             <b-dropdown-item-button v-on:click="updatePermissions(1)">Admin Permissions</b-dropdown-item-button>
             <b-dropdown-divider></b-dropdown-divider>
             <b-dropdown-item-button v-on:click="updatePermissions(2)">Super Admin/Jody Permissions</b-dropdown-item-button>
           </b-dropdown>
+          <br>
+          <br>
           <b-button type="submit" variant="primary">Submit</b-button>
         </b-form>
       </b-card>
@@ -44,7 +46,7 @@ export default {
     return {
       user: {
         name: 'Loading...',
-        email: ''
+        email: 'Template New User'
       }
     };
   },

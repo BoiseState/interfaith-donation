@@ -1,18 +1,16 @@
 <template>
   <div class="jumbotron">
     <div class="container">
-      <br>
+      <b-card>
       <router-link class="btn btn-default" to="/callout/register">Add Callout&raquo;</router-link>
       <b-row>
         <b-col md="6" class="my-1">
-          <b-form-group horizontal label="Filter" class="mb-0">
             <b-input-group>
               <b-form-input v-model="filter" placeholder="Type to Search" />
               <b-input-group-append>
                 <b-btn :disabled="!filter" @click="filter = ''">Clear</b-btn>
               </b-input-group-append>
             </b-input-group>
-          </b-form-group>
         </b-col>
       </b-row>
 
@@ -20,7 +18,7 @@
       <b-table outlined hover :fields="fields" :filter="filter" :items="callouts">
         <template slot="active" slot-scope="row">
           <template v-if="row.item.active">
-            <a><b-btn class="glyphicon glyphicon-ok" style="color: white"> </b-btn></a>
+            <a class="glyphicon glyphicon-ok" style="color: grey"></a>
           </template>
         </template>
         <template slot="calloutNeeds" slot-scope="row">
@@ -48,6 +46,7 @@
           <router-link :to="{ name: 'callout', params: { id: row.item.id }}"  class="glyphicon glyphicon-pencil" style="color: grey; " role="button"></router-link>
         </template>
       </b-table>
+      </b-card>
     </div>
   </div>
 </template>

@@ -1,36 +1,34 @@
 <template>
   <div class="jumbotron">
     <div class="container">
-      <br>
-      <router-link class="btn btn-default" to="/user/register">Add User&raquo;</router-link>
-      <!-- TODO: Add form for searching through users -->
+      <b-card>
+        <router-link class="btn btn-default" to="/register-user">Add User&raquo;</router-link>
       <b-row>
         <b-col md="6" class="my-1">
-          <b-form-group horizontal label="Filter" class="mb-0">
             <b-input-group>
               <b-form-input v-model="filter" placeholder="Type to Search" />
               <b-input-group-append>
                 <b-btn :disabled="!filter" @click="filter = ''">Clear</b-btn>
               </b-input-group-append>
             </b-input-group>
-          </b-form-group>
         </b-col>
       </b-row>
 
       <h3>Users</h3>
       <b-table outlined hover :fields="fields" :filter="filter" :items="users">
         <template slot="permissions" slot-scope="row">
-
+          <b-badge>{{row.item.stringPermissions}}</b-badge>
         </template>
         <template slot="active" slot-scope="row">
           <template v-if="row.item.active">
-            <a><b-btn class="glyphicon glyphicon-ok" style="color: white"> </b-btn></a>
+            <a class="glyphicon glyphicon-ok" style="color: grey"></a>
           </template>
         </template>
         <template slot="edit" slot-scope="row">
           <router-link :to="{ name: 'user', params: { id: row.item.id }}"  class="glyphicon glyphicon-pencil" style="color: grey;" role="button"></router-link>
         </template>
       </b-table>
+      </b-card>
     </div>
   </div>
 </template>
@@ -56,12 +54,27 @@ export default {
     };
   },
   created() {
+    let self = this;
     getAllUsers().then(users => {
       this.users = users;
-      console.log(users);
+      this.users.forEach(user => {
+        user.stringPermissions = self.getPermissions(user);
+      });
     });
   },
-  methods: {}
+  methods: {
+    getPermissions(user) {
+      console.log(user);
+      if (user.permissions === null || user.permissions === 0) {
+        return 'No Permissions';
+      } else if (user.permissions === 1) {
+        return 'Admin';
+      } else if (user.permissions === 2) {
+        return 'Jody/SuperAdmin';
+      }
+      return 'Invalid Permissions';
+    }
+  }
 };
 </script>
 
