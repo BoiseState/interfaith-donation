@@ -6,7 +6,7 @@
 	<groupId>org.interfaithsanctuary</groupId>
 	<artifactId>donation-api</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 
 	<name>donation-api</name>
 	<description>Demo project for Spring Boot</description>
@@ -79,6 +79,5 @@
 				</configuration>
 			</plugin>
 		</plugins>
-		<finalName>donation-api</finalName>
 	</build>
 </project>

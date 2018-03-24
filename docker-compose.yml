@@ -7,3 +7,14 @@ services:
     ports:
       - "5050:5432" 
     restart: always
+
+  server-api:
+    build:
+      context: donation-api
+    depends_on:
+      - database
+    image: donation-api
+    ports:
+      - "8080:8080"
+      - "8800:8080"
+
