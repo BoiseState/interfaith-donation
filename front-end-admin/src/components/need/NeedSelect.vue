@@ -2,23 +2,24 @@
   <div style="max-height: 600px; overflow-y: scroll;">
     <div class="container">
       <div>&nbsp;</div>
-      <!-- <p><a class="btn btn-default" href="${pageContext.request.contextPath}/registerneed.jsp" role="button">Add Need&raquo;</a></p> -->
       <router-link class="btn btn-default" to="/register-need">Add Need&raquo;</router-link>
       <b-row>
         <b-col md="6" class="my-1">
-            <b-input-group>
-              <b-form-input v-model="filter" placeholder="Type to Search" />
-              <b-input-group-append>
-                <b-btn :disabled="!filter" @click="filter = ''">Clear</b-btn>
-              </b-input-group-append>
-            </b-input-group>
+          <b-input-group>
+            <b-form-input v-model="filter" placeholder="Type to Search"/>
+            <b-input-group-append>
+              <b-btn :disabled="!filter" @click="filter = ''">Clear</b-btn>
+            </b-input-group-append>
+          </b-input-group>
         </b-col>
       </b-row>
 
       <h3>Needs</h3>
       <b-table outlined hover :fields="fields" :filter="filter" :items="needs">
         <template slot="url" slot-scope="row">
-          <a><b-btn class="glyphicon glyphicon-search" style="color: white" v-on:click="openUrl(row.item.url)"></b-btn></a>
+          <a>
+            <b-btn class="glyphicon glyphicon-search" style="color: white" v-on:click="openUrl(row.item.url)"></b-btn>
+          </a>
         </template>
         <template slot="add" slot-scope="row">
           <b-form-checkbox v-model="row.item.added" @change="updateNeeds(row.item)"></b-form-checkbox>

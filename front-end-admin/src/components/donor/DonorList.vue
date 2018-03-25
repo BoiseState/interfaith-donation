@@ -2,38 +2,41 @@
   <div class="jumbotron">
     <div class="container">
       <b-card>
-      <router-link class="btn btn-default" style="background-color: grey; color:white" to="/register-donor">Add Donor&raquo;</router-link>
-      <!-- TODO: Add form for searching through donors -->
-      <b-row>
-        <b-col md="6" class="my-1">
+        <router-link class="btn btn-default, greyButton" to="/register-donor">Add Donor&raquo;</router-link>
+        <!-- TODO: Add form for searching through donors -->
+        <b-row>
+          <b-col md="6" class="my-1">
             <b-input-group>
-              <b-form-input v-model="filter" placeholder="Type to Search" />
+              <b-form-input v-model="filter" placeholder="Type to Search"/>
               <b-input-group-append>
                 <b-btn :disabled="!filter" @click="filter = ''">Clear</b-btn>
               </b-input-group-append>
             </b-input-group>
-        </b-col>
-      </b-row>
+          </b-col>
+        </b-row>
 
-      <h3>Donors</h3>
-      <b-table outlined hover :fields="fields" :filter="filter" :items="donors">
-        <template slot="donations" slot-scope="row">
-          <a><b-btn class="glyphicon glyphicon-piggy-bank" style="color: pink" @click.stop="row.toggleDetails"></b-btn></a>
-        </template>
-        <!--NEW STUFF-->
-        <template slot="row-details" slot-scope="row">
-          <b-card>
-            <b-row class="mb-2">
-              <b-col sm="3" class="text-sm-right"><b>Donations:</b></b-col>
-              <b-col>{{row.item.donations.length}}</b-col>
-            </b-row>
-            <b-button size="sm" @click="row.toggleDetails">Hide Details</b-button>
-          </b-card>
-        </template>
-        <template slot="edit" slot-scope="row">
-          <router-link :to="{ name: 'donor', params: { id: row.item.id }}"  class="glyphicon glyphicon-pencil" style="color: grey; " role="button"></router-link>
-        </template>
-      </b-table>
+        <h3>Donors</h3>
+        <b-table outlined hover :fields="fields" :filter="filter" :items="donors">
+          <template slot="donations" slot-scope="row">
+            <a>
+              <b-btn class="glyphicon glyphicon-piggy-bank" style="color: pink" @click.stop="row.toggleDetails"></b-btn>
+            </a>
+          </template>
+          <!--NEW STUFF-->
+          <template slot="row-details" slot-scope="row">
+            <b-card>
+              <b-row class="mb-2">
+                <b-col sm="3" class="text-sm-right"><b>Donations:</b></b-col>
+                <b-col>{{row.item.donations.length}}</b-col>
+              </b-row>
+              <b-button size="sm" @click="row.toggleDetails">Hide Details</b-button>
+            </b-card>
+          </template>
+          <template slot="edit" slot-scope="row">
+            <router-link :to="{ name: 'donor', params: { id: row.item.id }}" class="glyphicon glyphicon-pencil"
+                         style="color: grey; " role="button"></router-link>
+          </template>
+        </b-table>
       </b-card>
     </div>
   </div>
