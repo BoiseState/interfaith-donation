@@ -1,43 +1,74 @@
 <template>
   <div class="userInfoPage">
     <div class="jumbotron">
-      <h2>user info page for {{user.name}}</h2>
-      <form v-on:submit.prevent="onFormSubmit" class="form-horizontal">
-        <button type="submit">Update user</button>
-        <div class="form-group">
-          <label class="control-label col-sm-2">Full Name:</label>
-          <input v-model="user.name" name="name" type="text" width="50" required>
-        </div>
-        <div class="form-group">
-          <label class="control-label col-sm-2">Email Address:</label>
-          <input v-model="user.email" name="email" type="email" width="50" required>
-        </div>
-      </form>
+      <b-card :title="user.email">
+        <b-form @submit="onFormSubmit" class="form-horizontal" >
+          <input type="hidden" name="user_id" v-model="user.id">
+          <h5>Full Name: </h5>
+          <b-form-input    v-model="user.name"
+                           required
+                           placeholder="Enter name.."
+                           name="name">
+
+          </b-form-input>
+          <h5>Email: </h5>
+          <b-form-input    v-model="user.email"
+                           required
+                           placeholder="Enter email addresss.."
+                           name="email">
+
+          </b-form-input>
+          <h5>Set Permissions: </h5>
+          <b-dropdown id="ddown-divider" v-model="user.permissions" :text="getPermissionText()" class="m-2">
+            <b-dropdown-item-button v-on:click="updatePermissions(0)">No Permissions</b-dropdown-item-button>
+            <b-dropdown-item-button v-on:click="updatePermissions(1)">Admin Permissions</b-dropdown-item-button>
+            <b-dropdown-divider></b-dropdown-divider>
+            <b-dropdown-item-button v-on:click="updatePermissions(2)">Super Admin/Jody Permissions</b-dropdown-item-button>
+          </b-dropdown>
+          <br>
+          <br>
+          <b-button type="submit" variant="success">Submit</b-button>
+        </b-form>
+      </b-card>
     </div>
   </div>
 </template>
 
 <script>
-import {getUserById, createUser} from '../../services/user-service';
+import { getUserById, createUser } from '../../services/user-service';
 
 export default {
   name: 'user-info',
-  data () {
+  data() {
     return {
       user: {
         name: 'Loading...',
-        email: ''
+        email: 'Template New User'
       }
     };
   },
-  created () {
+  created() {
     getUserById(this.$route.params.id).then(user => {
       this.user = user;
     });
   },
   methods: {
-    onFormSubmit () {
+    onFormSubmit(evt) {
+      evt.preventDefault();
       createUser(this.user);
+    },
+    updatePermissions(permissionLevel) {
+      this.user.permissions = permissionLevel;
+    },
+    getPermissionText() {
+      if (this.user.permissions === 0) {
+        return 'No Permissions';
+      } else if (this.user.permissions === 1) {
+        return 'Admin';
+      } else if (this.user.permissions === 2) {
+        return 'Super Admin/Jody';
+      }
+      return 'Invalid Permissions';
     }
   }
 };
