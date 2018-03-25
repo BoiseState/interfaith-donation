@@ -32,7 +32,6 @@
 
 <script>
 import { getAllNeeds } from '../../services/need-service';
-// import Helper from '../need/NeedList.vue';
 import Helper from '../helpers/Helper.vue';
 
 export default {
