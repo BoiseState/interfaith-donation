@@ -1,34 +1,51 @@
 <template>
   <div class="jumbotron">
     <div class="container">
+      <b-card>
       <router-link class="btn btn-default" to="/callout/register">Add Callout&raquo;</router-link>
-      <div class="form-group">
-        <input type="text" v-model="searchTerm" placeholder="Search title.." v-on:keyup.enter="searchTitle"/>
-        <button v-on:click="searchTitle" class="btn btn-primary">Search</button>
-      </div>
+      <b-row>
+        <b-col md="6" class="my-1">
+            <b-input-group>
+              <b-form-input v-model="filter" placeholder="Type to Search" />
+              <b-input-group-append>
+                <b-btn :disabled="!filter" @click="filter = ''">Clear</b-btn>
+              </b-input-group-append>
+            </b-input-group>
+        </b-col>
+      </b-row>
+
       <h3>Callouts</h3>
-      <table class="table">
-        <thead>
-        <tr>
-          <th>Title</th>
-          <!--<th>URL</th>-->
-          <th>Created Date</th>
-          <th>Valid Until</th>
-          <th>Active</th>
-          <th></th>
-        </tr>
-        </thead>
-        <tbody id="calloutTBody">
-        <tr v-for="callout in callouts" :key="callout.id">
-          <td>{{callout.name}}</td>
-          <!--<td><a v-bind:href="callout.url">{{callout.url}}</a></td>-->
-          <td>{{formatDate(callout.createdDate)}}</td>
-          <td>{{formatDate(callout.effectiveDate)}}</td>
-          <td>{{callout.active}}</td>
-          <td><router-link :to="{ name: 'callout', params: { id: callout.id }}" class="btn btn-primary" role="button">Edit</router-link></td>
-        </tr>
-        </tbody>
-      </table>
+      <b-table outlined hover :fields="fields" :filter="filter" :items="callouts">
+        <template slot="active" slot-scope="row">
+          <template v-if="row.item.active">
+            <a class="glyphicon glyphicon-ok" style="color: grey"></a>
+          </template>
+        </template>
+        <template slot="calloutNeeds" slot-scope="row">
+          <a><b-btn class="glyphicon glyphicon-list-alt" style="color: white" @click.stop="row.toggleDetails"></b-btn></a>
+        </template>
+        <template slot="row-details" slot-scope="row">
+          <b-card v-for="calloutNeed in row.item.calloutNeeds" :key="calloutNeed.id">
+            <b-row class="mb-2">
+              <b-col sm="3" class="text-sm-right"><b>Name:</b></b-col>
+              <b-col>{{calloutNeed.need.name}}</b-col>
+            </b-row>
+            <b-row class="mb-2">
+              <b-col sm="3" class="text-sm-right"><b>Description:</b></b-col>
+              <b-col>{{calloutNeed.need.description}}</b-col>
+            </b-row>
+            <b-row class="mb-2">
+              <b-col sm="3" class="text-sm-right"><b>Quantity:</b></b-col>
+              <b-col>{{calloutNeed.quantity}}</b-col>
+            </b-row>
+            <b-button size="sm" @click="row.toggleDetails">Hide Details</b-button>
+          </b-card>
+        </template>
+        <template slot="edit" slot-scope="row">
+          <router-link :to="{ name: 'callout', params: { id: row.item.id }}"  class="glyphicon glyphicon-pencil" style="color: grey; " role="button"></router-link>
+        </template>
+      </b-table>
+      </b-card>
     </div>
   </div>
 </template>
@@ -36,40 +53,44 @@
 <script>
 import { getAllCallouts } from '../../services/callout-service';
 import router from '../../router/index';
+import Helper from '../helpers/Helper.vue';
 
 export default {
   name: 'callout-info',
   data() {
     return {
       callouts: [],
-      searchTerm: ''
+      fields: [
+        { key: 'name', sortable: true },
+        { key: 'descriptionMessage', sortable: true },
+        { key: 'active', sortable: true },
+        { key: 'formattedCreatedDate', sortable: true, label: 'Created' },
+        { key: 'formattedEndDate', sortable: true, label: 'Ends' },
+        { key: 'calloutNeeds', sortable: false, label: 'Needs' },
+        { key: 'edit', sortable: false }
+      ],
+      filter: null
     };
   },
   created() {
     getAllCallouts().then(callouts => {
       this.callouts = callouts;
+      this.callouts.forEach(callout => {
+        callout.formattedCreatedDate = Helper.methods.formatDate(
+          callout.createdDate
+        );
+        callout.formattedEndDate = Helper.methods.formatDate(
+          callout.effectiveDate
+        );
+      });
     });
   },
   methods: {
-    formatDate: dateString => {
-      let date = new Date(dateString);
-      return date.toLocaleString();
-    },
     editNeed(NeedId) {
       router.push({
         name: 'NeedInfo',
         params: { id: Number.parseInt(NeedId) }
       });
-    },
-    searchTitle() {
-      if (
-        this.searchTerm === 'undefined' ||
-        this.searchTerm.trim().length < 1
-      ) {
-        this.newDependent = '';
-        return;
-      }
-      console.log('search for: ' + this.searchTerm);
     }
   }
 };

@@ -1,40 +1,47 @@
 <template>
   <div class="jumbotron">
     <div class="container">
-      <div>&nbsp;</div>
+      <b-card>
       <router-link class="btn btn-default" to="/register-donor">Add Donor&raquo;</router-link>
       <!-- TODO: Add form for searching through donors -->
-      <div class="form-group">
-        <input type="text" v-model="searchTerm" placeholder="Search..." v-on:keyup.enter="searchTitle"/>
-        <button v-on:click="searchTitle" class="btn btn-default">Search</button>
-      </div>
+      <b-row>
+        <b-col md="6" class="my-1">
+            <b-input-group>
+              <b-form-input v-model="filter" placeholder="Type to Search" />
+              <b-input-group-append>
+                <b-btn :disabled="!filter" @click="filter = ''">Clear</b-btn>
+              </b-input-group-append>
+            </b-input-group>
+        </b-col>
+      </b-row>
+
       <h3>Donors</h3>
-      <table class="table">
-        <thead>
-        <tr>
-          <th>Donor Name</th>
-          <th>Email</th>
-          <th>Joined On</th>
-          <th>JSON</th>
-        </tr>
-        </thead>
-        <tbody id="fullDonorTBody">
-        <tr v-for="donor in donors" :key="donor.id">
-          <td>{{donor.name}}</td>
-          <td>{{donor.email}}</td>
-          <td>{{formatDate(donor.joinDate)}}</td>
-          <td>{{donor}}</td>
-          <td><router-link class="btn btn-default" :to="{ path: '/donor/:id', params: { id: donor.donorId } }">Edit Donor</router-link></td>
-        </tr>
-        </tbody>
-      </table>
+      <b-table outlined hover :fields="fields" :filter="filter" :items="donors">
+        <template slot="donations" slot-scope="row">
+          <a><b-btn class="glyphicon glyphicon-piggy-bank" style="color: pink" @click.stop="row.toggleDetails"></b-btn></a>
+        </template>
+        <!--NEW STUFF-->
+        <template slot="row-details" slot-scope="row">
+          <b-card>
+            <b-row class="mb-2">
+              <b-col sm="3" class="text-sm-right"><b>Donations:</b></b-col>
+              <b-col>{{row.item.donations.length}}</b-col>
+            </b-row>
+            <b-button size="sm" @click="row.toggleDetails">Hide Details</b-button>
+          </b-card>
+        </template>
+        <template slot="edit" slot-scope="row">
+          <router-link :to="{ name: 'donor', params: { id: row.item.id }}"  class="glyphicon glyphicon-pencil" style="color: grey; " role="button"></router-link>
+        </template>
+      </b-table>
+      </b-card>
     </div>
   </div>
 </template>
 
 <script>
 import { getAllDonors } from '../../services/donor-service';
-
+import Helper from '../helpers/Helper.vue';
 import router from '../../router/index';
 
 export default {
@@ -42,12 +49,26 @@ export default {
   data() {
     return {
       donors: [],
-      searchTerm: ''
+      fields: [
+        { key: 'name', sortable: true },
+        { key: 'email', sortable: true },
+        { key: 'address', sortable: true },
+        { key: 'city', sortable: true },
+        { key: 'state', sortable: true },
+        { key: 'zip', sortable: true },
+        { key: 'formattedDate', sortable: true, label: 'Join Date' },
+        { key: 'donations', sortable: false },
+        { key: 'edit', sortable: false }
+      ],
+      filter: null
     };
   },
   created() {
     getAllDonors().then(donors => {
       this.donors = donors;
+      this.donors.forEach(donor => {
+        donor.formattedDate = Helper.methods.formatDate(donor.joinDate);
+      });
     });
   },
   methods: {
@@ -56,20 +77,6 @@ export default {
         name: 'donorInfo',
         params: { id: Number.parseInt(donId) }
       });
-    },
-    formatDate: dateString => {
-      let date = new Date(dateString);
-      return date.toLocaleDateString();
-    },
-    searchTitle() {
-      if (
-        this.searchTerm === 'undefined' ||
-        this.searchTerm.trim().length < 1
-      ) {
-        this.newDependent = '';
-        return;
-      }
-      console.log('search for: ' + this.searchTerm);
     }
   }
 };

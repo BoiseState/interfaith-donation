@@ -3,7 +3,8 @@ package org.interfaithsanctuary.donationapi.model;
 import javax.persistence.*;
 
 @Entity // This tells Hibernate to make a table out of this class
-public class Users {
+@Table(name = "users")
+public class User {
     @Id
     @Column(name = "user_id")
     @GeneratedValue(strategy=GenerationType.AUTO)

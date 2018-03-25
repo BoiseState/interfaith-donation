@@ -26,7 +26,7 @@ export default new Router({
     },
     {
       path: '/donor/:id',
-      name: 'donorInfo',
+      name: 'donor',
       component: DonorInfo
     },
     {
@@ -54,6 +54,7 @@ export default new Router({
     },
     {
       path: '/user/:id',
+      name: 'user',
       component: UserInfo
     },
     {
@@ -70,7 +71,7 @@ export default new Router({
     },
     {
       path: '/need/:id',
-      name: 'need information',
+      name: 'need',
       component: NeedInfo
     },
     {

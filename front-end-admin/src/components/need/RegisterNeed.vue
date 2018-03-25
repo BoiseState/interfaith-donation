@@ -1,46 +1,49 @@
 <template>
-  <div class="addneed">
+  <div class="needInfoPage">
+    <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron">
       <div class="container">
-        <h2>Register Need</h2>
-        <!-- <form class="form-horizontal" action="/createneed" method="POST"> -->
-        <!-- <form class="form-horizontal" action="createNeeds" method="POST"> -->
-          <form v-on:submit.prevent="onFormSubmit" class="form-horizontal">
-          <!-- <td><router-link :to="{ name: 'need information', params: { id: need.id }}" class="btn btn-primary" role="button">edit</router-link></td> -->
-          <div class="form-group">
-            <label class="control-label col-sm-2">Need Name:</label>
-            <!-- <input name="need_name" type="text" width="50"> -->
-            <input v-model="need.name" name="name" type="text" width="50" required>
-          </div>
-          <!-- <div class="form-group">
-            <label class="control-label col-sm-2">Quantity:</label>
-            <input id="need_quantity" name="need_quantity" type="number" min="1" step="1" value ="1"/>
-          </div> -->
-          <div class="form-group">
-            <label class="control-label col-sm-2">Unit Type: <i>(optional)</i></label>
-            <input v-model="need.unitOfMeasurement" type="text" width="50">
-          </div>
-          <div class="form-group">
-            <label class="control-label col-sm-2">Need URL: <i>(optional)</i></label>
-            <input v-model="need.url" type="text" width="50">
-          </div>
-          <div class="form-group">
-            <label class="control-label col-sm-2">Need Description: </label>
-            <input v-model="need.description" type="text" width="50">
-          </div>
-          <!-- <div class="form-group">
-            <label class="control-label col-sm-2>">Associated Callout (optional)</label>
-            <select name="callout_id">
-              <option value="{{callout.callout_id}}">{{ callout.callout_title }} - {{callout.update_date}}</option>
-            </select>
-            </div> -->
-          <!-- <div class="form-group">
-            <label class="control-label col-sm-2>">Status: </label>
-            <input type="checkbox" name="active" value="active">Active?<br></div>
-          <br> -->
-          <button type="submit">Create Need</button>
-        </form>
         <br>
+        <br>
+        <b-card :title="need.name">
+          <b-form @submit="onFormSubmit" class="form-horizontal" >
+            <input type="hidden" name="need_id" v-model="need.id">
+            <h5>Need Name: </h5>
+            <b-form-textarea v-model="need.name"
+                             required
+                             placeholder="Enter name.."
+                             :rows="1"
+                             no-resize
+                             name="name"
+                             :max-rows="1">
+            </b-form-textarea>
+            <h5>Description: </h5>
+            <b-form-textarea v-model="need.description"
+                             required
+                             placeholder="Enter description.."
+                             :rows="3"
+                             name="Amazon URL"
+                             :max-rows="3">
+            </b-form-textarea>
+            <h5>Amazon URL: </h5>
+            <b-form-textarea v-model="need.url"
+                             placeholder="Enter amazon url.."
+                             :rows="3"
+                             name="Amazon URL"
+                             :max-rows="3">
+            </b-form-textarea>
+            <h5>Units: </h5>
+            <b-form-textarea v-model="need.unitOfMeasurement"
+                             placeholder="Enter units the product is measured in.."
+                             :rows="1"
+                             no-resize
+                             name="units"
+                             :max-rows="1">
+            </b-form-textarea>
+            <br>
+            <b-button type="submit" variant="primary">Submit</b-button>
+          </b-form>
+        </b-card>
       </div>
     </div>
   </div>
@@ -55,7 +58,7 @@ export default {
     return {
       need: {
         id: '',
-        name: '',
+        name: 'New Need Template',
         url: '',
         description: '',
         unitOfMeasurement: ''

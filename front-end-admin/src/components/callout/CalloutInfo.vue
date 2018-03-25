@@ -1,54 +1,86 @@
 <template>
   <div class="jumbotron">
     <div class="container">
-      <h2>{{callout.title}}</h2>
-      <!-- TODO: List out associated needs with a specific callout -->
-      <h2>Update Callout Information</h2>
-      <form v-on:submit.prevent="onFormSubmit">
-        <div class="form-group">
-          <label class="control-label col-sm-2">Title:</label>
-          <input v-model="callout.name" type="text" width="50" required>
+      <br>
+      <br>
+      <b-card title="Edit Callout">
+        <b-form @submit="onFormSubmit" class="form-horizontal" >
+
+        <b-card :title="callout.name">
+          <input type="hidden" name="callout_id" v-model="callout.id">
+          <h5>Callout Name: </h5>
+          <b-form-input    v-model="callout.name"
+                           required
+                           placeholder="Enter name.."
+                           name="name">
+          </b-form-input>
+          <h5>Description: </h5>
+          <b-form-textarea v-model="callout.descriptionMessage"
+                           required
+                           placeholder="Enter description.."
+                           :rows="3"
+                           name="Amazon URL"
+                           :max-rows="3">
+          </b-form-textarea>
+          <h5>Set End Date: </h5>
+          <br>
+      </b-card>
+        <b-card>
+      <div v-if="calloutNeeds.length > 0">
+        <h3>Needs</h3>
+        <b-table outlined hover :fields="fields" :filter="filter" :items="callout.calloutNeeds">
+          <template slot="name" slot-scope="row">
+            {{row.item.need.name}}
+          </template>
+          <template slot="url" slot-scope="row">
+            <a><b-btn class="glyphicon glyphicon-search" style="color: white" v-on:click="openUrl(row.item.need.url)" ></b-btn></a>
+          </template>
+          <template slot="description" slot-scope="row">
+            {{row.item.need.description}}
+          </template>
+          <template slot="unitOfMeasurement" slot-scope="row">
+            {{row.item.need.unitOfMeasurement}}
+          </template>
+          <template slot="progress" slot-scope="row">
+            <div>
+              <b-progress :value="row.item.donationSum" :max="row.item.quantity" show-value class="mb-3"></b-progress>
+            </div>
+          </template>
+          <template slot="edit" slot-scope="row">
+            <router-link :to="{ name: 'need', params: { id: row.item.need.id }}"  class="glyphicon glyphicon-pencil" style="color: grey; " role="button"></router-link>
+          </template>
+        </b-table>
+      </div>
+        <div>
+          <b-btn v-b-modal.modal>Add Need</b-btn>
         </div>
-        <div class="form-group">
-          <label class="control-label col-sm-2">Description:</label>
-          <textarea rows="4" cols="50" v-model="callout.descriptionMessage"></textarea>
-        </div>
-        <div class="form-group">
-          <label class="control-label col-sm-4>">Status: </label>
-          <input type="checkbox" v-model="callout.active">Active?<br>
-        </div>
-        <table class="calloutNeedTable">
-          <thead>
-          <tr>
-            <th>Name</th>
-            <th>Quantity</th>
-            <th>Active</th>
-            <th></th>
-          </tr>
-          </thead>
-          <tbody id="calloutNeedTBody">
-          <tr v-for="calloutNeed in calloutNeeds" :key="calloutNeed.id">
-            <td>{{calloutNeed.need.name}}</td>
-            <td><input type="text" v-model="calloutNeed.quantity"></td>
-            <td><input type="checkbox" v-model="calloutNeed.active"><br></td>
-          </tr>
-          </tbody>
-        </table>
-        <button class="btn btn-secondary" v-on:click="openNeeds()" type="button">Add New Need</button>
+      <div>
+      <!-- Modal Component -->
+        <b-modal id="modal" size="lg" @ok="handleOk" centered title="Bootstrap-Vue">
+          <NeedSelect></NeedSelect>
+        </b-modal>
+      </div>
+        </b-card>
         <br>
-        <br>
-        <br>
-        <button class="btn btn-primary" type="submit">Update Callout</button>
-      </form>
+        <b-button type="submit" variant="success">Submit</b-button>
+        </b-form>
+
+      </b-card>
     </div>
   </div>
 </template>
 
 <script>
 import { getCalloutById, updateCallout } from '../../services/callout-service';
+import { updateCalloutNeed } from '../../services/calloutneed-service';
+
+import NeedSelect from '../need/NeedSelect';
 
 export default {
   name: 'callout-info',
+  components: {
+    NeedSelect
+  },
   data() {
     return {
       callout: {
@@ -60,7 +92,17 @@ export default {
         active: '',
         pinned: ''
       },
-      calloutNeeds: []
+      calloutNeeds: [],
+      fields: [
+        { key: 'name', sortable: true },
+        { key: 'url', sortable: false },
+        { key: 'description', sortable: true },
+        { key: 'unitOfMeasurement', sortable: true },
+        { key: 'quantity', sortable: true },
+        { key: 'progress', sortable: false },
+        { key: 'edit', sortable: false }
+      ],
+      filter: null
     };
   },
   created() {
@@ -68,22 +110,38 @@ export default {
       callout.id = this.$route.params.id;
       this.callout = callout;
       this.calloutNeeds = callout.calloutNeeds;
+
+      this.callout.calloutNeeds.forEach(calloutNeed => {
+        calloutNeed.donationSum = 0;
+        calloutNeed.donations.forEach(donation => {
+          calloutNeed.donationSum += donation.quantity;
+        });
+      });
     });
   },
   methods: {
-    onFormSubmit() {
+    onFormSubmit(evt) {
+      evt.preventDefault();
+      this.callout.calloutNeeds.forEach(calloutNeed => {
+        updateCalloutNeed(calloutNeed);
+      });
       updateCallout(this.callout);
     },
-    openNeeds() {
-      let newWindow = open(
-        '#/select-need',
-        'select need',
-        'width=400,height=600'
-      );
-      newWindow.focus();
+    handleOk(bvEvt) {
+      // Prevent modal from closing
+      bvEvt.preventDefault();
+      if (!this.name) {
+        alert('Please enter your name');
+      } else {
+        this.handleSubmit();
+      }
     },
-    addNeed(need) {
-      alert('result of popup is: ' + need);
+    handleSubmit() {
+      this.calloutNeeds.push(this.newCalloutNeed);
+      this.clearCalloutNeed();
+    },
+    clearCalloutNeed() {
+      this.newCalloutNeed = {};
     }
   }
 };
