@@ -1,18 +1,17 @@
 <template>
   <div class="needInfoPage">
-    <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron">
-       <div class="container">
-         <br>
-         <br>
-         <b-card :title="need.name">
-          <b-form @submit="onFormSubmit" class="form-horizontal" >
+      <div class="container">
+        <br>
+        <br>
+        <b-card :title="need.name">
+          <b-form @submit="onFormSubmit" class="form-horizontal">
             <input type="hidden" name="need_id" v-model="need.id">
             <h5>Need Name: </h5>
-            <b-form-input    v-model="need.name"
-                             required
-                             placeholder="Enter name.."
-                             name="name">
+            <b-form-input v-model="need.name"
+                          required
+                          placeholder="Enter name.."
+                          name="name">
             </b-form-input>
             <h5>Description: </h5>
             <b-form-textarea v-model="need.description"
@@ -30,13 +29,13 @@
                              :max-rows="3">
             </b-form-textarea>
             <h5>Units: </h5>
-            <b-form-input    v-model="need.unitOfMeasurement"
-                             placeholder="Enter units the product is measured in.."
-                             :rows="1"
-                             name="units">
+            <b-form-input v-model="need.unitOfMeasurement"
+                          placeholder="Enter units the product is measured in.."
+                          :rows="1"
+                          name="units">
             </b-form-input>
             <br>
-          <b-button type="submit" variant="success">Submit</b-button>
+            <b-button type="submit" variant="success">Submit</b-button>
           </b-form>
         </b-card>
       </div>

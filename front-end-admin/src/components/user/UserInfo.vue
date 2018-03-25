@@ -1,6 +1,7 @@
 <template>
   <div class="userInfoPage">
     <div class="jumbotron">
+      <div class="container">
       <b-card :title="user.email">
         <b-form @submit="onFormSubmit" class="form-horizontal" >
           <input type="hidden" name="user_id" v-model="user.id">
@@ -31,6 +32,7 @@
         </b-form>
       </b-card>
     </div>
+  </div>
   </div>
 </template>
 
