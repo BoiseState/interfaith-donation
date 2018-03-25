@@ -2,7 +2,7 @@
   <div class="jumbotron">
     <div class="container">
       <b-card>
-        <router-link class="btn btn-default" to="/register-user">Add User&raquo;</router-link>
+        <router-link class="btn btn-default; greyButton" to="/register-user">Add User&raquo;</router-link>
       <b-row>
         <b-col md="6" class="my-1">
             <b-input-group>
@@ -45,10 +45,10 @@ export default {
       sortDesc: false,
       fields: [
         { key: 'userName', sortable: true },
-        { key: 'permissions', sortable: true },
+        { key: 'permissions', sortable: true, class: 'text-center' },
         { key: 'email', sortable: true },
-        { key: 'active', sortable: true },
-        { key: 'edit', sortable: false }
+        { key: 'active', sortable: true, class: 'text-center' },
+        { key: 'edit', sortable: false, class: 'text-center' }
       ],
       filter: null
     };
@@ -77,6 +77,9 @@ export default {
 };
 </script>
 
-<style scoped>
-
+<style>
+.greyButton {
+  color: white;
+  background-color: grey;
+}
 </style>
