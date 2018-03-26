@@ -64,14 +64,15 @@ export default {
   },
   methods: {
     getPermissions(user) {
-      if (user.permissions === null || user.permissions === 0) {
+      if (user.permissions === null || user.permissions === 'BASIC_USER') {
         return 'No Permissions';
-      } else if (user.permissions === 1) {
+      } else if (user.permissions === 'ADMINISTRATOR') {
         return 'Admin';
-      } else if (user.permissions === 2) {
+      } else if (user.permissions === 'SUPERADMIN') {
         return 'Jody/SuperAdmin';
       }
-      return 'Invalid Permissions';
+      user.permissions = 'BASIC_USER';
+      return 'No Permissions';
     }
   }
 };

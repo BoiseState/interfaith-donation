@@ -68,14 +68,15 @@ export default {
       this.user.permissions = permissionLevel;
     },
     getPermissionText() {
-      if (this.user.permissions === 0) {
+      if (this.user.permissions === 'BASIC_USER') {
         return 'No Permissions';
-      } else if (this.user.permissions === 1) {
+      } else if (this.user.permissions === 'ADMINISTRATOR') {
         return 'Admin';
-      } else if (this.user.permissions === 2) {
+      } else if (this.user.permissions === 'SUPERADMIN') {
         return 'Super Admin/Jody';
       }
-      return 'Invalid Permissions';
+      this.user.permissions = 'BASIC_USER';
+      return 'No Permissions';
     }
   }
 };

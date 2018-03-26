@@ -9,7 +9,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import java.net.URI;
 import java.util.Optional;
 
 @CrossOrigin
@@ -58,7 +60,18 @@ public class UserController {
         userRepository.save(user);
 
         return ResponseEntity.ok().build();
-
-
     }
+
+    @PostMapping("/")
+    public ResponseEntity<User> createUser(@RequestBody User user) {
+        System.out.println("Create user: " + user.getUserName());
+
+        User savedUser = userRepository.save(user);
+
+        URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/id").
+                buildAndExpand(savedUser.getId()).toUri();
+
+        return ResponseEntity.created(location).body(savedUser);
+    }
+
 }

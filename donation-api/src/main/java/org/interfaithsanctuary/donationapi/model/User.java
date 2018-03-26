@@ -10,16 +10,16 @@ public class User {
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Long id;
 
-    @Column(name = "user_name")
+    @Column(name = "user_username")
     private String userName;
 
     @Column(name = "user_password")
-    private String userPassword;
+    private String password;
 
     @Column(name = "user_email")
-    private String userEmail;
+    private String email;
 
-    @Column(name ="permissions")
+    @Column(name ="user_permissions")
     private PermissionLevel permissions;
 
     @Column(name ="user_active")
@@ -42,17 +42,17 @@ public class User {
     }
 
     public String getEmail() {
-        return userEmail;
+        return email;
     }
 
     public void setEmail(String email) {
-        this.userEmail = email;
+        this.email = email;
     }
 
-    public String getPassword() { return userPassword; }
+    public String getPassword() { return password; }
 
     public void setPassword(String password) {
-        this.userPassword = password;
+        this.password = password;
 
         //BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         //this.user_password = passwordEncoder.encode(password);
@@ -75,8 +75,9 @@ public class User {
      *
      */
     public static enum PermissionLevel{
-        BASIC_USER("basic", 1),
-        ADMINISTRATOR("admin", 0),
+        BASIC_USER("basic", 0),
+        ADMINISTRATOR("admin", 1),
+        SUPERADMIN("superadmin", 2),
         FAILED_AUTHENTICATION("invalid", -1);
 
         private final int id;
