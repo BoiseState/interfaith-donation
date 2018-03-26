@@ -49,7 +49,7 @@ public class UserController {
     @PutMapping("/{id}")
     public ResponseEntity<User> updateUserById(@RequestBody User user, @PathVariable("id") long id) {
         Optional<User> userOptional = Optional.ofNullable(userRepository.findOne(id));
-        System.out.println("the user: " + user.getUserName());
+        System.out.println("Update user: " + user.getUserName());
 
         if(!userOptional.isPresent()) {
             return ResponseEntity.notFound().build();
