@@ -8,15 +8,14 @@ services:
       - "5050:5432" 
     restart: always
 
-  webserver:
-    build: 
-      context: ./docker/tomcat
-    environment:
-      SPRING_PROFILES_ACTIVE: docker
-    volumes:
-      - ./donation-api/target/donation-api.war:/usr/local/tomcat/webapps/donation-api.war
-    # open ports for tomcat and remote debugging
+  server-api:
+    build:
+      context: donation-api
+    depends_on:
+      - database
+    image: donation-api
     ports:
-      - "8800:8080" 
-      - "8000:8000"
+      - "8080:8080"
+      - "8800:8080"
     restart: always
+
