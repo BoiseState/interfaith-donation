@@ -14,8 +14,6 @@ export const getAllDonors = async () => {
 };
 
 export const getDonorById = async id => {
-  // let donor = await getJSON(`${BASE_API_ROUTE}/${id}`);
-  // return donor;
   return getJSON(`${BASE_API_ROUTE}/${id}`);
 };
 
