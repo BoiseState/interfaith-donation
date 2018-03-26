@@ -1,34 +1,44 @@
 <template>
-  <div class="addadmin">
-    <!-- Main jumbotron for a primary marketing message or call to action -->
+  <div class="addUserPage">
     <div class="jumbotron">
-      <div class="container"><!--action="ws/user/createAdmin" method="POST" goes in form class -->
-      <h2>Register as a New Administrator</h2>
-        <!-- <form class="form-horizontal" id ="createAdminForm" > -->
-          <form v-on:submit.prevent="onFormSubmit" class="form-horizontal">
-          <div class="form-group">
-            <label class="control-label col-sm-2">User Name:</label>
-            <input v-model="user.userName" name="userName" type="text" width="50" required>
-          </div>
+      <div class="container">
+      <b-card :title="titleText">
+        <b-form @submit="onFormSubmit" class="form-horizontal" >
+          <h5>User Name: </h5>
+          <b-form-input    v-model="user.userName"
+                           required
+                           placeholder="Enter name.."
+                           name="name">
+          </b-form-input>
 
-          <!-- <div class="form-group">
-            <label class="control-label col-sm-2">Username:</label>
-            <input id = "user-name-label" name="userName" type="text" width="50" required></div> -->
-          <div class="form-group">
-            <label class="control-label col-sm-2">Email:</label>
-            <input v-model="user.email" name="emailAddress" type="text" width="50" required></div>
-          <div class="form-group">
-            <label class="control-label col-sm-2">Password:</label>
-            <input v-model="user.password" name="password" type="password" width="50" required></div>
-          <div class="form-group">
-            <label class="control-label col-sm-2">Confirm Password:</label>
-            <input id="password2-label" name="confirm" type="password" width="50" required></div>
-          <!-- <button type="submit" id="createAdminSubmit">Create Account</button> -->
-          <button class="btn btn-default, greyButton, col-sm-2" type="submit">Create Account</button>
+          <h5>Email: </h5>
+          <b-form-input    v-model="user.email"
+                           required
+                           placeholder="Enter email addresss.."
+                           name="email">
+          </b-form-input>
 
-        </form>
-      </div>
+          <h5>Password: </h5>
+          <b-form-input    v-model="user.password"
+                           required
+                           placeholder="Enter a password.."
+                           name="password">
+          </b-form-input>
+
+          <h5>Set Permissions: </h5>
+          <b-dropdown id="ddown-divider" v-model="user.permissions" :text="getPermissionText()" class="m-2">
+            <b-dropdown-item-button v-on:click="updatePermissions(0)">No Permissions</b-dropdown-item-button>
+            <b-dropdown-item-button v-on:click="updatePermissions(1)">Admin Permissions</b-dropdown-item-button>
+            <b-dropdown-divider></b-dropdown-divider>
+            <b-dropdown-item-button v-on:click="updatePermissions(2)">Super Admin/Jody Permissions</b-dropdown-item-button>
+          </b-dropdown>
+          <br>
+          <br>
+          <b-button type="submit" variant="success">Submit</b-button>
+        </b-form>
+      </b-card>
     </div>
+  </div>
   </div>
 </template>
 
@@ -42,17 +52,38 @@ export default {
       user: {
         id: '',
         userName: '',
-        permissions: 0,
+        permissions: 'BASIC_USER',
         active: false,
         password: '',
         email: ''
       },
-      errors: []
+      titleText: 'Register a New Adminitrator'
     };
   },
   methods: {
-    onFormSubmit() {
+    onFormSubmit(evt) {
+      evt.preventDefault();
       createUser(this.user);
+    },
+    updatePermissions(permissionLevel) {
+      if (permissionLevel === 1) {
+        this.user.permissions = 'ADMINISTRATOR';
+      } else if (permissionLevel === 2) {
+        this.user.permissions = 'SUPERADMIN';
+      } else {
+        this.user.permissions = 'BASIC_USER';
+      }
+    },
+    getPermissionText() {
+      if (this.user.permissions === 'BASIC_USER') {
+        return 'No Permissions';
+      } else if (this.user.permissions === 'ADMINISTRATOR') {
+        return 'Admin';
+      } else if (this.user.permissions === 'SUPERADMIN') {
+        return 'Super Admin/Jody';
+      }
+      this.user.permissions = 'BASIC_USER';
+      return 'No Permissions';
     }
   }
 };

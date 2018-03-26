@@ -5,8 +5,8 @@
       <b-card :title="user.email">
         <b-form @submit="onFormSubmit" class="form-horizontal" >
           <input type="hidden" name="user_id" v-model="user.id">
-          <h5>Full Name: </h5>
-          <b-form-input    v-model="user.name"
+          <h5>User Name: </h5>
+          <b-form-input    v-model="user.userName"
                            required
                            placeholder="Enter name.."
                            name="name">
@@ -65,7 +65,13 @@ export default {
       updateUser(this.user);
     },
     updatePermissions(permissionLevel) {
-      this.user.permissions = permissionLevel;
+      if (permissionLevel === 1) {
+        this.user.permissions = 'ADMINISTRATOR';
+      } else if (permissionLevel === 2) {
+        this.user.permissions = 'SUPERADMIN';
+      } else {
+        this.user.permissions = 'BASIC_USER';
+      }
     },
     getPermissionText() {
       if (this.user.permissions === 'BASIC_USER') {
