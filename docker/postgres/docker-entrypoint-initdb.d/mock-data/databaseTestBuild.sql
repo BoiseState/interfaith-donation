@@ -1,3 +1,6 @@
+/* This is a file to build the database for debugging purposes.
+ I got tired of recreating this stuff, so I am saving it in the repo.*/
+
 DROP TABLE IF EXISTS users cascade;
 CREATE TABLE users(
   user_id BIGSERIAL PRIMARY KEY NOT NULL,
