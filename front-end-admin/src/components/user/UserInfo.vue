@@ -38,6 +38,7 @@
 
 <script>
 import { getUserById, updateUser } from '../../services/user-service';
+import Helper from '../helpers/Helper.vue';
 
 export default {
   name: 'user-info',
@@ -65,24 +66,12 @@ export default {
       updateUser(this.user);
     },
     updatePermissions(permissionLevel) {
-      if (permissionLevel === 1) {
-        this.user.permissions = 'ADMINISTRATOR';
-      } else if (permissionLevel === 2) {
-        this.user.permissions = 'SUPERADMIN';
-      } else {
-        this.user.permissions = 'BASIC_USER';
-      }
+      this.user.permissions = Helper.methods.getPermissionsLevel(
+        permissionLevel
+      );
     },
     getPermissionText() {
-      if (this.user.permissions === 'BASIC_USER') {
-        return 'No Permissions';
-      } else if (this.user.permissions === 'ADMINISTRATOR') {
-        return 'Admin';
-      } else if (this.user.permissions === 'SUPERADMIN') {
-        return 'Super Admin/Jody';
-      }
-      this.user.permissions = 'BASIC_USER';
-      return 'No Permissions';
+      return Helper.methods.getPermissionText(this.user);
     }
   }
 };
