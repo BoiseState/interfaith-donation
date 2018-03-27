@@ -77,9 +77,6 @@ export default {
     };
   },
   methods: {
-    // onFormSubmit() {
-    //   createDonor(this.donor);
-    // }
     onFormSubmit(evt) {
       evt.preventDefault();
       createDonor(this.donor);
