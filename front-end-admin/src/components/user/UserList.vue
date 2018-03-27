@@ -65,15 +65,6 @@ export default {
   },
   methods: {
     getPermissions(user) {
-      // if (user.permissions === null || user.permissions === 'BASIC_USER') {
-      //   return 'No Permissions';
-      // } else if (user.permissions === 'ADMINISTRATOR') {
-      //   return 'Admin';
-      // } else if (user.permissions === 'SUPERADMIN') {
-      //   return 'Jody/SuperAdmin';
-      // }
-      // user.permissions = 'BASIC_USER';
-      // return 'No Permissions';
       return Helper.methods.getPermissionText(user);
     }
   }
