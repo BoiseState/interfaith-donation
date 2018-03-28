@@ -58,7 +58,7 @@ export default {
         password: '',
         email: ''
       },
-      titleText: 'Register a New Adminitrator'
+      titleText: 'Register a New Administrator'
     };
   },
   methods: {
