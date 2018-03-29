@@ -1,13 +1,18 @@
 package org.interfaithsanctuary.donationapi.controller;
 
-import org.interfaithsanctuary.donationapi.model.Users;
+import org.interfaithsanctuary.donationapi.model.User;
 import org.interfaithsanctuary.donationapi.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+
+import java.net.URI;
+import java.util.Optional;
 
 @CrossOrigin
 @RestController
@@ -32,12 +37,41 @@ public class UserController {
 //        return "Saved";
 //    }
     @GetMapping("/all")
-    public @ResponseBody Page<Users> getAllUsers(Pageable pageable) {
+    public @ResponseBody Page<User> getAllUsers(Pageable pageable) {
         return userRepository.findAll(pageable);
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public Users getUserById(@PathVariable("id") long id)  {
+    public User getUserById(@PathVariable("id") long id)  {
         return userRepository.findOne(id);
     }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<User> updateUserById(@RequestBody User user, @PathVariable("id") long id) {
+        Optional<User> userOptional = Optional.ofNullable(userRepository.findOne(id));
+        System.out.println("Update user: " + user.getUserName());
+
+        if(!userOptional.isPresent()) {
+            return ResponseEntity.notFound().build();
+        }
+
+        user.setId(id);
+
+        userRepository.save(user);
+
+        return ResponseEntity.ok().build();
+    }
+
+    @PostMapping("/")
+    public ResponseEntity<User> createUser(@RequestBody User user) {
+        System.out.println("Create user: " + user.getUserName());
+
+        User savedUser = userRepository.save(user);
+
+        URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/id").
+                buildAndExpand(savedUser.getId()).toUri();
+
+        return ResponseEntity.created(location).body(savedUser);
+    }
+
 }

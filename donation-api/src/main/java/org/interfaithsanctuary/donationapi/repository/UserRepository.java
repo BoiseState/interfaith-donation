@@ -1,6 +1,6 @@
 package org.interfaithsanctuary.donationapi.repository;
 
-import org.interfaithsanctuary.donationapi.model.Users;
+import org.interfaithsanctuary.donationapi.model.User;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -9,6 +9,6 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 // CRUD refers Create, Read, Update, Delete
 @CrossOrigin
 @RepositoryRestResource(collectionResourceRel = "users", path = "users")
-public interface UserRepository extends PagingAndSortingRepository<Users, Long>  {
+public interface UserRepository extends PagingAndSortingRepository<User, Long>  {
 
 }

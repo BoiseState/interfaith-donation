@@ -5,8 +5,8 @@
       <b-card :title="user.email">
         <b-form @submit="onFormSubmit" class="form-horizontal" >
           <input type="hidden" name="user_id" v-model="user.id">
-          <h5>Full Name: </h5>
-          <b-form-input    v-model="user.name"
+          <h5>User Name: </h5>
+          <b-form-input    v-model="user.userName"
                            required
                            placeholder="Enter name.."
                            name="name">
@@ -37,15 +37,20 @@
 </template>
 
 <script>
-import { getUserById, createUser } from '../../services/user-service';
+import { getUserById, updateUser } from '../../services/user-service';
+import Helper from '../helpers/Helper.vue';
 
 export default {
   name: 'user-info',
   data() {
     return {
       user: {
-        name: 'Loading...',
-        email: 'Template New User'
+        id: null,
+        userName: 'Loading...',
+        permissions: null,
+        active: false,
+        email: 'Template New User',
+        password: ''
       }
     };
   },
@@ -57,20 +62,16 @@ export default {
   methods: {
     onFormSubmit(evt) {
       evt.preventDefault();
-      createUser(this.user);
+      // createUser(this.user);
+      updateUser(this.user);
     },
     updatePermissions(permissionLevel) {
-      this.user.permissions = permissionLevel;
+      this.user.permissions = Helper.methods.getPermissionsLevel(
+        permissionLevel
+      );
     },
     getPermissionText() {
-      if (this.user.permissions === 0) {
-        return 'No Permissions';
-      } else if (this.user.permissions === 1) {
-        return 'Admin';
-      } else if (this.user.permissions === 2) {
-        return 'Super Admin/Jody';
-      }
-      return 'Invalid Permissions';
+      return Helper.methods.getPermissionText(this.user);
     }
   }
 };

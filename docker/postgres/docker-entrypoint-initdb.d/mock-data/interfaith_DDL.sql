@@ -1,9 +1,10 @@
 DROP TABLE IF EXISTS users cascade;
 CREATE TABLE users(
   user_id BIGSERIAL PRIMARY KEY NOT NULL,
+  user_userName VARCHAR(100) NOT NULL,
   user_email VARCHAR(100) NOT NULL UNIQUE,
   user_password VARCHAR(100) NOT NULL,
-  user_permission BOOLEAN NOT NULL,
+  user_permissions INT NOT NULL,
   user_active BOOLEAN NOT NULL
 );
 

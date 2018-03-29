@@ -35,6 +35,7 @@
 
 <script>
 import { getAllUsers } from '../../services/user-service';
+import Helper from '../helpers/Helper.vue';
 
 export default {
   name: 'user-list',
@@ -64,14 +65,7 @@ export default {
   },
   methods: {
     getPermissions(user) {
-      if (user.permissions === null || user.permissions === 0) {
-        return 'No Permissions';
-      } else if (user.permissions === 1) {
-        return 'Admin';
-      } else if (user.permissions === 2) {
-        return 'Jody/SuperAdmin';
-      }
-      return 'Invalid Permissions';
+      return Helper.methods.getPermissionText(user);
     }
   }
 };

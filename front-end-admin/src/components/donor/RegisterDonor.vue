@@ -1,43 +1,55 @@
 <template>
-  <div class="adduser">
+  <div class="addDonorPage">
     <div class="jumbotron">
       <div class="container">
-        <h2>Create New Donor</h2>
-        <form v-on:submit.prevent="onFormSubmit" class="form-horizontal">
-          <div class="form-group">
-            <label class="control-label col-sm-2">Full Name:</label>
-            <input v-model="donor.name" name="name" type="text" width="50" required>
-          </div>
-          <div class="form-group">
-            <label class="control-label col-sm-2">Email Address:</label>
-            <input v-model="donor.email" name="email" type="email" width="50" required>
-          </div>
-          <div class="form-group">
-            <label class="control-label col-sm-2">Phone:</label>
-            <input v-model="donor.phone" name="phone" type="text" width="50" required>
-          </div>
-          <div class="form-group">
-            <label class="control-label col-sm-2">Address:</label>
-            <input v-model="donor.address" name="address" type="text" width="100" required>
-          </div>
-          <div class="form-group">
-            <label class="control-label col-sm-2">City:</label>
-            <input v-model="donor.city" name="city" type="text" width="50" required>
-          </div>
-          <div class="form-group">
-            <label class="control-label col-sm-2">State:</label>
-            <input v-model="donor.state" name="state" type="text" width="2" required>
-          </div>
-          <div class="form-group">
-            <label class="control-label col-sm-2">Postal Code:</label>
-            <input v-model="donor.zip" name="zip" type="text" width="10" required>
-          </div>
-          <!-- <div class="form-group">
-            <label class="control-label col-sm-2">Password:</label>
-            <input v-model="donor.password" name="password" type="text" width="10" required>
-          </div> -->
-          <button type="submit">Create Donor</button>
-        </form>
+        <b-card :title="titleText">
+          <b-form @submit="onFormSubmit" class="form-horizontal">
+            <h5>Full Name: </h5>
+            <b-form-input v-model="donor.name"
+                          required
+                          placeholder="Enter name.."
+                          name="name">
+            </b-form-input>
+            <h5>Email: </h5>
+            <b-form-input v-model="donor.email"
+                          required
+                          placeholder="Enter email addresss.."
+                          name="email">
+            </b-form-input>
+            <h5>Phone Number: </h5>
+            <b-form-input v-model="donor.phone"
+                          required
+                          placeholder="Enter phone number.."
+                          name="email">
+            </b-form-input>
+            <h5>Address: </h5>
+            <b-form-input v-model="donor.address"
+                          required
+                          placeholder="Address.."
+                          name="email">
+            </b-form-input>
+            <h5>City: </h5>
+            <b-form-input v-model="donor.city"
+                          required
+                          placeholder="Enter city.."
+                          name="city">
+            </b-form-input>
+            <h5>State: </h5>
+            <b-form-input v-model="donor.state"
+                          required
+                          placeholder="Enter state of residency.."
+                          name="state">
+            </b-form-input>
+            <h5>Zip: </h5>
+            <b-form-input v-model="donor.zip"
+                          required
+                          placeholder="Enter postal/zip code.."
+                          name="zip">
+            </b-form-input>
+            <br>
+            <b-button type="submit" variant="success">Submit</b-button>
+          </b-form>
+        </b-card>
       </div>
     </div>
   </div>
@@ -60,13 +72,13 @@ export default {
         zip: '',
         phone: '',
         joinDate: ''
-        // password: ''
       },
-      errors: []
+      titleText: 'Add a New Donor'
     };
   },
   methods: {
-    onFormSubmit() {
+    onFormSubmit(evt) {
+      evt.preventDefault();
       createDonor(this.donor);
     }
   }
