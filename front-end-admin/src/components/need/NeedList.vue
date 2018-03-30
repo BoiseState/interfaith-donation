@@ -20,7 +20,7 @@
             <template slot="url" slot-scope="row">
               <div v-if="row.item.url">
                 <div v-on:click="openUrl(row.item.url)">
-                  <i class="fab fa-amazon"></i>
+                  <b-button><i class="fab fa-amazon"></i></b-button>
                 </div>
               </div>
             </template>

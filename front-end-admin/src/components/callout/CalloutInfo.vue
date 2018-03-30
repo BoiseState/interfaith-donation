@@ -47,10 +47,11 @@
                   {{row.item.need.name}}
                 </template>
                 <template slot="url" slot-scope="row">
-                  <a>
-                    <b-btn class="glyphicon glyphicon-search" style="color: white"
-                           v-on:click="openUrl(row.item.need.url)"></b-btn>
-                  </a>
+                  <div v-if="row.item.need.url">
+                    <div v-on:click="openUrl(row.item.url)">
+                      <b-button><i class="fab fa-amazon"></i></b-button>
+                    </div>
+                  </div>
                 </template>
                 <template slot="description" slot-scope="row">
                   {{row.item.need.description}}
@@ -65,8 +66,7 @@
                   </div>
                 </template>
                 <template slot="edit" slot-scope="row">
-                  <router-link :to="{ name: 'need', params: { id: row.item.need.id }}"
-                               class="glyphicon glyphicon-pencil" style="color: grey; " role="button"></router-link>
+                  <router-link :to="{ name: 'need', params: { id: row.item.need.id }}"><b-button><i class="far fa-edit"></i></b-button></router-link>
                 </template>
               </b-table>
             </div>
