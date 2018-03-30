@@ -2,7 +2,9 @@
   <div class="jumbotron">
     <div class="container">
       <b-card>
-        <router-link class="btn btn-default, greyButton" to="/callout/register">Add Callout&raquo;</router-link>
+        <router-link to="/callout/register">
+          <b-button>Add Callout&raquo;</b-button>
+        </router-link>
         <b-row>
           <b-col md="6" class="my-1">
             <b-input-group>
@@ -18,12 +20,12 @@
         <b-table outlined hover :fields="fields" :filter="filter" :items="callouts">
           <template slot="active" slot-scope="row">
             <template v-if="row.item.active">
-              <a class="glyphicon glyphicon-ok" style="color: grey"></a>
+              <a><i class="far fa-check-circle"></i></a>
             </template>
           </template>
           <template slot="calloutNeeds" slot-scope="row">
             <a>
-              <b-btn class="glyphicon glyphicon-list-alt" style="color: white" @click.stop="row.toggleDetails"></b-btn>
+              <b-btn @click.stop="row.toggleDetails"><i class="fas fa-list-alt"></i></b-btn>
             </a>
           </template>
           <template slot="row-details" slot-scope="row">
@@ -44,8 +46,7 @@
             </b-card>
           </template>
           <template slot="edit" slot-scope="row">
-            <router-link :to="{ name: 'callout', params: { id: row.item.id }}" class="glyphicon glyphicon-pencil"
-                         style="color: grey; " role="button"></router-link>
+            <router-link :to="{ name: 'callout', params: { id: row.item.id }}"><b-button><i class="far fa-edit"></i></b-button></router-link>
           </template>
         </b-table>
       </b-card>

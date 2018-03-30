@@ -1,12 +1,10 @@
 <template>
   <div class="jumbotron">
     <div class="container">
-      <br>
-      <br>
       <b-card title="Edit Callout">
         <b-form @submit="onFormSubmit" class="form-horizontal">
 
-          <b-card :title="callout.name">
+          <b-card>
             <input type="hidden" name="callout_id" v-model="callout.id">
             <h5>Callout Name: </h5>
             <b-form-input v-model="callout.name"
@@ -30,7 +28,7 @@
                               name="endDate">
                 </b-form-input>
                 <div class="input-group-btn">
-                  <btn class="dropdown-toggle"><i class="glyphicon glyphicon-calendar"></i></btn>
+                  <b-button class="dropdown-toggle"><i class="glyphicon glyphicon-calendar"></i></b-button>
                 </div>
               </div>
               <template slot="dropdown">
@@ -77,7 +75,7 @@
             </div>
             <div>
               <!-- Modal Component -->
-              <b-modal id="modal" size="lg" @ok="handleOk" centered title="Bootstrap-Vue">
+              <b-modal id="modal" size="lg" @ok="handleOk" centered title="Add Needs">
                 <NeedSelect></NeedSelect>
               </b-modal>
             </div>
