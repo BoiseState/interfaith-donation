@@ -8,7 +8,6 @@
         <logout />
       </div>
     </navigation>
-    <br><br><br><br><br>
     <router-view/>
   </div>
 </template>
