@@ -1,6 +1,6 @@
 <template>
   <div class="needs">
-    <div class="jumbotron">
+    <b-jumbotron>
       <div class="container">
         <b-card>
           <router-link to="/register-need"><b-button>Add Need&raquo;</b-button></router-link>
@@ -30,7 +30,7 @@
           </b-table>
         </b-card>
       </div>
-    </div>
+    </b-jumbotron>
   </div>
 </template>
 
