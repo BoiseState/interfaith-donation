@@ -1,6 +1,6 @@
 <template>
   <div class="needInfoPage">
-    <div class="jumbotron">
+    <b-jumbotron>
       <div class="container">
         <br>
         <br>
@@ -39,7 +39,7 @@
           </b-form>
         </b-card>
       </div>
-    </div>
+    </b-jumbotron>
   </div>
 </template>
 

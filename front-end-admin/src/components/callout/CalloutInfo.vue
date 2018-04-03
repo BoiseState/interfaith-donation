@@ -1,5 +1,5 @@
 <template>
-  <div class="jumbotron">
+  <b-jumbotron>
     <div class="container">
       <b-card title="Edit Callout">
         <b-form @submit="onFormSubmit" class="form-horizontal">
@@ -75,7 +75,7 @@
             </div>
             <div>
               <!-- Modal Component -->
-              <b-modal id="modal" size="lg" @ok="handleOk" centered title="Add Needs">
+              <b-modal id="modal" size="lg" ok-variant="success" @ok="handleOk" centered title="Add Needs">
                 <NeedSelect></NeedSelect>
               </b-modal>
             </div>
@@ -86,7 +86,7 @@
 
       </b-card>
     </div>
-  </div>
+  </b-jumbotron>
 </template>
 
 <script>

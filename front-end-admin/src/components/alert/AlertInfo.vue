@@ -1,7 +1,7 @@
 <template>
   <div class="alertInfoPage">
     <!-- Main jumbotron for a primary marketing message or call to action -->
-    <div class="jumbotron">
+    <b-jumbotron>
       <div class="container">
         <h5>Alert Info Page for Alert {{ alert_id }}</h5>
         <p>Date created: {{ create_date }}<br>
@@ -27,14 +27,14 @@
           <button type="submit">Update Need</button>
         </form>
       </div>
-    </div>
+    </b-jumbotron>
   </div>
 </template>
 
 <script>
-  export default {
-    name: 'alert-info'
-  }
+export default {
+  name: 'alert-info'
+};
 </script>
 
 <style scoped>

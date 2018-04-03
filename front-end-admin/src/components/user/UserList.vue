@@ -1,5 +1,5 @@
 <template>
-  <div class="jumbotron">
+  <b-jumbotron>
     <div class="container">
       <b-card>
         <router-link to="/register-user">
@@ -32,7 +32,7 @@
       </b-table>
       </b-card>
     </div>
-  </div>
+  </b-jumbotron>
 </template>
 
 <script>

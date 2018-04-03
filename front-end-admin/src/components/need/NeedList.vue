@@ -1,5 +1,4 @@
 <template>
-  <div class="needs">
     <b-jumbotron>
       <div class="container">
         <b-card>
@@ -31,7 +30,6 @@
         </b-card>
       </div>
     </b-jumbotron>
-  </div>
 </template>
 
 <script>

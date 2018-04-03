@@ -1,5 +1,5 @@
 <template>
-  <div class="jumbotron">
+  <b-jumbotron>
     <div class="container">
       <p><a class="btn btn-default" href="${pageContext.request.contextPath}/registerdonation.jsp" role="button">Add Manual Donation&raquo;</a></p>
       <form class="form-horizontal" action="/searchdonor" method="GET">
@@ -24,13 +24,13 @@
         </tbody>
       </table>
     </div>
-  </div>
+  </b-jumbotron>
 </template>
 
 <script>
-  export default {
-    name: "gifts-list"
-  }
+export default {
+  name: 'gifts-list'
+};
 </script>
 
 <style scoped>
