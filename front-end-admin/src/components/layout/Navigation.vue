@@ -1,5 +1,5 @@
 <template>
-  <b-nav class="navbar navbar-inverse navbar-fixed-top">
+  <b-nav>
     <div class="container">
       <div class="navbar-header">
         <div style="display:block">

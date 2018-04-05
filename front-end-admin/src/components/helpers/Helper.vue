@@ -29,6 +29,11 @@ export default {
       }
       // user.permissions = 'BASIC_USER';
       return 'Invalid Permissions';
+    },
+    calculateProgress(calloutNeed) {
+      calloutNeed.donations.forEach(donation => {
+        calloutNeed.donationSum += donation.quantity;
+      });
     }
   }
 };
