@@ -4,7 +4,7 @@
       <br>
       <br>
       <b-card title="Edit Callout">
-        <b-form @submit="onFormSubmit" class="form-horizontal">
+        <b-form @submit.prevent="onFormSubmit" class="form-horizontal">
 
           <b-card :title="callout.name">
             <input type="hidden" name="callout_id" v-model="callout.id">
@@ -143,11 +143,7 @@ export default {
     });
   },
   methods: {
-    onFormSubmit(evt) {
-      evt.preventDefault();
-      this.callout.calloutNeeds.forEach(calloutNeed => {
-        updateCalloutNeed(calloutNeed);
-      });
+    onFormSubmit() {
       updateCallout(this.callout);
     },
     handleOk(bvEvt) {

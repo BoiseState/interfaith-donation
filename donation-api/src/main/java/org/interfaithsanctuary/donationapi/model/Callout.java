@@ -1,6 +1,5 @@
 package org.interfaithsanctuary.donationapi.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
@@ -10,7 +9,6 @@ import java.util.Set;
 @Entity
 @Table(name = "callouts")
 public class Callout {
-
     @Id
     @Column(name = "callout_id")
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -35,7 +33,6 @@ public class Callout {
     @JsonManagedReference
     private Set<CalloutNeed> calloutNeeds;
 
-
     public Long getId() {
         return id;
     }
@@ -51,45 +48,4 @@ public class Callout {
     public void setName(String name) {
         this.name = name;
     }
-
-    public Date getEffectiveDate() {
-        return effectiveDate;
-    }
-
-    public void setEffectiveDate(Date effectiveDate) {
-        this.effectiveDate = effectiveDate;
-    }
-
-    public boolean isActive() {
-        return active;
-    }
-
-    public void setActive(boolean active) {
-        this.active = active;
-    }
-
-    public Date getCreatedDate() {
-        return createdDate;
-    }
-
-    public void setCreatedDate(Date createdDate) {
-        this.createdDate = createdDate;
-    }
-
-    public String getDescriptionMessage() {
-        return descriptionMessage;
-    }
-
-    public void setDescriptionMessage(String descriptionMessage) {
-        this.descriptionMessage = descriptionMessage;
-    }
-
-    public Set<CalloutNeed> getCalloutNeeds() {
-        return calloutNeeds;
-    }
-
-    public void setCalloutNeeds(Set<CalloutNeed> calloutNeeds) {
-        this.calloutNeeds = calloutNeeds;
-    }
-
 }

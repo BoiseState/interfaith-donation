@@ -1,4 +1,4 @@
-import { getJSON, postJSON, patchJSON } from './helpers';
+import { getJSON, postJSON, putJSON } from './helpers';
 
 const BASE_API_ROUTE = 'donations';
 
@@ -19,5 +19,5 @@ export const getDonationById = async id => {
 };
 
 export const updateDonation = async donation => {
-  return patchJSON(`${BASE_API_ROUTE}/${donation.id}`, donation);
+  return putJSON(`${BASE_API_ROUTE}/${donation.id}`, donation);
 };
