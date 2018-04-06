@@ -26,12 +26,12 @@ export class HomePage {
 
   async receiveCallouts() {
     await this.calloutService
-      .getCalloutNeedsMockJSON()
+      .getCalloutNeedsJSON()
       .then(res => (this.callouts = res));
     console.log("callouts:");
     console.log(this.callouts);
     for (let callout in this.callouts["content"]) {
-      // iterates through all the callouts
+      // Iterates through all the callouts
       if (this.callouts["content"][callout]["active"]) {
         // If the callout is currently active
         const need = new NeedObj(
