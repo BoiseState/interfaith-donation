@@ -10,16 +10,12 @@ export const postJSON = (apiRoute, data) =>
     method: 'POST',
     body: JSON.stringify(data),
     headers: new Headers({
-      'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Methods': 'POST',
-      'Access-Control-Allow-Headers': 'Origin'
+      'Content-Type': 'application/json'
     }),
     mode: 'cors',
     cache: 'default'
   })
     .then(res => res.json())
-    .catch(error => console.error('Error:', error))
     .then(response => console.log('Success:', response));
 
 export const patchJSON = (apiRoute, data) =>
@@ -27,17 +23,22 @@ export const patchJSON = (apiRoute, data) =>
     method: 'PATCH',
     body: JSON.stringify(data),
     headers: new Headers({
-      'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': 'http://localhost:8081',
-      'Access-Control-Allow-Methods': 'PATCH',
-      'Access-Control-Allow-Headers': 'Origin'
+      'Content-Type': 'application/json'
     }),
     mode: 'cors',
     cache: 'default'
-  })
-    .then(res => res.json())
-    .catch(error => console.error('Error:', error))
-    .then(response => console.log('Success:', response));
+  }).then(res => res);
+
+export const putJSON = (apiRoute, data) =>
+  fetch(`${URL}/${apiRoute}`, {
+    method: 'PUT',
+    body: JSON.stringify(data),
+    headers: new Headers({
+      'Content-Type': 'application/json'
+    }),
+    mode: 'cors',
+    cache: 'default'
+  }).then(res => res);
 
 export const deleteJSON = apiRoute =>
   fetch(`${URL}/${apiRoute}`, {

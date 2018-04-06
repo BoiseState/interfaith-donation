@@ -10,18 +10,20 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
-@CrossOrigin
+
 @RestController
 @RequestMapping(path="/donations")
 public class DonationController {
     @Autowired
     private DonationRepository donationRepository;
 
+    @CrossOrigin
     @GetMapping("/all")
     public Page<Donation> getDonations(Pageable pageable) {
         return donationRepository.findAll(pageable);
     }
 
+    @CrossOrigin
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public Donation getDonationById(@PathVariable("id") long id) {
         return donationRepository.findOne(id);

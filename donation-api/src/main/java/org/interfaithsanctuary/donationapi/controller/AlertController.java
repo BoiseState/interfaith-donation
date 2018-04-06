@@ -8,18 +8,20 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-@CrossOrigin
+
 @RestController
 @RequestMapping(path="/alerts")
 public class AlertController {
     @Autowired
     private AlertRepository alertRepository;
 
+    @CrossOrigin
     @GetMapping("/all")
     public @ResponseBody Page<Alert> getAllAlerts(Pageable pageable) {
         return alertRepository.findAll(pageable);
     }
 
+    @CrossOrigin
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public Alert getAlertById(@PathVariable("id") long id)  {
         return alertRepository.findOne(id);
