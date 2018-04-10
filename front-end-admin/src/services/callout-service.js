@@ -1,4 +1,4 @@
-import { getJSON, postJSON, patchJSON } from './helpers';
+import { getJSON, postJSON, putJSON } from './helpers';
 
 const BASE_API_ROUTE = 'callouts';
 
@@ -19,5 +19,6 @@ export const getCalloutById = async id => {
 };
 
 export const updateCallout = async callout => {
-  return patchJSON(`${BASE_API_ROUTE}/${callout.id}`, callout);
+  console.log(JSON.stringify(callout, null, 2));
+  return putJSON(`${BASE_API_ROUTE}/${callout.id}`, callout);
 };

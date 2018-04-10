@@ -2,7 +2,7 @@
   <b-jumbotron>
     <div class="container">
       <b-card title="Edit Callout">
-        <b-form @submit="onFormSubmit" class="form-horizontal">
+        <b-form @submit.prevent="onFormSubmit" class="form-horizontal">
 
           <b-card>
             <input type="hidden" name="callout_id" v-model="callout.id">
