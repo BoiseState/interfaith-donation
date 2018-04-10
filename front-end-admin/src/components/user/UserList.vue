@@ -1,8 +1,10 @@
 <template>
-  <div class="jumbotron">
+  <b-jumbotron>
     <div class="container">
       <b-card>
-        <router-link class="btn btn-default; greyButton" to="/register-user">Add User&raquo;</router-link>
+        <router-link to="/register-user">
+          <b-button>Add User&raquo;</b-button>
+        </router-link>
       <b-row>
         <b-col md="6" class="my-1">
             <b-input-group>
@@ -21,16 +23,16 @@
         </template>
         <template slot="active" slot-scope="row">
           <template v-if="row.item.active">
-            <a class="glyphicon glyphicon-ok" style="color: grey"></a>
+            <a><i class="far fa-check-circle"></i></a>
           </template>
         </template>
         <template slot="edit" slot-scope="row">
-          <router-link :to="{ name: 'user', params: { id: row.item.id }}"  class="glyphicon glyphicon-pencil" style="color: grey;" role="button"></router-link>
+          <router-link :to="{ name: 'user', params: { id: row.item.id }}"><b-button><i class="far fa-edit"></i></b-button></router-link>
         </template>
       </b-table>
       </b-card>
     </div>
-  </div>
+  </b-jumbotron>
 </template>
 
 <script>

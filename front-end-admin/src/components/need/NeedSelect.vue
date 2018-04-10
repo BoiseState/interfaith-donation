@@ -1,8 +1,8 @@
 <template>
-  <div style="max-height: 600px; overflow-y: scroll;">
+  <div style="max-height: 500px; overflow-y: scroll;">
     <div class="container">
       <div>&nbsp;</div>
-      <router-link class="btn btn-default" to="/register-need">Add Need&raquo;</router-link>
+      <router-link to="/register-need"><b-button>Create New Need&raquo;</b-button></router-link>
       <b-row>
         <b-col md="6" class="my-1">
           <b-input-group>
@@ -18,7 +18,7 @@
       <b-table outlined hover :fields="fields" :filter="filter" :items="needs">
         <template slot="url" slot-scope="row">
           <a>
-            <b-btn class="glyphicon glyphicon-search" style="color: white" v-on:click="openUrl(row.item.url)"></b-btn>
+            <b-btn v-on:click="openUrl(row.item.url)"><i class="fab fa-amazon"></i></b-btn>
           </a>
         </template>
         <template slot="add" slot-scope="row">

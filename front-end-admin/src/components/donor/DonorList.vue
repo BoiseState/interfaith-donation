@@ -1,9 +1,8 @@
 <template>
-  <div class="jumbotron">
+  <b-jumbotron>
     <div class="container">
       <b-card>
-        <router-link class="btn btn-default, greyButton" to="/register-donor">Add Donor&raquo;</router-link>
-        <!-- TODO: Add form for searching through donors -->
+        <router-link to="/register-donor"><b-button>Add Donor&raquo;</b-button></router-link>
         <b-row>
           <b-col md="6" class="my-1">
             <b-input-group>
@@ -19,10 +18,9 @@
         <b-table outlined hover :fields="fields" :filter="filter" :items="donors">
           <template slot="donations" slot-scope="row">
             <a>
-              <b-btn class="glyphicon glyphicon-piggy-bank" style="color: pink" @click.stop="row.toggleDetails"></b-btn>
+              <b-btn @click.stop="row.toggleDetails"><i class="fas fa-piggy-bank"></i></b-btn>
             </a>
           </template>
-          <!--NEW STUFF-->
           <template slot="row-details" slot-scope="row">
             <b-card>
               <b-row class="mb-2">
@@ -33,13 +31,12 @@
             </b-card>
           </template>
           <template slot="edit" slot-scope="row">
-            <router-link :to="{ name: 'donor', params: { id: row.item.id }}" class="glyphicon glyphicon-pencil"
-                         style="color: grey; " role="button"></router-link>
+            <router-link :to="{ name: 'donor', params: { id: row.item.id }}"><b-button><i class="far fa-edit"></i></b-button></router-link>
           </template>
         </b-table>
       </b-card>
     </div>
-  </div>
+  </b-jumbotron>
 </template>
 
 <script>

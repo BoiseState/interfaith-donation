@@ -1,6 +1,6 @@
 <template>
   <div class="addDonorPage">
-    <div class="jumbotron">
+    <b-jumbotron>
       <div class="container">
         <b-card :title="titleText">
           <b-form @submit="onFormSubmit" class="form-horizontal">
@@ -51,7 +51,7 @@
           </b-form>
         </b-card>
       </div>
-    </div>
+    </b-jumbotron>
   </div>
 </template>
 

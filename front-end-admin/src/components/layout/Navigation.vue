@@ -1,18 +1,11 @@
 <template>
-  <nav class="navbar navbar-inverse navbar-fixed-top">
+  <b-nav>
     <div class="container">
       <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
-                aria-expanded="false" aria-controls="navbar">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <router-link class="navbar-brand" to="/">Interfaith Sanctuary Administrator Tool</router-link>
-      </div>
-      <div id="navbar" class="navbar-collapse collapse">
-        <slot />
+        <div style="display:block">
+          <b-button v-b-toggle.collapse1><i class="fas fa-caret-square-down"></i></b-button>
+          <router-link class="navbar-brand" to="/">Interfaith Sanctuary Administrator Tool</router-link>
+        </div>
       </div>
       <div>
         <router-link class="navbar-brand" to="/donors">Donors</router-link>
@@ -21,7 +14,14 @@
         <router-link class="navbar-brand" to="/needs">Needs</router-link>
       </div>
     </div>
-  </nav>
+    <div style="display:block">
+    <b-collapse id="collapse1" class="mt-2" style="margin-left: 120px">
+      <b-card>
+        <p class="card-text">Login/Logout Placeholder</p>
+      </b-card>
+    </b-collapse>
+    </div>
+  </b-nav>
 </template>
 
 <script>

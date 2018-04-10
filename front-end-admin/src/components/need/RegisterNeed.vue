@@ -1,7 +1,7 @@
 <template>
   <div class="needInfoPage">
     <!-- Main jumbotron for a primary marketing message or call to action -->
-    <div class="jumbotron">
+    <b-jumbotron>
       <div class="container">
         <br>
         <br>
@@ -45,7 +45,7 @@
           </b-form>
         </b-card>
       </div>
-    </div>
+    </b-jumbotron>
   </div>
 </template>
 
