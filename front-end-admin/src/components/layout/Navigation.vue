@@ -3,23 +3,23 @@
     <div class="container">
       <div class="navbar-header">
         <div style="display:block">
-          <b-button v-b-toggle.collapse1><i class="fas fa-caret-square-down"></i></b-button>
-          <router-link class="navbar-brand" to="/">Interfaith Sanctuary Administrator Tool</router-link>
+          <!--<b-button v-b-toggle.collapse1><i class="fas fa-caret-square-down"></i></b-button>-->
+          <router-link style ="color: white" class="navbar-brand" to="/">Interfaith Sanctuary Administrator Tool</router-link>
         </div>
       </div>
       <div>
-        <router-link class="navbar-brand" to="/donors">Donors</router-link>
-        <router-link class="navbar-brand" to="/users">Users</router-link>
-        <router-link class="navbar-brand" to="/callouts">Callouts</router-link>
-        <router-link class="navbar-brand" to="/needs">Needs</router-link>
+        <router-link style ="color: white" class="navbar-brand" to="/donors">Donors</router-link>
+        <router-link style ="color: white" class="navbar-brand" to="/users">Users</router-link>
+        <router-link style ="color: white" class="navbar-brand" to="/callouts">Callouts</router-link>
+        <router-link style ="color: white" class="navbar-brand" to="/needs">Needs</router-link>
       </div>
     </div>
     <div style="display:block">
-    <b-collapse id="collapse1" class="mt-2" style="margin-left: 120px">
-      <b-card>
-        <p class="card-text">Login/Logout Placeholder</p>
-      </b-card>
-    </b-collapse>
+    <!--<b-collapse id="collapse1" class="mt-2" style="margin-left: 120px">-->
+      <!--<b-card>-->
+        <!--<p class="card-text">Login/Logout Placeholder</p>-->
+      <!--</b-card>-->
+    <!--</b-collapse>-->
     </div>
   </b-nav>
 </template>
