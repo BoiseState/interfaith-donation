@@ -1,10 +1,9 @@
 package org.interfaithsanctuary.donationapi.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Set;
 
 /**
@@ -12,20 +11,22 @@ import java.util.Set;
  */
 @Entity
 @Table(name = "calloutneeds")
-public class CalloutNeed {
+public class CalloutNeed implements Serializable {
 
     @Id
-    @Column(name = "calloutneed_id")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @SequenceGenerator(name="seq", initialValue=300, allocationSize=50)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq")
+    @Column(name = "calloutneed_id", nullable=false, unique = true)
     private Long id;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name="need_id")
+    @JsonBackReference
     private Need need;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name="callout_id")
-    @JsonIgnore
+    //@JsonBackReference
     private Callout callout;
 
     @Column(name = "calloutneed_active")
@@ -34,11 +35,11 @@ public class CalloutNeed {
     @Column(name = "calloutneed_quantity")
     private int quantity;
 
-    @OneToMany(mappedBy = "calloutNeed", cascade = CascadeType.ALL)
-    @JsonManagedReference
-    private Set<Donation> donations;
+//    @OneToMany(mappedBy = "calloutNeed", cascade = CascadeType.ALL)
+//    @JsonManagedReference
+//    private Set<Donation> donations;
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
@@ -46,13 +47,13 @@ public class CalloutNeed {
         this.id = id;
     }
 
-    public Need getNeed() {
-        return need;
-    }
-
-    public void setNeed(Need need) {
-        this.need = need;
-    }
+//    public Need getNeed() {
+//        return need;
+//    }
+//
+//    public void setNeed(Need need) {
+//        this.need = need;
+//    }
 
     public Callout getCallout() {
         return callout;
@@ -78,11 +79,11 @@ public class CalloutNeed {
         this.quantity = quantity;
     }
 
-    public Set<Donation> getDonations() {
-        return donations;
-    }
-
-    public void setDonations(Set<Donation> donations) {
-        this.donations = donations;
-    }
+//    public Set<Donation> getDonations() {
+//        return donations;
+//    }
+//
+//    public void setDonations(Set<Donation> donations) {
+//        this.donations = donations;
+//    }
 }

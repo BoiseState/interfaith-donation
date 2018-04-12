@@ -1,10 +1,12 @@
 package org.interfaithsanctuary.donationapi.controller;
 
 import org.interfaithsanctuary.donationapi.model.Callout;
+import org.interfaithsanctuary.donationapi.model.CalloutNeed;
 import org.interfaithsanctuary.donationapi.repository.CalloutRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -32,7 +34,7 @@ public class CalloutController {
     }
 
     @CrossOrigin
-    @PostMapping("/")
+    @PostMapping(value = "/create")
     public ResponseEntity<Callout> createCallout(@RequestBody Callout callout) {
         Callout savedCallout = calloutRepository.save(callout);
         URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/id").
@@ -53,7 +55,7 @@ public class CalloutController {
         if(!calloutOptional.isPresent()) {
             return ResponseEntity.notFound().build();
         }
-        callout.setId(id);
+//        callout.setId(id);
         calloutRepository.save(callout);
         return ResponseEntity.ok().build();
     }

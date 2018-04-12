@@ -9,7 +9,6 @@ import java.util.Set;
 
 @Entity
 @Table(name = "needs")
-
 public class Need {
     @Id
     @SequenceGenerator(name="seq", initialValue=300, allocationSize=50)
@@ -36,7 +35,7 @@ public class Need {
     @Column(name = "need_active")
     private boolean active;
 
-    @OneToMany (mappedBy = "need", cascade = CascadeType.ALL)
+    @OneToMany (mappedBy = "need", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonIgnore
     private Set<CalloutNeed> calloutNeeds;
 
