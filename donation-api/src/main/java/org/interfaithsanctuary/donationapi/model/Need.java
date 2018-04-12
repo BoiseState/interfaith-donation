@@ -9,10 +9,12 @@ import java.util.Set;
 
 @Entity
 @Table(name = "needs")
+
 public class Need {
     @Id
-    @Column(name = "need_id")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @SequenceGenerator(name="seq", initialValue=300, allocationSize=50)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq")
+    @Column(name = "need_id", nullable=false, unique = true)
     private Long id;
 
     @Column(name = "need_name")
@@ -28,6 +30,7 @@ public class Need {
     private String unitOfMeasurement;
 
     @Column(name = "need_created_date")
+    @Temporal(TemporalType.TIMESTAMP)
     private Date createdDate;
 
     @Column(name = "need_active")
@@ -88,8 +91,12 @@ public class Need {
     public Date getCreatedDate() {
         return createdDate;
     }
+//
+//    public void setCreatedDate(Date joinDate) {
+//        this.createdDate = joinDate;
+//    }
 
-    public void setCreatedDate(Date joinDate) {
-        this.createdDate = joinDate;
-    }
+    public boolean isActive() { return active; }
+
+    public void setActive(boolean active) { this.active = active; }
 }
