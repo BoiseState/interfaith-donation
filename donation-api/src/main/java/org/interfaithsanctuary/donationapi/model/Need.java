@@ -12,8 +12,8 @@ import java.util.Set;
 
 public class Need {
     @Id
-    @SequenceGenerator(name="seq", initialValue=300, allocationSize=50)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "need_seq")
+    @SequenceGenerator(name="need_seq", initialValue=300, allocationSize=50)
     @Column(name = "need_id", nullable=false, unique = true)
     private Long id;
 
