@@ -11,8 +11,8 @@ import java.util.Set;
 @Table(name = "needs")
 public class Need {
     @Id
-    @SequenceGenerator(name="seq", initialValue=300, allocationSize=50)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq")
+//    @SequenceGenerator(name="seq", initialValue=300, allocationSize=50)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "need_id", nullable=false, unique = true)
     private Long id;
 
@@ -35,9 +35,9 @@ public class Need {
     @Column(name = "need_active")
     private boolean active;
 
-    @OneToMany (mappedBy = "need", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonIgnore
-    private Set<CalloutNeed> calloutNeeds;
+//    @OneToMany (mappedBy = "need", cascade = CascadeType.ALL, orphanRemoval = true)
+//    @JsonIgnore
+//    private Set<CalloutNeed> calloutNeeds;
 
     public Long getId() {
         return id;
@@ -79,13 +79,13 @@ public class Need {
         this.unitOfMeasurement = unitOfMeasurement;
     }
 
-    public Set<CalloutNeed> getCalloutNeeds() {
-        return calloutNeeds;
-    }
-
-    public void setCalloutNeeds(Set<CalloutNeed> calloutNeeds) {
-        this.calloutNeeds = calloutNeeds;
-    }
+//    public Set<CalloutNeed> getCalloutNeeds() {
+//        return calloutNeeds;
+//    }
+//
+//    public void setCalloutNeeds(Set<CalloutNeed> calloutNeeds) {
+//        this.calloutNeeds = calloutNeeds;
+//    }
 
     public Date getCreatedDate() {
         return createdDate;

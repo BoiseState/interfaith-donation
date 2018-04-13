@@ -29,7 +29,7 @@ public class CalloutNeedController {
     }
 
     @CrossOrigin
-    @PostMapping(value = "/create")
+    @PostMapping(value = "/")
     public ResponseEntity<CalloutNeed> createCalloutNeed(@RequestBody CalloutNeed calloutneed) {
         CalloutNeed savedCalloutNeed = calloutNeedRepository.save(calloutneed);
         URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/id").

@@ -1,6 +1,7 @@
 package org.interfaithsanctuary.donationapi.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -14,20 +15,27 @@ import java.util.Set;
 public class CalloutNeed implements Serializable {
 
     @Id
-    @SequenceGenerator(name="seq", initialValue=300, allocationSize=50)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq")
+//    @SequenceGenerator(name="seq", initialValue=300, allocationSize=50)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "calloutneed_id", nullable=false, unique = true)
     private Long id;
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name="need_id")
-    @JsonBackReference
-    private Need need;
+//    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+//    @JoinColumn(name="need_id")
+//    @JsonBackReference
+//    @JsonIgnoreProperties("callout")
+//    private Need need;
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name="callout_id")
-    //@JsonBackReference
-    private Callout callout;
+//    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+//    @JoinColumn(name="callout_id")
+//    @JsonIgnoreProperties("need")
+//    private Callout callout;
+
+    @Column(name = "callout_id")
+    private Long calloutId;
+
+    @Column(name = "need_id")
+    private Long needId;
 
     @Column(name = "calloutneed_active")
     private boolean active;
@@ -55,12 +63,29 @@ public class CalloutNeed implements Serializable {
 //        this.need = need;
 //    }
 
-    public Callout getCallout() {
-        return callout;
+//    public Callout getCallout() {
+//        return callout;
+//    }
+//
+//    public void setCallout(Callout callout) {
+//        this.callout = callout;
+//    }
+
+
+    public Long getCalloutId() {
+        return calloutId;
     }
 
-    public void setCallout(Callout callout) {
-        this.callout = callout;
+    public void setCalloutId(Long calloutId) {
+        this.calloutId = calloutId;
+    }
+
+    public Long getNeedId() {
+        return needId;
+    }
+
+    public void setNeedId(Long needId) {
+        this.needId = needId;
     }
 
     public boolean isActive() {
