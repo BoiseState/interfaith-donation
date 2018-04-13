@@ -12,7 +12,7 @@ import java.util.Set;
  */
 @Entity
 @Table(name = "calloutneeds")
-public class CalloutNeed implements Serializable {
+public class CalloutNeed {
 
     @Id
 //    @SequenceGenerator(name="seq", initialValue=300, allocationSize=50)

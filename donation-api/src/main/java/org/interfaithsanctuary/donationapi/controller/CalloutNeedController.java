@@ -23,8 +23,14 @@ public class CalloutNeedController {
     }
 
     @CrossOrigin
-    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    @GetMapping(value = "/{id}")
     public CalloutNeed getCalloutNeedById(@PathVariable("id") long id) {
+        return calloutNeedRepository.findOne(id);
+    }
+
+    @CrossOrigin
+    @GetMapping(value = "/{id}", params = "calloutId" )
+    public CalloutNeed getCalloutNeedByCalloutId(@RequestParam("calloutId") long id) {
         return calloutNeedRepository.findOne(id);
     }
 
