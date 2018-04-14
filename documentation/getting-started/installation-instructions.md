@@ -14,10 +14,9 @@ built of the back-end server.
 Docker allows for the easy startup of the applications. Docker compose allows you start multiple Docker containers with just
 one command. For more information, read the [Docker documentation](../docker-and-docker-compose).
 
-## Importing a Spring Project
+## Importing a Spring Project in Eclipse (Using Eclipse Oxygen)
 
-1. Eclipse (Using Eclipse Oxygen)
-   Open Eclipse and select 'File -> Import'.
+1. Open Eclipse and select 'File -> Import'.
 2. Open the "Maven" folder and select "Import Existing Maven Projects" and click "Next".
 3. Choose the Spring project directory (in this case donation-api/) and select the project's pom.xml file in the checkbox menu.
 4. Click "Finish". Your project should have imported successfully!
