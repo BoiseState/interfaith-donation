@@ -33,8 +33,8 @@ public class CalloutNeedController {
     }
 
     @CrossOrigin
-    @GetMapping(value = "/{calloutId}", params = "calloutId" )
-    public List<CalloutNeed> getCalloutNeedByCalloutId(@RequestParam("calloutId") long id) {
+    @GetMapping(value = "/callout/{id}")
+    public List<CalloutNeed> getCalloutNeedByCalloutId(@PathVariable("id") long id) {
         return calloutNeedRepository.findByCalloutId(id);
     }
 
