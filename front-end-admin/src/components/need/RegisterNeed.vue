@@ -10,8 +10,8 @@
       </b-alert>
       <b-alert variant="danger"
                dismissible
-               :show="showSuccessAlert"
-               @dismissed="showSuccessAlert=false"
+               :show="showFailureAlert"
+               @dismissed="showFailureAlert=false"
       >
         The need could not be created!
       </b-alert>
