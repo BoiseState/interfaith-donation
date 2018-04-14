@@ -8,7 +8,7 @@ debugging or knowing what services are running.
 As of now, when using Docker Compose the following services are accessible at
 the following ports on the localhost of the computer being run:
 
-* donation-api (back-end): localhost:8800/donation-api
+* donation-api (back-end): localhost:8800/donation-api OR localhost:8080/donation-api
 * front-end-client: localhost:8081
 * front-end-admin: localhost:8082
 * database: localhost:5050/charity
