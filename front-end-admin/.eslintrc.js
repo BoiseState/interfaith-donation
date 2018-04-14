@@ -26,6 +26,7 @@ module.exports = {
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
     // allow semi-colons
     semi: [2, 'always'],
-    'space-before-function-paren': 0
+    'space-before-function-paren': 0,
+    indent: 0
   }
 };

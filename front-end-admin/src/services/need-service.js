@@ -7,7 +7,7 @@ export const createNeed = async need => {
 };
 
 export const getAllNeeds = async () => {
-  let needs = await getJSON(BASE_API_ROUTE + '/all');
+  let needs = await getJSON(`${BASE_API_ROUTE}/all`);
   return needs.content;
 };
 

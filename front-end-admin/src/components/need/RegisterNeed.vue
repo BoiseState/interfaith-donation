@@ -1,74 +1,111 @@
 <template>
-  <div class="needInfoPage">
-    <!-- Main jumbotron for a primary marketing message or call to action -->
-    <b-jumbotron>
-      <div class="container">
-        <br>
-        <br>
-        <b-card :title="need.name">
-          <b-form @submit="onFormSubmit" class="form-horizontal" >
-            <input type="hidden" name="need_id" v-model="need.id">
-            <h5>Need Name: </h5>
-            <b-form-textarea v-model="need.name"
-                             required
-                             placeholder="Enter name.."
-                             :rows="1"
-                             no-resize
-                             name="name"
-                             :max-rows="1">
-            </b-form-textarea>
-            <h5>Description: </h5>
-            <b-form-textarea v-model="need.description"
-                             required
-                             placeholder="Enter description.."
+  <div>
+    <div class="container">
+      <b-alert variant="success"
+               dismissible
+               :show="showSuccessAlert"
+               @dismissed="showSuccessAlert=false"
+      >
+        The need was created!
+      </b-alert>
+      <b-alert variant="danger"
+               dismissible
+               :show="showSuccessAlert"
+               @dismissed="showSuccessAlert=false"
+      >
+        The need could not be created!
+      </b-alert>
+      <b-card title="Create Need">
+        <b-form @submit.prevent="onFormSubmit" class="form-horizontal" >
+          <b-form-group label="Name:"
+                        label-for="register-need-name"
+          >
+            <b-form-input id="register-need-name"
+                          type="text"
+                          v-model="name"
+                          required
+                          placeholder="Enter need name...">
+            </b-form-input>
+          </b-form-group>
+          <b-form-group label="Description:"
+                        label-for="register-need-description"
+          >
+            <b-form-textarea id="register-need-description"
+                             v-model="description"
+                             placeholder="Enter need description..."
                              :rows="3"
-                             name="Amazon URL"
-                             :max-rows="3">
+                             :max-rows="6"
+            >
             </b-form-textarea>
-            <h5>Amazon URL: </h5>
-            <b-form-textarea v-model="need.url"
-                             placeholder="Enter amazon url.."
-                             :rows="3"
-                             name="Amazon URL"
-                             :max-rows="3">
-            </b-form-textarea>
-            <h5>Units: </h5>
-            <b-form-textarea v-model="need.unitOfMeasurement"
-                             placeholder="Enter units the product is measured in.."
-                             :rows="1"
-                             no-resize
-                             name="units"
-                             :max-rows="1">
-            </b-form-textarea>
-            <br>
-            <b-button type="submit" variant="primary">Submit</b-button>
-          </b-form>
-        </b-card>
-      </div>
-    </b-jumbotron>
+          </b-form-group>
+          <b-form-group label="Amazon URL:"
+                        label-for="register-need-amazon-url"
+          >
+            <b-form-input id="register-need-amazon-url"
+                          type="text"
+                          v-model="url"
+                          placeholder="Enter the Amazon URL for the need if it has one...">
+            </b-form-input>
+          </b-form-group>
+          <b-form-group label="Unit of Measurement:"
+                        label-for="register-need-unit"
+          >
+            <b-form-input id="register-need-unit"
+                          type="text"
+                          v-model="unitOfMeasurement"
+                          placeholder="Enter the units the need is measured in...">
+            </b-form-input>
+          </b-form-group>
+          <b-form-group label="Active:"
+                        label-for="register-need-active"
+          >
+            <b-form-checkbox id="register-need-active"
+                             v-model="active"
+            >
+            </b-form-checkbox>
+          </b-form-group>
+          <b-button type="submit" variant="success">Submit</b-button>
+        </b-form>
+      </b-card>
+    </div>
   </div>
 </template>
 
 <script>
 import { createNeed } from '../../services/need-service';
-
 export default {
   name: 'register-need',
   data() {
     return {
-      need: {
-        id: '',
-        name: 'New Need Template',
-        url: '',
-        description: '',
-        unitOfMeasurement: ''
-      },
-      errors: []
+      name: '',
+      url: '',
+      description: '',
+      unitOfMeasurement: '',
+      active: '',
+      showSuccessAlert: false,
+      showErrorAlert: false
     };
   },
   methods: {
     onFormSubmit() {
-      createNeed(this.need);
+      const needToCreate = {
+        id: 0,
+        name: this.name,
+        url: this.url,
+        description: this.description,
+        unitOfMeasurement: this.unitOfMeasurement,
+        active: this.active
+      };
+      createNeed(needToCreate)
+        .then(res => {
+          if (res) {
+            this.showSuccessAlert = true;
+          }
+        })
+        .catch(err => {
+          console.error(err);
+          this.showErrorAlert = true;
+        });
     }
   }
 };
