@@ -1,8 +1,8 @@
 <template>
   <div class="container">
     <b-card>
-      <router-link to="/register-need"><b-button>Add Need&raquo;</b-button></router-link>
-      <b-row>
+      <router-link to="/register-need"><b-button>Add Need &raquo;</b-button></router-link>
+      <b-row class="needs-searchbar">
         <b-col md="6" class="my-1">
           <b-input-group>
             <b-form-input v-model="filter" placeholder="Type to Search"/>
@@ -73,5 +73,7 @@ export default {
 </script>
 
 <style scoped>
-
+.needs-searchbar {
+  margin-bottom: 20px;
+}
 </style>
