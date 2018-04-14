@@ -1,11 +1,6 @@
 package org.interfaithsanctuary.donationapi.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 import javax.persistence.*;
-import java.io.Serializable;
-import java.util.Set;
 
 /**
  * This object describes the many-many relationship that a Need can have with a Callout.
@@ -15,7 +10,6 @@ import java.util.Set;
 public class CalloutNeed {
 
     @Id
-//    @SequenceGenerator(name="seq", initialValue=300, allocationSize=50)
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "calloutneed_id", nullable=false, unique = true)
     private Long id;

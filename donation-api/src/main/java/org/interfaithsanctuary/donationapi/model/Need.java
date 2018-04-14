@@ -12,6 +12,7 @@ import java.util.Set;
 public class Need {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "need_id", nullable=false, unique = true)
     private Long id;
 
     @Column(name = "need_name")

@@ -1,8 +1,5 @@
 package org.interfaithsanctuary.donationapi.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import org.hibernate.engine.internal.Cascade;
-
 import javax.persistence.*;
 import java.util.Date;
 import java.util.Set;
@@ -12,7 +9,6 @@ import java.util.Set;
 public class Callout {
 
     @Id
-//    @SequenceGenerator(name="seq", initialValue=300, allocationSize=50)
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "callout_id", nullable=false, unique = true)
     private Long id;

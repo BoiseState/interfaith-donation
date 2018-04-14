@@ -9,9 +9,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import java.net.URI;
+import java.util.List;
 
 @RestController
 @RequestMapping(path="/calloutneeds")
+
 public class CalloutNeedController {
     @Autowired
     private CalloutNeedRepository calloutNeedRepository;
@@ -29,9 +31,9 @@ public class CalloutNeedController {
     }
 
     @CrossOrigin
-    @GetMapping(value = "/{id}", params = "calloutId" )
-    public CalloutNeed getCalloutNeedByCalloutId(@RequestParam("calloutId") long id) {
-        return calloutNeedRepository.findOne(id);
+    @GetMapping(value = "/{calloutId}", params = "calloutId" )
+    public List<CalloutNeed> getCalloutNeedByCalloutId(@RequestParam("calloutId") long id) {
+        return calloutNeedRepository.findByCalloutId(id);
     }
 
     @CrossOrigin
