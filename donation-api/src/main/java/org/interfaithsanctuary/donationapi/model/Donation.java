@@ -17,15 +17,21 @@ public class Donation {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name="calloutneed_id")
-    @JsonBackReference
-    private CalloutNeed calloutNeed;
+//    @ManyToOne(fetch = FetchType.EAGER)
+//    @JoinColumn(name="calloutneed_id")
+//    @JsonBackReference
+//    private CalloutNeed calloutNeed;
+//
+//    @ManyToOne(fetch = FetchType.EAGER)
+//    @JoinColumn(name="donor_id")
+//    @JsonBackReference
+//    private Donor donor;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name="donor_id")
-    @JsonBackReference
-    private Donor donor;
+    @Column(name = "calloutneed_id")
+    private Long calloutNeedId;
+
+    @Column(name = "donor_id")
+    private Long donorId;
 
     @Column(name = "donation_date")
     private Date date;
@@ -41,19 +47,19 @@ public class Donation {
         this.id = id;
     }
 
-    public CalloutNeed getCalloutNeed() { return calloutNeed; }
+//    public CalloutNeed getCalloutNeed() { return calloutNeed; }
+//
+//    public void setCalloutNeed(CalloutNeed calloutNeed) { this.calloutNeed = calloutNeed; }
+//
+//    public Donor getDonor() {
+//        return donor;
+//    }
+//
+//    public void setDonor(Donor donor) {
+//        this.donor = donor;
+//    }
 
-    public void setCalloutNeed(CalloutNeed calloutNeed) { this.calloutNeed = calloutNeed; }
-
-    public Donor getDonor() {
-        return donor;
-    }
-
-    public void setDonor(Donor donor) {
-        this.donor = donor;
-    }
-
-    public Date isDate() {
+    public Date getDate() {
         return date;
     }
 
@@ -67,5 +73,21 @@ public class Donation {
 
     public void setQuantity(Integer quantity) {
         this.quantity = quantity;
+    }
+
+    public Long getCalloutNeedId() {
+        return calloutNeedId;
+    }
+
+    public void setCalloutNeedId(Long calloutNeedId) {
+        this.calloutNeedId = calloutNeedId;
+    }
+
+    public Long getDonorId() {
+        return donorId;
+    }
+
+    public void setDonorId(Long donorId) {
+        this.donorId = donorId;
     }
 }
