@@ -123,10 +123,13 @@
 
 <script>
 import { getCalloutById, updateCallout } from '../../services/callout-service';
-import { updateCalloutNeed } from '../../services/calloutneed-service';
+import {
+  updateCalloutNeed,
+  getCalloutNeedByCalloutId
+} from '../../services/calloutneed-service';
 import Moment from 'moment';
 import Helper from '../helpers/Helper.vue';
-import { getAllNeeds } from '../../services/need-service';
+import { getAllNeeds, getNeedById } from '../../services/need-service';
 
 export default {
   name: 'callout-info',
@@ -171,12 +174,18 @@ export default {
     getCalloutById(this.$route.params.id).then(callout => {
       callout.id = this.$route.params.id;
       this.callout = callout;
+      getCalloutNeedByCalloutId(callout.id).then(calloutNeeds => {
+        calloutNeeds.forEach(calloutNeed => {
+          getNeedById(calloutNeed.needId).then(need => {
+            calloutNeed.donationSum = 0;
+            Helper.methods.calculateProgress(calloutNeed);
+            calloutNeed.need = need;
+          });
+        });
+        callout.calloutNeeds = calloutNeeds;
+      });
       this.calloutNeeds = callout.calloutNeeds;
 
-      this.callout.calloutNeeds.forEach(calloutNeed => {
-        calloutNeed.donationSum = 0;
-        Helper.methods.calculateProgress(calloutNeed);
-      });
       getAllNeeds().then(needs => {
         this.needs = needs;
         this.needs.forEach(need => {

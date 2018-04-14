@@ -57,6 +57,7 @@
 <script>
 import { getAllCallouts } from '../../services/callout-service';
 import { getCalloutNeedByCalloutId } from '../../services/calloutneed-service';
+import { getNeedById } from '../../services/need-service';
 import router from '../../router/index';
 import Helper from '../helpers/Helper.vue';
 
@@ -93,10 +94,15 @@ export default {
           callout.effectiveDate
         );
         getCalloutNeedByCalloutId(callout.id).then(calloutNeeds => {
-          console.log(calloutNeeds);
+          calloutNeeds.forEach(calloutNeed => {
+            getNeedById(calloutNeed.needId).then(need => {
+              calloutNeed.need = need;
+            });
+          });
           callout.calloutNeeds = calloutNeeds;
         });
       });
+      console.log(this.callouts);
     });
   },
   methods: {

@@ -16,7 +16,7 @@ export const getAllCalloutNeeds = async () => {
 export const getCalloutNeedByCalloutId = async calloutId => {
   console.log(`${BASE_API_ROUTE}/callout/${calloutId}`);
   let calloutNeeds = await getJSON(`${BASE_API_ROUTE}/callout/${calloutId}`);
-  return calloutNeeds.content;
+  return calloutNeeds;
 };
 
 export const getCalloutNeedById = async id => {

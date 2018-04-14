@@ -14,7 +14,8 @@ export const getAllNeeds = async () => {
 };
 
 export const getNeedById = async id => {
-  return getJSON(`${BASE_API_ROUTE}/${id}`);
+  let need = await getJSON(`${BASE_API_ROUTE}/${id}`);
+  return need;
 };
 
 export const updateNeed = async need => {
