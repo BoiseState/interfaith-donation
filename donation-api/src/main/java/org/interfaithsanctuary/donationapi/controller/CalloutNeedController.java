@@ -1,5 +1,6 @@
 package org.interfaithsanctuary.donationapi.controller;
 
+import org.interfaithsanctuary.donationapi.model.Callout;
 import org.interfaithsanctuary.donationapi.model.CalloutNeed;
 import org.interfaithsanctuary.donationapi.repository.CalloutNeedRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import java.net.URI;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping(path="/calloutneeds")
@@ -31,8 +33,8 @@ public class CalloutNeedController {
     }
 
     @CrossOrigin
-    @GetMapping(value = "/{calloutId}", params = "calloutId" )
-    public List<CalloutNeed> getCalloutNeedByCalloutId(@RequestParam("calloutId") long id) {
+    @GetMapping(value = "/callout/{id}")
+    public List<CalloutNeed> getCalloutNeedByCalloutId(@PathVariable("id") long id) {
         return calloutNeedRepository.findByCalloutId(id);
     }
 
@@ -43,5 +45,23 @@ public class CalloutNeedController {
         URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/id").
                 buildAndExpand(savedCalloutNeed.getId()).toUri();
         return ResponseEntity.created(location).body(savedCalloutNeed);
+    }
+
+    @CrossOrigin
+    @DeleteMapping("/{id}")
+    public void deleteCalloutNeedById(@PathVariable("id") long id) {
+        calloutNeedRepository.delete(id);
+    }
+
+    @CrossOrigin
+    @PutMapping("/{id}")
+    public ResponseEntity<Callout> updateCalloutNeedById(@RequestBody CalloutNeed calloutNeed, @PathVariable("id") long id) {
+        Optional<CalloutNeed> calloutNeedOptional = Optional.ofNullable(calloutNeedRepository.findOne(id));
+        if(!calloutNeedOptional.isPresent()) {
+            return ResponseEntity.notFound().build();
+        }
+//        callout.setId(id);
+        calloutNeedRepository.save(calloutNeed);
+        return ResponseEntity.ok().build();
     }
 }
