@@ -1,7 +1,18 @@
-## To get the project up and running all you need is docker.
+# Installation Instructions
 
-To install docker see [Docker](https://www.docker.com/community-edition).
-Once docker has been setup, read getting-started.md for how to get docker running.
+## Prerequisite Software need to run and develop on this project
+
+* [Node.js](https://nodejs.org/en/download/)
+* [npm](https://www.npmjs.com/) (which npm should come with Node) or [Yarn](https://yarnpkg.com/en/docs/getting-started). Either of these work.
+* [Docker CE (Community Edition)](https://docs.docker.com/install/)
+* [docker-compose](https://docs.docker.com/compose/install/)
+* [Maven](https://maven.apache.org/download.cgi)
+
+Node is used for managing the dependencies of the front-end codebases, while Maven is used for managing the dependencies and
+built of the back-end server.
+
+Docker allows for the easy startup of the applications. Docker compose allows you start multiple Docker containers with just
+one command. For more information, read the [Docker documentation](../docker-and-docker-compose).
 
 ## Importing a Spring Project
 
@@ -11,7 +22,7 @@ Once docker has been setup, read getting-started.md for how to get docker runnin
 3. Choose the Spring project directory (in this case donation-api/) and select the project's pom.xml file in the checkbox menu.
 4. Click "Finish". Your project should have imported successfully!
 
-## IntelliJ (Using Github project)
+## IntelliJ (Using Github project) - Setting up the back-end
 
 1. Clone the Github project.
 2. Open IntelliJ and click Import Project.
@@ -24,36 +35,14 @@ Once docker has been setup, read getting-started.md for how to get docker runnin
 9. Then click on finish.
 10. Your project should be imported. Expand & select org.interfaithsanctuary:donation-api then do build & run.
 
-## Starting Docker Container for Windows (for PostgreSQL database)
+## Connecting to Docker Database
 
-1. Install Docker (this requires Windows Pro) otherwise you should probably use a Linux VM
-2. Create a new docker image using docker build -t [container name] .
-3. Run your new image docker run -d [container name]
-4. Continue with next set of steps
+For testing and ensuring that the Docker database works, you can connect to it. **It is strongly recommended
+that the database is ran via docker-compose**, so that your port number and host are always consistent.
 
-## Configuring IntelliJ with Docker Container Running PSQL DB
+For connecting to the database, use the following information:
 
-1. Make sure that you have the container ID by running docker ps.
-2. Run docker inspect <container-ID> to get the IP address of your the docker container. Make sure to save it.
-
-* INFO: You will see a long output but if you look at the end, there will be IPAddress label (e.g: "IPAddress": "172.17.0.2").
-* INFO: You may see the link at step 10 for configuration with pictures.
-
-3. Open IntelliJ and follow this path: View -> Tool Windows -> Database. (An attached window will pop up).
-4. Click on the + sign, select Data Source -> PostgreSQL (another separate window will pop up).
-5. If there is the message Download missing driver files in the lower part of the Data Sources and Drivers dialog that opens, click the Download link.
-6. Use the following information to fill the page and click Test Connection
-
-* The Name & URL field will automatically change based on your input below
-* Host: IP address obtained from step 8
-* Port: 5432 (Should be filled already)
-* Database: charity
-* User: docker
-* Password: (empty)
-
-7. Once you click on Test Connection you will see a green text saying Successful.
-8. Click apply and then ok.
-9. You should see the charity@containerIP on the Database window which you can expand to see the content of the charity database.
-10. FYI: The tab on the left named charity@containerIP is where you execute the queries and the bottom window is the console.
-
-* MORE HELP: You may - Click here to see the configuration with pictures.
+* Host: localhost
+* Port: 5050
+* Username: docker
+* Password: docker
