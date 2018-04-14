@@ -11,9 +11,7 @@ import java.util.Set;
 @Table(name = "needs")
 public class Need {
     @Id
-//    @SequenceGenerator(name="seq", initialValue=300, allocationSize=50)
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "need_id", nullable=false, unique = true)
     private Long id;
 
     @Column(name = "need_name")
