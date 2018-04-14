@@ -41,13 +41,9 @@ public class Donation {
         this.id = id;
     }
 
-    public CalloutNeed getCalloutNeed() {
-        return calloutNeed;
-    }
+    public CalloutNeed getCalloutNeed() { return calloutNeed; }
 
-    public void setCalloutNeed(CalloutNeed calloutNeed) {
-        this.calloutNeed = calloutNeed;
-    }
+    public void setCalloutNeed(CalloutNeed calloutNeed) { this.calloutNeed = calloutNeed; }
 
     public Donor getDonor() {
         return donor;

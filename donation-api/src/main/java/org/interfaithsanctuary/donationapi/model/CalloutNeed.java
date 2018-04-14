@@ -1,11 +1,6 @@
 package org.interfaithsanctuary.donationapi.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-
 import javax.persistence.*;
-import java.util.Set;
 
 /**
  * This object describes the many-many relationship that a Need can have with a Callout.
@@ -15,18 +10,26 @@ import java.util.Set;
 public class CalloutNeed {
 
     @Id
-    @Column(name = "calloutneed_id")
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "calloutneed_id", nullable=false, unique = true)
     private Long id;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name="need_id")
-    private Need need;
+//    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+//    @JoinColumn(name="need_id")
+//    @JsonBackReference
+//    @JsonIgnoreProperties("callout")
+//    private Need need;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name="callout_id")
-    @JsonIgnore
-    private Callout callout;
+//    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+//    @JoinColumn(name="callout_id")
+//    @JsonIgnoreProperties("need")
+//    private Callout callout;
+
+    @Column(name = "callout_id")
+    private Long calloutId;
+
+    @Column(name = "need_id")
+    private Long needId;
 
     @Column(name = "calloutneed_active")
     private boolean active;
@@ -34,11 +37,11 @@ public class CalloutNeed {
     @Column(name = "calloutneed_quantity")
     private int quantity;
 
-    @OneToMany(mappedBy = "calloutNeed", cascade = CascadeType.ALL)
-    @JsonManagedReference
-    private Set<Donation> donations;
+//    @OneToMany(mappedBy = "calloutNeed", cascade = CascadeType.ALL)
+//    @JsonManagedReference
+//    private Set<Donation> donations;
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
@@ -46,20 +49,37 @@ public class CalloutNeed {
         this.id = id;
     }
 
-    public Need getNeed() {
-        return need;
+//    public Need getNeed() {
+//        return need;
+//    }
+//
+//    public void setNeed(Need need) {
+//        this.need = need;
+//    }
+
+//    public Callout getCallout() {
+//        return callout;
+//    }
+//
+//    public void setCallout(Callout callout) {
+//        this.callout = callout;
+//    }
+
+
+    public Long getCalloutId() {
+        return calloutId;
     }
 
-    public void setNeed(Need need) {
-        this.need = need;
+    public void setCalloutId(Long calloutId) {
+        this.calloutId = calloutId;
     }
 
-    public Callout getCallout() {
-        return callout;
+    public Long getNeedId() {
+        return needId;
     }
 
-    public void setCallout(Callout callout) {
-        this.callout = callout;
+    public void setNeedId(Long needId) {
+        this.needId = needId;
     }
 
     public boolean isActive() {
@@ -78,11 +98,11 @@ public class CalloutNeed {
         this.quantity = quantity;
     }
 
-    public Set<Donation> getDonations() {
-        return donations;
-    }
-
-    public void setDonations(Set<Donation> donations) {
-        this.donations = donations;
-    }
+//    public Set<Donation> getDonations() {
+//        return donations;
+//    }
+//
+//    public void setDonations(Set<Donation> donations) {
+//        this.donations = donations;
+//    }
 }
