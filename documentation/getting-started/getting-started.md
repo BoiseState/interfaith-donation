@@ -1,26 +1,34 @@
-## If Docker has been installed, continue with these commands;
+# Getting Started
 
-######if not please go read installation-instructions.md
+## Prerequisites
 
-######if no root permissions have been given to a docker group, run the following commands with sudo
+For information on the prerequisites of this project, you
+can read the [installation-instructions.md](installation-instructions.md).
 
-###To build or reload the current Docker database and server:
+You will need to install the proper prerequisite tools mentioned above in order to
+run the commands below.
 
-    docker-compose up --build
+### To build or reload the current Docker database and server:
 
-###To build and run docker database and server:
+    `docker-compose up --build`
 
-    docker-compose up
+### To build and run docker database and server:
 
-###Swagger allows us to check our API. To navigate to swagger, as part of the Docker build go to:
+    `docker-compose up`
 
-    http://localhost:8080/donation-api
+For more information about Docker, please read the [Docker documentation](../docker-and-docker-compose).
 
-###To build the front-end-admin application run:
+### Swagger allows us to check our API. To navigate to swagger, as part of the Docker build go to:
 
+    `http://localhost:8080/donation-api`
+
+### To build the front-end-admin application run:
+
+    ```bash
     sudo npm install
     sudo npm run start || sudo npm run dev
+    ```
 
-###alternatively you can use yarn instead of npm
+### Alternatively you can use yarn instead of npm
 
-    sudo yarn start || sudo yarn run dev
+    `sudo yarn start || sudo yarn run dev`
