@@ -2,9 +2,14 @@
 
 > The front-end app for the Interfaith Sanctuary donation application administration tools. Allows emplooyees of Interfaith Sanctuary to easily see information related to donations.
 
+## Getting Started
+
+This project allows users to modify things like the Needs, Callouts, Donations, and other information in a web front-end. The project
+is built using Vue.
+
 ## Build Setup
 
-``` bash
+```bash
 # install dependencies
 npm install
 
