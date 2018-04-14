@@ -68,6 +68,10 @@ export default {
       this.donors = donors;
       this.donors.forEach(donor => {
         donor.formattedDate = Helper.methods.formatDate(donor.joinDate);
+        getCalloutNeedByCalloutId(callout.id).then(calloutNeeds => {
+          console.log(calloutNeeds);
+          callout.calloutNeeds = calloutNeeds;
+        });
       });
     });
   },
