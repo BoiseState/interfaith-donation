@@ -64,12 +64,12 @@
                 </template>
                 <template slot="progress" slot-scope="row">
                   <div>
-                    <b-progress :value="row.item.donationSum" :max="row.item.quantity" show-value
+                    <b-progress :value="row.item.donationSum" :max="guaranteeNumber(row.item.quantity)" show-value
                                 class="mb-3"></b-progress>
                   </div>
                 </template>
                 <template slot="edit" slot-scope="row">
-                  <router-link :to="{ name: 'need', params: { id: row.item.need.id }}"><b-button><i class="far fa-edit"></i></b-button></router-link>
+                  <!--<router-link :to="{ name: 'need', params: { id: row.item.need.id }}"><b-button><i class="far fa-edit"></i></b-button></router-link>-->
                 </template>
               </b-table>
             </div>
@@ -173,18 +173,20 @@ export default {
   created() {
     getCalloutById(this.$route.params.id).then(callout => {
       callout.id = this.$route.params.id;
-      this.callout = callout;
       getCalloutNeedByCalloutId(callout.id).then(calloutNeeds => {
         calloutNeeds.forEach(calloutNeed => {
+          console.log('1');
+          calloutNeed.donationSum = 0;
           getNeedById(calloutNeed.needId).then(need => {
-            calloutNeed.donationSum = 0;
-            Helper.methods.calculateProgress(calloutNeed);
+            // Helper.methods.calculateProgress(calloutNeed);
             calloutNeed.need = need;
           });
         });
-        callout.calloutNeeds = calloutNeeds;
+        this.calloutNeeds = calloutNeeds;
+        callout.calloutNeeds = this.calloutNeeds;
       });
-      this.calloutNeeds = callout.calloutNeeds;
+      console.log('3');
+      this.callout = callout;
 
       getAllNeeds().then(needs => {
         this.needs = needs;
@@ -229,11 +231,16 @@ export default {
       }
     },
     needToCalloutNeed(need) {
-      console.log(need);
       var calloutNeed = {};
       calloutNeed.quantity = 0;
       calloutNeed.need = need;
       return calloutNeed;
+    },
+    guaranteeNumber(quantity) {
+      if (quantity > 0) {
+        return 0;
+      }
+      return quantity;
     }
   }
 };

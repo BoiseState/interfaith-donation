@@ -102,7 +102,6 @@ export default {
           callout.calloutNeeds = calloutNeeds;
         });
       });
-      console.log(this.callouts);
     });
   },
   methods: {
