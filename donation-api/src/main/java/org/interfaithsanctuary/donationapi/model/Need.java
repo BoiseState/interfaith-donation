@@ -11,8 +11,8 @@ import java.util.Set;
 @Table(name = "needs")
 public class Need {
     @Id
-    @Column(name = "need_id")
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "need_id", nullable=false, unique = true)
     private Long id;
 
     @Column(name = "need_name")
@@ -28,14 +28,15 @@ public class Need {
     private String unitOfMeasurement;
 
     @Column(name = "need_created_date")
+    @Temporal(TemporalType.TIMESTAMP)
     private Date createdDate;
 
     @Column(name = "need_active")
     private boolean active;
 
-    @OneToMany (mappedBy = "need", cascade = CascadeType.ALL)
-    @JsonIgnore
-    private Set<CalloutNeed> calloutNeeds;
+//    @OneToMany (mappedBy = "need", cascade = CascadeType.ALL, orphanRemoval = true)
+//    @JsonIgnore
+//    private Set<CalloutNeed> calloutNeeds;
 
     public Long getId() {
         return id;
@@ -77,19 +78,23 @@ public class Need {
         this.unitOfMeasurement = unitOfMeasurement;
     }
 
-    public Set<CalloutNeed> getCalloutNeeds() {
-        return calloutNeeds;
-    }
-
-    public void setCalloutNeeds(Set<CalloutNeed> calloutNeeds) {
-        this.calloutNeeds = calloutNeeds;
-    }
+//    public Set<CalloutNeed> getCalloutNeeds() {
+//        return calloutNeeds;
+//    }
+//
+//    public void setCalloutNeeds(Set<CalloutNeed> calloutNeeds) {
+//        this.calloutNeeds = calloutNeeds;
+//    }
 
     public Date getCreatedDate() {
         return createdDate;
     }
+//
+//    public void setCreatedDate(Date joinDate) {
+//        this.createdDate = joinDate;
+//    }
 
-    public void setCreatedDate(Date joinDate) {
-        this.createdDate = joinDate;
-    }
+    public boolean isActive() { return active; }
+
+    public void setActive(boolean active) { this.active = active; }
 }
