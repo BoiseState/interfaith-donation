@@ -52,7 +52,6 @@ public class CalloutController {
         if(!calloutOptional.isPresent()) {
             return ResponseEntity.notFound().build();
         }
-//        callout.setId(id);
         calloutRepository.save(callout);
         return ResponseEntity.ok().build();
     }

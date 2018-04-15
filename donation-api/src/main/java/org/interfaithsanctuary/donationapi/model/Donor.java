@@ -42,9 +42,9 @@ public class Donor {
     @Column(name = "donor_join_date")
     private Date joinDate;
 
-    @OneToMany(mappedBy = "donor", cascade = CascadeType.ALL)
-    @JsonManagedReference
-    private Set<Donation> donations;
+//    @OneToMany(mappedBy = "donor", cascade = CascadeType.ALL)
+//    @JsonManagedReference
+//    private Set<Donation> donations;
 
     public Long getId() {
         return id;
@@ -126,12 +126,12 @@ public class Donor {
         this.joinDate = joinDate;
     }
 
-    public Set<Donation> getDonations() {
-        return donations;
-    }
-
-    public void setDonations(Set<Donation> donations) {
-        this.donations = donations;
-    }
+//    public Set<Donation> getDonations() {
+//        return donations;
+//    }
+//
+//    public void setDonations(Set<Donation> donations) {
+//        this.donations = donations;
+//    }
 }
 
