@@ -28,6 +28,14 @@ export class CalloutService {
     return jsonObj;
   }
 
+  async getAllCalloutsJSON() {
+    let jsonObj;
+    await this.doRequest("donation-api/callouts/all").then(
+      data => (jsonObj = data)
+    );
+    return jsonObj;
+  }
+
   /**
    * Performs the request of getting JSON data from an restful API endpoint.
    * @param apiUrl The api url endpoint the request from.
