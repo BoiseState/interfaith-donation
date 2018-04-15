@@ -14,9 +14,7 @@ export const postJSON = (apiRoute, data) =>
     }),
     mode: 'cors',
     cache: 'default'
-  })
-    .then(res => res.json())
-    .then(response => console.log('Success:', response));
+  }).then(res => res.json());
 
 export const patchJSON = (apiRoute, data) =>
   fetch(`${URL}/${apiRoute}`, {
