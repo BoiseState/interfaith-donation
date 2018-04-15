@@ -64,12 +64,12 @@
                 </template>
                 <template slot="progress" slot-scope="row">
                   <div>
-                    <b-progress :value="row.item.donationSum" :max="row.item.quantity" show-value
+                    <b-progress :value="row.item.donationSum" :max="guaranteeNumber(row.item.quantity)" show-value
                                 class="mb-3"></b-progress>
                   </div>
                 </template>
                 <template slot="edit" slot-scope="row">
-                  <router-link :to="{ name: 'need', params: { id: row.item.need.id }}"><b-button><i class="far fa-edit"></i></b-button></router-link>
+                  <!--<router-link :to="{ name: 'need', params: { id: row.item.need.id }}"><b-button><i class="far fa-edit"></i></b-button></router-link>-->
                 </template>
               </b-table>
             </div>
@@ -123,10 +123,13 @@
 
 <script>
 import { getCalloutById, updateCallout } from '../../services/callout-service';
-import { updateCalloutNeed } from '../../services/calloutneed-service';
+import {
+  updateCalloutNeed,
+  getCalloutNeedByCalloutId
+} from '../../services/calloutneed-service';
 import Moment from 'moment';
 import Helper from '../helpers/Helper.vue';
-import { getAllNeeds } from '../../services/need-service';
+import { getAllNeeds, getNeedById } from '../../services/need-service';
 
 export default {
   name: 'callout-info',
@@ -170,13 +173,21 @@ export default {
   created() {
     getCalloutById(this.$route.params.id).then(callout => {
       callout.id = this.$route.params.id;
-      this.callout = callout;
-      this.calloutNeeds = callout.calloutNeeds;
-
-      this.callout.calloutNeeds.forEach(calloutNeed => {
-        calloutNeed.donationSum = 0;
-        Helper.methods.calculateProgress(calloutNeed);
+      getCalloutNeedByCalloutId(callout.id).then(calloutNeeds => {
+        calloutNeeds.forEach(calloutNeed => {
+          console.log('1');
+          calloutNeed.donationSum = 0;
+          getNeedById(calloutNeed.needId).then(need => {
+            // Helper.methods.calculateProgress(calloutNeed);
+            calloutNeed.need = need;
+          });
+        });
+        this.calloutNeeds = calloutNeeds;
+        callout.calloutNeeds = this.calloutNeeds;
       });
+      console.log('3');
+      this.callout = callout;
+
       getAllNeeds().then(needs => {
         this.needs = needs;
         this.needs.forEach(need => {
@@ -220,11 +231,16 @@ export default {
       }
     },
     needToCalloutNeed(need) {
-      console.log(need);
       var calloutNeed = {};
       calloutNeed.quantity = 0;
       calloutNeed.need = need;
       return calloutNeed;
+    },
+    guaranteeNumber(quantity) {
+      if (quantity > 0) {
+        return 0;
+      }
+      return quantity;
     }
   }
 };

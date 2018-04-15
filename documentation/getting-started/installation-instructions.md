@@ -1,6 +1,6 @@
 # Installation Instructions
 
-## Prerequisite Software need to run and develop on this project
+## Prerequisite Software needed to run and develop on this project
 
 * [Node.js](https://nodejs.org/en/download/)
 * [npm](https://www.npmjs.com/) (which npm should come with Node) or [Yarn](https://yarnpkg.com/en/docs/getting-started). Either of these work.

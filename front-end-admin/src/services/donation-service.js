@@ -6,6 +6,11 @@ export const createDonation = donation => {
   postJSON(BASE_API_ROUTE, donation);
 };
 
+export const getDonationsByDonor = async donorId => {
+  let donation = await getJSON(`${BASE_API_ROUTE}/donor/${donorId}`);
+  return donation;
+};
+
 export const getAllDonations = async () => {
   let donations = await getJSON(BASE_API_ROUTE + '/all');
   return donations.content;
