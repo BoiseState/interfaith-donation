@@ -8,27 +8,37 @@ can read the [installation-instructions.md](installation-instructions.md).
 You will need to install the proper prerequisite tools mentioned above in order to
 run the commands below.
 
-### To build or reload the current Docker database and server:
+## Entire Project
 
-    `docker-compose up --build`
+Using docker compose, you can start up the database and the back-end server of the application with
+just one command. Use the following command:
 
-### To build and run docker database and server:
-
-    `docker-compose up`
+`docker-compose up`
 
 For more information about Docker, please read the [Docker documentation](../docker-and-docker-compose).
 
-### Swagger allows us to check our API. To navigate to swagger, as part of the Docker build go to:
+## Back-End
 
-    `http://localhost:8080/donation-api`
+If the back-end has been started via Docker, you can access the back-end server Swagger documentation
+at `http://localhost:8080/donation-api` OR `http://localhost:8080/donation-api`
 
-### To build the front-end-admin application run:
+## Front-End (Admin)
 
-    ```bash
-    sudo npm install
-    sudo npm run start || sudo npm run dev
-    ```
+The administrative front-end that allows users to modify the database tables is a Vue application.
+To start the application, use the following command:
 
-### Alternatively you can use yarn instead of npm
+```bash
+cd front-end-admin/
 
-    `sudo yarn start || sudo yarn run dev`
+# You can use NPM or Yarn, whichever one you prefer.
+yarn
+npm i
+
+yarn start
+npm run start
+```
+
+This will install the front-end admin dependencies, and then start a development
+server for the front-end admin. Once the start is finished, it will provide
+the localhost URL for the front-end admin application. This development environment
+features code reload, so as you change the Vue code it will automatically reload.
