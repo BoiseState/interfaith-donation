@@ -3,11 +3,14 @@ package org.interfaithsanctuary.donationapi.controller;
 import org.interfaithsanctuary.donationapi.model.User;
 import org.interfaithsanctuary.donationapi.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+
+import org.mindrot.jbcrypt.BCrypt;
 
 import java.net.URI;
 import java.util.Optional;
@@ -15,14 +18,19 @@ import java.util.Optional;
 @RestController
 @RequestMapping(path="/users")
 public class UserController {
+    
     @Autowired
     private UserRepository userRepository;
+
+    @Value("${password.global.salt}")
+    private String globalSalt;
 
     @CrossOrigin
     @GetMapping("/all")
     public Page<User> getAllUsers(Pageable pageable) {
         return userRepository.findAll(pageable);
     }
+
 
     @CrossOrigin
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
@@ -47,9 +55,19 @@ public class UserController {
     @PostMapping("/")
     public ResponseEntity<User> createUser(@RequestBody User user) {
         System.out.println("Create user: " + user.getUserName());
-        User savedUser = userRepository.save(user);
-        URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/id").
-                buildAndExpand(savedUser.getId()).toUri();
-        return ResponseEntity.created(location).body(savedUser);
+        User usr = userRepository.findByEmail(user.getEmail());
+        if(usr == null) {
+            String prepPassword = user.getPassword()+ globalSalt;
+            String hashedPwd = BCrypt.hashpw(prepPassword, BCrypt.gensalt());
+            user.setPassword(hashedPwd);
+            User savedUser = userRepository.save(user);
+            URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/id").
+                    buildAndExpand(savedUser.getId()).toUri();
+            return ResponseEntity.created(location).body(savedUser);
+        } else {
+            System.out.println("Email " + user.getEmail() + " already exist.");
+            return null;
+        }
     }
+
 }
