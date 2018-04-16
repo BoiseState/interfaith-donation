@@ -2,6 +2,7 @@ package org.interfaithsanctuary.donationapi.controller;
 
 import org.interfaithsanctuary.donationapi.model.User;
 import org.interfaithsanctuary.donationapi.repository.UserRepository;
+import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
@@ -56,8 +57,7 @@ public class UserController {
         User usr = userRepository.findByEmail(user.getEmail());
         if(usr == null) {
             String prepPassword = user.getPassword()+ globalSalt;
-            //String hashedPwd = BCrypt.hashpw(prepPassword, BCrypt.gensalt());
-            String hashedPwd = prepPassword;
+            String hashedPwd = BCrypt.hashpw(prepPassword, BCrypt.gensalt());
             user.setPassword(hashedPwd);
             User savedUser = userRepository.save(user);
             URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/id").
