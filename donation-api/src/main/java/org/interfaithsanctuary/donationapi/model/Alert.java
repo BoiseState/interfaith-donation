@@ -29,8 +29,8 @@ public class Alert {
     @Column(name = "need_id")
     private Integer needId;
 
-    @Column(name = "create_date")
-    private Date createDate;
+    @Column(name = "alert_created_date")
+    private Date createdDate;
 
     @Column(name = "last_pushed_date")
     private Date lastPushedDate;
@@ -76,11 +76,11 @@ public class Alert {
     	}
 
     public Date getCreateDate() {
-        return createDate;
+        return createdDate;
     }
 
-    public void setCreateDate(Date createDate) {
-        this.createDate = createDate;
+    public void setCreateDate(Date createdDate) {
+        this.createdDate = createdDate;
     }
 
     public Date getLastPushedDate() {

@@ -22,7 +22,7 @@ public class Callout {
     @Column(name = "callout_active")
     private boolean active;
 
-    @Column(name = "callout_date_created")
+    @Column(name = "callout_created_date")
     private Date createdDate;
 
     @Column(name = "callout_description_message")
