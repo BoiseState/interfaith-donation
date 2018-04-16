@@ -3,9 +3,7 @@ import { getJSON, postJSON, patchJSON } from './helpers';
 const BASE_API_ROUTE = 'alerts';
 
 export const createCallout = alert => {
-  postJSON(BASE_API_ROUTE, alert)
-    .catch(error => console.error('Error:', error))
-    .then(response => console.log('Success:', response));
+  postJSON(BASE_API_ROUTE, alert);
 };
 
 export const getAllAlerts = async () => {

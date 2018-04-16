@@ -3,9 +3,12 @@ import { getJSON, postJSON, putJSON } from './helpers';
 const BASE_API_ROUTE = 'donations';
 
 export const createDonation = donation => {
-  postJSON(BASE_API_ROUTE, donation)
-    .catch(error => console.error('Error:', error))
-    .then(response => console.log('Success:', response));
+  postJSON(BASE_API_ROUTE, donation);
+};
+
+export const getDonationsByDonor = async donorId => {
+  let donation = await getJSON(`${BASE_API_ROUTE}/donor/${donorId}`);
+  return donation;
 };
 
 export const getAllDonations = async () => {

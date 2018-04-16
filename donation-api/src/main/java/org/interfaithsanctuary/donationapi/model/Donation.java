@@ -16,9 +16,6 @@ public class Donation {
     @Column(name = "donation_id")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    
-    @Column(name="calloutneed_id")
-    private Integer calloutNeedId;
 
 //    @ManyToOne(fetch = FetchType.EAGER)
 //    @JoinColumn(name="calloutneed_id")
@@ -29,9 +26,12 @@ public class Donation {
 //    @JoinColumn(name="donor_id")
 //    @JsonBackReference
 //    private Donor donor;
-    
-    @Column(name="donor_id")
-    private Integer donorId;
+
+    @Column(name = "calloutneed_id")
+    private Long calloutNeedId;
+
+    @Column(name = "donor_id")
+    private Long donorId;
 
     @Column(name = "donation_date")
     private Date date;
@@ -47,13 +47,13 @@ public class Donation {
         this.id = id;
     }
 
-    public Integer getCalloutNeed() { return calloutNeedId; }
+    public Long getCalloutNeed() { return calloutNeedId; }
 
-    public void setCalloutNeed(Integer calloutNeedId) { this.calloutNeedId = calloutNeedId; }
+    public void setCalloutNeed(Long calloutNeedId) { this.calloutNeedId = calloutNeedId; }
     
-    public Integer getDonorId() { return donorId; }
+    public Long getDonorId() { return donorId; }
 
-    public void setDonorId(Integer donorId) { this.donorId = donorId; }
+    public void setDonorId(Long donorId) { this.donorId = donorId; }
     
 //    public CalloutNeed getCalloutNeed() { return calloutNeed; }
 
@@ -62,12 +62,12 @@ public class Donation {
 //    public Donor getDonor() {
 //        return donor;
 //    }
-
+    
 //    public void setDonor(Donor donor) {
 //        this.donor = donor;
 //    }
 
-    public Date isDate() {
+    public Date getDate() {
         return date;
     }
 
@@ -81,5 +81,13 @@ public class Donation {
 
     public void setQuantity(Integer quantity) {
         this.quantity = quantity;
+    }
+
+    public Long getCalloutNeedId() {
+        return calloutNeedId;
+    }
+
+    public void setCalloutNeedId(Long calloutNeedId) {
+        this.calloutNeedId = calloutNeedId;
     }
 }

@@ -1,9 +1,8 @@
 <template>
-  <b-nav>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container">
       <div class="navbar-header">
         <div style="display:block">
-          <b-button v-b-toggle.collapse1><i class="fas fa-caret-square-down"></i></b-button>
           <router-link class="navbar-brand" to="/">Interfaith Sanctuary Administrator Tool</router-link>
         </div>
       </div>
@@ -21,7 +20,7 @@
       </b-card>
     </b-collapse>
     </div>
-  </b-nav>
+  </nav>
 </template>
 
 <script>

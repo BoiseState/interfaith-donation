@@ -3,9 +3,7 @@ import { getJSON, postJSON, putJSON } from './helpers';
 const BASE_API_ROUTE = 'callouts';
 
 export const createCallout = callout => {
-  postJSON(BASE_API_ROUTE, callout)
-    .catch(error => console.error('Error:', error))
-    .then(response => console.log('Success:', response));
+  postJSON(BASE_API_ROUTE, callout);
 };
 
 export const getAllCallouts = async () => {
@@ -19,6 +17,5 @@ export const getCalloutById = async id => {
 };
 
 export const updateCallout = async callout => {
-  console.log(JSON.stringify(callout, null, 2));
   return putJSON(`${BASE_API_ROUTE}/${callout.id}`, callout);
 };

@@ -1,7 +1,7 @@
 <template>
   <b-jumbotron>
     <div class="container">
-      <b-card title="Edit Callout">
+      <b-card title="Create New Callout">
         <b-form @submit="onFormSubmit" class="form-horizontal">
 
           <b-card>
@@ -38,6 +38,40 @@
           <b-card>
             <div v-if="calloutNeeds.length > 0">
               <h3>Needs</h3>
+              <b-table outlined hover :fields="fields" :items="calloutNeeds">
+                <template slot="name" slot-scope="row">
+                  {{row.item.need.name}}
+                </template>
+                <template slot="url" slot-scope="row">
+                  <div v-if="row.item.need.url">
+                    <div v-on:click="openUrl(row.item.url)">
+                      <b-button><i class="fab fa-amazon"></i></b-button>
+                    </div>
+                  </div>
+                </template>
+                <template slot="description" slot-scope="row">
+                  {{row.item.need.description}}
+                </template>
+                <template slot="unitOfMeasurement" slot-scope="row">
+                  {{row.item.need.unitOfMeasurement}}
+                </template>
+                <template slot="quantity" slot-scope="row">
+                  <b-form-input v-model="row.item.quantity"
+                                required
+                                placeholder="Enter the quantity you need"
+                                name="quantity">
+                  </b-form-input>
+                </template>
+                <template slot="progress" slot-scope="row">
+                  <div>
+                    <b-progress :value="row.item.donationSum" :max="guaranteeNumber(row.item.quantity)" show-value
+                                class="mb-3"></b-progress>
+                  </div>
+                </template>
+                <template slot="edit" slot-scope="row">
+                  <!--<router-link :to="{ name: 'need', params: { id: row.item.need.id }}"><b-button><i class="far fa-edit"></i></b-button></router-link>-->
+                </template>
+              </b-table>
             </div>
             <div>
               <b-btn v-b-modal.modal>Add Need</b-btn>
@@ -90,8 +124,10 @@
 </template>
 
 <script>
-import { updateCallout } from '../../services/callout-service';
-import { updateCalloutNeed } from '../../services/calloutneed-service';
+import { createCallout } from '../../services/callout-service';
+import { createCalloutNeed } from '../../services/calloutneed-service';
+import { getAllNeeds } from '../../services/need-service';
+import Helper from '../helpers/Helper.vue';
 import Moment from 'moment';
 
 export default {
@@ -99,14 +135,22 @@ export default {
   data() {
     return {
       callout: {
-        title: 'Loading...',
-        body: '',
+        name: '',
+        descriptionMessage: '',
         url: '',
-        createDate: '',
+        createDate: Moment.now(),
         endDate: '',
-        active: '',
-        pinned: ''
+        active: true
       },
+      fields: [
+        { key: 'name', sortable: true },
+        { key: 'url', sortable: false },
+        { key: 'description', sortable: true },
+        { key: 'unitOfMeasurement', sortable: true },
+        { key: 'quantity', sortable: true },
+        { key: 'progress', sortable: false },
+        { key: 'edit', sortable: false }
+      ],
       calloutNeeds: [],
       show: true,
       date: '',
@@ -123,13 +167,23 @@ export default {
       added: []
     };
   },
+  created() {
+    getAllNeeds().then(needs => {
+      this.needs = needs;
+      this.needs.forEach(need => {
+        need.formattedDate = Helper.methods.formatDate(need.createdDate);
+        need.added = false;
+      });
+    });
+  },
   methods: {
     onFormSubmit(evt) {
       evt.preventDefault();
+      console.log(this.callout);
       this.calloutNeeds.forEach(calloutNeed => {
-        updateCalloutNeed(calloutNeed);
+        createCalloutNeed(calloutNeed);
       });
-      updateCallout(this.callout);
+      createCallout(this.callout);
     },
     handleOk(bvEvt) {
       // Prevent modal from closing
@@ -142,6 +196,7 @@ export default {
       });
       this.clearCalloutNeed();
       this.$refs.modal.hide();
+      console.log(this.calloutNeeds);
     },
     clearCalloutNeed() {
       this.added = [];
@@ -162,6 +217,12 @@ export default {
       calloutNeed.quantity = 0;
       calloutNeed.need = need;
       return calloutNeed;
+    },
+    guaranteeNumber(quantity) {
+      if (quantity > 0) {
+        return 0;
+      }
+      return quantity;
     }
   }
 };
