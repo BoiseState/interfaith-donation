@@ -10,8 +10,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import org.mindrot.jbcrypt.BCrypt;
-
 import java.net.URI;
 import java.util.Optional;
 
@@ -58,7 +56,8 @@ public class UserController {
         User usr = userRepository.findByEmail(user.getEmail());
         if(usr == null) {
             String prepPassword = user.getPassword()+ globalSalt;
-            String hashedPwd = BCrypt.hashpw(prepPassword, BCrypt.gensalt());
+            //String hashedPwd = BCrypt.hashpw(prepPassword, BCrypt.gensalt());
+            String hashedPwd = prepPassword;
             user.setPassword(hashedPwd);
             User savedUser = userRepository.save(user);
             URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/id").
