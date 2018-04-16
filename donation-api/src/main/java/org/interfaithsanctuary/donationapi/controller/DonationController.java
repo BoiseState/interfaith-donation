@@ -35,6 +35,12 @@ public class DonationController {
     }
     
     @CrossOrigin
+    @GetMapping(value = "/donor/{id}")
+    public List<Donation> getDonationsByDonorId(@PathVariable("id") long id) {
+        return donationRepository.findByDonorId(id);
+    }
+    
+    @CrossOrigin
     @PostMapping(value = "/")
     public ResponseEntity<Donation> createDonation(@RequestBody Donation donation) {
         Donation savedDonation = donationRepository.save(donation);
