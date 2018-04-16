@@ -26,7 +26,7 @@ export class HomePage {
 
   async receiveCallouts() {
     await this.calloutService
-      .getCalloutNeedsJSON()
+      .getCalloutNeedsMockJSON()
       .then(res => (this.callouts = res));
     console.log("callouts:");
     console.log(this.callouts);
