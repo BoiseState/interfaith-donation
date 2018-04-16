@@ -83,7 +83,7 @@ export default {
       unitOfMeasurement: '',
       active: '',
       showSuccessAlert: false,
-      showErrorAlert: false
+      showFailureAlert: false
     };
   },
   methods: {
@@ -104,7 +104,7 @@ export default {
         })
         .catch(err => {
           console.error(err);
-          this.showErrorAlert = true;
+          this.showFailureAlert = true;
         });
     }
   }
