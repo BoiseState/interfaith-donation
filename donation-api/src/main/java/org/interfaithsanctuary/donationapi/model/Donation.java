@@ -16,6 +16,9 @@ public class Donation {
     @Column(name = "donation_id")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    
+    @Column(name="calloutneed_id")
+    private Integer calloutNeedId;
 
 //    @ManyToOne(fetch = FetchType.EAGER)
 //    @JoinColumn(name="calloutneed_id")
@@ -26,6 +29,9 @@ public class Donation {
 //    @JoinColumn(name="donor_id")
 //    @JsonBackReference
 //    private Donor donor;
+    
+    @Column(name="donor_id")
+    private Integer donorId;
 
     @Column(name = "donation_date")
     private Date date;
@@ -41,6 +47,14 @@ public class Donation {
         this.id = id;
     }
 
+    public Integer getCalloutNeed() { return calloutNeedId; }
+
+    public void setCalloutNeed(Integer calloutNeedId) { this.calloutNeedId = calloutNeedId; }
+    
+    public Integer getDonorId() { return donorId; }
+
+    public void setDonorId(Integer donorId) { this.donorId = donorId; }
+    
 //    public CalloutNeed getCalloutNeed() { return calloutNeed; }
 
 //    public void setCalloutNeed(CalloutNeed calloutNeed) { this.calloutNeed = calloutNeed; }
