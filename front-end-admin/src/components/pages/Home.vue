@@ -16,7 +16,7 @@
               </div>
             </form>
             <p><router-link to="donors" >Click here for full donor list</router-link></p>
-            <h3>Recent Donors</h3>
+            <!-- <h3>Recent Donors</h3>
             <table class="table">
               <thead>
               <tr>
@@ -27,7 +27,7 @@
               </thead>
               <tbody id="topDonorTBody">
               </tbody>
-            </table>
+            </table> -->
           </div>
           <div class="col-md-6">
             <p><router-link to="register-need" class="btn btn-default" role="button">Add Need&raquo;</router-link></p>
@@ -39,7 +39,7 @@
               </div>
             </form>
             <p><router-link to="needs" >Click here for full need list</router-link></p>
-            <h3>Recent Needs</h3>
+            <!-- <h3>Recent Needs</h3>
             <table class="table">
               <thead>
               <tr>
@@ -50,7 +50,7 @@
               </thead>
               <tbody id="needTBody">
               </tbody>
-            </table>
+            </table> -->
           </div>
         </div>
       </div>
@@ -70,7 +70,7 @@ export default {
   name: 'home',
   data() {
     return {
-      loggedIn: true
+      loggedIn: false
     };
   }
 };
