@@ -2,6 +2,7 @@ package org.interfaithsanctuary.donationapi.controller;
 
 import org.interfaithsanctuary.donationapi.model.User;
 import org.interfaithsanctuary.donationapi.repository.UserRepository;
+import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
@@ -9,8 +10,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
-
-import org.mindrot.jbcrypt.BCrypt;
 
 import java.net.URI;
 import java.util.Optional;

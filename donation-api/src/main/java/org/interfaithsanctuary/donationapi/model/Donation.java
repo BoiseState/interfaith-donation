@@ -46,15 +46,27 @@ public class Donation {
     public void setId(Long id) {
         this.id = id;
     }
+    
+    public Long getCalloutNeedId() {
+        return calloutNeedId;
+    }
 
+    public void setCalloutNeedId(Long calloutNeedId) {
+        this.calloutNeedId = calloutNeedId;
+    }
+    
+    public Long getDonorId() { return donorId; }
+
+    public void setDonorId(Long donorId) { this.donorId = donorId; }
+    
 //    public CalloutNeed getCalloutNeed() { return calloutNeed; }
-//
+
 //    public void setCalloutNeed(CalloutNeed calloutNeed) { this.calloutNeed = calloutNeed; }
-//
+
 //    public Donor getDonor() {
 //        return donor;
 //    }
-//
+    
 //    public void setDonor(Donor donor) {
 //        this.donor = donor;
 //    }
@@ -73,21 +85,5 @@ public class Donation {
 
     public void setQuantity(Integer quantity) {
         this.quantity = quantity;
-    }
-
-    public Long getCalloutNeedId() {
-        return calloutNeedId;
-    }
-
-    public void setCalloutNeedId(Long calloutNeedId) {
-        this.calloutNeedId = calloutNeedId;
-    }
-
-    public Long getDonorId() {
-        return donorId;
-    }
-
-    public void setDonorId(Long donorId) {
-        this.donorId = donorId;
     }
 }
