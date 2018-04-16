@@ -177,13 +177,30 @@ export default {
     });
   },
   methods: {
-    onFormSubmit(evt) {
+    onFormSubmit: function(evt) {
       evt.preventDefault();
-      console.log(this.callout);
-      this.calloutNeeds.forEach(calloutNeed => {
-        createCalloutNeed(calloutNeed);
+      var calloutToCreate = {
+        active: true,
+        createdDate: Moment.now(),
+        descriptionMessage: this.callout.descriptionMessage,
+        effectiveDate: this.callout.endDate,
+        id: 0,
+        name: this.callout.name
+      };
+      createCallout(calloutToCreate).then(callout => {
+        console.log(callout);
       });
-      createCallout(this.callout);
+
+      this.calloutNeeds.forEach(calloutNeed => {
+        const calloutNeedToCreate = {
+          calloutId: 2,
+          needId: calloutNeed.need.id,
+          active: true,
+          quantity: 7
+        };
+        console.log(calloutNeedToCreate);
+        createCalloutNeed(calloutToCreate);
+      });
     },
     handleOk(bvEvt) {
       // Prevent modal from closing

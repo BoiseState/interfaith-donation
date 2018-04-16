@@ -2,8 +2,9 @@ import { getJSON, postJSON, putJSON } from './helpers';
 
 const BASE_API_ROUTE = 'callouts';
 
-export const createCallout = callout => {
-  postJSON(BASE_API_ROUTE, callout);
+export const createCallout = async callout => {
+  let newCallout = await postJSON(BASE_API_ROUTE, callout);
+  return newCallout;
 };
 
 export const getAllCallouts = async () => {
