@@ -41,4 +41,4 @@ npm run start
 This will install the front-end admin dependencies, and then start a development
 server for the front-end admin. Once the start is finished, it will provide
 the localhost URL for the front-end admin application. This development environment
-features code reload, so as you change the Vue code it will automatically reload.
+features code reloading, so as you change the Vue code it will automatically reload.
