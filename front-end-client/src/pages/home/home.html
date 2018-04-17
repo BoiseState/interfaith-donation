@@ -18,9 +18,8 @@
       <ion-item>
         <ion-label>Callout</ion-label>
         <ion-select [(ngModel)]="Callout">
-          <ion-option value="Temp1">Temp1</ion-option>
-          <ion-option value="Temp2">Temp2</ion-option>
-          <ion-option value="Temp3">Temp3</ion-option>
+          <ion-option *ngFor="let callout of callouts"
+            value="callout">{{callout}}</ion-option>>
         </ion-select>
       </ion-item>
     </ion-row>
