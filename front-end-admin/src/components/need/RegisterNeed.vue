@@ -73,6 +73,7 @@
 
 <script>
 import { createNeed } from '../../services/need-service';
+import Moment from 'moment';
 export default {
   name: 'register-need',
   data() {
@@ -94,7 +95,8 @@ export default {
         url: this.url,
         description: this.description,
         unitOfMeasurement: this.unitOfMeasurement,
-        active: this.active
+        active: this.active,
+        createdDate: Moment.now()
       };
       createNeed(needToCreate)
         .then(res => {
