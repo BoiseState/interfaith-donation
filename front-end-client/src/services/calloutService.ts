@@ -9,6 +9,7 @@ export class CalloutService {
    * Gets the calloutNeeds JSON from the donation-api endpoint.
    */
   async getCalloutNeedsJSON() {
+    // TODO: Request the donation-api for calloutneeds. Currently does not work, is it a proxy issue?
     let jsonObj;
     await this.doRequest("donation-api/calloutneeds").then(
       data => (jsonObj = data)

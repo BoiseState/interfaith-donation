@@ -47,49 +47,13 @@
     </ion-row>
   </ion-grid>
 
-  <callout 
-    title="Callout Title" 
-    text="This is sample callout text, a short description of the callout will go here!"
+  <callout *ngFor="let need of needs"
+    [title]="need.name"
+    [text]="need.description"
+    [outOf]="need.quantity"
     src="https://source.unsplash.com/collection/190727/500x200"
     leftLink="https://www.amazon.com"
     rightLink="https://www.amazon.com"
-    count="50"
-    outOf="200"
-  ></callout>
-  <callout 
-    title="Callout Title" 
-    text="This is sample callout text, a short description of the callout will go here!"
-    src="https://source.unsplash.com/collection/190727/500x200"
-    leftLink="https://www.amazon.com"
-    rightLink="https://www.amazon.com"
-    count="50"
-    outOf="200"
-  ></callout>
-  <callout 
-    title="Callout Title" 
-    text="This is sample callout text, a short description of the callout will go here!"
-    src="https://source.unsplash.com/collection/190727/500x200"
-    leftLink="https://www.amazon.com"
-    rightLink="https://www.amazon.com"
-    count="50"
-    outOf="200"
-  ></callout>
-  <callout 
-    title="Callout Title" 
-    text="This is sample callout text, a short description of the callout will go here!"
-    src="https://source.unsplash.com/collection/190727/500x200"
-    leftLink="https://www.amazon.com"
-    rightLink="https://www.amazon.com"
-    count="50"
-    outOf="200"
-  ></callout>
-  <callout 
-    title="Callout Title" 
-    text="This is sample callout text, a short description of the callout will go here!"
-    src="https://source.unsplash.com/collection/190727/500x200"
-    leftLink="https://www.amazon.com"
-    rightLink="https://www.amazon.com"
-    count="50"
-    outOf="200"
-  ></callout>
+    count="0"
+    ></callout>
 </ion-content>
