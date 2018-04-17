@@ -69,4 +69,8 @@ public class UserController {
         }
     }
 
+    @CrossOrigin
+    @DeleteMapping("/{id}")
+    public void deleteUserById(@PathVariable("id") long id) { userRepository.delete(id); }
+
 }
