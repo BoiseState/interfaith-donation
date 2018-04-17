@@ -20,7 +20,7 @@ For more information about Docker, please read the [Docker documentation](../doc
 ## Back-End
 
 If the back-end has been started via Docker, you can access the back-end server Swagger documentation
-at `http://localhost:8080/donation-api` OR `http://localhost:8080/donation-api`
+at `http://localhost:8080/donation-api` OR `http://localhost:8800/donation-api`
 
 ## Front-End (Admin)
 
