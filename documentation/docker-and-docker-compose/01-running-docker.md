@@ -1,7 +1,7 @@
 # Using Docker / Docker-Compose on the Interfaith Donation Application
 
 Docker is a great way to help automate both developer and production environments,
-and helps solve the issue of working on a team of developers that have different
+and helps solve the issue of working in a team of developers that have different
 environments and systems. For more information on Docker, check out [their about page](https://www.docker.com/what-docker).
 
 Docker is being used for this exact purpose on the interfaith application. It helps
@@ -40,6 +40,7 @@ another terminal and type:
 ## Common Issues
 
 ### The Docker container is not updating to reflect the new changes in an app
+
 If you are working on an application and everytime you try to start docker-compose it doesn't
 reflect the newest changes because of the caching, you can force a rebuild everytime of the
 compose start by providing the following flag:
