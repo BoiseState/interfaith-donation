@@ -9,6 +9,7 @@ import { CalloutService } from "../../services/calloutService";
 })
 export class HomePage {
   order: boolean = true;
+  private calloutNeeds: any[];
   private callouts: any[];
   private needs: NeedObj[];
 
@@ -16,6 +17,7 @@ export class HomePage {
     public navCtrl: NavController,
     private calloutService: CalloutService
   ) {
+    this.callouts = [];
     this.needs = [];
     this.receiveCallouts(); // Requests for a JSON object of calloutNeeds on startup
   }
@@ -26,22 +28,26 @@ export class HomePage {
 
   async receiveCallouts() {
     await this.calloutService
-      .getCalloutNeedsMockJSON()
-      .then(res => (this.callouts = res));
+      .getCalloutNeedsMockJSON() //GetCallouts from API/callouts/all? See branch 223
+      .then(res => (this.calloutNeeds = res));
     console.log("callouts:");
-    console.log(this.callouts);
-    for (let callout in this.callouts["content"]) {
+    console.log(this.calloutNeeds);
+    for (let callout in this.calloutNeeds["content"]) {
       // Iterates through all the callouts
-      if (this.callouts["content"][callout]["active"]) {
+      if (this.calloutNeeds["content"][callout]["active"]) {
         // If the callout is currently active
+
+        this.callouts.push(this.calloutNeeds["content"][callout]["id"]);
+
         const need = new NeedObj(
-          this.callouts["content"][callout]["need"]["description"],
-          this.callouts["content"][callout]["need"]["id"],
-          this.callouts["content"][callout]["need"]["name"],
-          this.callouts["content"][callout]["need"]["unitOfMeasurement"],
-          this.callouts["content"][callout]["need"]["url"],
-          this.callouts["content"][callout]["quantity"]
+          this.calloutNeeds["content"][callout]["need"]["description"],
+          this.calloutNeeds["content"][callout]["need"]["id"],
+          this.calloutNeeds["content"][callout]["need"]["name"],
+          this.calloutNeeds["content"][callout]["need"]["unitOfMeasurement"],
+          this.calloutNeeds["content"][callout]["need"]["url"],
+          this.calloutNeeds["content"][callout]["quantity"]
         );
+
         this.needs.push(need);
       }
     }

@@ -18,9 +18,11 @@
       <ion-item>
         <ion-label>Callout</ion-label>
         <ion-select [(ngModel)]="Callout">
-          <ion-option value="Wnt17">Winter 2017</ion-option>
+          <!--<ion-option value="Wnt17">Winter 2017</ion-option>
           <ion-option value="Spr18">Spring 2018</ion-option>
-          <ion-option value="Sum18">Summer 2018</ion-option>
+          <ion-option value="Sum18">Summer 2018</ion-option>-->
+          <ion-option *ngFor="let callout of callouts"
+          value="callout">{{callout}}</ion-option>>
         </ion-select>
       </ion-item>
     </ion-row>
