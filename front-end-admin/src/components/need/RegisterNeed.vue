@@ -83,7 +83,7 @@ export default {
       unitOfMeasurement: '',
       active: '',
       showSuccessAlert: false,
-      showErrorAlert: false
+      showFailureAlert: false
     };
   },
   methods: {

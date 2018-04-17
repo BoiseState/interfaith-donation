@@ -1,6 +1,6 @@
 import { getJSON, postJSON, patchJSON } from './helpers';
 
-const BASE_API_ROUTE = 'calloutneeds';
+const BASE_API_ROUTE = 'calloutneeds/';
 
 export const createCalloutNeed = calloutNeed => {
   postJSON(BASE_API_ROUTE, calloutNeed);

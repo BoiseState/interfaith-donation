@@ -66,6 +66,7 @@ export default {
       });
     },
     openUrl(url) {
+      console.log(url);
       window.open(url);
     }
   }

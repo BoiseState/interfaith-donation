@@ -188,16 +188,14 @@ export default {
         name: this.callout.name
       };
       createCallout(calloutToCreate).then(callout => {
-        console.log(callout);
         this.calloutNeeds.forEach(calloutNeed => {
           const calloutNeedToCreate = {
-            calloutId: 2,
+            calloutId: callout.id,
             needId: calloutNeed.need.id,
             active: true,
-            quantity: 7
+            quantity: calloutNeed.quantity
           };
-          console.log(calloutNeedToCreate);
-          createCalloutNeed(calloutToCreate);
+          createCalloutNeed(calloutNeedToCreate);
         });
       });
     },
@@ -239,6 +237,10 @@ export default {
         return 0;
       }
       return quantity;
+    },
+    openUrl(url) {
+      console.log(url);
+      window.open(url);
     }
   }
 };
