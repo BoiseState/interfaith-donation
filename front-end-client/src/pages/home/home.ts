@@ -28,7 +28,7 @@ export class HomePage {
 
   async receiveCallouts() {
     await this.calloutService
-      .getCalloutNeedsMockJSON() //GetCallouts from API/callouts/all? See branch 223
+      .getCalloutNeedsMockJSON() // TODO: Change this to getCalloutNeedsJSON() once donation-api endpoint requests work. Task #274.
       .then(res => (this.calloutNeeds = res));
     console.log("callouts:");
     console.log(this.calloutNeeds);
