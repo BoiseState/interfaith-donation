@@ -1,6 +1,6 @@
 import { getJSON, postJSON, patchJSON } from './helpers';
 
-const BASE_API_ROUTE = 'calloutneeds';
+const BASE_API_ROUTE = 'calloutneeds/';
 
 export const createCalloutNeed = calloutNeed => {
   postJSON(BASE_API_ROUTE, calloutNeed);
@@ -12,7 +12,6 @@ export const getAllCalloutNeeds = async () => {
 };
 
 export const getCalloutNeedByCalloutId = async calloutId => {
-  console.log(`${BASE_API_ROUTE}/callout/${calloutId}`);
   let calloutNeeds = await getJSON(`${BASE_API_ROUTE}/callout/${calloutId}`);
   return calloutNeeds;
 };

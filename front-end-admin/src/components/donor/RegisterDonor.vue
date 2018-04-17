@@ -46,6 +46,21 @@
                           placeholder="Enter postal/zip code.."
                           name="zip">
             </b-form-input>
+            <h5>Password: </h5>
+            <b-form-input    v-model="donor.password"
+                             required
+                             placeholder="Enter a password.."
+                             name="password"
+                             type="password">
+            </b-form-input>
+            <b-form-group label="Active:"
+                          label-for="register-need-active"
+            >
+              <b-form-checkbox id="register-need-active"
+                               v-model="donor.active"
+              >
+              </b-form-checkbox>
+            </b-form-group>
             <br>
             <b-button type="submit" variant="success">Submit</b-button>
           </b-form>
@@ -57,6 +72,7 @@
 
 <script>
 import { createDonor } from '../../services/donor-service';
+import { createUser } from '../../services/user-service';
 
 export default {
   name: 'register-donor',
@@ -71,7 +87,9 @@ export default {
         state: '',
         zip: '',
         phone: '',
-        joinDate: ''
+        joinDate: '',
+        password: '',
+        active: true
       },
       titleText: 'Add a New Donor'
     };
@@ -79,7 +97,18 @@ export default {
   methods: {
     onFormSubmit(evt) {
       evt.preventDefault();
-      createDonor(this.donor);
+      const userToCreate = {
+        userName: this.donor.name,
+        permissions: 'BASIC_USER',
+        active: this.donor.active,
+        password: this.donor.password,
+        email: this.donor.email
+      };
+      createUser(userToCreate).then(user => {
+        console.log(user);
+        this.donor.userId = user.id;
+        createDonor(this.donor);
+      });
     }
   }
 };

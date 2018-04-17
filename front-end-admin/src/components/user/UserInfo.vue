@@ -26,6 +26,14 @@
             <b-dropdown-divider></b-dropdown-divider>
             <b-dropdown-item-button v-on:click="updatePermissions(2)">Super Admin/Jody Permissions</b-dropdown-item-button>
           </b-dropdown>
+          <b-form-group label="Active:"
+                        label-for="register-need-active"
+          >
+            <b-form-checkbox id="register-need-active"
+                             v-model="user.active"
+            >
+            </b-form-checkbox>
+          </b-form-group>
           <br>
           <br>
           <b-button type="submit" variant="success">Submit</b-button>
@@ -48,7 +56,7 @@ export default {
         id: null,
         userName: 'Loading...',
         permissions: null,
-        active: false,
+        active: true,
         email: 'Template New User',
         password: ''
       }

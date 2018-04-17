@@ -177,13 +177,27 @@ export default {
     });
   },
   methods: {
-    onFormSubmit(evt) {
+    onFormSubmit: function(evt) {
       evt.preventDefault();
-      console.log(this.callout);
-      this.calloutNeeds.forEach(calloutNeed => {
-        createCalloutNeed(calloutNeed);
+      var calloutToCreate = {
+        active: true,
+        createdDate: Moment.now(),
+        descriptionMessage: this.callout.descriptionMessage,
+        effectiveDate: this.callout.endDate,
+        id: 0,
+        name: this.callout.name
+      };
+      createCallout(calloutToCreate).then(callout => {
+        this.calloutNeeds.forEach(calloutNeed => {
+          const calloutNeedToCreate = {
+            calloutId: callout.id,
+            needId: calloutNeed.need.id,
+            active: true,
+            quantity: calloutNeed.quantity
+          };
+          createCalloutNeed(calloutNeedToCreate);
+        });
       });
-      createCallout(this.callout);
     },
     handleOk(bvEvt) {
       // Prevent modal from closing
@@ -223,6 +237,10 @@ export default {
         return 0;
       }
       return quantity;
+    },
+    openUrl(url) {
+      console.log(url);
+      window.open(url);
     }
   }
 };

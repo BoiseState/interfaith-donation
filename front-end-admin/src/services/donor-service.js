@@ -2,8 +2,9 @@ import { getJSON, postJSON, patchJSON } from './helpers';
 
 const BASE_API_ROUTE = 'donors';
 
-export const createDonor = donor => {
-  postJSON(BASE_API_ROUTE, donor);
+export const createDonor = async donor => {
+  let newDonor = await postJSON(BASE_API_ROUTE, donor);
+  return newDonor;
 };
 
 export const getAllDonors = async () => {

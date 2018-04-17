@@ -44,7 +44,7 @@
                 </template>
                 <template slot="url" slot-scope="row">
                   <div v-if="row.item.need.url">
-                    <div v-on:click="openUrl(row.item.url)">
+                    <div v-on:click="openUrl(row.item.need.url)">
                       <b-button><i class="fab fa-amazon"></i></b-button>
                     </div>
                   </div>
@@ -175,7 +175,7 @@ export default {
       callout.id = this.$route.params.id;
       getCalloutNeedByCalloutId(callout.id).then(calloutNeeds => {
         calloutNeeds.forEach(calloutNeed => {
-          console.log('1');
+          console.log(calloutNeed);
           calloutNeed.donationSum = 0;
           getNeedById(calloutNeed.needId).then(need => {
             // Helper.methods.calculateProgress(calloutNeed);
@@ -235,6 +235,10 @@ export default {
       calloutNeed.quantity = 0;
       calloutNeed.need = need;
       return calloutNeed;
+    },
+    openUrl(url) {
+      console.log(url);
+      window.open(url);
     },
     guaranteeNumber(quantity) {
       if (quantity > 0) {

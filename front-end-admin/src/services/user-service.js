@@ -2,8 +2,9 @@ import { getJSON, postJSON, patchJSON } from './helpers';
 
 const BASE_API_ROUTE = '/users';
 
-export const createUser = user => {
-  postJSON(BASE_API_ROUTE, user);
+export const createUser = async user => {
+  let newUser = await postJSON(BASE_API_ROUTE, user);
+  return newUser;
 };
 
 export const getAllUsers = async () => {
