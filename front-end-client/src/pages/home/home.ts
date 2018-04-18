@@ -8,6 +8,7 @@ import { CalloutService } from "../../services/calloutService";
   templateUrl: "home.html"
 })
 export class HomePage {
+  order: boolean = true;
   private calloutNeeds: any[];
   private callouts: any[];
   private needs: NeedObj[];
@@ -53,6 +54,7 @@ export class HomePage {
   }
 
   toggleOrdering() {
+    this.order = !this.order; // Used to switch icon on click
     this.needs.reverse();
   }
 }
