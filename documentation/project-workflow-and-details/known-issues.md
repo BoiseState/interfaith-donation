@@ -22,3 +22,23 @@ some recommendations about which things to fix or update:
 
 * Testing needs to be setup.
 * There is no Docker equivalent for the front-end admin
+
+## final sponsor meeting
+Prior to handing this off we had one final project meeting with Jodi to see what she liked and wanted to change so on how it is working so far, she had the following comments
+
+Front End Ionic-
+Make sort options more intuitive 
+	-immediate need (highest priority)
+	-ongoing needs (no end date?)
+	-almost done (fulfillment)
+
+Accounts 
+	-Not implemented yet
+
+Database -
+Make it so Jodi can add pictures of a NEED to database
+
+Front End Admin-
+  Alerts for successful updates/creations similar to the creating a need.
+  Work on workflow so its more intuitive ("so even dumb people know when they're done")
+  Jodi wants to make it so someone else can take this over without her having to teach them 
